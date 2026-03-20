@@ -1074,13 +1074,14 @@
     .home-icon-btns { display: flex; gap: 6px; flex-shrink: 0; }
     .home-icon-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--color-bg-secondary); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; }
     /* 3×3 モザイクグリッド */
-    .home-mosaic { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; width: 100%; margin-bottom: 16px; border-radius: 4px; overflow: hidden; }
+    .home-mosaic { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; width: 100%; margin-bottom: 16px; border-radius: 8px; overflow: hidden; }
     .home-tile { position: relative; overflow: hidden; aspect-ratio: 1; }
+    .home-tile-big { grid-column: 1 / 3; grid-row: 1 / 3; aspect-ratio: unset; }
     .home-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .home-tile-price { position: absolute; bottom: 4px; left: 4px; background: rgba(255,255,255,0.9); border-radius: 4px; padding: 2px 5px; font-size: 10px; font-weight: 700; color: var(--color-fg-secondary); line-height: 1.3; }
-    .home-tile-heart { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: center; }
-    .home-tile-heart svg path { fill: none; stroke: #555; stroke-width: 1.3px; }
-    .home-tile-heart.liked svg path { fill: var(--color-fg-attention); stroke: none; stroke-width: 0; }
+    .home-tile-price { position: absolute; bottom: 6px; left: 6px; background: rgba(34,34,34,0.72); border-radius: 4px; padding: 3px 6px; font-size: 11px; font-weight: 700; color: #fff; line-height: 1.3; }
+    .home-tile-heart { position: absolute; top: 6px; right: 6px; width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: center; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .home-tile-heart svg path { fill: none; stroke: #888; stroke-width: 1.3px; }
+    .home-tile-heart.liked svg path { fill: #FF333F; stroke: none; stroke-width: 0; }
     .auc-item-heart svg path { fill: var(--color-fg-disabled); }
     .auc-item-heart.liked svg path { fill: var(--color-fg-attention); }
     /* 急上昇キーワード */
@@ -1858,15 +1859,12 @@
           </div>
         </div>
         <div class="home-mosaic">
-          <div class="home-tile"><img src="assets/images/7f3f093c-e633-4f50-8ffa-d1a17dc3eaca.png" alt=""><div class="home-tile-price">¥1,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#555" stroke-width="1.3"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/9d6e686c-8389-4c1c-945e-d42a564854af.png" alt=""><div class="home-tile-price">¥3,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#555" stroke-width="1.3"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/64654282-88bd-4ae2-a9e9-30969f717c4d.png" alt=""><div class="home-tile-price">¥890</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#555" stroke-width="1.3"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/a37c8bc2-884c-489e-8d87-2787f01f32fe.png" alt=""><div class="home-tile-price">¥5,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#555" stroke-width="1.3"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/605e027e-e4de-4c10-9c5a-9224f7bd5c6c.png" alt=""><div class="home-tile-price">¥2,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#555" stroke-width="1.3"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/5750dc24-874f-4df5-a522-f2824e02b7db.png" alt=""><div class="home-tile-price">¥780</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#555" stroke-width="1.3"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/0dc47cad-c39a-454f-a9fe-c620f52d6c6c.png" alt=""><div class="home-tile-price">¥4,300</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#555" stroke-width="1.3"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/41b1676c-1c1c-42b5-ba93-002b0468cf83.png" alt=""><div class="home-tile-price">¥1,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#555" stroke-width="1.3"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/3f2c5041-9b8e-486e-830e-9d479162b663.png" alt=""><div class="home-tile-price">¥6,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#555" stroke-width="1.3"/></svg></div></div>
+          <div class="home-tile home-tile-big"><img src="assets/images/7f3f093c-e633-4f50-8ffa-d1a17dc3eaca.png" alt=""><div class="home-tile-price">¥ 1,200</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/9d6e686c-8389-4c1c-945e-d42a564854af.png" alt=""><div class="home-tile-price">¥ 3,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#888" stroke-width="1.3"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/64654282-88bd-4ae2-a9e9-30969f717c4d.png" alt=""><div class="home-tile-price">¥ 890</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/a37c8bc2-884c-489e-8d87-2787f01f32fe.png" alt=""><div class="home-tile-price">¥ 5,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#888" stroke-width="1.3"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/605e027e-e4de-4c10-9c5a-9224f7bd5c6c.png" alt=""><div class="home-tile-price">¥ 2,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z" stroke="#888" stroke-width="1.3"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/5750dc24-874f-4df5-a522-f2824e02b7db.png" alt=""><div class="home-tile-price">¥ 780</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 12S1 8 1 4.5a3 3 0 016-1 3 3 0 016 1C13 8 7 12 7 12z"/></svg></div></div>
         </div>
       </div>
 
