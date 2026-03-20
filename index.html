@@ -699,6 +699,34 @@
       z-index: 3;
     }
 
+    .nav-icon-wrap {
+      position: relative;
+      display: inline-flex;
+      flex-shrink: 0;
+    }
+
+    .nav-badge {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      min-width: 16px;
+      height: 16px;
+      background: #FF333F;
+      border-radius: 9999px;
+      border: 1.5px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      z-index: 10;
+      pointer-events: none;
+      font-family: -apple-system, sans-serif;
+    }
+
     .nav-avatar {
       position: relative;
       width: 40px;
@@ -1881,8 +1909,8 @@
           <div class="home-tile"><img src="assets/images/9d6e686c-8389-4c1c-945e-d42a564854af.png" alt=""><div class="home-tile-price">¥ 3,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           <div class="home-tile"><img src="assets/images/64654282-88bd-4ae2-a9e9-30969f717c4d.png" alt=""><div class="home-tile-price">¥ 890</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           <div class="home-tile"><img src="assets/images/a37c8bc2-884c-489e-8d87-2787f01f32fe.png" alt=""><div class="home-tile-price">¥ 5,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/1cb244a1-dd92-4913-bd68-3eb45570c685.png" alt=""><div class="home-tile-price">¥ 2,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/5750dc24-874f-4df5-a522-f2824e02b7db.png" alt=""><div class="home-tile-price">¥ 780</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-01.png" alt=""><div class="home-tile-price">¥ 2,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-05.png" alt=""><div class="home-tile-price">¥ 780</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
         </div>
       </div>
 
@@ -1920,12 +1948,12 @@
           </div>
         </div>
         <div class="home-mosaic home-mosaic-right">
-          <div class="home-tile"><img src="assets/images/9d6e686c-8389-4c1c-945e-d42a564854af.png" alt=""><div class="home-tile-price">¥ 2,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/5750dc24-874f-4df5-a522-f2824e02b7db.png" alt=""><div class="home-tile-price">¥ 4,500</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/1cb244a1-dd92-4913-bd68-3eb45570c685.png" alt=""><div class="home-tile-price">¥ 12,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-02.png" alt=""><div class="home-tile-price">¥ 2,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-06.png" alt=""><div class="home-tile-price">¥ 4,500</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-10.png" alt=""><div class="home-tile-price">¥ 12,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           <div class="home-tile"><img src="assets/images/fa5d23c8-6ee8-4867-8eec-576d37202aed.png" alt=""><div class="home-tile-price">¥ 3,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/8d892582-0d2a-4fea-92e6-12cb55c2ce64.png" alt=""><div class="home-tile-price">¥ 680</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/7616b8a2-112c-4a26-b52f-fe7eda84ed4d.png" alt=""><div class="home-tile-price">¥ 9,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-11.png" alt=""><div class="home-tile-price">¥ 680</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-12.png" alt=""><div class="home-tile-price">¥ 9,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
         </div>
       </div>
 
@@ -1971,7 +1999,7 @@
             <div class="home-tile"><img src="assets/images/a8267a14-9c19-433f-8808-df8e91f365c6.png" alt=""><div class="home-tile-price">¥ 3,200</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
             <div class="home-tile"><img src="assets/images/6eacccec-e8e5-42ed-a69a-539b4f239de8.png" alt=""><div class="home-tile-price">¥ 15,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
             <div class="home-tile"><img src="assets/images/e39ec764-18b1-4877-ac59-6b3ede2252f4.png" alt=""><div class="home-tile-price">¥ 2,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/a8267a14-9c19-433f-8808-df8e91f365c6.png" alt=""><div class="home-tile-price">¥ 6,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-03.png" alt=""><div class="home-tile-price">¥ 6,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
             <div class="home-tile"><img src="assets/images/6eacccec-e8e5-42ed-a69a-539b4f239de8.png" alt=""><div class="home-tile-price">¥ 1,200</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           </div>
         </div>
@@ -2258,12 +2286,12 @@
             </div>
           </div>
           <div class="home-mosaic">
-            <div class="home-tile"><img src="assets/images/cd02d606-3af7-403b-9c0c-456478bbd772.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/088ef175-7721-48a7-98ad-4f07d0ad88d2.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/7cdaaeba-d7b6-4713-8bf4-c2b356e270e8.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/c98df241-192e-49db-a8a9-a3bd3b7b7a80.png" alt=""><div class="home-tile-price">¥2,600</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/8b705ced-ce63-4e50-80ce-058afe1379ec.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-13.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-14.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-15.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-16.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-17.png" alt=""><div class="home-tile-price">¥2,600</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-18.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           </div>
         </div>
 
@@ -2280,12 +2308,12 @@
             </div>
           </div>
           <div class="home-mosaic">
-            <div class="home-tile"><img src="assets/images/4e96e2f8-389d-4653-aae6-8a2848909b61.png" alt=""><div class="home-tile-price">¥5,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/544d6e08-8c4f-494e-9ba1-c43e09ce4ee8.png" alt=""><div class="home-tile-price">¥3,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/088ef175-7721-48a7-98ad-4f07d0ad88d2.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/7cdaaeba-d7b6-4713-8bf4-c2b356e270e8.png" alt=""><div class="home-tile-price">¥15,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt=""><div class="home-tile-price">¥4,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/c98df241-192e-49db-a8a9-a3bd3b7b7a80.png" alt=""><div class="home-tile-price">¥9,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-01.png" alt=""><div class="home-tile-price">¥5,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-05.png" alt=""><div class="home-tile-price">¥3,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-02.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-06.png" alt=""><div class="home-tile-price">¥15,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-10.png" alt=""><div class="home-tile-price">¥4,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-12.png" alt=""><div class="home-tile-price">¥9,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           </div>
         </div>
 
@@ -3954,10 +3982,13 @@
         </svg>
       </div>
       <!-- TodoOutline (DS4: node 36901-197434) -->
-      <div class="nav-icon-btn" onclick="openPanel('todo')" style="cursor:pointer">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M18.7037 6.36747C18.5719 6.23563 18.3605 6.23563 18.2286 6.36747L10.249 14.3471C9.98734 14.6087 9.56312 14.6087 9.30147 14.3471L5.77137 10.817C5.63952 10.6851 5.4281 10.6851 5.29626 10.817L4.05145 12.0618C3.91961 12.1936 3.91961 12.4051 4.05145 12.5369L8.87176 17.3572C9.37061 17.8561 10.1798 17.8561 10.6787 17.3572L19.9485 8.08739C20.0804 7.95554 20.0804 7.74412 19.9485 7.61228L18.7037 6.36747ZM17.2811 5.41995C17.9362 4.7648 18.9961 4.7648 19.6512 5.41995L20.8961 6.66475C21.5512 7.3199 21.5512 8.37977 20.8961 9.03491L11.6262 18.3047C10.6041 19.3269 8.94639 19.3269 7.92424 18.3047L3.10393 13.4844C2.44878 12.8293 2.44878 11.7694 3.10393 11.1143L4.34873 9.86946C5.00388 9.21432 6.06374 9.21432 6.71889 9.86946L9.77523 12.9258L17.2811 5.41995Z" fill="var(--color-fg-primary)"/>
-        </svg>
+      <div class="nav-icon-wrap">
+        <div class="nav-icon-btn" onclick="openPanel('todo')" style="cursor:pointer">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.7037 6.36747C18.5719 6.23563 18.3605 6.23563 18.2286 6.36747L10.249 14.3471C9.98734 14.6087 9.56312 14.6087 9.30147 14.3471L5.77137 10.817C5.63952 10.6851 5.4281 10.6851 5.29626 10.817L4.05145 12.0618C3.91961 12.1936 3.91961 12.4051 4.05145 12.5369L8.87176 17.3572C9.37061 17.8561 10.1798 17.8561 10.6787 17.3572L19.9485 8.08739C20.0804 7.95554 20.0804 7.74412 19.9485 7.61228L18.7037 6.36747ZM17.2811 5.41995C17.9362 4.7648 18.9961 4.7648 19.6512 5.41995L20.8961 6.66475C21.5512 7.3199 21.5512 8.37977 20.8961 9.03491L11.6262 18.3047C10.6041 19.3269 8.94639 19.3269 7.92424 18.3047L3.10393 13.4844C2.44878 12.8293 2.44878 11.7694 3.10393 11.1143L4.34873 9.86946C5.00388 9.21432 6.06374 9.21432 6.71889 9.86946L9.77523 12.9258L17.2811 5.41995Z" fill="var(--color-fg-primary)"/>
+          </svg>
+        </div>
+        <span class="nav-badge">2</span>
       </div>
     </div>
   </div>
