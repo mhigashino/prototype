@@ -852,21 +852,19 @@
     .list-meta-item { display: flex; align-items: center; gap: 3px; color: var(--color-fg-tertiary); font-size: 11px; }
 
     .list-coupon-card {
-      margin: 0 16px 12px; border: 1.5px solid #e0e0e0; border-radius: 12px; overflow: hidden;
+      margin: 0 16px 12px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;
     }
-    .list-coupon-inner { display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
+    .list-coupon-inner { display: flex; align-items: center; gap: 12px; padding: 12px 16px; }
     .list-coupon-icon {
-      flex-shrink: 0; width: 40px; height: 40px; border-radius: 8px;
-      background: #fff3e0; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
     }
-    .list-coupon-name { font-size: 13px; font-weight: 700; color: var(--color-fg-primary); margin-bottom: 3px; }
-    .list-coupon-sub { font-size: 11px; color: var(--color-fg-tertiary); line-height: 1.4; }
-    .list-coupon-divider { height: 1px; background: var(--color-bg-secondary); margin: 0 16px; }
-    .list-coupon-footer { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; }
-    .list-coupon-expire { font-size: 11px; color: var(--color-fg-tertiary); }
+    .list-coupon-texts { flex: 1; min-width: 0; }
+    .list-coupon-name { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .list-coupon-sub { font-size: 11px; color: #666; line-height: 1.4; }
     .list-coupon-btn {
-      height: 32px; padding: 0 18px; background: var(--color-bg-primary); border: 1.5px solid var(--color-bg-bold);
-      border-radius: 999px; font-size: 12px; font-weight: 700; color: var(--color-fg-primary); cursor: pointer;
+      flex-shrink: 0; padding: 8px 12px; background: var(--color-bg-primary);
+      border: 1px solid #c7c7c7; border-radius: 8px; font-size: 12px; font-weight: 600;
+      color: #333; cursor: pointer; white-space: nowrap;
     }
 
     .list-hint-grid { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 16px; }
@@ -1018,7 +1016,7 @@
     .wal-pay-area { background: var(--color-bg-secondary); padding: 4px 16px 0; }
     .wal-pay-card { background: var(--color-bg-primary); border-radius: 8px; padding: 0 16px 0; overflow: hidden; }
     .wal-pay-header { display: flex; align-items: center; padding: 16px 0 0; }
-    .wal-pay-logo { height: 22px; }
+    .wal-pay-logo { height: 22px; width: 56px; }
     .wal-pay-balance-btn { margin-left: auto; display: flex; align-items: center; gap: 6px; background: var(--color-bg-secondary); border: none; border-radius: 999px; padding: 7px 14px; color: var(--color-fg-secondary); font-size: 12px; cursor: pointer; }
     .wal-pay-balance-btn .amt { font-weight: 700; font-size: 14px; }
     .wal-eye-btn { background: none; border: none; padding: 6px; margin-left: 4px; cursor: pointer; }
@@ -1955,10 +1953,10 @@
         <div class="home-mosaic home-mosaic-right">
           <div class="home-tile"><img src="assets/images/figma-item-02.png" alt=""><div class="home-tile-price">¥ 2,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           <div class="home-tile"><img src="assets/images/figma-item-06.png" alt=""><div class="home-tile-price">¥ 4,500</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/figma-item-10.png" alt=""><div class="home-tile-price">¥ 12,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-05.png" alt=""><div class="home-tile-price">¥ 12,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           <div class="home-tile"><img src="assets/images/fa5d23c8-6ee8-4867-8eec-576d37202aed.png" alt=""><div class="home-tile-price">¥ 3,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/figma-item-11.png" alt=""><div class="home-tile-price">¥ 680</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/figma-item-12.png" alt=""><div class="home-tile-price">¥ 9,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/9d6e686c-8389-4c1c-945e-d42a564854af.png" alt=""><div class="home-tile-price">¥ 680</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/1cb244a1-dd92-4913-bd68-3eb45570c685.png" alt=""><div class="home-tile-price">¥ 9,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
         </div>
       </div>
 
@@ -1976,9 +1974,9 @@
         </div>
         <div class="home-mosaic">
           <div class="home-tile home-tile-big"><img src="assets/images/a37c8bc2-884c-489e-8d87-2787f01f32fe.png" alt=""><div class="home-tile-price">¥ 38,000</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/41b1676c-1c1c-42b5-ba93-002b0468cf83.png" alt=""><div class="home-tile-price">¥ 3,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/3f81ff3b-fd4a-4ddf-8914-39fe83acaf90.png" alt=""><div class="home-tile-price">¥ 5,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/07776446-630c-4d8a-b947-647e09a4da38.png" alt=""><div class="home-tile-price">¥ 1,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-17.png" alt=""><div class="home-tile-price">¥ 3,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-18.png" alt=""><div class="home-tile-price">¥ 5,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/41b1676c-1c1c-42b5-ba93-002b0468cf83.png" alt=""><div class="home-tile-price">¥ 1,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           <div class="home-tile"><img src="assets/images/3b41784a-5075-4a9c-9cef-1f5b144e7ca2.png" alt=""><div class="home-tile-price">¥ 7,200</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           <div class="home-tile"><img src="assets/images/532d1683-3e0b-4d07-8d18-ad7b2d15aa71.png" alt=""><div class="home-tile-price">¥ 980</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
         </div>
@@ -2067,12 +2065,12 @@
           </div>
         </div>
         <div class="home-mosaic home-mosaic-right">
-          <div class="home-tile"><img src="assets/images/07776446-630c-4d8a-b947-647e09a4da38.png" alt=""><div class="home-tile-price">¥ 350</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/088ef175-7721-48a7-98ad-4f07d0ad88d2.png" alt=""><div class="home-tile-price">¥ 1,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/3f2c5041-9b8e-486e-830e-9d479162b663.png" alt=""><div class="home-tile-price">¥ 2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/48b48478-b341-409f-929e-6f61ffd4c8aa.png" alt=""><div class="home-tile-price">¥ 500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-01.png" alt=""><div class="home-tile-price">¥ 350</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-10.png" alt=""><div class="home-tile-price">¥ 1,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-11.png" alt=""><div class="home-tile-price">¥ 2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-12.png" alt=""><div class="home-tile-price">¥ 500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           <div class="home-tile"><img src="assets/images/515d5f92-bcf8-42f2-a348-74a8c08825c3.png" alt=""><div class="home-tile-price">¥ 800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/4e96e2f8-389d-4653-aae6-8a2848909b61.png" alt=""><div class="home-tile-price">¥ 1,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/088ef175-7721-48a7-98ad-4f07d0ad88d2.png" alt=""><div class="home-tile-price">¥ 1,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
         </div>
       </div>
 
@@ -2207,12 +2205,12 @@
           </div>
         </div>
         <div class="home-mosaic home-mosaic-right">
-          <div class="home-tile"><img src="assets/images/3f81ff3b-fd4a-4ddf-8914-39fe83acaf90.png" alt=""><div class="home-tile-price">¥ 4,500</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/f5dee3b0-e94d-4816-9752-ddd168e24e39.png" alt=""><div class="home-tile-price">¥ 2,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/a2250386-480e-456e-a19f-0895ddd0c1c0.png" alt=""><div class="home-tile-price">¥ 15,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/7cdaaeba-d7b6-4713-8bf4-c2b356e270e8.png" alt=""><div class="home-tile-price">¥ 980</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/cd02d606-3af7-403b-9c0c-456478bbd772.png" alt=""><div class="home-tile-price">¥ 3,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/088ef175-7721-48a7-98ad-4f07d0ad88d2.png" alt=""><div class="home-tile-price">¥ 6,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-15.png" alt=""><div class="home-tile-price">¥ 4,500</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-16.png" alt=""><div class="home-tile-price">¥ 2,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/3f81ff3b-fd4a-4ddf-8914-39fe83acaf90.png" alt=""><div class="home-tile-price">¥ 15,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/f5dee3b0-e94d-4816-9752-ddd168e24e39.png" alt=""><div class="home-tile-price">¥ 980</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/a2250386-480e-456e-a19f-0895ddd0c1c0.png" alt=""><div class="home-tile-price">¥ 3,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/7cdaaeba-d7b6-4713-8bf4-c2b356e270e8.png" alt=""><div class="home-tile-price">¥ 6,800</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
         </div>
       </div>
 
@@ -2251,9 +2249,9 @@
           </div>
         </div>
         <div class="home-mosaic home-mosaic-right">
-          <div class="home-tile"><img src="assets/images/c98df241-192e-49db-a8a9-a3bd3b7b7a80.png" alt=""><div class="home-tile-price">¥ 15,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/1ffe6f0d-fbdb-41c2-8d3a-ba48c5475bc0.png" alt=""><div class="home-tile-price">¥ 3,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="home-tile"><img src="assets/images/a37c8bc2-884c-489e-8d87-2787f01f32fe.png" alt=""><div class="home-tile-price">¥ 48,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-13.png" alt=""><div class="home-tile-price">¥ 15,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/figma-item-14.png" alt=""><div class="home-tile-price">¥ 3,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="home-tile"><img src="assets/images/c98df241-192e-49db-a8a9-a3bd3b7b7a80.png" alt=""><div class="home-tile-price">¥ 48,000</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           <div class="home-tile"><img src="assets/images/e39ec764-18b1-4877-ac59-6b3ede2252f4.png" alt=""><div class="home-tile-price">¥ 2,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           <div class="home-tile"><img src="assets/images/ae9c5a60-0496-4835-b2da-90bbbe275f67.png" alt=""><div class="home-tile-price">¥ 7,200</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           <div class="home-tile"><img src="assets/images/aaf0732a-0edb-4729-b4db-4ce740a8a513.png" alt=""><div class="home-tile-price">¥ 5,500</div><div class="home-tile-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
@@ -2273,12 +2271,12 @@
             </div>
           </div>
           <div class="home-mosaic">
-            <div class="home-tile"><img src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt=""><div class="home-tile-price">¥6,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/8b705ced-ce63-4e50-80ce-058afe1379ec.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/c98df241-192e-49db-a8a9-a3bd3b7b7a80.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt=""><div class="home-tile-price">¥2,000</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/4e96e2f8-389d-4653-aae6-8a2848909b61.png" alt=""><div class="home-tile-price">¥2,300</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-            <div class="home-tile"><img src="assets/images/544d6e08-8c4f-494e-9ba1-c43e09ce4ee8.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-02.png" alt=""><div class="home-tile-price">¥6,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-05.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-17.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-18.png" alt=""><div class="home-tile-price">¥2,000</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-01.png" alt=""><div class="home-tile-price">¥2,300</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+            <div class="home-tile"><img src="assets/images/figma-item-06.png" alt=""><div class="home-tile-price">¥2,800</div><div class="home-tile-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
           </div>
         </div>
 
@@ -2339,7 +2337,7 @@
         <div class="auc-big-scroll">
           <!-- Card 1: Astro Boy figure -->
           <div class="auc-big-card">
-            <img class="auc-big-card-img" src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt="">
+            <img class="auc-big-card-img" src="assets/images/figma-item-13.png" alt="">
             <div class="auc-big-card-grad"></div>
             <div class="auc-bid-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M13.49 11.38c-.49.49-1.27.49-1.76 0l-7.1-7.09-1.42 1.41 3.54 3.54-4.24 4.24c-.78.78-.78 2.05 0 2.83l2.83 2.83c.78.78 2.05.78 2.83 0l4.24-4.24 3.54 3.54 1.41-1.41-7.1-7.09zm1.42-5.97L12.7 7.62 9.88 4.8l1.41-1.41c.78-.78 2.05-.78 2.83 0l.79.79 1.41-1.41 1.42 1.42-1.42 1.41.59.6zm5.41 12.43l-4.24-4.24-1.42 1.42 4.24 4.24c.39.39 1.02.39 1.41 0l.01-.01c.39-.39.39-1.02 0-1.41z"/></svg><span>53</span></div>
             <div class="auc-card-bottom">
@@ -2351,7 +2349,7 @@
           </div>
           <!-- Card 2: Watch -->
           <div class="auc-big-card">
-            <img class="auc-big-card-img" src="assets/images/8b705ced-ce63-4e50-80ce-058afe1379ec.png" alt="">
+            <img class="auc-big-card-img" src="assets/images/figma-item-14.png" alt="">
             <div class="auc-big-card-grad"></div>
             <div class="auc-bid-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M13.49 11.38c-.49.49-1.27.49-1.76 0l-7.1-7.09-1.42 1.41 3.54 3.54-4.24 4.24c-.78.78-.78 2.05 0 2.83l2.83 2.83c.78.78 2.05.78 2.83 0l4.24-4.24 3.54 3.54 1.41-1.41-7.1-7.09zm1.42-5.97L12.7 7.62 9.88 4.8l1.41-1.41c.78-.78 2.05-.78 2.83 0l.79.79 1.41-1.41 1.42 1.42-1.42 1.41.59.6zm5.41 12.43l-4.24-4.24-1.42 1.42 4.24 4.24c.39.39 1.02.39 1.41 0l.01-.01c.39-.39.39-1.02 0-1.41z"/></svg><span>53</span></div>
             <div class="auc-card-bottom">
@@ -2363,7 +2361,7 @@
           </div>
           <!-- Card 3: Sneakers -->
           <div class="auc-big-card">
-            <img class="auc-big-card-img" src="assets/images/c98df241-192e-49db-a8a9-a3bd3b7b7a80.png" alt="">
+            <img class="auc-big-card-img" src="assets/images/figma-item-15.png" alt="">
             <div class="auc-big-card-grad"></div>
             <div class="auc-bid-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M13.49 11.38c-.49.49-1.27.49-1.76 0l-7.1-7.09-1.42 1.41 3.54 3.54-4.24 4.24c-.78.78-.78 2.05 0 2.83l2.83 2.83c.78.78 2.05.78 2.83 0l4.24-4.24 3.54 3.54 1.41-1.41-7.1-7.09zm1.42-5.97L12.7 7.62 9.88 4.8l1.41-1.41c.78-.78 2.05-.78 2.83 0l.79.79 1.41-1.41 1.42 1.42-1.42 1.41.59.6zm5.41 12.43l-4.24-4.24-1.42 1.42 4.24 4.24c.39.39 1.02.39 1.41 0l.01-.01c.39-.39.39-1.02 0-1.41z"/></svg><span>31</span></div>
             <div class="auc-card-bottom">
@@ -2375,7 +2373,7 @@
           </div>
           <!-- Card 4: Colorful figure -->
           <div class="auc-big-card">
-            <img class="auc-big-card-img" src="assets/images/48b48478-b341-409f-929e-6f61ffd4c8aa.png" alt="">
+            <img class="auc-big-card-img" src="assets/images/figma-item-16.png" alt="">
             <div class="auc-big-card-grad"></div>
             <div class="auc-bid-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M13.49 11.38c-.49.49-1.27.49-1.76 0l-7.1-7.09-1.42 1.41 3.54 3.54-4.24 4.24c-.78.78-.78 2.05 0 2.83l2.83 2.83c.78.78 2.05.78 2.83 0l4.24-4.24 3.54 3.54 1.41-1.41-7.1-7.09zm1.42-5.97L12.7 7.62 9.88 4.8l1.41-1.41c.78-.78 2.05-.78 2.83 0l.79.79 1.41-1.41 1.42 1.42-1.42 1.41.59.6zm5.41 12.43l-4.24-4.24-1.42 1.42 4.24 4.24c.39.39 1.02.39 1.41 0l.01-.01c.39-.39.39-1.02 0-1.41z"/></svg><span>18</span></div>
             <div class="auc-card-bottom">
@@ -2387,7 +2385,7 @@
           </div>
           <!-- Card 5 -->
           <div class="auc-big-card">
-            <img class="auc-big-card-img" src="assets/images/4e96e2f8-389d-4653-aae6-8a2848909b61.png" alt="">
+            <img class="auc-big-card-img" src="assets/images/figma-item-17.png" alt="">
             <div class="auc-big-card-grad"></div>
             <div class="auc-bid-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M13.49 11.38c-.49.49-1.27.49-1.76 0l-7.1-7.09-1.42 1.41 3.54 3.54-4.24 4.24c-.78.78-.78 2.05 0 2.83l2.83 2.83c.78.78 2.05.78 2.83 0l4.24-4.24 3.54 3.54 1.41-1.41-7.1-7.09zm1.42-5.97L12.7 7.62 9.88 4.8l1.41-1.41c.78-.78 2.05-.78 2.83 0l.79.79 1.41-1.41 1.42 1.42-1.42 1.41.59.6zm5.41 12.43l-4.24-4.24-1.42 1.42 4.24 4.24c.39.39 1.02.39 1.41 0l.01-.01c.39-.39.39-1.02 0-1.41z"/></svg><span>7</span></div>
             <div class="auc-card-bottom">
@@ -2399,7 +2397,7 @@
           </div>
           <!-- Card 6: Clock -->
           <div class="auc-big-card">
-            <img class="auc-big-card-img" src="assets/images/544d6e08-8c4f-494e-9ba1-c43e09ce4ee8.png" alt="">
+            <img class="auc-big-card-img" src="assets/images/figma-item-18.png" alt="">
             <div class="auc-big-card-grad"></div>
             <div class="auc-bid-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M13.49 11.38c-.49.49-1.27.49-1.76 0l-7.1-7.09-1.42 1.41 3.54 3.54-4.24 4.24c-.78.78-.78 2.05 0 2.83l2.83 2.83c.78.78 2.05.78 2.83 0l4.24-4.24 3.54 3.54 1.41-1.41-7.1-7.09zm1.42-5.97L12.7 7.62 9.88 4.8l1.41-1.41c.78-.78 2.05-.78 2.83 0l.79.79 1.41-1.41 1.42 1.42-1.42 1.41.59.6zm5.41 12.43l-4.24-4.24-1.42 1.42 4.24 4.24c.39.39 1.02.39 1.41 0l.01-.01c.39-.39.39-1.02 0-1.41z"/></svg><span>22</span></div>
             <div class="auc-card-bottom">
@@ -2422,7 +2420,7 @@
         <div class="auc-mini-scroll">
           <div class="auc-mini-tile">
             <div class="auc-mini-thumb">
-              <img src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt="">
+              <img src="assets/images/figma-item-13.png" alt="">
               <div class="auc-mini-heart liked"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div>
               <div class="auc-mini-price-tag">現在 ¥6,400</div>
             </div>
@@ -2430,7 +2428,7 @@
           </div>
           <div class="auc-mini-tile">
             <div class="auc-mini-thumb">
-              <img src="assets/images/8b705ced-ce63-4e50-80ce-058afe1379ec.png" alt="">
+              <img src="assets/images/figma-item-14.png" alt="">
               <div class="auc-mini-heart liked"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div>
               <div class="auc-mini-price-tag">現在 ¥7,250</div>
             </div>
@@ -2438,7 +2436,7 @@
           </div>
           <div class="auc-mini-tile">
             <div class="auc-mini-thumb">
-              <img src="assets/images/c98df241-192e-49db-a8a9-a3bd3b7b7a80.png" alt="">
+              <img src="assets/images/figma-item-15.png" alt="">
               <div class="auc-mini-heart liked"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div>
               <div class="auc-mini-price-tag">現在 ¥7,200</div>
             </div>
@@ -2446,7 +2444,7 @@
           </div>
           <div class="auc-mini-tile">
             <div class="auc-mini-thumb">
-              <img src="assets/images/48b48478-b341-409f-929e-6f61ffd4c8aa.png" alt="">
+              <img src="assets/images/figma-item-16.png" alt="">
               <div class="auc-mini-heart"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div>
               <div class="auc-mini-price-tag">現在 ¥3,100</div>
             </div>
@@ -2454,7 +2452,7 @@
           </div>
           <div class="auc-mini-tile">
             <div class="auc-mini-thumb">
-              <img src="assets/images/4e96e2f8-389d-4653-aae6-8a2848909b61.png" alt="">
+              <img src="assets/images/figma-item-17.png" alt="">
               <div class="auc-mini-heart"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div>
               <div class="auc-mini-price-tag">現在 ¥9,800</div>
             </div>
@@ -2462,7 +2460,7 @@
           </div>
           <div class="auc-mini-tile">
             <div class="auc-mini-thumb">
-              <img src="assets/images/544d6e08-8c4f-494e-9ba1-c43e09ce4ee8.png" alt="">
+              <img src="assets/images/figma-item-18.png" alt="">
               <div class="auc-mini-heart"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div>
               <div class="auc-mini-price-tag">現在 ¥1,500</div>
             </div>
@@ -2486,15 +2484,15 @@
           <div class="auc-chip">ブランド品</div>
         </div>
         <div class="auc-item-grid">
-          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/8b705ced-ce63-4e50-80ce-058afe1379ec.png" alt=""><div class="auc-item-plabel">現在 ¥ 300</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>12</span><span class="auc-meta-time">残り1時間</span></div></div>
-          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/cd02d606-3af7-403b-9c0c-456478bbd772.png" alt=""><div class="auc-item-plabel">現在 ¥ 500</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>8</span><span class="auc-meta-time">残り2時間</span></div></div>
-          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/088ef175-7721-48a7-98ad-4f07d0ad88d2.png" alt=""><div class="auc-item-plabel">現在 ¥ 1,200</div><div class="auc-item-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>21</span><span class="auc-meta-time urgent">残り0:45</span></div></div>
-          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/4e96e2f8-389d-4653-aae6-8a2848909b61.png" alt=""><div class="auc-item-plabel">現在 ¥ 800</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>5</span><span class="auc-meta-time">残り3時間</span></div></div>
-          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt=""><div class="auc-item-plabel">現在 ¥ 2,500</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>33</span><span class="auc-meta-time urgent">残り0:12</span></div></div>
-          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt=""><div class="auc-item-plabel">現在 ¥ 400</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>17</span><span class="auc-meta-time">残り1時間</span></div></div>
-          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/c98df241-192e-49db-a8a9-a3bd3b7b7a80.png" alt=""><div class="auc-item-plabel">現在 ¥ 700</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>9</span><span class="auc-meta-time">残り2時間</span></div></div>
-          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/544d6e08-8c4f-494e-9ba1-c43e09ce4ee8.png" alt=""><div class="auc-item-plabel">現在 ¥ 1,800</div><div class="auc-item-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>45</span><span class="auc-meta-time urgent">残り0:32</span></div></div>
-          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/8b705ced-ce63-4e50-80ce-058afe1379ec.png" alt=""><div class="auc-item-plabel">現在 ¥ 600</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>6</span><span class="auc-meta-time">残り1時間</span></div></div>
+          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/figma-item-13.png" alt=""><div class="auc-item-plabel">現在 ¥ 300</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>12</span><span class="auc-meta-time">残り1時間</span></div></div>
+          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/figma-item-14.png" alt=""><div class="auc-item-plabel">現在 ¥ 500</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>8</span><span class="auc-meta-time">残り2時間</span></div></div>
+          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/figma-item-15.png" alt=""><div class="auc-item-plabel">現在 ¥ 1,200</div><div class="auc-item-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>21</span><span class="auc-meta-time urgent">残り0:45</span></div></div>
+          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/figma-item-16.png" alt=""><div class="auc-item-plabel">現在 ¥ 800</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>5</span><span class="auc-meta-time">残り3時間</span></div></div>
+          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/figma-item-17.png" alt=""><div class="auc-item-plabel">現在 ¥ 2,500</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>33</span><span class="auc-meta-time urgent">残り0:12</span></div></div>
+          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/figma-item-18.png" alt=""><div class="auc-item-plabel">現在 ¥ 400</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>17</span><span class="auc-meta-time">残り1時間</span></div></div>
+          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/figma-item-13.png" alt=""><div class="auc-item-plabel">現在 ¥ 700</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>9</span><span class="auc-meta-time">残り2時間</span></div></div>
+          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/figma-item-14.png" alt=""><div class="auc-item-plabel">現在 ¥ 1,800</div><div class="auc-item-heart liked" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>45</span><span class="auc-meta-time urgent">残り0:32</span></div></div>
+          <div class="auc-item-tile"><div class="auc-item-thumb"><img src="assets/images/figma-item-13.png" alt=""><div class="auc-item-plabel">現在 ¥ 600</div><div class="auc-item-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div><div class="auc-item-meta"><span class="auc-meta-likes"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg>6</span><span class="auc-meta-time">残り1時間</span></div></div>
         </div>
       </div>
 
@@ -2541,12 +2539,12 @@
           <div class="auc-sec-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-fg-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
         <div class="auc-mosaic">
-          <div class="auc-mosaic-tile"><img src="assets/images/cd02d606-3af7-403b-9c0c-456478bbd772.png" alt=""><div class="auc-mosaic-price">現在 ¥ 300</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/088ef175-7721-48a7-98ad-4f07d0ad88d2.png" alt=""><div class="auc-mosaic-price">現在 ¥ 500</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/4e96e2f8-389d-4653-aae6-8a2848909b61.png" alt=""><div class="auc-mosaic-price">現在 ¥ 800</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt=""><div class="auc-mosaic-price">現在 ¥ 300</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt=""><div class="auc-mosaic-price">現在 ¥ 1,200</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/c98df241-192e-49db-a8a9-a3bd3b7b7a80.png" alt=""><div class="auc-mosaic-price">現在 ¥ 400</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-13.png" alt=""><div class="auc-mosaic-price">現在 ¥ 300</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-14.png" alt=""><div class="auc-mosaic-price">現在 ¥ 500</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-15.png" alt=""><div class="auc-mosaic-price">現在 ¥ 800</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-16.png" alt=""><div class="auc-mosaic-price">現在 ¥ 300</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-17.png" alt=""><div class="auc-mosaic-price">現在 ¥ 1,200</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-18.png" alt=""><div class="auc-mosaic-price">現在 ¥ 400</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div><div class="corner-sticker new"><span>NEW</span></div></div>
         </div>
       </div>
 
@@ -2558,12 +2556,12 @@
           <div class="auc-sec-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-fg-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
         <div class="auc-mosaic">
-          <div class="auc-mosaic-tile"><img src="assets/images/544d6e08-8c4f-494e-9ba1-c43e09ce4ee8.png" alt=""><div class="auc-mosaic-price">現在 ¥ 2,800</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/8b705ced-ce63-4e50-80ce-058afe1379ec.png" alt=""><div class="auc-mosaic-price">現在 ¥ 14,000</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/cd02d606-3af7-403b-9c0c-456478bbd772.png" alt=""><div class="auc-mosaic-price">現在 ¥ 900</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/088ef175-7721-48a7-98ad-4f07d0ad88d2.png" alt=""><div class="auc-mosaic-price">現在 ¥ 5,500</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/4e96e2f8-389d-4653-aae6-8a2848909b61.png" alt=""><div class="auc-mosaic-price">現在 ¥ 1,100</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt=""><div class="auc-mosaic-price">現在 ¥ 7,200</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-18.png" alt=""><div class="auc-mosaic-price">現在 ¥ 2,800</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-17.png" alt=""><div class="auc-mosaic-price">現在 ¥ 14,000</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-16.png" alt=""><div class="auc-mosaic-price">現在 ¥ 900</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-15.png" alt=""><div class="auc-mosaic-price">現在 ¥ 5,500</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-14.png" alt=""><div class="auc-mosaic-price">現在 ¥ 1,100</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-13.png" alt=""><div class="auc-mosaic-price">現在 ¥ 7,200</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
         </div>
       </div>
 
@@ -2575,12 +2573,12 @@
           <div class="auc-sec-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-fg-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
         <div class="auc-mosaic">
-          <div class="auc-mosaic-tile"><img src="assets/images/dacb8e49-f8a2-482f-8aad-0418f88a1fe1.png" alt=""><div class="auc-mosaic-price">現在 ¥ 3,600</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/c98df241-192e-49db-a8a9-a3bd3b7b7a80.png" alt=""><div class="auc-mosaic-price">現在 ¥ 22,000</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/544d6e08-8c4f-494e-9ba1-c43e09ce4ee8.png" alt=""><div class="auc-mosaic-price">現在 ¥ 680</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/8b705ced-ce63-4e50-80ce-058afe1379ec.png" alt=""><div class="auc-mosaic-price">現在 ¥ 8,900</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/cd02d606-3af7-403b-9c0c-456478bbd772.png" alt=""><div class="auc-mosaic-price">現在 ¥ 1,500</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
-          <div class="auc-mosaic-tile"><img src="assets/images/088ef175-7721-48a7-98ad-4f07d0ad88d2.png" alt=""><div class="auc-mosaic-price">現在 ¥ 4,300</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-15.png" alt=""><div class="auc-mosaic-price">現在 ¥ 3,600</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-16.png" alt=""><div class="auc-mosaic-price">現在 ¥ 22,000</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-13.png" alt=""><div class="auc-mosaic-price">現在 ¥ 680</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-14.png" alt=""><div class="auc-mosaic-price">現在 ¥ 8,900</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-17.png" alt=""><div class="auc-mosaic-price">現在 ¥ 1,500</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
+          <div class="auc-mosaic-tile"><img src="assets/images/figma-item-18.png" alt=""><div class="auc-mosaic-price">現在 ¥ 4,300</div><div class="auc-mosaic-heart" onclick="toggleHeart(this)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 12.54L12 21.35z"/></svg></div></div>
         </div>
       </div>
 
@@ -2633,12 +2631,12 @@
       <div class="list-section">
         <div class="list-sec-hd">
           <span class="list-sec-title">すぐに出品できる商品</span>
-          <div class="list-sec-icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="#555"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></div>
+          <div class="list-sec-icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-fg-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
         <div class="list-ready-scroll">
           <div class="list-ready-item">
             <div class="list-ready-thumb">
-              <img src="assets/images/8b705ced-ce63-4e50-80ce-058afe1379ec.png" alt="">
+              <img src="assets/images/figma-item-02.png" alt="">
               <div class="list-ready-tag">¥ 2,500</div>
             </div>
             <div class="list-ready-name">ブランドバッグ 美品 使用少なめ</div>
@@ -2652,28 +2650,28 @@
           </div>
           <div class="list-ready-item">
             <div class="list-ready-thumb">
-              <img src="assets/images/cd02d606-3af7-403b-9c0c-456478bbd772.png" alt="">
+              <img src="assets/images/figma-item-05.png" alt="">
               <div class="list-ready-tag">¥ 800</div>
             </div>
             <div class="list-ready-name">デニムジャケット Mサイズ</div>
           </div>
           <div class="list-ready-item">
             <div class="list-ready-thumb">
-              <img src="assets/images/544d6e08-8c4f-494e-9ba1-c43e09ce4ee8.png" alt="">
+              <img src="assets/images/8b705ced-ce63-4e50-80ce-058afe1379ec.png" alt="">
               <div class="list-ready-tag">¥ 3,000</div>
             </div>
             <div class="list-ready-name">腕時計 メンズ 黒文字盤</div>
           </div>
           <div class="list-ready-item">
             <div class="list-ready-thumb">
-              <img src="assets/images/c98df241-192e-49db-a8a9-a3bd3b7b7a80.png" alt="">
+              <img src="assets/images/figma-item-01.png" alt="">
               <div class="list-ready-tag">¥ 500</div>
             </div>
             <div class="list-ready-name">文庫本 3冊セット</div>
           </div>
           <div class="list-ready-item">
             <div class="list-ready-thumb">
-              <img src="assets/images/48b48478-b341-409f-929e-6f61ffd4c8aa.png" alt="">
+              <img src="assets/images/figma-item-06.png" alt="">
               <div class="list-ready-tag">¥ 1,800</div>
             </div>
             <div class="list-ready-name">ワンピース フリーサイズ 花柄</div>
@@ -2684,11 +2682,11 @@
       <!-- 出品中リスト -->
       <div class="list-section">
         <div class="list-sec-hd">
-          <span class="list-sec-title">出品中</span>
-          <div class="list-sec-icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="#555"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></div>
+          <span class="list-sec-title">出品中（6）</span>
+          <div class="list-sec-icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-fg-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
         <div class="list-item-row">
-          <div class="list-item-thumb"><img src="assets/images/8b705ced-ce63-4e50-80ce-058afe1379ec.png" alt=""></div>
+          <div class="list-item-thumb"><img src="assets/images/figma-item-02.png" alt=""></div>
           <div class="list-item-info">
             <div class="list-item-title">レザートートバッグ ブラウン 本革 大容量 A4対応</div>
             <div class="list-item-price">¥ 12,800</div>
@@ -2714,7 +2712,7 @@
           </div>
         </div>
         <div class="list-item-row">
-          <div class="list-item-thumb"><img src="assets/images/cd02d606-3af7-403b-9c0c-456478bbd772.png" alt=""></div>
+          <div class="list-item-thumb"><img src="assets/images/figma-item-05.png" alt=""></div>
           <div class="list-item-info">
             <div class="list-item-title">リーバイス 501 デニム W32 インディゴ ヴィンテージ</div>
             <div class="list-item-price">¥ 4,200</div>
@@ -2753,7 +2751,7 @@
           </div>
         </div>
         <div class="list-item-row">
-          <div class="list-item-thumb"><img src="assets/images/48b48478-b341-409f-929e-6f61ffd4c8aa.png" alt=""></div>
+          <div class="list-item-thumb"><img src="assets/images/figma-item-03.png" alt=""></div>
           <div class="list-item-info">
             <div class="list-item-title">シャネル コインケース ラムスキン ブラック ゴールド金具</div>
             <div class="list-item-price">¥ 28,000</div>
@@ -2771,37 +2769,29 @@
       <div class="list-section">
         <div class="list-sec-hd">
           <span class="list-sec-title">出品に使えるクーポン</span>
-          <div class="list-sec-icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="#555"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></div>
+          <div class="list-sec-icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-fg-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         </div>
         <div class="list-coupon-card">
           <div class="list-coupon-inner">
             <div class="list-coupon-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#ff8c00"><path d="M20 12c0-1.1.9-2 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-1.99.9-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2zm-2-1.46V17H6V7h12v3.54z"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9V6a1 1 0 011-1h18a1 1 0 011 1v3a2 2 0 000 4v3a1 1 0 01-1 1H3a1 1 0 01-1-1v-3a2 2 0 000-4z"/><line x1="9" y1="5" x2="9" y2="19" stroke-dasharray="2 2"/></svg>
             </div>
-            <div>
+            <div class="list-coupon-texts">
               <div class="list-coupon-name">送料無料クーポン（上限500円）</div>
               <div class="list-coupon-sub">¥5,000以上の出品に使用可 · 残り2枚</div>
             </div>
-          </div>
-          <div class="list-coupon-divider"></div>
-          <div class="list-coupon-footer">
-            <span class="list-coupon-expire">有効期限: 2026/03/31</span>
             <button class="list-coupon-btn">出品する</button>
           </div>
         </div>
         <div class="list-coupon-card">
           <div class="list-coupon-inner">
-            <div class="list-coupon-icon" style="background:#e8f5e9;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#388e3c"><path d="M20 12c0-1.1.9-2 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-1.99.9-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2zm-2-1.46V17H6V7h12v3.54z"/></svg>
+            <div class="list-coupon-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#388e3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9V6a1 1 0 011-1h18a1 1 0 011 1v3a2 2 0 000 4v3a1 1 0 01-1 1H3a1 1 0 01-1-1v-3a2 2 0 000-4z"/><line x1="9" y1="5" x2="9" y2="19" stroke-dasharray="2 2"/></svg>
             </div>
-            <div>
+            <div class="list-coupon-texts">
               <div class="list-coupon-name">手数料割引クーポン（−2%）</div>
               <div class="list-coupon-sub">すべての出品に使用可 · 残り1枚</div>
             </div>
-          </div>
-          <div class="list-coupon-divider"></div>
-          <div class="list-coupon-footer">
-            <span class="list-coupon-expire">有効期限: 2026/04/15</span>
             <button class="list-coupon-btn">出品する</button>
           </div>
         </div>
@@ -3977,7 +3967,6 @@
           <path fill-rule="evenodd" clip-rule="evenodd" d="M9.46412 18.378C9.83415 18.378 10.1341 18.678 10.1341 19.048C10.1341 20.0825 10.9736 20.922 12.0081 20.922C13.0426 20.922 13.8821 20.0825 13.8821 19.048C13.8821 18.678 14.182 18.378 14.5521 18.378C14.9221 18.378 15.2221 18.678 15.2221 19.048C15.2221 20.8225 13.7826 22.262 12.0081 22.262C10.2336 22.262 8.79412 20.8225 8.79412 19.048C8.79412 18.678 9.09409 18.378 9.46412 18.378Z" fill="var(--color-fg-primary)"/>
           <path fill-rule="evenodd" clip-rule="evenodd" d="M5.52335 10.6817C5.52335 7.1014 8.42787 4.19688 12.0082 4.19688C15.5885 4.19688 18.493 7.1014 18.493 10.6817C18.493 11.0517 18.193 11.3517 17.823 11.3517C17.4529 11.3517 17.153 11.0517 17.153 10.6817C17.153 7.84147 14.8484 5.53688 12.0082 5.53688C9.16793 5.53688 6.86335 7.84147 6.86335 10.6817C6.86335 11.0517 6.56338 11.3517 6.19335 11.3517C5.82332 11.3517 5.52335 11.0517 5.52335 10.6817Z" fill="var(--color-fg-primary)"/>
           <path fill-rule="evenodd" clip-rule="evenodd" d="M6.18954 10.0117C6.55957 10.0117 6.85954 10.3117 6.85954 10.6817V13.1462C6.85954 13.8607 6.64089 14.9313 6.3541 15.5924L5.20423 18.2666C5.18471 18.3124 5.17713 18.3461 5.17454 18.3669C5.19407 18.3723 5.22606 18.378 5.27341 18.378H18.7315C18.7794 18.378 18.8119 18.3721 18.8317 18.3666C18.8288 18.3462 18.8213 18.3141 18.8022 18.27L17.6504 15.5914C17.369 14.9334 17.1454 13.8634 17.1454 13.1462V10.6817C17.1454 10.3117 17.4453 10.0117 17.8154 10.0117C18.1854 10.0117 18.4854 10.3117 18.4854 10.6817V13.1462C18.4854 13.6781 18.6705 14.5687 18.8817 15.0629L20.0318 17.7375C20.2224 18.1773 20.24 18.6866 19.9619 19.1095C19.6839 19.5323 19.2094 19.718 18.7315 19.718H5.27341C4.79494 19.718 4.32113 19.5319 4.04381 19.1085C3.76715 18.6861 3.78469 18.1781 3.97216 17.7398L5.12448 15.0599C5.33716 14.5701 5.51954 13.6805 5.51954 13.1462V10.6817C5.51954 10.3117 5.81951 10.0117 6.18954 10.0117Z" fill="var(--color-fg-primary)"/>
-          <circle cx="17.5" cy="5.5" r="3" fill="var(--color-fg-attention)" stroke="var(--color-bg-primary)" stroke-width="1.5"/>
         </svg>
       </div>
       <!-- CartOutline (DS4: node 36901-197432) -->
