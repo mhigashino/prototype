@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="80" viewBox="0 0 280 80">
+  <rect width="280" height="80" fill="white"/>
+  <!-- barcode bars pattern -->
+  <rect x="10" y="5" width="2" height="60" fill="#222"/>
+  <rect x="14" y="5" width="1" height="60" fill="#222"/>
+  <rect x="17" y="5" width="3" height="60" fill="#222"/>
+  <rect x="22" y="5" width="1" height="60" fill="#222"/>
+  <rect x="25" y="5" width="2" height="60" fill="#222"/>
+  <rect x="29" y="5" width="1" height="60" fill="#222"/>
+  <rect x="32" y="5" width="3" height="60" fill="#222"/>
+  <rect x="37" y="5" width="2" height="60" fill="#222"/>
+  <rect x="41" y="5" width="1" height="60" fill="#222"/>
+  <rect x="44" y="5" width="2" height="60" fill="#222"/>
+  <rect x="48" y="5" width="1" height="60" fill="#222"/>
+  <rect x="51" y="5" width="3" height="60" fill="#222"/>
+  <rect x="56" y="5" width="1" height="60" fill="#222"/>
+  <rect x="59" y="5" width="2" height="60" fill="#222"/>
+  <rect x="63" y="5" width="1" height="60" fill="#222"/>
+  <rect x="66" y="5" width="2" height="60" fill="#222"/>
+  <rect x="70" y="5" width="3" height="60" fill="#222"/>
+  <rect x="75" y="5" width="1" height="60" fill="#222"/>
+  <rect x="78" y="5" width="2" height="60" fill="#222"/>
+  <rect x="82" y="5" width="1" height="60" fill="#222"/>
+  <rect x="85" y="5" width="3" height="60" fill="#222"/>
+  <rect x="90" y="5" width="2" height="60" fill="#222"/>
+  <rect x="94" y="5" width="1" height="60" fill="#222"/>
+  <rect x="97" y="5" width="2" height="60" fill="#222"/>
+  <rect x="101" y="5" width="3" height="60" fill="#222"/>
+  <rect x="106" y="5" width="1" height="60" fill="#222"/>
+  <rect x="109" y="5" width="2" height="60" fill="#222"/>
+  <rect x="113" y="5" width="1" height="60" fill="#222"/>
+  <rect x="116" y="5" width="3" height="60" fill="#222"/>
+  <rect x="121" y="5" width="2" height="60" fill="#222"/>
+  <rect x="125" y="5" width="1" height="60" fill="#222"/>
+  <rect x="128" y="5" width="2" height="60" fill="#222"/>
+  <rect x="132" y="5" width="1" height="60" fill="#222"/>
+  <rect x="135" y="5" width="3" height="60" fill="#222"/>
+  <rect x="140" y="5" width="2" height="60" fill="#222"/>
+  <rect x="144" y="5" width="1" height="60" fill="#222"/>
+  <rect x="147" y="5" width="3" height="60" fill="#222"/>
+  <rect x="152" y="5" width="1" height="60" fill="#222"/>
+  <rect x="155" y="5" width="2" height="60" fill="#222"/>
+  <rect x="159" y="5" width="1" height="60" fill="#222"/>
+  <rect x="162" y="5" width="3" height="60" fill="#222"/>
+  <rect x="167" y="5" width="2" height="60" fill="#222"/>
+  <rect x="171" y="5" width="1" height="60" fill="#222"/>
+  <rect x="174" y="5" width="2" height="60" fill="#222"/>
+  <rect x="178" y="5" width="3" height="60" fill="#222"/>
+  <rect x="183" y="5" width="1" height="60" fill="#222"/>
+  <rect x="186" y="5" width="2" height="60" fill="#222"/>
+  <rect x="190" y="5" width="1" height="60" fill="#222"/>
+  <rect x="193" y="5" width="3" height="60" fill="#222"/>
+  <rect x="198" y="5" width="2" height="60" fill="#222"/>
+  <rect x="202" y="5" width="1" height="60" fill="#222"/>
+  <rect x="205" y="5" width="2" height="60" fill="#222"/>
+  <rect x="209" y="5" width="1" height="60" fill="#222"/>
+  <rect x="212" y="5" width="3" height="60" fill="#222"/>
+  <rect x="217" y="5" width="1" height="60" fill="#222"/>
+  <rect x="220" y="5" width="2" height="60" fill="#222"/>
+  <rect x="224" y="5" width="3" height="60" fill="#222"/>
+  <rect x="229" y="5" width="1" height="60" fill="#222"/>
+  <rect x="232" y="5" width="2" height="60" fill="#222"/>
+  <rect x="236" y="5" width="1" height="60" fill="#222"/>
+  <rect x="239" y="5" width="3" height="60" fill="#222"/>
+  <rect x="244" y="5" width="2" height="60" fill="#222"/>
+  <rect x="248" y="5" width="1" height="60" fill="#222"/>
+  <rect x="251" y="5" width="2" height="60" fill="#222"/>
+  <rect x="255" y="5" width="1" height="60" fill="#222"/>
+  <rect x="258" y="5" width="3" height="60" fill="#222"/>
+  <rect x="263" y="5" width="2" height="60" fill="#222"/>
+  <rect x="267" y="5" width="1" height="60" fill="#222"/>
+  <!-- number below barcode -->
+  <text x="140" y="76" font-family="monospace" font-size="9" text-anchor="middle" fill="#222">4 91234 567890</text>
+</svg>
