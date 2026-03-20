@@ -1090,6 +1090,9 @@
     .home-tile-heart { position: absolute; top: 4px; right: 4px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; -webkit-tap-highlight-color: transparent; }
     .home-tile-heart svg path { fill: rgba(0,0,0,0.18) !important; stroke: #fff !important; stroke-width: 1.5 !important; stroke-linejoin: round !important; }
     .home-tile-heart.liked svg path { fill: #FF333F !important; stroke: none !important; stroke-width: 0 !important; }
+    .corner-sticker { position: absolute; top: 6px; left: 6px; border-radius: 4px; padding: 3px 6px; font-size: 10px; font-weight: 700; line-height: 1.2; letter-spacing: 0.02em; pointer-events: none; z-index: 2; }
+    .corner-sticker.sold { background: rgba(34,34,34,0.82); color: #fff; }
+    .corner-sticker.new { background: #006ED1; color: #fff; }
     .auc-item-heart svg path, .auc-mini-heart svg path { fill: rgba(0,0,0,0.18) !important; stroke: #fff !important; stroke-width: 1.5 !important; stroke-linejoin: round !important; }
     .auc-item-heart.liked svg path, .auc-mini-heart.liked svg path { fill: #FF333F !important; stroke: none !important; stroke-width: 0 !important; }
     /* 急上昇キーワード */
@@ -4014,6 +4017,30 @@
 </div>
 
 <script>
+  // Corner stickers (SOLD / NEW) — randomly assigned 1 in 6 tiles
+  (function () {
+    // Deterministic pseudo-random from index so layout is stable across re-renders
+    function labelForIndex(i) {
+      var v = (i * 2654435761) >>> 0; // Knuth hash
+      if (v % 6 !== 0) return null;
+      return (v >> 4) % 2 === 0 ? 'sold' : 'new';
+    }
+    function addSticker(el, label) {
+      var s = document.createElement('div');
+      s.className = 'corner-sticker ' + label;
+      s.textContent = label === 'sold' ? 'SOLD' : 'NEW';
+      el.appendChild(s);
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      // home-tile and auc-item-thumb share the same sticker logic
+      var tiles = document.querySelectorAll('.home-tile, .auc-item-thumb, .auc-mini-thumb');
+      tiles.forEach(function (tile, i) {
+        var label = labelForIndex(i);
+        if (label) addSticker(tile, label);
+      });
+    });
+  })();
+
   function toggleHeart(btn) {
     btn.classList.toggle('liked');
   }
