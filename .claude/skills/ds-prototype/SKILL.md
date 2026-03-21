@@ -451,26 +451,20 @@ assets/icons/
 ```
 
 ### 使用ルール
-- ファイルは `assets/icons/fill/{IconName}.svg` または `assets/icons/outline/{IconName}.svg`
+- **全アイコンはローカルに揃っている。Figmaへのアクセスは不要。**
+- ファイルパス: `assets/icons/fill/{IconName}.svg` または `assets/icons/outline/{IconName}.svg`
+- アイコンが必要になったら Read ツールで該当SVGファイルを読み込み、中身をインラインで貼り付けること
 - SVGはインライン展開して使うこと（`<img>` タグ不可。`currentColor` で色制御するため）
 - カラーは `currentColor` を使い、親要素の `color` で制御する
 - サイズは `width` / `height` 属性または CSS で指定する（デフォルト 24×24px）
 
-### SVG 使用テンプレート
+### SVG の使い方
 
-```html
-<!-- Outline: assets/icons/outline/{IconName}.svg の中身をインライン展開 -->
-<svg width="24" height="24" viewBox="0 0 24 24" ...>
-  <!-- SVGファイルの中身をそのまま貼る -->
-</svg>
-
-<!-- Fill: assets/icons/fill/{IconName}.svg の中身をインライン展開 -->
-<svg width="24" height="24" viewBox="0 0 24 24" ...>
-  <!-- SVGファイルの中身をそのまま貼る -->
-</svg>
 ```
-
-> アイコンを使う際は該当SVGファイルを読み込み、その中身をインラインで貼り付けること。
+1. Read ツールで assets/icons/fill/Coins.svg を読む
+2. ファイルの中身をそのままインラインで貼り付ける
+3. Figmaや外部ソースは使わない
+```
 
 ---
 
