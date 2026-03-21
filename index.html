@@ -52,6 +52,7 @@
       --color-bg-accent:     #006ED1;  /* Background_Accent_Default / Blue500 */
       --color-bg-bold:       #222222;  /* Background_Bold_Default / Mono900 */
       --color-bg-attention:  #FF333F;  /* Background_Attention_Default / Attention500 */
+      --color-bg-attention-light: #FEF5F7; /* Background_Attention_Light / Attention50 */
       --color-bg-success:    #3BAF2D;  /* Background_Success_Default / Green500 */
       --color-bg-notice:     #FFB818;  /* Background_Notice_Default / Yellow500 */
 
@@ -1077,9 +1078,9 @@
     .wal-history-desc { font-size: 13px; font-weight: 600; color: var(--color-fg-secondary); }
     .wal-history-date { font-size: 11px; color: var(--color-fg-tertiary); }
     .wal-history-amount { margin-left: auto; }
-    .wal-history-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--color-bg-primary); border: 1px solid var(--color-border-primary); border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: var(--color-fg-secondary); }
-    .wal-history-badge.red { background: #fff0f0; border-color: #ffb3b6; color: var(--color-fg-attention); }
-    .wal-history-badge.pink { background: rgba(255,51,63,0.05); border-color: rgba(255,51,63,0.2); color: var(--color-fg-attention); }
+    .wal-history-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--color-bg-primary); border: none; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: var(--color-fg-secondary); }
+    .wal-history-badge.red { background: var(--color-bg-attention); color: var(--color-fg-attention-bold); }
+    .wal-history-badge.pink { background: var(--color-bg-attention-light); color: var(--color-fg-attention); }
     .wal-history-check { color: var(--color-fg-primary); vertical-align: middle; }
     /* サブアセット */
     .wal-sub-card { background: var(--color-bg-primary); margin: 16px 16px 0; border-radius: 8px; overflow: hidden; }
@@ -2857,9 +2858,7 @@
                   <rect x="16" y="5" width="3" height="3" fill="var(--color-fg-primary)" stroke="none"/>
                   <rect x="3" y="14" width="7" height="7" rx="1"/>
                   <rect x="5" y="16" width="3" height="3" fill="var(--color-fg-primary)" stroke="none"/>
-                  <line x1="14" y1="14" x2="14" y2="14"/><line x1="17" y1="14" x2="21" y2="14"/>
-                  <line x1="14" y1="17" x2="14" y2="21"/><line x1="17" y1="17" x2="21" y2="17"/>
-                  <line x1="17" y1="17" x2="17" y2="21"/>
+                  <rect x="14" y="14" width="2" height="2" fill="var(--color-fg-primary)" stroke="none"/><rect x="17" y="14" width="2" height="2" fill="var(--color-fg-primary)" stroke="none"/><rect x="14" y="17" width="2" height="2" fill="var(--color-fg-primary)" stroke="none"/><rect x="17" y="17" width="2" height="2" fill="var(--color-fg-primary)" stroke="none"/><rect x="20" y="16" width="1" height="3" fill="var(--color-fg-primary)" stroke="none"/><rect x="15" y="20" width="3" height="1" fill="var(--color-fg-primary)" stroke="none"/><rect x="19" y="20" width="2" height="1" fill="var(--color-fg-primary)" stroke="none"/>
                 </svg>
               </div>
               <span class="wal-action-label">QRコード</span>
@@ -2873,10 +2872,11 @@
             <button class="wal-action-btn">
               <div class="wal-action-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-fg-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="9" cy="8" rx="6" ry="2"/>
-                  <path d="M3 8v8c0 1.1 2.69 2 6 2s6-.9 6-2V8"/>
-                  <path d="M15 10.5c1.66.5 3 1.3 3 2.5v5c0 1.1-2.69 2-6 2"/>
-                  <path d="M15 8c0-1.1 1.34-2 3-2s3 .9 3 2-.9 1.8-2.5 2"/>
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M8.5 8l3.5 5 3.5-5"/>
+                  <line x1="9.5" y1="13" x2="14.5" y2="13"/>
+                  <line x1="9.5" y1="15" x2="14.5" y2="15"/>
+                  <line x1="12" y1="13" x2="12" y2="17"/>
                 </svg>
               </div>
               <span class="wal-action-label">借りる</span>
@@ -2974,7 +2974,7 @@
             <span class="wal-history-date">2025/07/14</span>
           </div>
           <div class="wal-history-amount">
-            <span class="wal-history-badge red">-¥9,800</span>
+            <span class="wal-history-badge red">¥9,800</span>
           </div>
         </div>
         <div class="wal-history-row">
