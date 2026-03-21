@@ -2872,11 +2872,19 @@
             <button class="wal-action-btn">
               <div class="wal-action-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-fg-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M8 7l4 5 4-5"/>
-                  <line x1="9.5" y1="12" x2="14.5" y2="12"/>
-                  <line x1="9.5" y1="14" x2="14.5" y2="14"/>
-                  <line x1="12" y1="12" x2="12" y2="18"/>
+                  <!-- back coin -->
+                  <circle cx="9" cy="14" r="6"/>
+                  <path d="M7 11l2 2.5 2-2.5"/>
+                  <line x1="7.5" y1="14" x2="10.5" y2="14"/>
+                  <line x1="7.5" y1="15.5" x2="10.5" y2="15.5"/>
+                  <line x1="9" y1="14" x2="9" y2="17.5"/>
+                  <!-- front coin (fill bg to cover overlap) -->
+                  <circle cx="15" cy="10" r="6" style="fill: var(--color-bg-secondary)"/>
+                  <circle cx="15" cy="10" r="6"/>
+                  <path d="M13 7l2 2.5 2-2.5"/>
+                  <line x1="13.5" y1="10" x2="16.5" y2="10"/>
+                  <line x1="13.5" y1="11.5" x2="16.5" y2="11.5"/>
+                  <line x1="15" y1="10" x2="15" y2="13.5"/>
                 </svg>
               </div>
               <span class="wal-action-label">借りる</span>
