@@ -440,8 +440,572 @@ font-size: 12px;
 
 ---
 
+## 9. アイコン・ロゴ リファレンス
+
+出典: Figma DS-Master `node-id=2135-53794` — `ImageAssets/Icon` フレーム
+
+### 使用ルール
+- サイズ: `24×24px`（viewBox="0 0 24 24"）
+- Outline スタイル: `fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"`
+- Fill スタイル: `fill="currentColor"`
+- カラーは `currentColor` を使い、親要素の `color` で制御する
+
+### SVG テンプレート
+
+```html
+<!-- Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- パスをここに -->
+</svg>
+
+<!-- Fill -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+  <!-- パスをここに -->
+</svg>
+```
+
+---
+
+### アイコン一覧 — Standard/Relative（Fill と Outline の両方あり）
+
+Icon Name で呼び出す。全てに `Outline` / `Fill` の 2 スタイルが存在する。
+
+| Icon Name | 用途 |
+|---|---|
+| Guide | ガイド・案内 |
+| Attention | 警告・エラー（感嘆符） |
+| Delete | 削除・閉じる（×） |
+| Like | いいね・ハート |
+| Home | ホーム |
+| User | ユーザー・プロフィール |
+| Notification | お知らせ・ベル |
+| Camera | カメラ |
+| Garbage | ゴミ箱・削除 |
+| Search | 検索・虫眼鏡 |
+| Comment | コメント・吹き出し |
+| HappyFace / SadFace / NeutralFace / SmileFace / DownFace | 評価・感情 |
+| GridView | グリッドレイアウト |
+| Done | 完了・チェックマーク |
+| Point | ポイント |
+| Bitcoin | 暗号通貨 |
+| SimpleQRCode | QRコード |
+| Work | 仕事・ブリーフケース |
+| SaveToLibrary | ライブラリに保存 |
+| BrandTag | ブランドタグ |
+| Flag | フラグ・通報 |
+| Lock | ロック・鍵 |
+| Microphone | マイク |
+| Announcement | アナウンス・メガフォン |
+| Coin | コイン |
+| Flash / FlashOff / FlashAuto | フラッシュ |
+| ChatbotSupport | チャットボット |
+| Send | 送信 |
+| Backspace | バックスペース |
+| Present | プレゼント・ギフト |
+| Reaction | リアクション |
+| Location | 位置・ピン |
+| Eco | エコ |
+| Bundle | まとめ売り |
+| Save | 保存（ブックマーク） |
+| ThumbDown / ThumbUp | 評価（サムズ） |
+| Pin | ピン留め |
+| FollowList | フォローリスト |
+| Wallet | ウォレット |
+| Coins | コイン複数 |
+| CoinWithArrow | コイン送受信 |
+| Users | 複数ユーザー |
+| Phone | 電話 |
+| CameraFlip | カメラ切り替え |
+| Calendar | カレンダー |
+| EditPencil | 編集（鉛筆） |
+| Add | 追加（＋） |
+| ZoomIn / ZoomOut | ズーム |
+| Time | 時計 |
+| WaterDrop | 水滴 |
+| Apparel | アパレル・服 |
+| ChatBubble | チャットバブル |
+| Cart | カート |
+| EditDraft | 下書き編集 |
+| Mail | メール |
+| Article | 記事 |
+| Supermarket | スーパーマーケット |
+| Setting | 設定・歯車 |
+| MultilingualSupport | 多言語サポート |
+| SoundOn / SoundOff | サウンド |
+| LightBubble | ヒント・電球 |
+| Coupon | クーポン・チケット |
+| Discover | ディスカバー |
+| Fashion | ファッション |
+| Baby | ベビー |
+| Games | ゲーム |
+| Hobby | ホビー |
+| Book | 本 |
+| MobilePhone | スマートフォン |
+| Sports | スポーツ |
+| Beauty | ビューティー |
+| Health | 健康 |
+| Beverage | 飲み物 |
+| Furniture | 家具 |
+| Pet | ペット |
+| Handmade | ハンドメイド |
+| Car | 車 |
+| Gardening | ガーデニング |
+| HomeAppliances | 家電 |
+| DIY | DIY・工具 |
+| Kitchen | キッチン |
+| CD | CD・DVD・音楽 |
+| Outdoor | アウトドア |
+| Ticket | チケット |
+| Electronics | 電子機器 |
+| AuctionHammer | オークションハンマー |
+| Badge | バッジ |
+| Hello | ウェルカム |
+| OfficialShopBadge | 公式ショップ |
+| Tips | ヒント・コツ |
+| Info | 情報（ℹ） |
+| Anshin | あんしん |
+| AI | AI |
+
+### アイコン一覧 — Standard/Fill（Fill のみ）
+
+| Icon Name | 用途 |
+|---|---|
+| Star | 評価・星 |
+| StarHalf | 半星 |
+| Track | 追跡 |
+| OverseasPurchase | 海外購入 |
+| LoyaltyProgram | ロイヤルティプログラム |
+| ServiceLogo | サービスロゴ |
+| Fire | 人気・HOT |
+| Blur / Unblur | ぼかし |
+| LightOff / LightOn | ライト |
+| Beginner | 初心者 |
+| SellerAchievementBadge | セラー実績バッジ |
+| Airplane | 飛行機 |
+| Shield | シールド・保護 |
+| ExcellentShop | 優良ショップ |
+| VerifiedBrand | 認証ブランド |
+| Play | 再生 |
+
+### アイコン一覧 — Standard/Outline（Outline のみ）
+
+| Icon Name | 用途 |
+|---|---|
+| Loop | ループ・再読み込み |
+| PurchasedItems | 購入済み |
+| Visibility / VisibilityOff | 表示・非表示 |
+| ChevronRight / ChevronLeft / ChevronUp / ChevronDown | 矢印（山形） |
+| OffsetChevronRight / OffsetChevronLeft | オフセット矢印 |
+| ArrowRight / ArrowLeft / ArrowUp / ArrowDown / ArrowUpDown | 矢印 |
+| Box | ボックス |
+| LeftDouble / RightDouble | 二重矢印 |
+| Facebook / SnsLine | SNS |
+| EditVert / EditHoriz | 縦横編集 |
+| Close | 閉じる（×） |
+| Todo | やること |
+| CheckBold | チェック（太） |
+| PhotoAlbum | フォトアルバム |
+| Filter | フィルター |
+| Block | ブロック |
+| Plus | プラス |
+| ExternalLink | 外部リンク |
+| ImageLoadingFailed | 画像読み込みエラー |
+| EditImage | 画像編集 |
+| CustomerSupport | カスタマーサポート |
+| Refund | 返金 |
+| ID | ID確認 |
+| Share (iOS, Web) / Share (Android) | シェア |
+| CodeScan | コードスキャン |
+| QRCode | QRコード |
+| MercariShops | メルカリShops |
+| Bullet | 箇条書き |
+| DownloadPage | ダウンロード |
+| OperationalCertification | 運営認証 |
+| RefundYen | 返金（円） |
+| Cleaning | クリーニング |
+| Preorder | 予約 |
+| CreditCard | クレジットカード |
+| DataStats | データ統計 |
+| BulkPurchase | まとめ買い |
+| BrowsingHistory | 閲覧履歴 |
+| Store | ストア |
+| CloseSmall | 閉じる（小） |
+| Minus | マイナス |
+| ThumbnailInfo | サムネイル情報 |
+| ListView | リスト表示 |
+| GridSquare | グリッド表示 |
+| ImageSearch | 画像検索 |
+| SimilarSearch | 類似検索 |
+| Outreach | アウトリーチ |
+| Focus | フォーカス |
+| CodeScanning | コードスキャン |
+| Copy | コピー |
+| Swap | 入れ替え |
+| Menu | メニュー（ハンバーガー） |
+| International | 国際 |
+| Bank | 銀行 |
+| A4Envelope | 封筒（A4） |
+| Calculator | 計算機 |
+| ImageFilter | 画像フィルター |
+| ConvenienceStore | コンビニ |
+| ImgSearchEdit | 画像検索編集 |
+| Crop | クロップ |
+| BookOpen | 開いた本 |
+| Meal / Bar / Cafe / FastFood | 飲食 |
+| DepartmentStore | デパート |
+| Karaoke | カラオケ |
+| Entertainment | エンターテインメント |
+| Cut | カット |
+| School / Medical | 学校・医療 |
+| OnePiece | ワンピース |
+| SellingTool | 出品ツール |
+
+---
+
+### 主要アイコン SVG パス集
+
+アイコンカラーは `currentColor` を使用。`color` CSS プロパティで色を制御する。
+
+#### ナビゲーション系
+
+```html
+<!-- Home / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
+  <polyline points="9,21 9,12 15,12 15,21"/>
+</svg>
+
+<!-- Home / Fill -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5zM9 21v-9h6v9H9z"/>
+</svg>
+
+<!-- Search / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="11" cy="11" r="7"/>
+  <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+</svg>
+
+<!-- Notification (Bell) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+  <path d="M13.73 21a2 2 0 01-3.46 0"/>
+</svg>
+
+<!-- Notification (Bell) / Fill -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M12 2a6 6 0 00-6 6c0 5.25-2.4 7.5-3 8.25A.75.75 0 003.75 18h16.5a.75.75 0 00.75-1.25C20.25 15.5 18 13.25 18 8a6 6 0 00-6-6zM10.27 21a2 2 0 003.46 0H10.27z"/>
+</svg>
+
+<!-- Camera / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+  <circle cx="12" cy="13" r="4"/>
+</svg>
+
+<!-- User / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+  <circle cx="12" cy="7" r="4"/>
+</svg>
+
+<!-- User / Fill -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M12 12a4 4 0 100-8 4 4 0 000 8zm0 2c-5.33 0-8 2.67-8 4v1h16v-1c0-1.33-2.67-4-8-4z"/>
+</svg>
+```
+
+#### いいね・評価系
+
+```html
+<!-- Like (Heart) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+</svg>
+
+<!-- Like (Heart) / Fill -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+</svg>
+
+<!-- Star / Fill -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+  <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+</svg>
+
+<!-- ThumbUp / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/>
+  <path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/>
+</svg>
+```
+
+#### ナビゲーション矢印系
+
+```html
+<!-- ChevronRight / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M9 18l6-6-6-6"/>
+</svg>
+
+<!-- ChevronLeft / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M15 18l-6-6 6-6"/>
+</svg>
+
+<!-- ChevronDown / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6 9l6 6 6-6"/>
+</svg>
+
+<!-- ChevronUp / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M18 15l-6-6-6 6"/>
+</svg>
+
+<!-- ArrowRight / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="5" y1="12" x2="19" y2="12"/>
+  <polyline points="12,5 19,12 12,19"/>
+</svg>
+
+<!-- Close / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="18" y1="6" x2="6" y2="18"/>
+  <line x1="6" y1="6" x2="18" y2="18"/>
+</svg>
+```
+
+#### アクション系
+
+```html
+<!-- Add (Plus) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="12" y1="5" x2="12" y2="19"/>
+  <line x1="5" y1="12" x2="19" y2="12"/>
+</svg>
+
+<!-- Done (Check) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="20,6 9,17 4,12"/>
+</svg>
+
+<!-- Delete / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="3,6 5,6 21,6"/>
+  <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
+  <path d="M10 11v6M14 11v6"/>
+  <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/>
+</svg>
+
+<!-- Garbage / Outline（Deleteと同形） -->
+
+<!-- EditPencil / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+  <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+</svg>
+
+<!-- Setting (Gear) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="3"/>
+  <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+</svg>
+
+<!-- Share (iOS, Web) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/>
+  <polyline points="16,6 12,2 8,6"/>
+  <line x1="12" y1="2" x2="12" y2="15"/>
+</svg>
+
+<!-- Save (Bookmark) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/>
+</svg>
+
+<!-- Save (Bookmark) / Fill -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/>
+</svg>
+```
+
+#### 情報・ステータス系
+
+```html
+<!-- Attention (Warning) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+  <line x1="12" y1="9" x2="12" y2="13"/>
+  <line x1="12" y1="17" x2="12.01" y2="17"/>
+</svg>
+
+<!-- Info / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <line x1="12" y1="8" x2="12" y2="12"/>
+  <line x1="12" y1="16" x2="12.01" y2="16"/>
+</svg>
+
+<!-- LightBubble / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="9" y1="18" x2="15" y2="18"/>
+  <line x1="10" y1="22" x2="14" y2="22"/>
+  <path d="M12 2a7 7 0 017 7c0 3.5-2 6-5 7v2H10v-2c-3-1-5-3.5-5-7a7 7 0 017-7z"/>
+</svg>
+
+<!-- Time (Clock) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12,6 12,12 16,14"/>
+</svg>
+
+<!-- Flag / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+  <line x1="4" y1="22" x2="4" y2="15"/>
+</svg>
+```
+
+#### 取引・決済系
+
+```html
+<!-- Cart / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="9" cy="21" r="1"/>
+  <circle cx="20" cy="21" r="1"/>
+  <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+</svg>
+
+<!-- Wallet / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M20 12V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2v-5h-5a2 2 0 010-4h5z"/>
+  <circle cx="17" cy="14" r="1" fill="currentColor" stroke="none"/>
+</svg>
+
+<!-- Coin / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <circle cx="12" cy="12" r="6"/>
+</svg>
+
+<!-- Coupon (Ticket) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 9V6a1 1 0 011-1h18a1 1 0 011 1v3a2 2 0 000 4v3a1 1 0 01-1 1H3a1 1 0 01-1-1v-3a2 2 0 000-4z"/>
+  <line x1="9" y1="5" x2="9" y2="19" stroke-dasharray="2 2"/>
+</svg>
+
+<!-- Point / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M9 9h1.5a2.5 2.5 0 010 5H9v4"/>
+  <line x1="9" y1="9" x2="9" y2="13"/>
+</svg>
+```
+
+#### コミュニケーション系
+
+```html
+<!-- Comment (ChatBubble) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+</svg>
+
+<!-- Mail / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+</svg>
+
+<!-- Announcement (Megaphone) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/>
+  <path d="M19.07 4.93a10 10 0 010 14.14"/>
+  <path d="M15.54 8.46a5 5 0 010 7.07"/>
+</svg>
+
+<!-- Send / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="22" y1="2" x2="11" y2="13"/>
+  <polygon points="22,2 15,22 11,13 2,9"/>
+</svg>
+```
+
+#### UI コントロール系
+
+```html
+<!-- Lock / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+  <path d="M7 11V7a5 5 0 0110 0v4"/>
+</svg>
+
+<!-- Calendar / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+</svg>
+
+<!-- Location (Pin) / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+  <circle cx="12" cy="10" r="3"/>
+</svg>
+
+<!-- Phone / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.88 2.18 2 2 0 012.86 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+</svg>
+
+<!-- Microphone / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/>
+  <path d="M19 10v2a7 7 0 01-14 0v-2"/>
+  <line x1="12" y1="19" x2="12" y2="23"/>
+  <line x1="8" y1="23" x2="16" y2="23"/>
+</svg>
+
+<!-- GridView / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="3" width="7" height="7"/>
+  <rect x="14" y="3" width="7" height="7"/>
+  <rect x="3" y="14" width="7" height="7"/>
+  <rect x="14" y="14" width="7" height="7"/>
+</svg>
+
+<!-- AuctionHammer / Outline -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M14.5 2.5l3 3-10 10-3-3z"/>
+  <path d="M18 9l3 3"/>
+  <path d="M3 18l6-6"/>
+  <line x1="2" y1="22" x2="10" y2="22"/>
+</svg>
+```
+
+---
+
+### ロゴ一覧
+
+Figma `ImageAssets/Logo` セクションのロゴ名。
+
+#### サービスロゴ（`ImageAssets/Logo/Service/`）
+`buyee` `ems` `yamato` `smari` `7eleven` `Pudo` `FamilyMart` `JPPost` `Mercari` `Cainiao` `Lawson` `YamatoPickUp` `PostBox` `Okihasso`
+
+#### ブランドロゴ（`ImageAssets/Logo/`）
+`mercari`（フルロゴ） `mercariMono`（モノクロ） `mercariWordmark`（ワードマーク） `mercariSymbolMono`（シンボル単体） `mercard` `shops` `d_point` `d_account` `google` `facebook` `Apple` `Android` `Instagram` `X` `Tiktok` `Youtube` `note` `amazon` `LoyaltyProgram` `Line` `Hallo` `FIDO`
+
+#### 決済ロゴ（`ImageAssets/Logo/Payment/`）
+`Visa` `mastercard` `JCB` `AmericanExpress` `DinersClub` `Discover` `Paypal` `Merpay` `Mercard` `Card` `ID` `Amazon` `Bank`
+
+#### 銀行ロゴ（`ImageAssets/Logo/Bank/`）
+`SMBC` `Resona`
+
+---
+
 ## 参照リンク
 
-- Figma DS-Master: https://www.figma.com/design/lrDLgQNy8Py3RwR9cQllT9/
+- Figma DS-Master (Icon/Logo フレーム): https://www.figma.com/design/lrDLgQNy8Py3RwR9cQllT9/-v4.0--DS-Master?node-id=2135-53794
 - Figma Design Tokens: https://www.figma.com/design/CuiPudjknxh3udQR3OlSdp/
 - MerUI Storybook: https://pages-jp.mercari.in/merui-web/main/react/index.html
