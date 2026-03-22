@@ -74,9 +74,11 @@ CLAUDE.md                # Claude Code向け開発ルール
 
 ## 注意事項
 
-### 画像素材について
+### 商品画像について
 
-`assets/images/` 内の商品画像はメルカリで出品された商品の画像を使用しています
+商品画像は `assets/items/` フォルダのものを使用しています。
+
+画像は過去施策で収集した実際のメルカリ商品画像を使用しており、[Google Drive](https://drive.google.com/drive/folders/1m04yIziHoVsNBr1ELR3zh2EDIA8TaihV?usp=drive_link) で管理されています。画像選定基準は [How to Choose Item Images (Notion)](https://www.notion.so/How-to-Choose-Item-Images-2767fa9ffaef80efaf3beb3efa8cca31) を参照してください。
 
 - 社内でのプロトタイプ確認・検討目的での利用は問題ありません
 - 社外への公開・共有は基本NGです（GitHub Pages のURLの取り扱いにご注意ください）

@@ -440,7 +440,23 @@ font-size: 12px;
 
 ---
 
-## 9. アイコン・ロゴ リファレンス
+## 9. 商品画像ルール
+
+### 使用できる画像
+- **`assets/items/` フォルダ内の画像のみ使用すること**
+- このフォルダには過去施策で収集した実際のメルカリ商品画像が格納されている
+- 画像選定基準は [How to Choose Item Images (Notion)](https://www.notion.so/How-to-Choose-Item-Images-2767fa9ffaef80efaf3beb3efa8cca31) を参照
+- 元データは [Google Drive](https://drive.google.com/drive/folders/1m04yIziHoVsNBr1ELR3zh2EDIA8TaihV?usp=drive_link) で管理されている
+
+### 使用してはいけない画像
+- `assets/images/` 内の商品画像（旧素材・管理外）
+- 外部URLの直接参照
+- 著作権・商標に引っかかる商品（ブランド品、キャラクター等）
+- 人物が特定できる画像
+
+---
+
+## 10. アイコン・ロゴ リファレンス
 
 出典: `assets/icons/` に格納されたローカルSVGファイル（kouzoh/merui-web の `packages/icons/src/svg/` から取得）
 
