@@ -2046,9 +2046,9 @@
     .idp-similar-heart { position: absolute; top: 4px; right: 4px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; background: none; padding: 0; -webkit-tap-highlight-color: transparent; }
     .idp-similar-heart svg path { fill: rgba(0,0,0,0.18) !important; stroke: #fff !important; stroke-width: 1.5 !important; stroke-linejoin: round !important; }
     .idp-similar-heart.liked svg path { fill: #FF333F !important; stroke: #fff !important; stroke-width: 1.5 !important; stroke-linejoin: round !important; }
-    .idp-more-items-btn { display: flex; align-items: center; justify-content: center; gap: var(--spacing-6); width: 100%; margin-top: var(--spacing-8); padding: var(--spacing-8) var(--spacing-16); border: none; background: var(--color-bg-secondary); border-radius: 100px; font-size: 15px; font-weight: 600; color: var(--color-fg-primary); cursor: pointer; }
+    .idp-more-items-btn { display: flex; align-items: center; justify-content: center; gap: var(--spacing-6); width: 100%; margin-top: var(--spacing-16); padding: var(--spacing-8) var(--spacing-16); border: none; background: var(--color-bg-secondary); border-radius: 100px; font-size: 15px; font-weight: 600; color: var(--color-fg-primary); cursor: pointer; }
     /* Bottom bar — fixed above tab bar with 16px margin */
-    .idp-bottom-bar { position: absolute; left: 0; right: 0; bottom: calc(76px + 16px + env(safe-area-inset-bottom, 0px)); display: flex; gap: 8px; padding: 0 16px; background: transparent; }
+    .idp-bottom-bar { position: absolute; left: 0; right: 0; bottom: calc(76px + 16px + env(safe-area-inset-bottom, 0px)); display: flex; gap: 8px; padding: 0 16px; background: transparent; z-index: 10; }
     /* Primary: brand red pill */
     .idp-btn-buy {
       flex: 1; height: 48px; border-radius: var(--radius-full); border: none;
