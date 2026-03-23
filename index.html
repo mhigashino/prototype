@@ -2075,6 +2075,12 @@
       background: #FF333F;
       box-shadow: 0px 0px 2px rgba(0,0,0,0.1), 0px 1px 8px rgba(0,0,0,0.12);
     }
+    .idp-btn-buy.secondary {
+      background: var(--color-bg-accent-light);
+      color: var(--color-fg-accent);
+      border: var(--border-thin) solid var(--color-border-accent);
+      box-shadow: none;
+    }
   </style>
 </head>
 <body>
@@ -2842,7 +2848,7 @@
           </div>
           <div class="list-ready-item" onclick="openItemDetail('m50042119109')">
             <div class="list-ready-thumb">
-              <img src="assets/items/m53655167209_1.jpg" alt="">
+              <img src="assets/items/m50042119109_1.jpg" alt="">
               <div class="list-ready-tag">¥ 1,200</div>
             </div>
             <div class="list-ready-name">スニーカー 27cm ほぼ新品</div>
@@ -2856,21 +2862,21 @@
           </div>
           <div class="list-ready-item" onclick="openItemDetail('m83776845099')">
             <div class="list-ready-thumb">
-              <img src="assets/items/m12243314380_1.jpg" alt="">
+              <img src="assets/items/m83776845099_1.jpeg" alt="">
               <div class="list-ready-tag">¥ 3,000</div>
             </div>
             <div class="list-ready-name">腕時計 メンズ 黒文字盤</div>
           </div>
           <div class="list-ready-item" onclick="openItemDetail('m74513884433')">
             <div class="list-ready-thumb">
-              <img src="assets/items/m66282011196_1.jpg" alt="">
+              <img src="assets/items/m74513884433_1.jpg" alt="">
               <div class="list-ready-tag">¥ 500</div>
             </div>
             <div class="list-ready-name">文庫本 3冊セット</div>
           </div>
           <div class="list-ready-item" onclick="openItemDetail('m52176306452')">
             <div class="list-ready-thumb">
-              <img src="assets/items/m63221549591_1.jpg" alt="">
+              <img src="assets/items/m52176306452_1.jpg" alt="">
               <div class="list-ready-tag">¥ 1,800</div>
             </div>
             <div class="list-ready-name">ワンピース フリーサイズ 花柄</div>
@@ -2898,7 +2904,7 @@
           </div>
         </div>
         <div class="list-item-row" onclick="openItemDetail('m50042119109')">
-          <div class="list-item-thumb"><img src="assets/items/m53655167209_1.jpg" alt=""></div>
+          <div class="list-item-thumb"><img src="assets/items/m50042119109_1.jpg" alt=""></div>
           <div class="list-item-info">
             <div class="list-item-title">ナイキ エアマックス 270 ホワイト 27.0cm 箱あり</div>
             <div class="list-item-price">¥ 8,500</div>
@@ -2950,7 +2956,7 @@
           </div>
         </div>
         <div class="list-item-row" onclick="openItemDetail('m51965062649')">
-          <div class="list-item-thumb"><img src="assets/items/m68391907051_1.jpg" alt=""></div>
+          <div class="list-item-thumb"><img src="assets/items/m51965062649_1.jpg" alt=""></div>
           <div class="list-item-info">
             <div class="list-item-title">シャネル コインケース ラムスキン ブラック ゴールド金具</div>
             <div class="list-item-price">¥ 28,000</div>
@@ -4367,6 +4373,7 @@
         navStack: _navStack.map(e => ({...e})),
         currentItemId: _currentItemId,
         currentItemIsAuction: _currentItemIsAuction,
+        currentItemIsListing: _currentItemIsListing,
       };
     } else {
       _tabStates[tabName] = null;
@@ -4379,6 +4386,7 @@
     _navStack = state.navStack;
     _currentItemId = state.currentItemId;
     _currentItemIsAuction = state.currentItemIsAuction;
+    _currentItemIsListing = state.currentItemIsListing || false;
     _populateIdp(_currentItemId);
     const idp = document.getElementById('screen-idp');
     idp.style.transition = 'none';
@@ -4412,6 +4420,7 @@
         _navStack = [];
         _currentItemId = null;
         _currentItemIsAuction = false;
+        _currentItemIsListing = false;
         _tabStates['home'] = null;
         return;
       }
@@ -4439,6 +4448,7 @@
       _navStack = [];
       _currentItemId = null;
       _currentItemIsAuction = false;
+      _currentItemIsListing = false;
     }
     document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.search-btn').forEach(t => t.classList.remove('active'));
@@ -4735,6 +4745,7 @@
   let _navStack = [];
   let _currentItemId = null;
   let _currentItemIsAuction = false;
+  let _currentItemIsListing = false;
   // Search-over-IDP stacking
   let _searchFromIdp = false;
   let _idpStackBeforeSearch = null;
@@ -4798,15 +4809,21 @@
     const tag = document.getElementById('idp-special-tag');
     const showBadge = !_currentItemIsAuction && (parseInt(itemId.replace(/\D/g,'')) % 10 === 0);
     tag.style.display = showBadge ? '' : 'none';
-    // オークション商品はボタンラベル・アイコンを変更
+    // ボタンラベル・スタイルをモードに応じて変更
     const priceReqBtn = document.getElementById('idp-price-req-btn');
     const buyBtn = document.querySelector('.idp-btn-buy');
-    if (_currentItemIsAuction) {
+    if (_currentItemIsListing) {
+      priceReqBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M6.444 3.685a10 10 0 1 1 11.112 16.63A10 10 0 0 1 6.444 3.685m.778 15.466A8.6 8.6 0 0 0 12 20.6a8.61 8.61 0 0 0 8.6-8.6 8.6 8.6 0 1 0-13.378 7.15m9.252-6.964a.68.68 0 0 1-.474.203h-3.33v1.36H16a.68.68 0 0 1 0 1.35h-3.33v2.41a.67.67 0 1 1-1.34 0V15.1H8a.695.695 0 1 1 0-1.39h3.33v-1.36H8a.68.68 0 0 1-.67-.68A.67.67 0 0 1 8 11h2.74L8 6.86a.66.66 0 0 1 .13-.93.68.68 0 0 1 .94.18L12 10.5l2.93-4.43a.68.68 0 0 1 1.227.247.66.66 0 0 1-.107.503L13.26 11H16a.67.67 0 0 1 .67.71.68.68 0 0 1-.196.477" clip-rule="evenodd"/></svg> 値下げ依頼';
+      buyBtn.textContent = '商品を編集する';
+      buyBtn.classList.add('secondary');
+    } else if (_currentItemIsAuction) {
       priceReqBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><g fill-rule="evenodd" clip-path="url(#ah)" clip-rule="evenodd"><path d="M11.238.714c.526-.13 1.06-.073 1.592.12 1.02.372 2.145 1.288 3.484 2.627l.017.02q.005.009.012.016c1.32 1.324 2.224 2.44 2.593 3.45.194.533.25 1.066.12 1.592-.128.521-.423.965-.812 1.354-.474.475-1.014.853-1.678.94a12 12 0 0 1-.899 1.57l6.65 5.71.202.19c.45.464.736 1.064.815 1.71q.006.046.005.091a2.98 2.98 0 0 1-3.147 3.247l-.18-.017a2.97 2.97 0 0 1-1.9-1.018l-5.708-6.648c-.514.348-1.042.647-1.572.9-.089.659-.462 1.2-.938 1.676-.39.389-.834.685-1.355.814-.526.13-1.06.072-1.592-.122-1.02-.37-2.144-1.287-3.483-2.626-1.339-1.34-2.254-2.465-2.625-3.485-.194-.533-.25-1.066-.12-1.593.13-.52.425-.966.814-1.355.475-.474 1.014-.853 1.677-.94A12.2 12.2 0 0 1 5.587 5.58a12.1 12.1 0 0 1 3.357-2.378c.09-.66.463-1.2.94-1.677.389-.389.833-.684 1.354-.812m.799 13.435q.563-.425 1.09-.945l.037-.038q.276-.274.527-.566.228-.263.433-.533.019-.022.038-.045c.533-.707.952-1.45 1.267-2.187a.725.725 0 0 1 .744-.436c.292.032.583-.068 1.046-.53.26-.26.382-.482.43-.678.047-.19.041-.425-.076-.747-.25-.69-.95-1.618-2.288-2.955l-.014-.016-.01-.013c-1.323-1.32-2.242-2.013-2.927-2.263-.322-.117-.557-.122-.748-.075-.196.048-.417.17-.677.43-.46.46-.56.756-.53 1.05a.73.73 0 0 1-.438.74 10.6 10.6 0 0 0-3.328 2.263 10.7 10.7 0 0 0-2.264 3.33.725.725 0 0 1-.745.437c-.292-.031-.583.068-1.045.53-.261.261-.384.484-.433.68-.047.19-.042.426.075.747.25.69.951 1.617 2.288 2.956l.483.472c1.082 1.033 1.868 1.596 2.471 1.816.322.117.558.123.748.076.196-.048.417-.17.677-.43.46-.46.56-.756.53-1.05a.725.725 0 0 1 .438-.74c.743-.317 1.49-.742 2.2-1.28m2.746-.594 6.591 5.659c.28.24.461.573.515.938v.01l.003.03a1.535 1.535 0 0 1-1.703 1.703 1.53 1.53 0 0 1-.976-.522l-5.66-6.593.027-.02.02-.02.243-.215.017-.016.062-.058a13 13 0 0 0 .744-.764l.025-.028.047-.055.032-.037z"/></g><defs><clipPath id="ah"><path d="M0 0h24v24H0z"/></clipPath></defs></svg> 入札履歴（5件）';
       buyBtn.textContent = '入札する';
+      buyBtn.classList.remove('secondary');
     } else {
       priceReqBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M6.444 3.685a10 10 0 1 1 11.112 16.63A10 10 0 0 1 6.444 3.685m.778 15.466A8.6 8.6 0 0 0 12 20.6a8.61 8.61 0 0 0 8.6-8.6 8.6 8.6 0 1 0-13.378 7.15m9.252-6.964a.68.68 0 0 1-.474.203h-3.33v1.36H16a.68.68 0 0 1 0 1.35h-3.33v2.41a.67.67 0 1 1-1.34 0V15.1H8a.695.695 0 1 1 0-1.39h3.33v-1.36H8a.68.68 0 0 1-.67-.68A.67.67 0 0 1 8 11h2.74L8 6.86a.66.66 0 0 1 .13-.93.68.68 0 0 1 .94.18L12 10.5l2.93-4.43a.68.68 0 0 1 1.227.247.66.66 0 0 1-.107.503L13.26 11H16a.67.67 0 0 1 .67.71.68.68 0 0 1-.196.477" clip-rule="evenodd"/></svg> 値下げ依頼';
       buyBtn.textContent = '購入する';
+      buyBtn.classList.remove('secondary');
     }
   }
 
@@ -4820,8 +4837,9 @@
 
     if (isIdpOpen) {
       // IDP → IDP: push current item to stack, load new item with slide-in animation
-      _navStack.push({ type: 'idp', itemId: _currentItemId, isAuction: _currentItemIsAuction });
+      _navStack.push({ type: 'idp', itemId: _currentItemId, isAuction: _currentItemIsAuction, isListing: _currentItemIsListing });
       _currentItemIsAuction = false;
+      _currentItemIsListing = false;
       _currentItemId = itemId;
       _populateIdp(itemId);
       const scroll = document.getElementById('idp-scroll');
@@ -4834,6 +4852,7 @@
       const prevScreen = document.querySelector('.screen.active');
       _navStack.push({ type: 'screen', element: prevScreen });
       _currentItemIsAuction = !!(prevScreen && prevScreen.id === 'screen-auction');
+      _currentItemIsListing = !!(prevScreen && prevScreen.id === 'screen-list');
       _currentItemId = itemId;
       _populateIdp(itemId);
       document.getElementById('idp-scroll').scrollTop = 0;
@@ -4854,6 +4873,7 @@
     if (top.type === 'idp') {
       // IDP2 → IDP1: re-render previous item with slide-back animation
       _currentItemIsAuction = top.isAuction;
+      _currentItemIsListing = top.isListing || false;
       _currentItemId = top.itemId;
       _populateIdp(top.itemId);
       const scroll = document.getElementById('idp-scroll');
@@ -4866,6 +4886,7 @@
       // IDP → base screen: close IDP with parallax restore
       _currentItemId = null;
       _currentItemIsAuction = false;
+      _currentItemIsListing = false;
       const idp = document.getElementById('screen-idp');
       idp.classList.remove('open');
       document.body.classList.remove('idp-open');
