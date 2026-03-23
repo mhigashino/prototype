@@ -29,6 +29,8 @@
       } else {
         document.getElementById('screen-idp').classList.remove('open');
         document.body.classList.remove('idp-open');
+        _navStack = [];
+        _currentItemId = null;
       }
     });
   </script>
@@ -4355,9 +4357,19 @@
       if (scrollEl) scrollEl.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    // IDPが開いていたら閉じる
-    document.getElementById('screen-idp').classList.remove('open');
-    document.body.classList.remove('idp-open');
+    // IDPが開いていてsearch以外のタブに切り替え → IDPと履歴スタックをクリア
+    const idp = document.getElementById('screen-idp');
+    if (idp.classList.contains('open') && tabName !== 'search') {
+      idp.classList.remove('open');
+      document.body.classList.remove('idp-open');
+      if (location.hash.startsWith('#item/')) history.replaceState(null, '', location.pathname);
+      const baseEntry = _navStack.find(e => e.type === 'screen');
+      if (baseEntry && baseEntry.element) {
+        baseEntry.element.classList.remove('idp-prev', 'idp-nav');
+      }
+      _navStack = [];
+      _currentItemId = null;
+    }
     document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.search-btn').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
@@ -4384,6 +4396,20 @@
   function goToSearch(btn) {
     const active = document.querySelector('.tab-item.active');
     if (active) prevTab = active.getAttribute('onclick').match(/'(\w+)'/)[1];
+    // IDPが開いている場合はスタックを保存してIDPを閉じる（検索を重ねる）
+    const idp = document.getElementById('screen-idp');
+    if (idp.classList.contains('open')) {
+      _searchFromIdp = true;
+      _idpStackBeforeSearch = { stack: [..._navStack], currentItemId: _currentItemId };
+      // IDPを閉じるがベース画面のパララックスはそのまま保持（検索が上に乗る形）
+      idp.classList.remove('open');
+      document.body.classList.remove('idp-open');
+      _navStack = [];
+      _currentItemId = null;
+    } else {
+      _searchFromIdp = false;
+      _idpStackBeforeSearch = null;
+    }
     switchTab('search', btn);
     fixSearchContentHeight();
     document.querySelector('.search-content-scroll').scrollTop = 0;
@@ -4407,8 +4433,36 @@
     input.blur();
     input.value = '';
     document.getElementById('search-float-bar').style.bottom = '0px';
-    const prevItem = document.querySelector(`.tab-item[onclick*="'${prevTab}'"]`);
-    if (prevItem) switchTab(prevTab, prevItem);
+    if (_searchFromIdp && _idpStackBeforeSearch) {
+      // IDPから検索を開いた場合 → IDPを復元して戻る
+      _navStack = _idpStackBeforeSearch.stack;
+      _currentItemId = _idpStackBeforeSearch.currentItemId;
+      _searchFromIdp = false;
+      _idpStackBeforeSearch = null;
+      // ベース画面をアクティブに戻す（パララックスは保持されている）
+      const baseEntry = _navStack.find(e => e.type === 'screen');
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      if (baseEntry && baseEntry.element) {
+        baseEntry.element.classList.add('active');
+      }
+      // タブインジケーターを元のタブに戻す
+      const prevItem = document.querySelector(`.tab-item[onclick*="'${prevTab}'"]`);
+      if (prevItem) {
+        document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.search-btn').forEach(t => t.classList.remove('active'));
+        prevItem.classList.add('active');
+        updateTabIndicator(prevItem);
+      }
+      // IDPを再度開く
+      _populateIdp(_currentItemId);
+      const idp = document.getElementById('screen-idp');
+      idp.classList.add('open');
+      document.body.classList.add('idp-open');
+      history.replaceState(null, '', '#item/' + _currentItemId);
+    } else {
+      const prevItem = document.querySelector(`.tab-item[onclick*="'${prevTab}'"]`);
+      if (prevItem) switchTab(prevTab, prevItem);
+    }
   }
 
   // キーボード表示に合わせてフォームをキーボードのすぐ上に追従させる
@@ -4584,15 +4638,17 @@
 
   let _idpHeart = false;
   let _idpLikeBase = 0;
-  let _idpPrevScreen = null;
+  // Navigation stack: entries are {type:'screen', element} or {type:'idp', itemId}
+  let _navStack = [];
+  let _currentItemId = null;
+  // Search-over-IDP stacking
+  let _searchFromIdp = false;
+  let _idpStackBeforeSearch = null;
 
-  function openItemDetail(itemId, skipHash) {
+  // Populate IDP content without animation
+  function _populateIdp(itemId) {
     const data = ITEM_DATA[itemId];
     if (!data) return;
-    if (!skipHash) history.replaceState(null, '', '#item/' + itemId);
-    // remember which screen is currently active
-    _idpPrevScreen = document.querySelector('.screen.active');
-    // populate carousel
     const track = document.getElementById('idp-carousel-track');
     const total = 5;
     const badgeSvg = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>';
@@ -4602,12 +4658,13 @@
       '</div>'
     ).join('');
     document.getElementById('idp-counter').style.display = 'none';
-    // heart
+    // heart — reset to outline
     _idpHeart = false;
     _idpLikeBase = data.likes;
     const likeBtn = document.getElementById('idp-like-btn');
     likeBtn.classList.remove('liked');
     likeBtn.style.color = '';
+    likeBtn.innerHTML = _idpHeartOutlineSVG;
     document.getElementById('idp-like-count').textContent = _idpLikeBase;
     document.getElementById('idp-comment-count').textContent = data.comments;
     // title/condition/price
@@ -4615,18 +4672,15 @@
     document.getElementById('idp-condition').textContent = data.condition + '・送料込み';
     const priceStr = data.price.replace(/^¥/, '');
     document.getElementById('idp-price').innerHTML = '<span class="price-yen">¥</span>' + priceStr;
-    // points (≒5% of price)
     const priceNum = parseInt(data.price.replace(/[^0-9]/g,''));
     const pts = Math.round(priceNum * 0.05 / 10) * 10;
     document.getElementById('idp-points-text').textContent = 'P' + pts.toLocaleString() + 'ポイントバック';
-    // description
     document.getElementById('idp-desc').textContent = data.desc;
     document.getElementById('idp-posted-at').textContent = data.postedAt;
     // seller
     const s = data.seller;
     document.getElementById('idp-seller-avatar').src = s.avatar;
     document.getElementById('idp-seller-name').textContent = s.name;
-    // stars
     const starsEl = document.getElementById('idp-seller-stars');
     const full = Math.floor(s.rating);
     const half = (s.rating - full) >= 0.5;
@@ -4638,35 +4692,69 @@
     }
     starHtml += '<span style="font-size:12px;color:var(--color-fg-secondary);margin-left:4px;">' + s.count.toLocaleString() + '</span>';
     starsEl.innerHTML = starHtml;
-    // scroll to top
-    document.getElementById('idp-scroll').scrollTop = 0;
-    track.scrollLeft = 0;
-    // show IDP
+    // reset meta expand
+    var meta = document.getElementById('idp-meta');
+    var moreBtn = document.getElementById('idp-more-btn');
+    if (meta) meta.classList.remove('open');
+    if (moreBtn) moreBtn.textContent = 'もっと見る';
+  }
+
+  function openItemDetail(itemId, skipHash) {
+    const data = ITEM_DATA[itemId];
+    if (!data) return;
+    if (!skipHash) history.replaceState(null, '', '#item/' + itemId);
+
     const idp = document.getElementById('screen-idp');
-    idp.classList.add('open');
-    document.body.classList.add('idp-open');
-    // iOS parallax: shift previous screen left
-    if (_idpPrevScreen) {
-      _idpPrevScreen.classList.add('idp-nav');
-      requestAnimationFrame(() => _idpPrevScreen.classList.add('idp-prev'));
+    const isIdpOpen = idp.classList.contains('open');
+
+    if (isIdpOpen) {
+      // IDP → IDP: push current item to stack, load new item (no slide animation)
+      _navStack.push({ type: 'idp', itemId: _currentItemId });
+      _currentItemId = itemId;
+      _populateIdp(itemId);
+      document.getElementById('idp-scroll').scrollTop = 0;
+      document.getElementById('idp-carousel-track').scrollLeft = 0;
+    } else {
+      // Screen → IDP: push current screen, open IDP with parallax
+      const prevScreen = document.querySelector('.screen.active');
+      _navStack.push({ type: 'screen', element: prevScreen });
+      _currentItemId = itemId;
+      _populateIdp(itemId);
+      document.getElementById('idp-scroll').scrollTop = 0;
+      document.getElementById('idp-carousel-track').scrollLeft = 0;
+      idp.classList.add('open');
+      document.body.classList.add('idp-open');
+      if (prevScreen) {
+        prevScreen.classList.add('idp-nav');
+        requestAnimationFrame(() => prevScreen.classList.add('idp-prev'));
+      }
     }
   }
 
   function closeItemDetail() {
-    document.getElementById('screen-idp').classList.remove('open');
-    document.body.classList.remove('idp-open');
-    if (location.hash.startsWith('#item/')) history.replaceState(null, '', location.pathname);
-    // iOS parallax: return previous screen to center
-    if (_idpPrevScreen) {
-      _idpPrevScreen.classList.remove('idp-prev');
-      var prev = _idpPrevScreen;
-      setTimeout(function() { prev.classList.remove('idp-nav'); }, 380);
+    if (_navStack.length === 0) return;
+    const top = _navStack.pop();
+
+    if (top.type === 'idp') {
+      // IDP2 → IDP1: re-render previous item
+      _currentItemId = top.itemId;
+      _populateIdp(top.itemId);
+      document.getElementById('idp-scroll').scrollTop = 0;
+      document.getElementById('idp-carousel-track').scrollLeft = 0;
+      history.replaceState(null, '', '#item/' + top.itemId);
+    } else {
+      // IDP → base screen: close IDP with parallax restore
+      _currentItemId = null;
+      const idp = document.getElementById('screen-idp');
+      idp.classList.remove('open');
+      document.body.classList.remove('idp-open');
+      if (location.hash.startsWith('#item/')) history.replaceState(null, '', location.pathname);
+      if (top.element) {
+        top.element.classList.remove('idp-prev');
+        var prev = top.element;
+        setTimeout(function() { prev.classList.remove('idp-nav'); }, 380);
+      }
     }
-    // reset metadata expand state
-    var meta = document.getElementById('idp-meta');
-    var btn = document.getElementById('idp-more-btn');
-    if (meta) meta.classList.remove('open');
-    if (btn) btn.textContent = 'もっと見る';
   }
 
   function toggleIdpMeta() {
