@@ -1918,10 +1918,15 @@
       flex-direction: column;
       z-index: 50;
       transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      visibility: hidden;
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), visibility 0s linear 0.35s;
       box-shadow: -6px 0 24px rgba(0,0,0,0.14);
     }
-    #screen-idp.open { transform: translateX(0); }
+    #screen-idp.open {
+      transform: translateX(0);
+      visibility: visible;
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), visibility 0s linear 0s;
+    }
     .screen.idp-nav { transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1); }
     .screen.idp-nav.idp-prev { transform: translateX(-28%); }
     @keyframes idp-content-push { from { transform: translateX(100%); } to { transform: translateX(0); } }
@@ -2530,7 +2535,7 @@
         <div class="auc-big-scroll">
           <!-- Card 1: Astro Boy figure -->
           <div class="auc-big-card" onclick="openItemDetail('m45875080008')">
-            <img class="auc-big-card-img" src="assets/items/m68391907051_2.jpg" alt="">
+            <img class="auc-big-card-img" src="assets/items/m45875080008_1.jpg" alt="">
             <div class="auc-big-card-grad"></div>
             <div class="auc-bid-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M13.49 11.38c-.49.49-1.27.49-1.76 0l-7.1-7.09-1.42 1.41 3.54 3.54-4.24 4.24c-.78.78-.78 2.05 0 2.83l2.83 2.83c.78.78 2.05.78 2.83 0l4.24-4.24 3.54 3.54 1.41-1.41-7.1-7.09zm1.42-5.97L12.7 7.62 9.88 4.8l1.41-1.41c.78-.78 2.05-.78 2.83 0l.79.79 1.41-1.41 1.42 1.42-1.42 1.41.59.6zm5.41 12.43l-4.24-4.24-1.42 1.42 4.24 4.24c.39.39 1.02.39 1.41 0l.01-.01c.39-.39.39-1.02 0-1.41z"/></svg><span>53</span></div>
             <div class="auc-card-bottom">
@@ -2566,7 +2571,7 @@
           </div>
           <!-- Card 4: Colorful figure -->
           <div class="auc-big-card" onclick="openItemDetail('m34182953554')">
-            <img class="auc-big-card-img" src="assets/items/m23776204371_1.jpg" alt="">
+            <img class="auc-big-card-img" src="assets/items/m34182953554_1.jpg" alt="">
             <div class="auc-big-card-grad"></div>
             <div class="auc-bid-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M13.49 11.38c-.49.49-1.27.49-1.76 0l-7.1-7.09-1.42 1.41 3.54 3.54-4.24 4.24c-.78.78-.78 2.05 0 2.83l2.83 2.83c.78.78 2.05.78 2.83 0l4.24-4.24 3.54 3.54 1.41-1.41-7.1-7.09zm1.42-5.97L12.7 7.62 9.88 4.8l1.41-1.41c.78-.78 2.05-.78 2.83 0l.79.79 1.41-1.41 1.42 1.42-1.42 1.41.59.6zm5.41 12.43l-4.24-4.24-1.42 1.42 4.24 4.24c.39.39 1.02.39 1.41 0l.01-.01c.39-.39.39-1.02 0-1.41z"/></svg><span>18</span></div>
             <div class="auc-card-bottom">
@@ -2578,7 +2583,7 @@
           </div>
           <!-- Card 5 -->
           <div class="auc-big-card" onclick="openItemDetail('m11010345173')">
-            <img class="auc-big-card-img" src="assets/items/m25286548628_1.jpg" alt="">
+            <img class="auc-big-card-img" src="assets/items/m11010345173_1.jpeg" alt="">
             <div class="auc-big-card-grad"></div>
             <div class="auc-bid-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M13.49 11.38c-.49.49-1.27.49-1.76 0l-7.1-7.09-1.42 1.41 3.54 3.54-4.24 4.24c-.78.78-.78 2.05 0 2.83l2.83 2.83c.78.78 2.05.78 2.83 0l4.24-4.24 3.54 3.54 1.41-1.41-7.1-7.09zm1.42-5.97L12.7 7.62 9.88 4.8l1.41-1.41c.78-.78 2.05-.78 2.83 0l.79.79 1.41-1.41 1.42 1.42-1.42 1.41.59.6zm5.41 12.43l-4.24-4.24-1.42 1.42 4.24 4.24c.39.39 1.02.39 1.41 0l.01-.01c.39-.39.39-1.02 0-1.41z"/></svg><span>7</span></div>
             <div class="auc-card-bottom">
@@ -2590,7 +2595,7 @@
           </div>
           <!-- Card 6: Clock -->
           <div class="auc-big-card" onclick="openItemDetail('m51965062649')">
-            <img class="auc-big-card-img" src="assets/items/m51097384798_1.jpg" alt="">
+            <img class="auc-big-card-img" src="assets/items/m51965062649_1.jpg" alt="">
             <div class="auc-big-card-grad"></div>
             <div class="auc-bid-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M13.49 11.38c-.49.49-1.27.49-1.76 0l-7.1-7.09-1.42 1.41 3.54 3.54-4.24 4.24c-.78.78-.78 2.05 0 2.83l2.83 2.83c.78.78 2.05.78 2.83 0l4.24-4.24 3.54 3.54 1.41-1.41-7.1-7.09zm1.42-5.97L12.7 7.62 9.88 4.8l1.41-1.41c.78-.78 2.05-.78 2.83 0l.79.79 1.41-1.41 1.42 1.42-1.42 1.41.59.6zm5.41 12.43l-4.24-4.24-1.42 1.42 4.24 4.24c.39.39 1.02.39 1.41 0l.01-.01c.39-.39.39-1.02 0-1.41z"/></svg><span>22</span></div>
             <div class="auc-card-bottom">
