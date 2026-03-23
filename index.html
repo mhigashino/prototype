@@ -4498,7 +4498,7 @@
   function openItemDetail(itemId, skipHash) {
     const data = ITEM_DATA[itemId];
     if (!data) return;
-    if (!skipHash) location.hash = 'item/' + itemId;
+    if (!skipHash) history.replaceState(null, '', '#item/' + itemId);
     // remember which screen is currently active
     _idpPrevScreen = document.querySelector('.screen.active');
     // populate carousel
