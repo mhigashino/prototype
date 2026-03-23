@@ -1899,7 +1899,53 @@
     .idp-carousel-track img { flex-shrink: 0; width: 375px; height: 375px; object-fit: cover; scroll-snap-align: start; }
     .idp-counter-badge { position: absolute; bottom: 10px; right: 12px; background: rgba(0,0,0,0.6); color: #fff; font-size: 12px; font-weight: 400; padding: 2px 6px; border-radius: 4px; line-height: 1.4; }
     .idp-header-overlay { position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px 0; }
-    .idp-overlay-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.88); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-fg-primary); flex-shrink: 0; }
+    .idp-overlay-btn {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      user-select: none;
+      overflow: hidden;
+      isolation: isolate;
+      color: var(--color-fg-primary);
+      background: rgba(247, 247, 247, 0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.85),
+        inset 0 -0.5px 0 rgba(0,0,0,0.08),
+        0 2px 14px rgba(0,0,0,0.20),
+        0 1px 4px rgba(0,0,0,0.10);
+      transition: opacity 0.12s ease, transform 0.12s ease;
+    }
+    .idp-overlay-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(145deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.0) 58%);
+      mix-blend-mode: hard-light;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .idp-overlay-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(51,51,51,0.06) 0%, rgba(51,51,51,0.12) 100%);
+      mix-blend-mode: color-dodge;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .idp-overlay-btn:active { opacity: 0.65; transform: scale(0.88); }
+    .idp-overlay-btn svg { position: relative; z-index: 3; }
     .idp-header-right { display: flex; gap: 8px; }
     /* Actions */
     .idp-actions-row { display: flex; align-items: center; gap: var(--spacing-16); padding: var(--spacing-16); background: var(--color-bg-primary); }
