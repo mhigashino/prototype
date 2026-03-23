@@ -1953,6 +1953,16 @@
     .idp-desc-text { font-size: 14px; font-weight: 300; color: var(--color-fg-primary); line-height: 1.4; padding: 0; margin: 0 0 8px; white-space: pre-wrap; }
     .idp-more-btn { background: none; border: none; color: var(--color-fg-accent); font-size: 14px; font-weight: 600; padding: 0 0 8px; cursor: pointer; text-decoration: underline; display: block; }
     .idp-timestamp { display: flex; align-items: center; gap: 4px; padding: 8px 0 var(--spacing-16); color: var(--color-fg-secondary); font-size: 12px; font-weight: 300; }
+    /* Metadata expand */
+    .idp-meta { overflow: hidden; max-height: 0; opacity: 0; transition: max-height var(--duration-300) var(--ease-middle-out), opacity var(--duration-200) var(--ease-middle-out); }
+    .idp-meta.open { max-height: 600px; opacity: 1; }
+    .idp-meta-sep { height: 0.5px; background: var(--color-border-primary); margin: 0 calc(-1 * var(--spacing-16)); }
+    .idp-meta-spacer { height: var(--spacing-16); }
+    .idp-meta-row { display: flex; align-items: flex-start; }
+    .idp-meta-label { width: 120px; flex-shrink: 0; font-size: 14px; font-weight: 600; color: var(--color-fg-primary); padding: var(--spacing-8) 0; line-height: 1.4; }
+    .idp-meta-value { flex: 1; font-size: 14px; font-weight: 300; color: var(--color-fg-primary); padding: var(--spacing-8) 0; line-height: 1.4; }
+    .idp-meta-link { text-decoration: underline; color: var(--color-fg-primary); }
+    .idp-meta-cat { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; }
     /* Seller */
     .idp-seller-section { display: flex; align-items: center; gap: 12px; padding: var(--spacing-16) 0; background: var(--color-bg-primary); }
     .idp-seller-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 0.5px solid #ccc; flex-shrink: 0; }
@@ -4616,6 +4626,18 @@
     document.getElementById('screen-idp').classList.remove('open');
     document.body.classList.remove('idp-open');
     if (location.hash.startsWith('#item/')) history.replaceState(null, '', location.pathname);
+    // reset metadata expand state
+    var meta = document.getElementById('idp-meta');
+    var btn = document.getElementById('idp-more-btn');
+    if (meta) meta.classList.remove('open');
+    if (btn) btn.textContent = 'もっと見る';
+  }
+
+  function toggleIdpMeta() {
+    var meta = document.getElementById('idp-meta');
+    var btn = document.getElementById('idp-more-btn');
+    var isOpen = meta.classList.toggle('open');
+    btn.textContent = isOpen ? '閉じる' : 'もっと見る';
   }
 
   function toggleIdpHeart() {
@@ -4698,10 +4720,51 @@
       <div class="idp-desc-section">
         <div class="idp-section-hd">商品の説明</div>
         <p class="idp-desc-text" id="idp-desc"></p>
-        <button class="idp-more-btn">もっと見る</button>
+        <button class="idp-more-btn" id="idp-more-btn" onclick="toggleIdpMeta()">もっと見る</button>
         <div class="idp-timestamp">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
           <span id="idp-posted-at"></span>
+        </div>
+        <!-- Metadata expandable -->
+        <div class="idp-meta" id="idp-meta">
+          <div class="idp-meta-sep"></div>
+          <div class="idp-meta-spacer"></div>
+          <div class="idp-meta-row">
+            <span class="idp-meta-label">カテゴリー</span>
+            <div class="idp-meta-value">
+              <div class="idp-meta-cat">
+                <span class="idp-meta-link">ファッション</span><span>/</span><span class="idp-meta-link">メンズ</span><span>/</span><span class="idp-meta-link">トップス</span><span>/</span><span class="idp-meta-link">Tシャツ</span>
+              </div>
+            </div>
+          </div>
+          <div class="idp-meta-row">
+            <span class="idp-meta-label">ブランド</span>
+            <span class="idp-meta-value"><span class="idp-meta-link">JIL SANDER</span></span>
+          </div>
+          <div class="idp-meta-row">
+            <span class="idp-meta-label">サイズ</span>
+            <span class="idp-meta-value">L</span>
+          </div>
+          <div class="idp-meta-row">
+            <span class="idp-meta-label">商品の状態</span>
+            <span class="idp-meta-value">未使用に近い</span>
+          </div>
+          <div class="idp-meta-row">
+            <span class="idp-meta-label">配送料の負担</span>
+            <span class="idp-meta-value">送料込み(出品者負担)</span>
+          </div>
+          <div class="idp-meta-row">
+            <span class="idp-meta-label">配送の方法</span>
+            <span class="idp-meta-value">未定</span>
+          </div>
+          <div class="idp-meta-row">
+            <span class="idp-meta-label">発送元の地域</span>
+            <span class="idp-meta-value">東京都</span>
+          </div>
+          <div class="idp-meta-row">
+            <span class="idp-meta-label">発送までの日数</span>
+            <span class="idp-meta-value">1-2日で発送</span>
+          </div>
         </div>
       </div>
       <div class="idp-divider"></div>
