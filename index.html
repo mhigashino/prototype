@@ -1947,8 +1947,9 @@
     .idp-hero { position: relative; line-height: 0; margin: 0; overflow: hidden; padding-top: 64px; }
     .idp-carousel-track { display: flex; gap: 12px; padding: 0 var(--spacing-16); scroll-padding-left: var(--spacing-16); overflow-x: scroll; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .idp-carousel-track::-webkit-scrollbar { display: none; }
-    .idp-carousel-track img { flex-shrink: 0; width: 320px; height: 320px; object-fit: cover; scroll-snap-align: start; border-radius: 12px; }
-    .idp-counter-badge { position: absolute; bottom: 8px; left: var(--spacing-16); background: rgba(0,0,0,0.6); color: #fff; font-size: 12px; font-weight: 400; padding: 2px 4px; border-radius: 4px; line-height: 1.4; display: flex; align-items: center; gap: 2px; }
+    .idp-slide { flex-shrink: 0; position: relative; line-height: 0; }
+    .idp-slide img { width: 320px; height: 320px; object-fit: cover; scroll-snap-align: start; border-radius: 12px; display: block; }
+    .idp-counter-badge { position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.6); color: #fff; font-size: 12px; font-weight: 400; padding: 2px 4px; border-radius: 4px; line-height: 1.4; display: flex; align-items: center; gap: 2px; }
     /* Actions */
     .idp-actions-row { display: flex; align-items: center; gap: var(--spacing-8); padding: var(--spacing-16) var(--spacing-16); background: var(--color-bg-primary); }
     .idp-actions-left { display: flex; flex: 1; align-items: center; gap: var(--spacing-16); }
@@ -1970,7 +1971,7 @@
     .idp-divider { height: 8px; background: transparent; }
     /* Description */
     .idp-desc-section { background: var(--color-bg-primary); padding: 0 var(--spacing-16); }
-    .idp-section-hd { font-size: 15px; font-weight: 600; color: var(--color-fg-primary); padding: 8px 0 0; }
+    .idp-section-hd { font-size: 15px; font-weight: 600; color: var(--color-fg-primary); padding: 8px 0; }
     .idp-watching-section .idp-section-hd { padding-left: var(--spacing-16); padding-right: var(--spacing-16); }
     .idp-desc-text { font-size: 14px; font-weight: 300; color: var(--color-fg-primary); line-height: 1.4; padding: 0; margin: 0 0 8px; white-space: pre-wrap; }
     .idp-more-btn { background: none; border: none; color: var(--color-fg-primary); font-size: 14px; font-weight: 600; padding: 0 0 8px; cursor: pointer; text-decoration: underline; display: block; }
@@ -4589,22 +4590,14 @@
     _idpPrevScreen = document.querySelector('.screen.active');
     // populate carousel
     const track = document.getElementById('idp-carousel-track');
-    // 同じメイン画像を5枚表示
-    track.innerHTML = Array(5).fill(data.images[0]).map(src => '<img src="' + src + '" alt="">').join('');
-    // counter
-    const counter = document.getElementById('idp-counter');
-    const counterText = counter.querySelector('span');
     const total = 5;
-    counterText.textContent = '1 / ' + total;
-    counter.style.display = '';
-    if (total > 1) {
-      let cur = 1;
-      track.addEventListener('scroll', function() {
-        const imgW = (track.firstElementChild ? track.firstElementChild.offsetWidth : track.offsetWidth) + 12;
-        cur = Math.round(track.scrollLeft / imgW) + 1;
-        counterText.textContent = cur + ' / ' + total;
-      }, {passive: true});
-    }
+    const badgeSvg = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>';
+    track.innerHTML = Array(total).fill(data.images[0]).map((src, i) =>
+      '<div class="idp-slide"><img src="' + src + '" alt="">' +
+      '<div class="idp-counter-badge">' + badgeSvg + '<span>' + (i+1) + ' / ' + total + '</span></div>' +
+      '</div>'
+    ).join('');
+    document.getElementById('idp-counter').style.display = 'none';
     // heart
     _idpHeart = false;
     _idpLikeBase = data.likes;
