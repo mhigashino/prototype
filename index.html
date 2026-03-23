@@ -88,6 +88,11 @@
       --mono-100: #F0F0F0;
       --mono-50:  #FFFFFF;
 
+      /* Border Width */
+      --border-bold:   3px;
+      --border-medium: 2px;
+      --border-thin:   1px;
+
       /* Radius */
       --radius-full:   9999px;  /* Rounding_Full */
       --radius-large:  16px;    /* Rounding_Large */
@@ -2078,7 +2083,7 @@
     .idp-btn-buy.secondary {
       background: var(--color-bg-primary);
       color: var(--color-fg-attention);
-      border: 1px solid var(--color-border-attention);
+      border: var(--border-thin) solid var(--color-border-attention);
     }
   </style>
 </head>
