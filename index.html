@@ -4360,11 +4360,45 @@
 
   const tabScrollMap = { home: '.home-scroll', auction: '.auc-scroll', list: '.list-scroll', wallet: '.wal-scroll' };
 
+  function _saveTabState(tabName) {
+    const idp = document.getElementById('screen-idp');
+    if (idp.classList.contains('open')) {
+      _tabStates[tabName] = {
+        navStack: _navStack.map(e => ({...e})),
+        currentItemId: _currentItemId,
+        currentItemIsAuction: _currentItemIsAuction,
+      };
+    } else {
+      _tabStates[tabName] = null;
+    }
+  }
+
+  function _restoreTabState(tabName) {
+    const state = _tabStates[tabName];
+    if (!state || !state.currentItemId) return;
+    _navStack = state.navStack;
+    _currentItemId = state.currentItemId;
+    _currentItemIsAuction = state.currentItemIsAuction;
+    _populateIdp(_currentItemId);
+    const idp = document.getElementById('screen-idp');
+    idp.style.transition = 'none';
+    idp.classList.add('open');
+    document.body.classList.add('idp-open');
+    document.getElementById('idp-scroll').scrollTop = 0;
+    document.getElementById('idp-carousel-track').scrollLeft = 0;
+    requestAnimationFrame(() => { idp.style.transition = ''; });
+    const baseEntry = _navStack.find(e => e.type === 'screen');
+    if (baseEntry && baseEntry.element) {
+      baseEntry.element.classList.add('idp-nav', 'idp-prev');
+    }
+    history.replaceState(null, '', '#item/' + _currentItemId);
+  }
+
   function switchTab(tabName, el) {
     // 既にアクティブなタブをタップ
     if (el.classList.contains('active')) {
       const idp = document.getElementById('screen-idp');
-      // ホームタブのダブルタップ + IDPが開いている → ホーム画面に戻る
+      // ホームタブのダブルタップ + IDPが開いている → ホーム画面に戻る（保存状態もクリア）
       if (tabName === 'home' && idp.classList.contains('open')) {
         idp.style.transition = 'none';
         idp.classList.remove('open');
@@ -4377,6 +4411,8 @@
         }
         _navStack = [];
         _currentItemId = null;
+        _currentItemIsAuction = false;
+        _tabStates['home'] = null;
         return;
       }
       // それ以外はスクロールトップ
@@ -4384,7 +4420,11 @@
       if (scrollEl) scrollEl.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    // IDPが開いていてsearch以外のタブに切り替え → IDPと履歴スタックをクリア
+    // 検索タブはsave/restore対象外（_idpStackBeforeSearchシステムで管理）
+    if (tabName !== 'search') {
+      _saveTabState(_activeTab);
+    }
+    // IDPが開いていてsearch以外のタブに切り替え → IDPをクリア（状態は保存済み）
     const idp = document.getElementById('screen-idp');
     if (idp.classList.contains('open') && tabName !== 'search') {
       idp.style.transition = 'none';
@@ -4398,6 +4438,7 @@
       }
       _navStack = [];
       _currentItemId = null;
+      _currentItemIsAuction = false;
     }
     document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.search-btn').forEach(t => t.classList.remove('active'));
@@ -4405,6 +4446,10 @@
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-' + tabName).classList.add('active');
     updateTabIndicator(el);
+    if (tabName !== 'search') {
+      _activeTab = tabName;
+      _restoreTabState(tabName);
+    }
   }
 
   // キーボード非表示時の画面高さを記録（window.innerHeight はキーボードで変わる場合があるため起動時に固定）
@@ -4693,6 +4738,9 @@
   // Search-over-IDP stacking
   let _searchFromIdp = false;
   let _idpStackBeforeSearch = null;
+  // Per-tab navigation state: saves IDP stack when leaving a tab
+  let _tabStates = { home: null, auction: null, list: null, wallet: null };
+  let _activeTab = 'home';
 
   // Populate IDP content without animation
   function _populateIdp(itemId) {
