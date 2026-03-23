@@ -4612,7 +4612,7 @@
     document.getElementById('idp-comment-count').textContent = data.comments;
     // title/condition/price
     document.getElementById('idp-title').textContent = data.title;
-    document.getElementById('idp-condition').textContent = data.condition;
+    document.getElementById('idp-condition').textContent = data.condition + '・送料込み';
     const priceStr = data.price.replace(/^¥/, '');
     document.getElementById('idp-price').innerHTML = '<span class="price-yen">¥</span>' + priceStr;
     // points (≒5% of price)
