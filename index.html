@@ -20,6 +20,18 @@
       }
     })();
   </script>
+  <script>
+    // Hash-based deep link: #item/<itemId> — handled after main script loads
+    window.addEventListener('hashchange', function() {
+      const m = location.hash.match(/^#item\/(.+)$/);
+      if (m) {
+        openItemDetail(m[1], true);
+      } else {
+        document.getElementById('screen-idp').classList.remove('open');
+        document.body.classList.remove('idp-open');
+      }
+    });
+  </script>
   <title>iOS App Prototype</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -4493,9 +4505,10 @@
   let _idpLikeBase = 0;
   let _idpPrevScreen = null;
 
-  function openItemDetail(itemId) {
+  function openItemDetail(itemId, skipHash) {
     const data = ITEM_DATA[itemId];
     if (!data) return;
+    if (!skipHash) location.hash = 'item/' + itemId;
     // remember which screen is currently active
     _idpPrevScreen = document.querySelector('.screen.active');
     // populate carousel
@@ -4563,6 +4576,7 @@
   function closeItemDetail() {
     document.getElementById('screen-idp').classList.remove('open');
     document.body.classList.remove('idp-open');
+    if (location.hash.startsWith('#item/')) history.replaceState(null, '', location.pathname);
   }
 
   function toggleIdpHeart() {
@@ -4577,6 +4591,12 @@
     }
     document.getElementById('idp-like-count').textContent = _idpLikeBase + (_idpHeart ? 1 : 0);
   }
+
+  // On load: open IDP if hash matches #item/<itemId>
+  (function() {
+    const m = location.hash.match(/^#item\/(.+)$/);
+    if (m) openItemDetail(m[1], true);
+  })();
 
   </script>
 
