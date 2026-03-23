@@ -1992,6 +1992,16 @@
     .idp-comment-text { font-size: 14px; font-weight: 300; color: var(--color-fg-primary); line-height: 1.5; }
     .idp-comment-time { font-size: 12px; font-weight: 300; color: var(--color-fg-tertiary); margin-top: 6px; text-align: right; }
     .idp-comment-btn { display: flex; align-items: center; justify-content: center; gap: var(--spacing-6); width: 100%; margin-top: var(--spacing-4); padding: var(--spacing-12) var(--spacing-16); border: var(--border-thin) solid var(--color-border-primary); background: var(--color-bg-primary); border-radius: var(--radius-medium); font-size: 14px; font-weight: 600; color: var(--color-fg-primary); cursor: pointer; }
+    /* === Watching / Similar Items shared tile === */
+    .idp-tile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: var(--spacing-12) calc(-1 * var(--spacing-16)) 0; }
+    .idp-tile { position: relative; aspect-ratio: 1; cursor: pointer; overflow: hidden; background: var(--color-bg-secondary); }
+    .idp-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .idp-tile-price { position: absolute; bottom: 0; left: 0; background: rgba(0,0,0,0.4); color: #fff; display: flex; align-items: center; gap: 2px; padding: 2px 8px 2px 4px; border-radius: 0 24px 24px 0; white-space: nowrap; }
+    .idp-tile-price-yen { font-size: 12px; font-weight: 700; line-height: 1.4; }
+    .idp-tile-price-num { font-size: 14px; font-weight: 700; line-height: 1.4; }
+    .idp-tile-heart { position: absolute; top: 8px; right: 8px; width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.85); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-fg-tertiary); padding: 0; }
+    .idp-tile-sold { position: absolute; top: 0; left: 0; width: 40px; height: 40px; overflow: hidden; pointer-events: none; }
+    .idp-tile-sold::before { content: 'SOLD'; position: absolute; top: 10px; left: -14px; width: 52px; background: #FF0211; color: #fff; font-size: 7px; font-weight: 800; letter-spacing: 0.5px; text-align: center; padding: 2px 0; transform: rotate(-45deg); }
     /* === Similar Items Grid === */
     .idp-similar-section { padding: var(--spacing-16) 0; }
     .idp-similar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: var(--spacing-12) calc(-1 * var(--spacing-16)) 0; }
@@ -4846,6 +4856,76 @@
           もっと見る
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
+      </div>
+      <div class="idp-divider"></div>
+      <!-- Watching section -->
+      <div class="idp-watching-section" style="padding: var(--spacing-16) 0 var(--spacing-16);">
+        <div class="idp-section-hd">この商品を見ている人におすすめ</div>
+        <div class="idp-tile-grid">
+          <div class="idp-tile" onclick="openItemDetail('m13177285590')">
+            <img src="assets/items/m13177285590_1.jpg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">2,800</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-tile" onclick="openItemDetail('m18637808206')">
+            <img src="assets/items/m18637808206_1.jpeg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">1,500</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-tile" onclick="openItemDetail('m23776204371')">
+            <img src="assets/items/m23776204371_1.jpg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">9,800</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-tile" onclick="openItemDetail('m23776973085')">
+            <img src="assets/items/m23776973085_1.jpeg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">4,500</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-tile" onclick="openItemDetail('m82654654121')">
+            <img src="assets/items/m82654654121_1.jpeg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">6,200</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+            <div class="idp-tile-sold"></div>
+          </div>
+          <div class="idp-tile" onclick="openItemDetail('m68391907051')">
+            <img src="assets/items/m68391907051_1.jpg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">3,300</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-tile" onclick="openItemDetail('m99406349214')">
+            <img src="assets/items/m99406349214_1.jpeg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">1,980</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-tile" onclick="openItemDetail('m80544561805')">
+            <img src="assets/items/m80544561805_1.jpg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">5,500</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+            <div class="idp-tile-sold"></div>
+          </div>
+          <div class="idp-tile" onclick="openItemDetail('m83425619402')">
+            <img src="assets/items/m83425619402_1.jpg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">780</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-tile" onclick="openItemDetail('m69840366764')">
+            <img src="assets/items/m69840366764_1.jpg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">2,500</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+            <div class="idp-tile-sold"></div>
+          </div>
+          <div class="idp-tile" onclick="openItemDetail('m81111813678')">
+            <img src="assets/items/m81111813678_1.jpg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">8,800</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-tile" onclick="openItemDetail('m76802916736')">
+            <img src="assets/items/m76802916736_2.jpg" alt="">
+            <div class="idp-tile-price"><span class="idp-tile-price-yen">¥</span><span class="idp-tile-price-num">3,600</span></div>
+            <button class="idp-tile-heart" onclick="toggleHeart(this,event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Fixed bottom bar -->
