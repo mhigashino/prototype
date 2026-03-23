@@ -4360,7 +4360,9 @@
       const idp = document.getElementById('screen-idp');
       // ホームタブのダブルタップ + IDPが開いている → ホーム画面に戻る
       if (tabName === 'home' && idp.classList.contains('open')) {
+        idp.style.transition = 'none';
         idp.classList.remove('open');
+        requestAnimationFrame(() => { idp.style.transition = ''; });
         document.body.classList.remove('idp-open');
         if (location.hash.startsWith('#item/')) history.replaceState(null, '', location.pathname);
         const baseEntry = _navStack.find(e => e.type === 'screen');
@@ -4379,7 +4381,9 @@
     // IDPが開いていてsearch以外のタブに切り替え → IDPと履歴スタックをクリア
     const idp = document.getElementById('screen-idp');
     if (idp.classList.contains('open') && tabName !== 'search') {
+      idp.style.transition = 'none';
       idp.classList.remove('open');
+      requestAnimationFrame(() => { idp.style.transition = ''; });
       document.body.classList.remove('idp-open');
       if (location.hash.startsWith('#item/')) history.replaceState(null, '', location.pathname);
       const baseEntry = _navStack.find(e => e.type === 'screen');
