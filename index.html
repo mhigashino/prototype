@@ -1899,9 +1899,12 @@
       flex-direction: column;
       z-index: 50;
       transform: translateX(100%);
-      transition: transform 0.3s var(--ease-middle-out);
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      box-shadow: -6px 0 24px rgba(0,0,0,0.14);
     }
     #screen-idp.open { transform: translateX(0); }
+    .screen.idp-nav { transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1); }
+    .screen.idp-nav.idp-prev { transform: translateX(-28%); }
     /* tab bar height: 60px pill + 16px padding-bottom = 76px */
     /* header: 12px top padding + 40px button = 52px → use 64px for breathing room */
     .idp-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0 0 calc(76px + 16px + 80px + env(safe-area-inset-bottom, 0px)); }
@@ -4626,12 +4629,23 @@
     const idp = document.getElementById('screen-idp');
     idp.classList.add('open');
     document.body.classList.add('idp-open');
+    // iOS parallax: shift previous screen left
+    if (_idpPrevScreen) {
+      _idpPrevScreen.classList.add('idp-nav');
+      requestAnimationFrame(() => _idpPrevScreen.classList.add('idp-prev'));
+    }
   }
 
   function closeItemDetail() {
     document.getElementById('screen-idp').classList.remove('open');
     document.body.classList.remove('idp-open');
     if (location.hash.startsWith('#item/')) history.replaceState(null, '', location.pathname);
+    // iOS parallax: return previous screen to center
+    if (_idpPrevScreen) {
+      _idpPrevScreen.classList.remove('idp-prev');
+      var prev = _idpPrevScreen;
+      setTimeout(function() { prev.classList.remove('idp-nav'); }, 380);
+    }
     // reset metadata expand state
     var meta = document.getElementById('idp-meta');
     var btn = document.getElementById('idp-more-btn');
