@@ -631,6 +631,7 @@
     }
 
     #screen-search.active ~ .top-nav { display: none; }
+    .idp-open .top-nav { display: none; }
 
     .nav-right {
       display: flex;
@@ -4499,10 +4500,12 @@
     // show IDP
     const idp = document.getElementById('screen-idp');
     idp.classList.add('open');
+    document.body.classList.add('idp-open');
   }
 
   function closeItemDetail() {
     document.getElementById('screen-idp').classList.remove('open');
+    document.body.classList.remove('idp-open');
   }
 
   function toggleIdpHeart() {
