@@ -4308,8 +4308,11 @@
     fixSearchContentHeight();
     document.querySelector('.search-content-scroll').scrollTop = 0;
     window.scrollTo(0, 0);
-    // 前回のキーボード高さで先に位置を確定してからフォーカス
-    document.getElementById('search-float-bar').style.bottom = lastKeyboardH + 'px';
+    // トランジションを一時無効にして初期位置を即座に確定（アニメーションなし）
+    const floatBar = document.getElementById('search-float-bar');
+    floatBar.style.transition = 'none';
+    floatBar.style.bottom = lastKeyboardH + 'px';
+    requestAnimationFrame(() => { floatBar.style.transition = ''; });
     document.getElementById('search-input').focus();
   }
 
