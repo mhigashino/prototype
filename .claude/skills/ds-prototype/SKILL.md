@@ -219,17 +219,19 @@ font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Helvetica Neue", Ari
 
 | グローバルサイズ | font-size | font-weight(Bold) | font-weight(Regular) | line-height(Normal) |
 |---|---|---|---|---|
-| X4Large | 28px | 800 | 300 | 1.4 |
-| X3Large | 24px | 600 | 300 | 1.4 |
-| X2Large | 20px | 600 | 300 | 1.4 |
-| XLarge  | 18px | 600 | 300 | 1.4 |
-| Large   | 17px | 600 | 300 | 1.4 |
-| WebInput | 16px | — | 300 | 1.4 |
-| Medium  | 15px | 600 | 300 | 1.4 |
-| Small   | 14px | 600 | 300 | 1.4 |
-| XSmall  | 12px | 600 | 300 | 1.4 |
-| X2Small | 11px | 600 | 300 | 1.4 |
-| X3Small | 10px | 600 | 300 | 1.4 |
+| X4Large | 28px | 800 | 400 | 1.4 |
+| X3Large | 24px | 600 | 400 | 1.4 |
+| X2Large | 20px | 600 | 400 | 1.4 |
+| XLarge  | 18px | 600 | 400 | 1.4 |
+| Large   | 17px | 600 | 400 | 1.4 |
+| WebInput | 16px | — | 400 | 1.4 |
+| Medium  | 15px | 600 | 400 | 1.4 |
+| Small   | 14px | 600 | 400 | 1.4 |
+| XSmall  | 12px | 600 | 400 | 1.4 |
+| X2Small | 11px | 600 | 400 | 1.4 |
+| X3Small | 10px | 600 | 400 | 1.4 |
+
+> **Note:** Figmaトークン上のRegularは`300`（Light）だが、Webブラウザでは300がLightとして描画されiOSネイティブより細く見える。prototypeでは`400`（Normal）を使用してネイティブの見た目に近づける。
 
 ### セマンティックロール → CSS実装例
 
@@ -240,10 +242,10 @@ font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Helvetica Neue", Ari
 | Title | Large | `font-size: 17px; font-weight: 600;` |
 | Title | Medium | `font-size: 15px; font-weight: 600;` |
 | Title | Small | `font-size: 14px; font-weight: 600;` |
-| Body | Medium | `font-size: 15px; font-weight: 300; line-height: 1.4;` |
-| Body | Small | `font-size: 14px; font-weight: 300; line-height: 1.4;` |
-| Caption | Small | `font-size: 12px; font-weight: 300;` |
-| Caption | XSmall | `font-size: 11px; font-weight: 300;` |
+| Body | Medium | `font-size: 15px; font-weight: 400; line-height: 1.4;` |
+| Body | Small | `font-size: 14px; font-weight: 400; line-height: 1.4;` |
+| Caption | Small | `font-size: 12px; font-weight: 400;` |
+| Caption | XSmall | `font-size: 11px; font-weight: 400;` |
 | Label | Medium | `font-size: 15px; font-weight: 600;` |
 | Label | Small | `font-size: 14px; font-weight: 600;` |
 | Button | Large | `font-size: 17px; font-weight: 600; line-height: 1.1;` |
