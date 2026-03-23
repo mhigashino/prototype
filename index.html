@@ -1924,6 +1924,10 @@
     #screen-idp.open { transform: translateX(0); }
     .screen.idp-nav { transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1); }
     .screen.idp-nav.idp-prev { transform: translateX(-28%); }
+    @keyframes idp-content-push { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    @keyframes idp-content-pop { from { transform: translateX(-30%); } to { transform: translateX(0); } }
+    .idp-scroll.idp-anim-push { animation: idp-content-push 0.35s cubic-bezier(0.25, 1, 0.5, 1) both; }
+    .idp-scroll.idp-anim-pop { animation: idp-content-pop 0.35s cubic-bezier(0.25, 1, 0.5, 1) both; }
     /* tab bar height: 60px pill + 16px padding-bottom = 76px */
     /* header: 12px top padding + 40px button = 52px → use 64px for breathing room */
     .idp-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0 0 calc(76px + 80px + env(safe-area-inset-bottom, 0px)); }
@@ -4351,8 +4355,23 @@
   const tabScrollMap = { home: '.home-scroll', auction: '.auc-scroll', list: '.list-scroll', wallet: '.wal-scroll' };
 
   function switchTab(tabName, el) {
-    // 既にアクティブなタブをタップ → スクロールトップ
+    // 既にアクティブなタブをタップ
     if (el.classList.contains('active')) {
+      const idp = document.getElementById('screen-idp');
+      // ホームタブのダブルタップ + IDPが開いている → ホーム画面に戻る
+      if (tabName === 'home' && idp.classList.contains('open')) {
+        idp.classList.remove('open');
+        document.body.classList.remove('idp-open');
+        if (location.hash.startsWith('#item/')) history.replaceState(null, '', location.pathname);
+        const baseEntry = _navStack.find(e => e.type === 'screen');
+        if (baseEntry && baseEntry.element) {
+          baseEntry.element.classList.remove('idp-prev', 'idp-nav');
+        }
+        _navStack = [];
+        _currentItemId = null;
+        return;
+      }
+      // それ以外はスクロールトップ
       const scrollEl = document.querySelector(tabScrollMap[tabName]);
       if (scrollEl) scrollEl.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -4401,8 +4420,10 @@
     if (idp.classList.contains('open')) {
       _searchFromIdp = true;
       _idpStackBeforeSearch = { stack: [..._navStack], currentItemId: _currentItemId };
-      // IDPを閉じるがベース画面のパララックスはそのまま保持（検索が上に乗る形）
+      // IDPをアニメーションなしで即時閉じる
+      idp.style.transition = 'none';
       idp.classList.remove('open');
+      requestAnimationFrame(() => { idp.style.transition = ''; });
       document.body.classList.remove('idp-open');
       _navStack = [];
       _currentItemId = null;
@@ -4722,12 +4743,15 @@
     const isIdpOpen = idp.classList.contains('open');
 
     if (isIdpOpen) {
-      // IDP → IDP: push current item to stack, load new item (no slide animation)
+      // IDP → IDP: push current item to stack, load new item with slide-in animation
       _navStack.push({ type: 'idp', itemId: _currentItemId });
       _currentItemId = itemId;
       _populateIdp(itemId);
-      document.getElementById('idp-scroll').scrollTop = 0;
+      const scroll = document.getElementById('idp-scroll');
+      scroll.scrollTop = 0;
       document.getElementById('idp-carousel-track').scrollLeft = 0;
+      scroll.classList.remove('idp-anim-push', 'idp-anim-pop');
+      requestAnimationFrame(() => scroll.classList.add('idp-anim-push'));
     } else {
       // Screen → IDP: push current screen, open IDP with parallax
       const prevScreen = document.querySelector('.screen.active');
@@ -4750,12 +4774,15 @@
     const top = _navStack.pop();
 
     if (top.type === 'idp') {
-      // IDP2 → IDP1: re-render previous item
+      // IDP2 → IDP1: re-render previous item with slide-back animation
       _currentItemId = top.itemId;
       _populateIdp(top.itemId);
-      document.getElementById('idp-scroll').scrollTop = 0;
+      const scroll = document.getElementById('idp-scroll');
+      scroll.scrollTop = 0;
       document.getElementById('idp-carousel-track').scrollLeft = 0;
       history.replaceState(null, '', '#item/' + top.itemId);
+      scroll.classList.remove('idp-anim-push', 'idp-anim-pop');
+      requestAnimationFrame(() => scroll.classList.add('idp-anim-pop'));
     } else {
       // IDP → base screen: close IDP with parallax restore
       _currentItemId = null;
