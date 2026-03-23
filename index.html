@@ -1904,7 +1904,7 @@
     #screen-idp.open { transform: translateX(0); }
     /* tab bar height: 60px pill + 16px padding-bottom = 76px */
     /* header: 12px top padding + 40px button = 52px → use 64px for breathing room */
-    .idp-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 64px var(--spacing-16) calc(76px + 16px + 80px + env(safe-area-inset-bottom, 0px)); }
+    .idp-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0 var(--spacing-16) calc(76px + 12px + 80px + env(safe-area-inset-bottom, 0px)); }
     /* Fixed header overlay */
     .idp-header-overlay { position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px 0; z-index: 10; pointer-events: none; }
     .idp-header-overlay > *, .idp-header-overlay button { pointer-events: all; }
@@ -1924,7 +1924,7 @@
     .idp-overlay-btn:active { opacity: 0.65; transform: scale(0.88); }
     .idp-overlay-btn svg { position: relative; z-index: 3; }
     /* Hero carousel — Figma style: 320px fixed images with peek */
-    .idp-hero { position: relative; line-height: 0; margin: 0 calc(-1 * var(--spacing-16)); overflow: hidden; }
+    .idp-hero { position: relative; line-height: 0; margin: 0 calc(-1 * var(--spacing-16)); overflow: hidden; padding-top: 64px; }
     .idp-carousel-track { display: flex; gap: 12px; padding: 0 var(--spacing-16); scroll-padding-left: var(--spacing-16); overflow-x: scroll; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .idp-carousel-track::-webkit-scrollbar { display: none; }
     .idp-carousel-track img { flex-shrink: 0; width: 320px; height: 320px; object-fit: cover; scroll-snap-align: start; border-radius: 12px; }
@@ -1946,7 +1946,7 @@
     .idp-coupon-badge { background: var(--color-bg-attention); color: #fff; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 16px; }
     .idp-points-text { font-size: 12px; font-weight: 600; color: var(--color-fg-secondary); }
     /* Divider */
-    .idp-divider { height: 8px; background: var(--color-bg-secondary); margin: 0 calc(-1 * var(--spacing-16)); }
+    .idp-divider { height: 8px; background: transparent; }
     /* Description */
     .idp-desc-section { background: var(--color-bg-primary); }
     .idp-section-hd { font-size: 15px; font-weight: 600; color: var(--color-fg-primary); padding: 8px 0; }
@@ -1972,8 +1972,8 @@
     .idp-seller-stars { display: flex; align-items: center; gap: 2px; margin-top: 2px; }
     .idp-follow-btn { display: flex; align-items: center; gap: 4px; background: var(--color-bg-secondary); border: none; border-radius: 100px; padding: 8px 12px; width: 104px; height: 44px; font-size: 12px; font-weight: 300; color: var(--color-fg-primary); cursor: pointer; white-space: nowrap; flex-shrink: 0; justify-content: center; }
     /* === Seller Items Carousel === */
-    .idp-seller-items { margin: 0 calc(-1 * var(--spacing-16)); padding: var(--spacing-4) 0 var(--spacing-16); }
-    .idp-seller-items-track { display: flex; gap: var(--spacing-8); padding: var(--spacing-8) var(--spacing-16) 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .idp-seller-items { padding: var(--spacing-4) 0 var(--spacing-16); }
+    .idp-seller-items-track { display: flex; gap: var(--spacing-8); padding: var(--spacing-8) 0 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .idp-seller-items-track::-webkit-scrollbar { display: none; }
     .idp-seller-item { flex-shrink: 0; width: 96px; cursor: pointer; }
     .idp-seller-item-img { width: 96px; height: 96px; object-fit: cover; border-radius: var(--radius-small); display: block; background: var(--color-bg-secondary); }
@@ -2009,19 +2009,23 @@
     .idp-tile-price { position: absolute; bottom: 0; left: 0; background: rgba(0,0,0,0.4); color: #fff; display: flex; align-items: center; gap: 2px; padding: 2px 8px 2px 4px; border-radius: 0 24px 24px 0; white-space: nowrap; }
     .idp-tile-price-yen { font-size: 12px; font-weight: 700; line-height: 1.4; }
     .idp-tile-price-num { font-size: 14px; font-weight: 700; line-height: 1.4; }
-    .idp-tile-heart { position: absolute; top: 8px; right: 8px; width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.85); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-fg-tertiary); padding: 0; }
+    .idp-tile-heart { position: absolute; top: 4px; right: 4px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; background: none; padding: 0; -webkit-tap-highlight-color: transparent; }
+    .idp-tile-heart svg path { fill: rgba(0,0,0,0.18) !important; stroke: #fff !important; stroke-width: 1 !important; stroke-linejoin: round !important; }
+    .idp-tile-heart.liked svg path { fill: #FF333F !important; stroke: #fff !important; stroke-width: 1 !important; stroke-linejoin: round !important; }
     .idp-tile-sold { position: absolute; top: 0; left: 0; width: 40px; height: 40px; overflow: hidden; pointer-events: none; }
     .idp-tile-sold::before { content: 'SOLD'; position: absolute; top: 10px; left: -14px; width: 52px; background: #FF0211; color: #fff; font-size: 7px; font-weight: 800; letter-spacing: 0.5px; text-align: center; padding: 2px 0; transform: rotate(-45deg); }
     /* === Similar Items Grid === */
     .idp-similar-section { padding: var(--spacing-16) 0; }
-    .idp-similar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: var(--spacing-12) calc(-1 * var(--spacing-16)) 0; }
+    .idp-similar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: var(--spacing-12) 0 0; }
     .idp-similar-tile { position: relative; aspect-ratio: 1; cursor: pointer; overflow: hidden; background: var(--color-bg-secondary); }
     .idp-similar-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .idp-similar-price { position: absolute; bottom: 4px; left: 4px; background: rgba(0,0,0,0.55); color: #fff; font-size: 11px; font-weight: 600; padding: 2px 5px; border-radius: 3px; white-space: nowrap; }
-    .idp-similar-heart { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.85); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-fg-tertiary); }
+    .idp-similar-heart { position: absolute; top: 4px; right: 4px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; background: none; padding: 0; -webkit-tap-highlight-color: transparent; }
+    .idp-similar-heart svg path { fill: rgba(0,0,0,0.18) !important; stroke: #fff !important; stroke-width: 1 !important; stroke-linejoin: round !important; }
+    .idp-similar-heart.liked svg path { fill: #FF333F !important; stroke: #fff !important; stroke-width: 1 !important; stroke-linejoin: round !important; }
     .idp-more-items-btn { display: flex; align-items: center; justify-content: center; gap: var(--spacing-6); width: 100%; margin-top: var(--spacing-8); padding: var(--spacing-8) var(--spacing-16); border: none; background: var(--color-bg-secondary); border-radius: 100px; font-size: 15px; font-weight: 600; color: var(--color-fg-primary); cursor: pointer; }
     /* Bottom bar — fixed above tab bar with 16px margin */
-    .idp-bottom-bar { position: absolute; left: 0; right: 0; bottom: calc(76px + 16px + env(safe-area-inset-bottom, 0px)); display: flex; gap: 8px; padding: 0 16px; background: transparent; }
+    .idp-bottom-bar { position: absolute; left: 0; right: 0; bottom: calc(76px + 12px + env(safe-area-inset-bottom, 0px)); display: flex; gap: 8px; padding: 0 16px; background: transparent; }
     /* Primary: brand red pill */
     .idp-btn-buy {
       flex: 1; height: 48px; border-radius: var(--radius-full); border: none;
