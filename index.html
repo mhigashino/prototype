@@ -1636,24 +1636,24 @@
   .cart-tag.secondary { color: var(--color-fg-tertiary); border-color: #C7C7C7; }
   .cart-sold-overlay {
     position: relative;
+    flex-shrink: 0;
   }
-  .cart-sold-overlay .cart-item-thumb {
-    opacity: 0.5;
+  .cart-sold-corner {
+    position: absolute; top: 0; left: 0; width: 32px; height: 32px;
+    overflow: hidden; pointer-events: none; z-index: 2;
+    border-radius: var(--radius-small) 0 0 0;
   }
-  .cart-sold-sticker {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.55);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    padding: 3px 8px;
-    border-radius: 3px;
-    white-space: nowrap;
-    pointer-events: none;
+  .cart-sold-corner::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 0; height: 0; border-style: solid;
+    border-width: 32px 32px 0 0;
+    border-color: #FF333F transparent transparent transparent;
+  }
+  .cart-sold-corner span {
+    position: absolute; top: 7px; left: 0; width: 22px;
+    text-align: center; font-size: 7px; font-weight: 700; color: #fff;
+    transform: rotate(-45deg); transform-origin: center center;
+    line-height: 1; letter-spacing: 0.04em;
   }
   .cart-sold-btn {
     display: block;
@@ -3623,7 +3623,7 @@
         <!-- row 4: ユーザーアバター（購入申請） -->
         <div class="notif-row">
           <div class="notif-thumb-wrap">
-            <img class="notif-thumb" src="assets/images/cart_seller_hanako.png" alt="">
+            <img class="notif-thumb" src="assets/images/profile-icon.png" alt="">
           </div>
           <div class="notif-text">
             <div class="notif-text-primary"><strong>taro_fashion</strong>さんから購入申請が届きました</div>
@@ -3676,7 +3676,7 @@
         <!-- row 8: 評価リマインダー（ユーザーアバター） -->
         <div class="notif-row">
           <div class="notif-thumb-wrap">
-            <img class="notif-thumb" src="assets/images/cart_seller_merblue.png" alt="">
+            <img class="notif-thumb" src="assets/images/profile-icon-3.png" alt="">
           </div>
           <div class="notif-text">
             <div class="notif-text-primary">取引が完了しました。<strong>hana_tokyo</strong>さんへの評価をお願いします</div>
@@ -3717,14 +3717,14 @@
       <div class="cart-seller-group">
         <div class="cart-seller-row">
           <div class="cart-seller-avatar">
-            <img src="assets/images/cart_seller_hanako.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            <img src="assets/images/profile-icon-5.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
           </div>
           <span class="cart-seller-name">メルカリはなこ</span>
         </div>
 
         <!-- item 1 -->
         <div class="cart-item-group">
-          <img class="cart-item-thumb" src="assets/images/cart_coach_bag.png" alt="商品">
+          <img class="cart-item-thumb" src="assets/items/m34182953554_1.jpg" alt="商品">
           <div class="cart-item-info">
             <div class="cart-item-name">オールドコーチ ショルダーバッグ レザー ブラウン</div>
             <div class="cart-item-price">¥9,800</div>
@@ -3760,14 +3760,14 @@
       <div class="cart-seller-group">
         <div class="cart-seller-row">
           <div class="cart-seller-avatar">
-            <img src="assets/images/cart_seller_merblue.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            <img src="assets/images/profile-icon-9.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
           </div>
           <span class="cart-seller-name">merblue</span>
         </div>
 
         <!-- item 2 -->
         <div class="cart-item-group">
-          <img class="cart-item-thumb" src="assets/images/cart_adidas.jpg" alt="商品">
+          <img class="cart-item-thumb" src="assets/items/m50042119109_1.jpg" alt="商品">
           <div class="cart-item-info">
             <div class="cart-item-name">adidas スタンスミス 26.5cm ホワイト / グリーン 美品</div>
             <div class="cart-item-price">¥7,500</div>
@@ -3793,16 +3793,16 @@
       <div class="cart-seller-group">
         <div class="cart-seller-row">
           <div class="cart-seller-avatar" style="border-radius:var(--radius-small);">
-            <img src="assets/images/cart_seller_chita.jpg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            <img src="assets/images/profile-icon-2.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
           </div>
           <span class="cart-seller-name">知多農園</span>
         </div>
 
         <!-- item 3（売り切れ） -->
         <div class="cart-item-group">
-          <div class="cart-sold-overlay" style="position:relative;flex-shrink:0;">
-            <img class="cart-item-thumb" src="assets/images/cart_eggplant.png" alt="商品" style="opacity:0.45;">
-            <div class="cart-sold-sticker">SOLD</div>
+          <div class="cart-sold-overlay">
+            <img class="cart-item-thumb" src="assets/items/m52176306452_1.jpg" alt="商品">
+            <div class="cart-sold-corner"><span>SOLD</span></div>
           </div>
           <div class="cart-item-info" style="opacity:0.5;">
             <div class="cart-item-name">採れたてナス 1kg 愛知県産 農家直送</div>
@@ -3855,7 +3855,7 @@
         <!-- row 2: 発送待ち（商品サムネイル） -->
         <div class="info-row">
           <div class="info-thumb-wrap">
-            <img class="info-thumb item-shape" src="assets/images/cart_coach_bag.png" alt="">
+            <img class="info-thumb item-shape" src="assets/items/m34182953554_1.jpg" alt="">
           </div>
           <div class="info-body">
             <div class="info-label">購入者が支払いを完了しました。<strong>発送手続き</strong>をしてください</div>
@@ -3867,7 +3867,7 @@
         <!-- row 3: 評価依頼（ユーザーアバター） -->
         <div class="info-row">
           <div class="info-thumb-wrap">
-            <img class="info-thumb" src="assets/images/cart_seller_hanako.png" alt="">
+            <img class="info-thumb" src="assets/images/profile-icon.png" alt="">
           </div>
           <div class="info-body">
             <div class="info-label">取引が完了しました。<strong>評価</strong>をしてください</div>
@@ -3879,7 +3879,7 @@
         <!-- row 4: 受取評価（商品サムネイル） -->
         <div class="info-row">
           <div class="info-thumb-wrap">
-            <img class="info-thumb item-shape" src="assets/images/cart_adidas.jpg" alt="">
+            <img class="info-thumb item-shape" src="assets/items/m50042119109_1.jpg" alt="">
           </div>
           <div class="info-body">
             <div class="info-label">商品を受け取ったら<strong>受取評価</strong>をしてください</div>
@@ -4617,14 +4617,14 @@
 
   /* ════ ITEM DETAIL PAGE ════ */
   const SELLERS = [
-    {name:'あや@断捨離中',  rating:4.7, count:248, avatar:'assets/images/cart_seller_hanako.png'},
-    {name:'まみ',           rating:4.5, count:89,  avatar:'assets/images/cart_seller_chita.jpg'},
-    {name:'ゆき',           rating:4.9, count:512, avatar:'assets/images/avatar_profile.png'},
-    {name:'はな',           rating:4.3, count:67,  avatar:'assets/images/cart_seller_merblue.png'},
-    {name:'れいな',         rating:4.8, count:334, avatar:'assets/images/cart_seller_hanako.png'},
-    {name:'たかし@メンズ', rating:4.6, count:156, avatar:'assets/images/avatar_profile.png'},
-    {name:'こうた',         rating:4.2, count:43,  avatar:'assets/images/cart_seller_chita.jpg'},
-    {name:'みき',           rating:4.8, count:891, avatar:'assets/images/cart_seller_merblue.png'},
+    {name:'あや@断捨離中',  rating:4.7, count:248, avatar:'assets/images/profile-icon.png'},
+    {name:'まみ',           rating:4.5, count:89,  avatar:'assets/images/profile-icon-8.png'},
+    {name:'ゆき',           rating:4.9, count:512, avatar:'assets/images/profile-icon-1.png'},
+    {name:'はな',           rating:4.3, count:67,  avatar:'assets/images/profile-icon-3.png'},
+    {name:'れいな',         rating:4.8, count:334, avatar:'assets/images/profile-icon-5.png'},
+    {name:'たかし@メンズ', rating:4.6, count:156, avatar:'assets/images/profile-icon-9.png'},
+    {name:'こうた',         rating:4.2, count:43,  avatar:'assets/images/profile-icon-6.png'},
+    {name:'みき',           rating:4.8, count:891, avatar:'assets/images/profile-icon-7.png'},
   ];
   function _d(title, price, cond, desc, si, comments, imgs, likes, posted) {
     return {title, price, condition:cond, desc, seller:SELLERS[si%8], comments, images:imgs, likes, postedAt:posted};
@@ -4743,6 +4743,34 @@
     'm83425619402': _d('GRL リブニットトップス F','¥780','目立った傷や汚れなし','グレイルのリブニットトップスです。\n数回着用しましたが、きれいです。\nフリーサイズ。ホワイト。',5,1,[I+'m83425619402_1.jpg'],4,'1週間前'),
   };
 
+  const _PROFILE_ICONS = [
+    'assets/images/profile-icon.png',
+    'assets/images/profile-icon-1.png',
+    'assets/images/profile-icon-2.png',
+    'assets/images/profile-icon-3.png',
+    'assets/images/profile-icon-4.png',
+    'assets/images/profile-icon-5.png',
+    'assets/images/profile-icon-6.png',
+    'assets/images/profile-icon-7.png',
+    'assets/images/profile-icon-8.png',
+    'assets/images/profile-icon-9.png',
+  ];
+  const _USER_NAMES = [
+    'さくら', 'ゆうき', 'ひろし', 'みなみ', 'たけし',
+    'あかね', 'けんじ', 'ともこ', 'りょう', 'なつき',
+    'こうじ', 'まゆみ', 'だいき', 'えみ', 'そうた',
+  ];
+  function _seededRand(seed, max) {
+    const x = Math.sin(seed + 1) * 10000;
+    return Math.floor((x - Math.floor(x)) * max);
+  }
+  function _commentUser(seed) {
+    return {
+      avatar: _PROFILE_ICONS[_seededRand(seed, _PROFILE_ICONS.length)],
+      name: _USER_NAMES[_seededRand(seed + 100, _USER_NAMES.length)],
+    };
+  }
+
   let _idpHeart = false;
   let _idpLikeBase = 0;
   // Navigation stack: entries are {type:'screen', element} or {type:'idp', itemId, isAuction}
@@ -4829,6 +4857,14 @@
       buyBtn.textContent = '購入する';
       buyBtn.classList.remove('secondary');
     }
+    // コメントユーザー（アイテムIDをシードにランダム）
+    const seed = parseInt(itemId.replace(/\D/g, '')) || 0;
+    const u1 = _commentUser(seed);
+    const u2 = _commentUser(seed + 7);
+    document.getElementById('idp-comment-1-avatar').src = u1.avatar;
+    document.getElementById('idp-comment-1-name').textContent = u1.name;
+    document.getElementById('idp-comment-3-avatar').src = u2.avatar;
+    document.getElementById('idp-comment-3-name').textContent = u2.name;
   }
 
   function openItemDetail(itemId, skipHash) {
@@ -5126,9 +5162,9 @@
       <div class="idp-comments-section">
         <div class="idp-section-hd">コメント（4）</div>
         <div class="idp-comment-item">
-          <img class="idp-comment-avatar" src="assets/images/avatar_profile.png" alt="">
+          <img class="idp-comment-avatar" id="idp-comment-1-avatar" src="assets/images/profile-icon.png" alt="">
           <div class="idp-comment-body">
-            <div class="idp-comment-name">メルカリユーザー</div>
+            <div class="idp-comment-name" id="idp-comment-1-name">さくら</div>
             <div class="idp-comment-bubble">
               <div class="idp-comment-text">まだ購入可能ですか？</div>
               <div class="idp-comment-time">2日前</div>
@@ -5146,9 +5182,9 @@
           </div>
         </div>
         <div class="idp-comment-item">
-          <img class="idp-comment-avatar" src="assets/images/cart_seller_merblue.png" alt="">
+          <img class="idp-comment-avatar" id="idp-comment-3-avatar" src="assets/images/profile-icon-4.png" alt="">
           <div class="idp-comment-body">
-            <div class="idp-comment-name">メルカリユーザー</div>
+            <div class="idp-comment-name" id="idp-comment-3-name">ゆうき</div>
             <div class="idp-comment-bubble">
               <div class="idp-comment-text">値下げはできますか？</div>
               <div class="idp-comment-time">1日前</div>
