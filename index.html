@@ -1892,7 +1892,8 @@
     }
     #screen-idp.open { transform: translateX(0); }
     /* tab bar height: 60px pill + 16px padding-bottom = 76px */
-    .idp-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; padding: 0 var(--spacing-16) calc(76px + 16px + 80px + env(safe-area-inset-bottom, 0px)); }
+    /* header: 12px top padding + 40px button = 52px → use 64px for breathing room */
+    .idp-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; padding: 64px var(--spacing-16) calc(76px + 16px + 80px + env(safe-area-inset-bottom, 0px)); }
     /* Fixed header overlay */
     .idp-header-overlay { position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px 0; z-index: 10; pointer-events: none; }
     .idp-header-overlay > *, .idp-header-overlay button { pointer-events: all; }
@@ -1913,7 +1914,7 @@
     .idp-overlay-btn svg { position: relative; z-index: 3; }
     /* Hero carousel — Figma style: 320px fixed images with peek */
     .idp-hero { position: relative; line-height: 0; margin: 0 calc(-1 * var(--spacing-16)); overflow: hidden; }
-    .idp-carousel-track { display: flex; gap: 12px; padding: 0 var(--spacing-16); overflow-x: scroll; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .idp-carousel-track { display: flex; gap: 12px; padding: 0 var(--spacing-16); scroll-padding-left: var(--spacing-16); overflow-x: scroll; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .idp-carousel-track::-webkit-scrollbar { display: none; }
     .idp-carousel-track img { flex-shrink: 0; width: 320px; height: 320px; object-fit: cover; scroll-snap-align: start; border-radius: 12px; }
     .idp-counter-badge { position: absolute; bottom: 8px; right: calc(var(--spacing-16) + 8px); background: rgba(0,0,0,0.6); color: #fff; font-size: 12px; font-weight: 400; padding: 2px 4px; border-radius: 4px; line-height: 1.4; display: flex; align-items: center; gap: 2px; }
