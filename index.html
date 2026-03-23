@@ -1948,7 +1948,7 @@
     .idp-carousel-track { display: flex; gap: 12px; padding: 0 var(--spacing-16); scroll-padding-left: var(--spacing-16); overflow-x: scroll; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .idp-carousel-track::-webkit-scrollbar { display: none; }
     .idp-carousel-track img { flex-shrink: 0; width: 320px; height: 320px; object-fit: cover; scroll-snap-align: start; border-radius: 12px; }
-    .idp-counter-badge { position: absolute; bottom: 8px; right: calc(var(--spacing-16) + 8px); background: rgba(0,0,0,0.6); color: #fff; font-size: 12px; font-weight: 400; padding: 2px 4px; border-radius: 4px; line-height: 1.4; display: flex; align-items: center; gap: 2px; }
+    .idp-counter-badge { position: absolute; bottom: 8px; left: var(--spacing-16); background: rgba(0,0,0,0.6); color: #fff; font-size: 12px; font-weight: 400; padding: 2px 4px; border-radius: 4px; line-height: 1.4; display: flex; align-items: center; gap: 2px; }
     /* Actions */
     .idp-actions-row { display: flex; align-items: center; gap: var(--spacing-8); padding: var(--spacing-16) var(--spacing-16); background: var(--color-bg-primary); }
     .idp-actions-left { display: flex; flex: 1; align-items: center; gap: var(--spacing-16); }
@@ -1972,7 +1972,7 @@
     .idp-desc-section { background: var(--color-bg-primary); padding: 0 var(--spacing-16); }
     .idp-section-hd { font-size: 15px; font-weight: 600; color: var(--color-fg-primary); padding: 8px 0; }
     .idp-desc-text { font-size: 14px; font-weight: 300; color: var(--color-fg-primary); line-height: 1.4; padding: 0; margin: 0 0 8px; white-space: pre-wrap; }
-    .idp-more-btn { background: none; border: none; color: var(--color-fg-accent); font-size: 14px; font-weight: 600; padding: 0 0 8px; cursor: pointer; text-decoration: underline; display: block; }
+    .idp-more-btn { background: none; border: none; color: var(--color-fg-primary); font-size: 14px; font-weight: 600; padding: 0 0 8px; cursor: pointer; display: block; }
     .idp-timestamp { display: flex; align-items: center; gap: 4px; padding: 8px 0 var(--spacing-16); color: var(--color-fg-secondary); font-size: 12px; font-weight: 300; }
     /* Metadata expand */
     .idp-meta { overflow: hidden; max-height: 0; opacity: 0; transition: max-height var(--duration-300) var(--ease-middle-out), opacity var(--duration-200) var(--ease-middle-out); }
@@ -1999,7 +1999,7 @@
     .idp-seller-item { flex-shrink: 0; width: 96px; cursor: pointer; }
     .idp-seller-item-img { width: 96px; height: 96px; object-fit: cover; border-radius: var(--radius-small); display: block; background: var(--color-bg-secondary); }
     .idp-seller-item-price { font-size: 12px; font-weight: 600; color: var(--color-fg-primary); margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .idp-bundle-btn { display: flex; align-items: center; justify-content: center; gap: var(--spacing-6); margin: var(--spacing-8) var(--spacing-16) 0; padding: var(--spacing-8); background: var(--color-bg-secondary); border: none; border-radius: 100px; font-size: 14px; font-weight: 600; color: var(--color-fg-primary); cursor: pointer; }
+    .idp-bundle-btn { display: flex; align-items: center; justify-content: center; gap: var(--spacing-6); margin: var(--spacing-8) var(--spacing-16) 0; padding: var(--spacing-8); background: var(--color-bg-secondary); border: none; border-radius: 100px; font-size: 14px; font-weight: 600; color: var(--color-fg-primary); cursor: pointer; width: calc(100% - var(--spacing-32)); box-sizing: border-box; }
     /* === Promo Area === */
     .idp-promo-section { padding: var(--spacing-16); }
     .idp-promo-row { display: flex; align-items: center; justify-content: space-between; background: var(--color-bg-secondary); border-radius: var(--radius-medium); padding: 14px var(--spacing-16); margin-bottom: var(--spacing-8); cursor: pointer; }
@@ -2014,7 +2014,7 @@
     .idp-campaign-orig { font-size: 12px; font-weight: 400; color: var(--color-fg-tertiary); text-decoration: line-through; }
     .idp-campaign-sale { font-size: 15px; font-weight: 600; color: var(--color-fg-attention); }
     /* === Comments === */
-    .idp-comments-section { padding: var(--spacing-16); }
+    .idp-comments-section { padding: 0 var(--spacing-16); }
     .idp-comment-item { display: flex; align-items: flex-start; gap: var(--spacing-8); margin-bottom: var(--spacing-16); }
     .idp-comment-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 0.5px solid var(--color-border-primary); }
     .idp-comment-body { flex: 1; min-width: 0; }
@@ -2039,7 +2039,7 @@
     /* === Similar Items Grid === */
     .idp-similar-section { padding: var(--spacing-16); }
     .idp-similar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: var(--spacing-12) 0 0; }
-    .idp-similar-tile { position: relative; aspect-ratio: 1; cursor: pointer; overflow: hidden; background: var(--color-bg-secondary); }
+    .idp-similar-tile { position: relative; aspect-ratio: 1; cursor: pointer; overflow: hidden; background: var(--color-bg-secondary); border-radius: var(--radius-small); }
     .idp-similar-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .idp-similar-price { position: absolute; bottom: 4px; left: 4px; background: rgba(0,0,0,0.55); color: #fff; font-size: 11px; font-weight: 600; padding: 2px 5px; border-radius: 3px; white-space: nowrap; }
     .idp-similar-heart { position: absolute; top: 4px; right: 4px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; background: none; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -4677,15 +4677,19 @@
     btn.textContent = isOpen ? '閉じる' : 'もっと見る';
   }
 
+  var _idpHeartOutlineSVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>';
+  var _idpHeartFillSVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg>';
   function toggleIdpHeart() {
     _idpHeart = !_idpHeart;
     const btn = document.getElementById('idp-like-btn');
     if (_idpHeart) {
       btn.classList.add('liked');
       btn.style.color = 'var(--color-fg-attention)';
+      btn.innerHTML = _idpHeartFillSVG;
     } else {
       btn.classList.remove('liked');
       btn.style.color = '';
+      btn.innerHTML = _idpHeartOutlineSVG;
     }
     document.getElementById('idp-like-count').textContent = _idpLikeBase + (_idpHeart ? 1 : 0);
   }
@@ -4724,7 +4728,7 @@
         <div class="idp-actions-left">
           <div class="idp-action">
             <button class="idp-action-icon-btn" id="idp-like-btn" onclick="toggleIdpHeart()">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" id="idp-like-svg"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
             </button>
             <span class="idp-action-count" id="idp-like-count">0</span>
           </div>
@@ -4824,33 +4828,32 @@
         <div class="idp-seller-items-track">
           <div class="idp-seller-item" onclick="openItemDetail('m13123262312')">
             <img class="idp-seller-item-img" src="assets/items/m13123262312_1.jpg" alt="">
-            <div class="idp-seller-item-price">¥ 2,400</div>
+            <div class="idp-seller-item-price">¥2,400</div>
           </div>
           <div class="idp-seller-item" onclick="openItemDetail('m15840376446')">
             <img class="idp-seller-item-img" src="assets/items/m15840376446_1.jpg" alt="">
-            <div class="idp-seller-item-price">¥ 800</div>
+            <div class="idp-seller-item-price">¥800</div>
           </div>
           <div class="idp-seller-item" onclick="openItemDetail('m16741083497')">
             <img class="idp-seller-item-img" src="assets/items/m16741083497_1.jpg" alt="">
-            <div class="idp-seller-item-price">¥ 5,500</div>
+            <div class="idp-seller-item-price">¥5,500</div>
           </div>
           <div class="idp-seller-item" onclick="openItemDetail('m17665382262')">
             <img class="idp-seller-item-img" src="assets/items/m17665382262_1.jpg" alt="">
-            <div class="idp-seller-item-price">¥ 1,200</div>
+            <div class="idp-seller-item-price">¥1,200</div>
           </div>
           <div class="idp-seller-item" onclick="openItemDetail('m19973594351')">
             <img class="idp-seller-item-img" src="assets/items/m19973594351_1.jpeg" alt="">
-            <div class="idp-seller-item-price">¥ 3,800</div>
+            <div class="idp-seller-item-price">¥3,800</div>
           </div>
           <div class="idp-seller-item" onclick="openItemDetail('m21715216087')">
             <img class="idp-seller-item-img" src="assets/items/m21715216087_1.jpg" alt="">
-            <div class="idp-seller-item-price">¥ 980</div>
+            <div class="idp-seller-item-price">¥980</div>
           </div>
         </div>
       </div>
       <!-- まとめ買いボタン -->
       <button class="idp-bundle-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
         まとめ買いをお願いする
       </button>
       <div class="idp-divider"></div>
@@ -4956,12 +4959,11 @@
         </div>
         <button class="idp-more-items-btn">
           もっと見る
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
       </div>
       <div class="idp-divider"></div>
       <!-- Watching section -->
-      <div class="idp-watching-section" style="padding: var(--spacing-16) 0 var(--spacing-16);">
+      <div class="idp-watching-section" style="padding: 0 var(--spacing-16);">
         <div class="idp-section-hd">この商品を見ている人におすすめ</div>
         <div class="idp-tile-grid">
           <div class="idp-tile" onclick="openItemDetail('m13177285590')">
