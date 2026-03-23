@@ -4302,7 +4302,12 @@
     const floatBar = document.getElementById('search-float-bar');
     floatBar.style.transition = 'none';
     floatBar.style.bottom = lastKeyboardH + 'px';
-    document.getElementById('search-input').focus();
+    document.getElementById('search-input').focus({ preventScroll: true });
+    window.scrollTo(0, 0);
+    // PC（キーボードなし）の場合は visualViewport resize が起きないので手動で初期化
+    requestAnimationFrame(() => {
+      if (searchJustOpened) updateFloatBar();
+    });
   }
 
   // × ボタン → キーボードを閉じて前の画面に戻る
