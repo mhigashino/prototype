@@ -4299,6 +4299,8 @@
   // 前回のキーボード高さを記憶（次回 goToSearch 時に即座に適用してラグを防ぐ）
   let lastKeyboardH = 0;
   let prevTab = 'home';
+  // 検索画面を開いた直後の最初のキーボード表示はアニメーションしない
+  let searchJustOpened = false;
 
   // 検索アイコンタップ → 検索画面に遷移 + キーボード即時起動
   function goToSearch(btn) {
@@ -4308,11 +4310,11 @@
     fixSearchContentHeight();
     document.querySelector('.search-content-scroll').scrollTop = 0;
     window.scrollTo(0, 0);
-    // トランジションを一時無効にして初期位置を即座に確定（アニメーションなし）
+    // 初期位置を即座に確定（open時はアニメーションしない）
+    searchJustOpened = true;
     const floatBar = document.getElementById('search-float-bar');
     floatBar.style.transition = 'none';
     floatBar.style.bottom = lastKeyboardH + 'px';
-    requestAnimationFrame(() => { floatBar.style.transition = ''; });
     document.getElementById('search-input').focus();
   }
 
@@ -4335,7 +4337,15 @@
     if (!vv) return;
     const keyboardH = Math.max(0, FULL_HEIGHT - vv.height);
     lastKeyboardH = keyboardH;
-    document.getElementById('search-float-bar').style.bottom = keyboardH + 'px';
+    const floatBar = document.getElementById('search-float-bar');
+    // open直後の最初のキーボード表示はアニメーションなしで即座に移動
+    if (searchJustOpened) {
+      floatBar.style.transition = 'none';
+      searchJustOpened = false;
+    } else {
+      floatBar.style.transition = '';
+    }
+    floatBar.style.bottom = keyboardH + 'px';
     fixSearchContentHeight();
   }
 
