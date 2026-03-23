@@ -1961,6 +1961,45 @@
     .idp-seller-meta { font-size: 12px; font-weight: 400; color: var(--color-fg-secondary); }
     .idp-seller-stars { display: flex; align-items: center; gap: 2px; margin-top: 2px; }
     .idp-follow-btn { display: flex; align-items: center; gap: 4px; background: var(--color-bg-secondary); border: none; border-radius: 100px; padding: 8px 14px; font-size: 12px; font-weight: 400; color: var(--color-fg-primary); cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+    /* === Seller Items Carousel === */
+    .idp-seller-items { margin: 0 calc(-1 * var(--spacing-16)); padding: var(--spacing-4) 0 var(--spacing-16); }
+    .idp-seller-items-track { display: flex; gap: var(--spacing-8); padding: var(--spacing-8) var(--spacing-16) 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .idp-seller-items-track::-webkit-scrollbar { display: none; }
+    .idp-seller-item { flex-shrink: 0; width: 96px; cursor: pointer; }
+    .idp-seller-item-img { width: 96px; height: 96px; object-fit: cover; border-radius: var(--radius-small); display: block; background: var(--color-bg-secondary); }
+    .idp-seller-item-price { font-size: 12px; font-weight: 600; color: var(--color-fg-primary); margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .idp-bundle-btn { display: flex; align-items: center; justify-content: center; gap: var(--spacing-6); width: 100%; margin-top: var(--spacing-12); padding: var(--spacing-12) var(--spacing-16); background: var(--color-bg-secondary); border: none; border-radius: var(--radius-medium); font-size: 14px; font-weight: 600; color: var(--color-fg-primary); cursor: pointer; }
+    /* === Promo Area === */
+    .idp-promo-section { padding: var(--spacing-16) 0; }
+    .idp-promo-row { display: flex; align-items: center; justify-content: space-between; background: var(--color-bg-secondary); border-radius: var(--radius-medium); padding: 14px var(--spacing-16); margin-bottom: var(--spacing-8); cursor: pointer; }
+    .idp-promo-left { display: flex; align-items: center; gap: var(--spacing-8); }
+    .idp-promo-label { font-size: 14px; font-weight: 600; color: var(--color-fg-primary); }
+    .idp-promo-sub { font-size: 12px; font-weight: 400; color: var(--color-fg-secondary); margin-top: 2px; }
+    .idp-campaign-card { background: var(--color-bg-secondary); border-radius: var(--radius-medium); padding: var(--spacing-12); display: flex; align-items: center; gap: var(--spacing-12); cursor: pointer; }
+    .idp-campaign-thumb { width: 56px; height: 56px; object-fit: cover; border-radius: var(--radius-small); flex-shrink: 0; background: var(--color-bg-tertiary); }
+    .idp-campaign-info { flex: 1; min-width: 0; }
+    .idp-campaign-title { font-size: 13px; font-weight: 600; color: var(--color-fg-primary); line-height: 1.4; margin-bottom: 4px; }
+    .idp-campaign-price { display: flex; align-items: center; gap: var(--spacing-8); }
+    .idp-campaign-orig { font-size: 12px; font-weight: 400; color: var(--color-fg-tertiary); text-decoration: line-through; }
+    .idp-campaign-sale { font-size: 15px; font-weight: 600; color: var(--color-fg-attention); }
+    /* === Comments === */
+    .idp-comments-section { padding: var(--spacing-16) 0; }
+    .idp-comment-item { display: flex; align-items: flex-start; gap: var(--spacing-8); margin-bottom: var(--spacing-16); }
+    .idp-comment-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 0.5px solid var(--color-border-primary); }
+    .idp-comment-body { flex: 1; min-width: 0; }
+    .idp-comment-name { font-size: 12px; font-weight: 400; color: var(--color-fg-secondary); margin-bottom: 4px; }
+    .idp-comment-bubble { background: var(--color-bg-secondary); border-radius: 12px; padding: 12px 8px 8px; }
+    .idp-comment-text { font-size: 14px; font-weight: 300; color: var(--color-fg-primary); line-height: 1.5; }
+    .idp-comment-time { font-size: 12px; font-weight: 300; color: var(--color-fg-tertiary); margin-top: 6px; text-align: right; }
+    .idp-comment-btn { display: flex; align-items: center; justify-content: center; gap: var(--spacing-6); width: 100%; margin-top: var(--spacing-4); padding: var(--spacing-12) var(--spacing-16); border: var(--border-thin) solid var(--color-border-primary); background: var(--color-bg-primary); border-radius: var(--radius-medium); font-size: 14px; font-weight: 600; color: var(--color-fg-primary); cursor: pointer; }
+    /* === Similar Items Grid === */
+    .idp-similar-section { padding: var(--spacing-16) 0; }
+    .idp-similar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: var(--spacing-12) calc(-1 * var(--spacing-16)) 0; }
+    .idp-similar-tile { position: relative; aspect-ratio: 1; cursor: pointer; overflow: hidden; background: var(--color-bg-secondary); }
+    .idp-similar-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .idp-similar-price { position: absolute; bottom: 4px; left: 4px; background: rgba(0,0,0,0.55); color: #fff; font-size: 11px; font-weight: 600; padding: 2px 5px; border-radius: 3px; white-space: nowrap; }
+    .idp-similar-heart { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.85); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-fg-tertiary); }
+    .idp-more-items-btn { display: flex; align-items: center; justify-content: center; gap: var(--spacing-6); width: 100%; margin-top: var(--spacing-12); padding: var(--spacing-12) var(--spacing-16); border: var(--border-thin) solid var(--color-border-primary); background: var(--color-bg-primary); border-radius: var(--radius-medium); font-size: 14px; font-weight: 600; color: var(--color-fg-primary); cursor: pointer; }
     /* Bottom bar — fixed above tab bar with 16px margin */
     .idp-bottom-bar { position: absolute; left: 0; right: 0; bottom: calc(76px + 16px + env(safe-area-inset-bottom, 0px)); display: flex; gap: 8px; padding: 0 16px; background: transparent; }
     /* Primary: brand red pill */
@@ -4666,6 +4705,146 @@
         <button class="idp-follow-btn">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           フォロー
+        </button>
+      </div>
+      <!-- Seller items carousel -->
+      <div class="idp-seller-items">
+        <div class="idp-seller-items-track">
+          <div class="idp-seller-item" onclick="openItemDetail('m13123262312')">
+            <img class="idp-seller-item-img" src="assets/items/m13123262312_1.jpg" alt="">
+            <div class="idp-seller-item-price">¥ 2,400</div>
+          </div>
+          <div class="idp-seller-item" onclick="openItemDetail('m15840376446')">
+            <img class="idp-seller-item-img" src="assets/items/m15840376446_1.jpg" alt="">
+            <div class="idp-seller-item-price">¥ 800</div>
+          </div>
+          <div class="idp-seller-item" onclick="openItemDetail('m16741083497')">
+            <img class="idp-seller-item-img" src="assets/items/m16741083497_1.jpg" alt="">
+            <div class="idp-seller-item-price">¥ 5,500</div>
+          </div>
+          <div class="idp-seller-item" onclick="openItemDetail('m17665382262')">
+            <img class="idp-seller-item-img" src="assets/items/m17665382262_1.jpg" alt="">
+            <div class="idp-seller-item-price">¥ 1,200</div>
+          </div>
+          <div class="idp-seller-item" onclick="openItemDetail('m19973594351')">
+            <img class="idp-seller-item-img" src="assets/items/m19973594351_1.jpeg" alt="">
+            <div class="idp-seller-item-price">¥ 3,800</div>
+          </div>
+          <div class="idp-seller-item" onclick="openItemDetail('m21715216087')">
+            <img class="idp-seller-item-img" src="assets/items/m21715216087_1.jpg" alt="">
+            <div class="idp-seller-item-price">¥ 980</div>
+          </div>
+        </div>
+      </div>
+      <!-- まとめ買いボタン -->
+      <button class="idp-bundle-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        まとめ買いをお願いする
+      </button>
+      <div class="idp-divider"></div>
+      <!-- Promo area -->
+      <div class="idp-promo-section">
+        <div class="idp-section-hd">お得な情報</div>
+        <div class="idp-promo-row">
+          <div class="idp-promo-left">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9V6a1 1 0 011-1h18a1 1 0 011 1v3a2 2 0 000 4v3a1 1 0 01-1 1H3a1 1 0 01-1-1v-3a2 2 0 000-4z"/><line x1="9" y1="5" x2="9" y2="19" stroke-dasharray="2 2"/></svg>
+            <div>
+              <div class="idp-promo-label">クーポン（5）</div>
+              <div class="idp-promo-sub">最大50%OFFクーポンあり</div>
+            </div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        <div class="idp-campaign-card">
+          <img class="idp-campaign-thumb" src="assets/items/m22061208429_1.jpg" alt="">
+          <div class="idp-campaign-info">
+            <div class="idp-campaign-title">メルカリ半額クーポンもらえる（条件あり）</div>
+            <div class="idp-campaign-price">
+              <span class="idp-campaign-orig">¥15,000</span>
+              <span class="idp-campaign-sale">¥5,000</span>
+            </div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+      </div>
+      <div class="idp-divider"></div>
+      <!-- Comments section -->
+      <div class="idp-comments-section">
+        <div class="idp-section-hd">コメント（4）</div>
+        <div class="idp-comment-item">
+          <img class="idp-comment-avatar" src="assets/images/avatar_profile.png" alt="">
+          <div class="idp-comment-body">
+            <div class="idp-comment-name">メルカリユーザー</div>
+            <div class="idp-comment-bubble">
+              <div class="idp-comment-text">まだ購入可能ですか？</div>
+              <div class="idp-comment-time">2日前</div>
+            </div>
+          </div>
+        </div>
+        <div class="idp-comment-item">
+          <img class="idp-comment-avatar" src="assets/images/cart_seller_hanako.png" alt="">
+          <div class="idp-comment-body">
+            <div class="idp-comment-name">出品者</div>
+            <div class="idp-comment-bubble">
+              <div class="idp-comment-text">はい、購入可能です。お気軽にどうぞ！</div>
+              <div class="idp-comment-time">2日前</div>
+            </div>
+          </div>
+        </div>
+        <div class="idp-comment-item">
+          <img class="idp-comment-avatar" src="assets/images/cart_seller_merblue.png" alt="">
+          <div class="idp-comment-body">
+            <div class="idp-comment-name">メルカリユーザー</div>
+            <div class="idp-comment-bubble">
+              <div class="idp-comment-text">値下げはできますか？</div>
+              <div class="idp-comment-time">1日前</div>
+            </div>
+          </div>
+        </div>
+        <button class="idp-comment-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          コメントする
+        </button>
+      </div>
+      <div class="idp-divider"></div>
+      <!-- Similar items grid -->
+      <div class="idp-similar-section">
+        <div class="idp-section-hd">見た目が近い商品</div>
+        <div class="idp-similar-grid">
+          <div class="idp-similar-tile" onclick="openItemDetail('m23600438658')">
+            <img src="assets/items/m23600438658_1.jpg" alt="">
+            <div class="idp-similar-price">¥ 1,800</div>
+            <button class="idp-similar-heart" onclick="toggleHeart(this,event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-similar-tile" onclick="openItemDetail('m12564664931')">
+            <img src="assets/items/m12564664931_1.jpg" alt="">
+            <div class="idp-similar-price">¥ 3,200</div>
+            <button class="idp-similar-heart" onclick="toggleHeart(this,event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-similar-tile" onclick="openItemDetail('m21892531602')">
+            <img src="assets/items/m21892531602_1.jpg" alt="">
+            <div class="idp-similar-price">¥ 900</div>
+            <button class="idp-similar-heart" onclick="toggleHeart(this,event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-similar-tile" onclick="openItemDetail('m12243314380')">
+            <img src="assets/items/m12243314380_1.jpg" alt="">
+            <div class="idp-similar-price">¥ 6,800</div>
+            <button class="idp-similar-heart" onclick="toggleHeart(this,event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-similar-tile" onclick="openItemDetail('m11907952254')">
+            <img src="assets/items/m11907952254_1.jpg" alt="">
+            <div class="idp-similar-price">¥ 2,500</div>
+            <button class="idp-similar-heart" onclick="toggleHeart(this,event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+          <div class="idp-similar-tile" onclick="openItemDetail('m14507886335')">
+            <img src="assets/items/m14507886335_1.jpg" alt="">
+            <div class="idp-similar-price">¥ 4,200</div>
+            <button class="idp-similar-heart" onclick="toggleHeart(this,event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          </div>
+        </div>
+        <button class="idp-more-items-btn">
+          もっと見る
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
       </div>
     </div>
