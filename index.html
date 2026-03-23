@@ -2012,8 +2012,9 @@
     .idp-tile-heart { position: absolute; top: 4px; right: 4px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; background: none; padding: 0; -webkit-tap-highlight-color: transparent; }
     .idp-tile-heart svg path { fill: rgba(0,0,0,0.18) !important; stroke: #fff !important; stroke-width: 1 !important; stroke-linejoin: round !important; }
     .idp-tile-heart.liked svg path { fill: #FF333F !important; stroke: #fff !important; stroke-width: 1 !important; stroke-linejoin: round !important; }
-    .idp-tile-sold { position: absolute; top: 0; left: 0; width: 40px; height: 40px; overflow: hidden; pointer-events: none; }
-    .idp-tile-sold::before { content: 'SOLD'; position: absolute; top: 10px; left: -14px; width: 52px; background: #FF0211; color: #fff; font-size: 7px; font-weight: 800; letter-spacing: 0.5px; text-align: center; padding: 2px 0; transform: rotate(-45deg); }
+    .idp-tile-sold { position: absolute; top: 0; left: 0; width: 40px; height: 40px; overflow: hidden; pointer-events: none; z-index: 2; }
+    .idp-tile-sold::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 0; border-style: solid; border-width: 40px 40px 0 0; border-color: #FF333F transparent transparent transparent; }
+    .idp-tile-sold::after { content: 'SOLD'; position: absolute; top: 10px; left: 0; width: 28px; text-align: center; font-size: 8px; font-weight: 700; color: #fff; transform: rotate(-45deg); transform-origin: center center; line-height: 1; letter-spacing: 0.04em; }
     /* === Similar Items Grid === */
     .idp-similar-section { padding: var(--spacing-16) 0; }
     .idp-similar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: var(--spacing-12) 0 0; }
