@@ -4474,10 +4474,12 @@
         prevItem.classList.add('active');
         updateTabIndicator(prevItem);
       }
-      // IDPを再度開く
+      // IDPを再度開く（アニメーションなし）
       _populateIdp(_currentItemId);
       const idp = document.getElementById('screen-idp');
+      idp.style.transition = 'none';
       idp.classList.add('open');
+      requestAnimationFrame(() => { idp.style.transition = ''; });
       document.body.classList.add('idp-open');
       history.replaceState(null, '', '#item/' + _currentItemId);
     } else {
