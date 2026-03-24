@@ -5086,7 +5086,7 @@
         if (currentOffset >= PTR_THRESHOLD * 0.75) {
           triggered = true;
           // 閾値位置でキープしてスピン
-          var holdOffset = PTR_THRESHOLD;
+          var holdOffset = 44;
           el.style.transition = 'transform var(--duration-200) var(--ease-middle-out)';
           el.style.transform = 'translateY(' + holdOffset + 'px)';
           spinner.style.top = (headerH + holdOffset / 2 - SPINNER_SIZE) + 'px';
