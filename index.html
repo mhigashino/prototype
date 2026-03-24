@@ -2169,7 +2169,7 @@
 
     .checkout-sheet-body {
       overflow-y: auto; -webkit-overflow-scrolling: touch;
-      padding: var(--spacing-8);
+      padding: var(--spacing-8) var(--spacing-16);
     }
     .checkout-sheet-body > * + * { margin-top: var(--spacing-8); }
     .checkout-sheet-body::-webkit-scrollbar { display: none; }
@@ -2244,6 +2244,9 @@
       display: flex; align-items: center;
       padding: var(--spacing-12) var(--spacing-16); gap: var(--spacing-12);
     }
+    .co-balance-row + .co-balance-row {
+      border-top: var(--border-thin) solid var(--color-border-secondary);
+    }
     .co-balance-icon {
       width: 32px; height: 32px; border-radius: var(--radius-full);
       background: var(--color-bg-brand);
@@ -2263,8 +2266,9 @@
       background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
 
-    /* Billing (gray card) */
+    /* Billing (white card) */
     .co-billing {
+      background: var(--color-bg-primary);
       border-radius: var(--radius-medium);
       padding: var(--spacing-16);
       display: flex; flex-direction: column; gap: var(--spacing-2);
@@ -2339,7 +2343,7 @@
     /* Item object row (white bg, top of scroll) */
     .co-confirm-item-obj {
       display: flex; gap: var(--spacing-12); align-items: flex-start;
-      padding: var(--spacing-16);
+      padding: var(--spacing-16) var(--spacing-16) 0;
       flex-shrink: 0;
     }
 
@@ -5723,17 +5727,15 @@
     </div>
     <div class="checkout-sheet-body">
       <!-- 商品情報 -->
-      <div class="co-card">
-        <div class="co-item-row">
-          <img id="checkout-item-img" class="co-item-img" src="" alt="">
-          <div class="co-item-info">
-            <div id="checkout-item-title" class="co-item-title"></div>
-            <div class="co-item-price-row">
-              <span id="checkout-item-price" class="co-item-price"></span>
-              <span class="co-item-shipping">送料込み</span>
-            </div>
-            <div id="checkout-item-condition" class="co-item-condition"></div>
+      <div class="co-item-row">
+        <img id="checkout-item-img" class="co-item-img" src="" alt="">
+        <div class="co-item-info">
+          <div id="checkout-item-title" class="co-item-title"></div>
+          <div class="co-item-price-row">
+            <span id="checkout-item-price" class="co-item-price"></span>
+            <span class="co-item-shipping">送料込み</span>
           </div>
+          <div id="checkout-item-condition" class="co-item-condition"></div>
         </div>
       </div>
       <!-- 配送情報 -->
@@ -5772,29 +5774,49 @@
           </label>
         </div>
       </div>
-      <!-- メルペイ残高 -->
+      <!-- メルペイ残高 / ポイント / ビットコイン / クーポン -->
       <div class="co-card">
         <div class="co-balance-row">
-          <div class="co-balance-icon">メ</div>
+          <div class="co-balance-icon" style="background:var(--color-bg-brand);">メ</div>
           <div class="co-balance-info">
-            <div class="co-balance-label">メルペイ残高</div>
+            <div class="co-balance-label">メルペイ残高の使用</div>
             <div class="co-balance-amount">残高 ¥1,050</div>
           </div>
           <div class="co-toggle"></div>
         </div>
+        <div class="co-balance-row">
+          <div class="co-balance-icon" style="background:var(--color-bg-accent);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" color="var(--color-fg-bold)"><path fill-rule="evenodd" d="M6.444 3.685a10 10 0 1 1 11.112 16.63A10 10 0 0 1 6.444 3.685m.778 15.466A8.6 8.6 0 0 0 12 20.6a8.61 8.61 0 0 0 8.6-8.6 8.6 8.6 0 1 0-13.378 7.15M10 7h3.17a3.14 3.14 0 0 1 2.1.81 3.2 3.2 0 0 1 .89 2.39 2.88 2.88 0 0 1-2.9 3.05h-2.73V16a.7.7 0 1 1-1.4 0V7.86A.87.87 0 0 1 10 7m.55 4.86h2.73v-.01a1.478 1.478 0 0 0 1.5-1.65 1.84 1.84 0 0 0-.47-1.38 1.73 1.73 0 0 0-1.12-.43h-2.64z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="co-balance-info">
+            <div class="co-balance-label">ポイントの使用</div>
+            <div class="co-balance-amount">50P</div>
+          </div>
+          <div class="co-toggle"></div>
+        </div>
+        <div class="co-balance-row">
+          <div class="co-balance-icon" style="background:var(--color-bg-expectation);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" color="var(--color-fg-bold)"><path d="M13.9 12.67h-3.37v2.64h3.37c.73 0 1.32-.59 1.32-1.32s-.59-1.32-1.32-1.32M13.9 8.67h-3.37v2.64h3.37c.73 0 1.32-.59 1.32-1.32s-.59-1.32-1.32-1.32"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m4.58 11.99c0 1.48-1.2 2.68-2.68 2.68h-1.22v1.32c0 .38-.3.68-.68.68s-.68-.3-.68-.68v-1.32H8.35c-.38 0-.68-.3-.68-.68s.3-.68.68-.68h.82v-2.64h-.82c-.38 0-.68-.3-.68-.68s.3-.68.68-.68h.82V8.67h-.82c-.38 0-.68-.3-.68-.68s.3-.68.68-.68h2.97V5.99c0-.38.3-.68.68-.68s.68.3.68.68v1.32h1.22c1.48 0 2.68 1.2 2.68 2.68 0 .8-.36 1.51-.91 2 .56.49.91 1.2.91 2"/></svg>
+          </div>
+          <div class="co-balance-info">
+            <div class="co-balance-label">ビットコインの使用</div>
+            <div class="co-balance-amount">0 BTC</div>
+          </div>
+          <div class="co-toggle"></div>
+        </div>
+        <div class="co-balance-row">
+          <div class="co-balance-icon" style="background:var(--color-bg-success);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" color="var(--color-fg-bold)"><path d="m21.799 9.245-2.06-2.06a.706.706 0 0 0-.99 0c-.52.52-1.39.51-1.92-.03-.54-.54-.55-1.4-.03-1.92.27-.27.27-.72 0-.99l-2.06-2.05a.7.7 0 0 0-.5-.21c-.19 0-.36.07-.5.21l-11.54 11.55c-.13.13-.21.31-.21.5s.07.36.21.5l2.06 2.06c.27.27.72.27.99 0 .25-.25.58-.38.94-.38h.01c.37 0 .71.15.97.41.54.54.55 1.4.03 1.92-.27.27-.27.72 0 .99l2.06 2.06c.14.14.32.21.5.21s.36-.07.5-.21l11.55-11.55c.27-.27.27-.72 0-.99zm-4.31 3.32-.12-.12a.6.6 0 0 0-.85 0 .61.61 0 0 0 0 .85l.12.12-6.89 6.89-1.13-1.13c.61-1.05.45-2.43-.46-3.34-.52-.52-1.22-.81-1.95-.82-.54 0-.98.12-1.39.36l-1.13-1.13 6.84-6.84.15.15c.12.12.27.17.42.17s.31-.06.43-.18a.61.61 0 0 0 0-.85l-.14-.14 2.87-2.87 1.13 1.13c-.61 1.05-.45 2.43.46 3.34s2.29 1.06 3.34.46l1.13 1.13-2.82 2.82zm-3.78-3.72c.24.23.24.61 0 .85a.607.607 0 0 1-.85.01l-.73-.72a.59.59 0 0 1 0-.85c.23-.24.61-.24.85 0l.73.72zm2.19 2.16c.24.23.24.61 0 .85a.607.607 0 0 1-.85.01l-.73-.72a.59.59 0 0 1 0-.85c.23-.24.61-.24.85 0l.73.72z"/></svg>
+          </div>
+          <div class="co-balance-info">
+            <div class="co-balance-label">クーポン</div>
+            <div class="co-balance-amount">利用しない</div>
+          </div>
+          <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </div>
       </div>
-      <!-- ポイント/クーポン/あんしん鑑定 -->
+      <!-- あんしん鑑定 -->
       <div class="co-card">
-        <div class="co-row">
-          <span class="co-row-label">ポイント</span>
-          <span class="co-row-value">50P 利用しない</span>
-          <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
-        </div>
-        <div class="co-row">
-          <span class="co-row-label">クーポン</span>
-          <span class="co-row-value">利用しない</span>
-          <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
-        </div>
         <div class="co-row">
           <span class="co-row-label">あんしん鑑定</span>
           <span class="co-row-value">利用しない</span>
