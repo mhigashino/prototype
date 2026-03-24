@@ -2154,15 +2154,11 @@
       display: flex; align-items: center; justify-content: center;
       padding: var(--spacing-16) var(--spacing-16) var(--spacing-12);
       position: relative; flex-shrink: 0;
-      border-bottom: var(--border-thin) solid var(--color-border-primary);
-      background: var(--color-bg-primary);
     }
     .checkout-sheet-title { font-size: 17px; font-weight: 600; }
     .checkout-sheet-close {
       position: absolute; right: var(--spacing-12); top: 50%; transform: translateY(-50%);
-      width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
-      border: none; background: none; cursor: pointer;
-      color: var(--color-fg-primary); border-radius: var(--radius-full);
+      color: var(--color-fg-primary);
     }
 
     .checkout-sheet-body {
@@ -2284,8 +2280,6 @@
       padding: var(--spacing-12) var(--spacing-16);
       padding-bottom: calc(var(--spacing-12) + env(safe-area-inset-bottom, 0px));
       display: flex; flex-direction: row; gap: var(--spacing-12); flex-shrink: 0;
-      border-top: var(--border-thin) solid var(--color-border-primary);
-      background: var(--color-bg-primary);
     }
     .co-apple-pay-btn {
       height: 45px; border-radius: var(--radius-full); border: none;
@@ -5702,7 +5696,7 @@
   <div id="checkout-sheet" class="checkout-sheet">
     <div class="checkout-sheet-header">
       <span class="checkout-sheet-title">購入手続き</span>
-      <button class="checkout-sheet-close" onclick="closeCheckout()">
+      <button class="checkout-sheet-close nav-icon-btn" onclick="closeCheckout()">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
