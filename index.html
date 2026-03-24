@@ -4698,8 +4698,8 @@
     // 既にアクティブなタブをタップ
     if (el.classList.contains('active')) {
       const idp = document.getElementById('screen-idp');
-      // ホームタブのダブルタップ + IDPが開いている → ホーム画面に戻る（保存状態もクリア）
-      if (tabName === 'home' && idp.classList.contains('open')) {
+      // ダブルタップ + IDPが開いている → そのタブのルートに戻る（保存状態もクリア）
+      if ((tabName === 'home' || tabName === 'auction' || tabName === 'list') && idp.classList.contains('open')) {
         idp.style.transition = 'none';
         idp.classList.remove('open');
         requestAnimationFrame(() => { idp.style.transition = ''; });
@@ -4713,7 +4713,7 @@
         _currentItemId = null;
         _currentItemIsAuction = false;
         _currentItemIsListing = false;
-        _tabStates['home'] = null;
+        _tabStates[tabName] = null;
         return;
       }
       // それ以外はスクロールトップ
