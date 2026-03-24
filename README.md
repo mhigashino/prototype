@@ -92,6 +92,17 @@ CLAUDE.md                # Claude Code向け開発ルール
 
 使用する際はSVGファイルをインラインで展開し、`color` CSSプロパティで色を制御してください。
 
+## Lottieアニメーション
+
+アニメーションには [lottie-web](https://github.com/airbnb/lottie-web) を使用しています。
+
+- CDN経由で読み込み（`<head>` 内の `<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js">`）
+- JSONファイルは `assets/images/` に配置
+- `lottie.loadAnimation()` で初期化し、2回目以降は `goToAndPlay(0, true)` で再生
+
+現在使用中のアニメーション：
+- `assets/images/mike-THX.json` — 購入完了ダイアログ（`#purchase-lottie`）
+
 ## 注意事項
 
 ### 商品画像について
@@ -116,14 +127,3 @@ CLAUDE.md                # Claude Code向け開発ルール
 - 追加・更新する画像は 1MB以下 にすること（超える場合は `sips -s format jpeg -s formatOptions 75 -Z 1200` で圧縮）
 - 変更後は必ず commit & push する
 - 機能の区切りには `git tag` でバージョンを記録する
-
-## Lottieアニメーション
-
-アニメーションには [lottie-web](https://github.com/airbnb/lottie-web) を使用しています。
-
-- CDN経由で読み込み（`<head>` 内の `<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js">`）
-- JSONファイルは `assets/images/` に配置
-- `lottie.loadAnimation()` で初期化し、2回目以降は `goToAndPlay(0, true)` で再生
-
-現在使用中のアニメーション：
-- `assets/images/mike-THX.json` — 購入完了ダイアログ（`#purchase-lottie`）
