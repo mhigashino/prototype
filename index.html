@@ -1640,7 +1640,7 @@
     color: var(--color-fg-tertiary);
     margin-top: 2px;
   }
-  .info-chevron { color: var(--color-fg-primary); flex-shrink: 0; }
+  .info-chevron { color: var(--color-fg-primary); flex-shrink: 0; width: 16px; height: 16px; }
 
   /* ── カート ── */
   #panel-cart .panel-scroll { background: #fff; }
@@ -2310,7 +2310,12 @@
       padding: var(--spacing-12) var(--spacing-16); gap: var(--spacing-12);
     }
     .co-balance-row + .co-balance-row {
-      border-top: var(--border-thin) solid var(--color-border-secondary);
+      position: relative;
+    }
+    .co-balance-row + .co-balance-row::before {
+      content: ''; position: absolute; top: 0;
+      left: var(--spacing-16); right: var(--spacing-16);
+      height: 1px; background: var(--color-border-secondary);
     }
     .co-balance-icon {
       width: 32px; height: 32px; border-radius: var(--radius-full);
@@ -4164,7 +4169,7 @@
             <div class="cart-coupon-title">クーポンを選択してください</div>
             <div class="cart-coupon-sub">利用可能なクーポンが1枚あります</div>
           </div>
-          <svg width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M1 1l6 5.5L1 12" stroke="#C7C7C7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color:var(--color-fg-tertiary);flex-shrink:0"><path d="M7.92 4.293a.95.95 0 0 1 1.372 0l6.788 7c.378.39.378 1.024 0 1.414l-6.788 7a.95.95 0 0 1-1.372 0 1.02 1.02 0 0 1 0-1.414L14.053 12 7.92 5.707a1.02 1.02 0 0 1 0-1.414"/></svg>
         </div>
 
         <!-- 支払い小計・ボタン -->
@@ -4271,7 +4276,7 @@
             <div class="info-label"><strong>本日23:59までに発送</strong>してください</div>
             <div class="info-sub">発送期限が迫っています</div>
           </div>
-          <svg class="info-chevron" width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M1 1l6 5.5L1 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="info-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.92 4.293a.95.95 0 0 1 1.372 0l6.788 7c.378.39.378 1.024 0 1.414l-6.788 7a.95.95 0 0 1-1.372 0 1.02 1.02 0 0 1 0-1.414L14.053 12 7.92 5.707a1.02 1.02 0 0 1 0-1.414"/></svg>
         </div>
 
         <!-- row 2: 発送待ち（商品サムネイル） -->
@@ -4283,7 +4288,7 @@
             <div class="info-label">購入者が支払いを完了しました。<strong>発送手続き</strong>をしてください</div>
             <div class="info-sub">発送待ち · 2件</div>
           </div>
-          <svg class="info-chevron" width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M1 1l6 5.5L1 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="info-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.92 4.293a.95.95 0 0 1 1.372 0l6.788 7c.378.39.378 1.024 0 1.414l-6.788 7a.95.95 0 0 1-1.372 0 1.02 1.02 0 0 1 0-1.414L14.053 12 7.92 5.707a1.02 1.02 0 0 1 0-1.414"/></svg>
         </div>
 
         <!-- row 3: 評価依頼（ユーザーアバター） -->
@@ -4295,7 +4300,7 @@
             <div class="info-label">取引が完了しました。<strong>評価</strong>をしてください</div>
             <div class="info-sub">評価待ち · taro_fashion さん</div>
           </div>
-          <svg class="info-chevron" width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M1 1l6 5.5L1 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="info-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.92 4.293a.95.95 0 0 1 1.372 0l6.788 7c.378.39.378 1.024 0 1.414l-6.788 7a.95.95 0 0 1-1.372 0 1.02 1.02 0 0 1 0-1.414L14.053 12 7.92 5.707a1.02 1.02 0 0 1 0-1.414"/></svg>
         </div>
 
         <!-- row 4: 受取評価（商品サムネイル） -->
@@ -4307,7 +4312,7 @@
             <div class="info-label">商品を受け取ったら<strong>受取評価</strong>をしてください</div>
             <div class="info-sub">受取確認待ち</div>
           </div>
-          <svg class="info-chevron" width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M1 1l6 5.5L1 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="info-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.92 4.293a.95.95 0 0 1 1.372 0l6.788 7c.378.39.378 1.024 0 1.414l-6.788 7a.95.95 0 0 1-1.372 0 1.02 1.02 0 0 1 0-1.414L14.053 12 7.92 5.707a1.02 1.02 0 0 1 0-1.414"/></svg>
         </div>
 
         <!-- row 5: 本人確認（メルカリアイコン） -->
@@ -4321,7 +4326,7 @@
             <div class="info-label">売上金の振込には<strong>本人確認</strong>が必要です</div>
             <div class="info-sub">かんたん本人確認で約5分</div>
           </div>
-          <svg class="info-chevron" width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M1 1l6 5.5L1 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="info-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.92 4.293a.95.95 0 0 1 1.372 0l6.788 7c.378.39.378 1.024 0 1.414l-6.788 7a.95.95 0 0 1-1.372 0 1.02 1.02 0 0 1 0-1.414L14.053 12 7.92 5.707a1.02 1.02 0 0 1 0-1.414"/></svg>
         </div>
       </div>
     </div>
