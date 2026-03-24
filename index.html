@@ -2238,7 +2238,7 @@
       padding: var(--spacing-8) var(--spacing-16);
     }
     .co-payment-name { flex: 1; font-size: 15px; font-weight: 600; color: var(--color-fg-primary); }
-    .co-radio-group { display: flex; flex-direction: column; position: relative; }
+    .co-radio-group { display: flex; flex-direction: column; position: relative; padding: var(--spacing-8) 0; }
     .co-radio-group::before {
       content: ''; position: absolute; top: 0;
       left: var(--spacing-16); right: var(--spacing-16);
@@ -5765,7 +5765,7 @@
       <div class="co-card">
         <div class="co-row">
           <span class="co-row-label">配送先</span>
-          <span class="co-row-value"><a href="#" onclick="return false;" style="color:var(--color-fg-accent);text-decoration:none;">田中 太郎<br>〒105-0011 東京都港区芝公園1-1-1</a></span>
+          <span class="co-row-value"><span style="color:var(--color-fg-primary);">田中 太郎<br>〒105-0011 東京都港区芝公園1-1-1</span></span>
           <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
         </div>
         <div class="co-row">
@@ -5804,21 +5804,21 @@
             <div class="co-balance-label">メルペイ残高の使用</div>
             <div class="co-balance-amount">残高 ¥1,050</div>
           </div>
-          <div class="co-toggle"></div>
+          <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
         </div>
         <div class="co-balance-row">
           <div class="co-balance-info">
             <div class="co-balance-label">ポイントの使用</div>
             <div class="co-balance-amount">50P</div>
           </div>
-          <div class="co-toggle"></div>
+          <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
         </div>
         <div class="co-balance-row">
           <div class="co-balance-info">
             <div class="co-balance-label">ビットコインの使用</div>
             <div class="co-balance-amount">¥0</div>
           </div>
-          <div class="co-toggle"></div>
+          <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
         </div>
         <div class="co-balance-row">
           <div class="co-balance-info">
@@ -5892,7 +5892,7 @@
           <div class="co-card">
             <div class="co-confirm-row">
               <span class="co-confirm-row-label">配送先</span>
-              <span class="co-confirm-row-value"><a href="#" onclick="return false;" style="color:var(--color-fg-accent);text-decoration:none;">田中 太郎<br>〒105-0011 東京都港区芝公園1-1-1</a></span>
+              <span class="co-confirm-row-value"><span style="color:var(--color-fg-primary);">田中 太郎<br>〒105-0011 東京都港区芝公園1-1-1</span></span>
             </div>
             <div class="co-confirm-row">
               <span class="co-confirm-row-label">置き配</span>
