@@ -14,7 +14,7 @@ https://mhigashino.github.io/prototype/
 
 パスワードは<a href="https://www.notion.so/Passwrod-2707fa9ffaef81b8a781cdcbfadd2a8f" target="_blank">こちら</a>
 
-### B. Claude Code で開発する
+### B. Claude Code で追加開発する
 
 リポジトリをクローンし、Claude Code で開発します。
 
