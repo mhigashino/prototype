@@ -6,6 +6,7 @@
   <link rel="apple-touch-icon" href="assets/images/icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Prototype">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   <script>
     var VERSION = 'v1.0';
     (function() {
@@ -5528,8 +5529,20 @@
     document.getElementById('checkout-confirm').classList.remove('open');
   }
 
+  var _purchaseLottie = null;
   function openPurchaseComplete() {
     document.getElementById('purchase-dialog-overlay').classList.add('open');
+    if (!_purchaseLottie) {
+      _purchaseLottie = lottie.loadAnimation({
+        container: document.getElementById('purchase-lottie'),
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        path: 'assets/images/mike-THX.json'
+      });
+    } else {
+      _purchaseLottie.goToAndPlay(0, true);
+    }
   }
 
   function closePurchaseComplete() {
@@ -6082,7 +6095,7 @@
       <div id="purchase-dialog-overlay" class="purchase-dialog-overlay">
         <div class="purchase-dialog">
           <div class="purchase-dialog-img-area">
-            <img src="assets/images/purchase-complete.png" alt="" style="width:100%;height:100%;object-fit:contain;">
+            <div id="purchase-lottie" style="width:100%;height:100%;"></div>
           </div>
           <div class="purchase-dialog-content">
             <div class="purchase-dialog-title">購入が完了しました</div>
