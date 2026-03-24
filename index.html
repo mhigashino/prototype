@@ -2255,7 +2255,7 @@
     .checkout-sheet-footer {
       padding: var(--spacing-16);
       padding-bottom: calc(var(--spacing-16) + env(safe-area-inset-bottom, 0px));
-      display: flex; flex-direction: column; gap: var(--spacing-8);
+      display: flex; flex-direction: row; gap: var(--spacing-8);
       flex-shrink: 0;
       border-top: var(--border-thin) solid var(--color-border-primary);
       background: var(--color-bg-primary);
@@ -2265,14 +2265,16 @@
       border: var(--border-thin) solid var(--color-border-primary);
       background: var(--color-bg-primary);
       display: flex; align-items: center; justify-content: center;
-      font-size: 17px; font-weight: 600; cursor: pointer;
-      color: var(--color-fg-primary); gap: var(--spacing-8);
+      font-size: 15px; font-weight: 600; cursor: pointer;
+      color: var(--color-fg-primary); gap: var(--spacing-6);
+      flex: 1;
     }
     .checkout-next-btn {
       height: 48px; border-radius: var(--radius-full); border: none;
       background: var(--color-bg-brand); color: var(--color-fg-bold);
-      font-size: 17px; font-weight: 600; cursor: pointer;
+      font-size: 15px; font-weight: 600; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
+      flex: 1;
     }
 
     /* ════════════════════════════════════════
