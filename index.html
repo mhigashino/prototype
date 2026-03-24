@@ -2254,7 +2254,7 @@
 
     /* Billing (gray card) */
     .co-billing {
-      background: var(--color-bg-secondary);
+      background: var(--color-bg-primary);
       border-radius: var(--radius-medium);
       padding: var(--spacing-16);
       display: flex; flex-direction: column; gap: var(--spacing-2);
@@ -2325,10 +2325,25 @@
     }
     .checkout-confirm-scroll {
       flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
-      padding: var(--spacing-8); display: flex; flex-direction: column; gap: var(--spacing-8);
-      padding-bottom: var(--spacing-40);
+      display: flex; flex-direction: column;
     }
     .checkout-confirm-scroll::-webkit-scrollbar { display: none; }
+
+    /* Item object row (white bg, top of scroll) */
+    .co-confirm-item-obj {
+      display: flex; gap: var(--spacing-12); align-items: flex-start;
+      padding: var(--spacing-16);
+      background: var(--color-bg-primary);
+      flex-shrink: 0;
+    }
+
+    /* Gray content area */
+    .co-confirm-gray-area {
+      flex: 1;
+      background: var(--color-bg-secondary);
+      padding: var(--spacing-16);
+      display: flex; flex-direction: column; gap: var(--spacing-16);
+    }
 
     .co-confirm-row {
       display: flex; align-items: flex-start;
@@ -2339,10 +2354,16 @@
     .co-confirm-row:first-child { border-top: none; }
     .co-confirm-row-label {
       font-size: 15px; font-weight: 600; color: var(--color-fg-primary);
-      flex-shrink: 0; width: 72px;
+      flex-shrink: 0;
     }
     .co-confirm-row-value {
-      flex: 1; font-size: 14px; font-weight: 300; color: var(--color-fg-secondary); line-height: 1.4;
+      flex: 1; font-size: 14px; font-weight: 300; color: var(--color-fg-secondary);
+      line-height: 1.4; text-align: right;
+    }
+
+    .checkout-confirm-caption {
+      font-size: 12px; font-weight: 300; color: var(--color-fg-tertiary);
+      line-height: 1.6;
     }
 
     .checkout-confirm-footer {
@@ -2350,10 +2371,6 @@
       padding-bottom: calc(var(--spacing-16) + env(safe-area-inset-bottom, 0px));
       background: var(--color-bg-primary); flex-shrink: 0;
       border-top: var(--border-thin) solid var(--color-border-primary);
-    }
-    .checkout-confirm-caption {
-      font-size: 12px; font-weight: 300; color: var(--color-fg-tertiary);
-      text-align: center; margin-bottom: var(--spacing-12); line-height: 1.6;
     }
     .checkout-buy-btn {
       width: 100%; height: 48px; border-radius: var(--radius-full); border: none;
@@ -5817,61 +5834,60 @@
         <span class="checkout-confirm-title-text">購入の確認</span>
       </div>
       <div class="checkout-confirm-scroll">
-        <!-- 商品 -->
-        <div class="co-card">
-          <div class="co-item-row">
-            <img id="confirm-item-img" class="co-item-img" src="" alt="">
-            <div class="co-item-info">
-              <div id="confirm-item-title" class="co-item-title"></div>
-              <div class="co-item-price-row">
-                <span id="confirm-item-price" class="co-item-price"></span>
-                <span class="co-item-shipping">送料込み</span>
-              </div>
-              <div id="confirm-item-condition" class="co-item-condition"></div>
+        <!-- Item object (white bg) -->
+        <div class="co-confirm-item-obj">
+          <img id="confirm-item-img" class="co-item-img" src="" alt="">
+          <div class="co-item-info">
+            <div id="confirm-item-title" class="co-item-title"></div>
+            <div class="co-item-price-row">
+              <span id="confirm-item-price" class="co-item-price"></span>
+              <span class="co-item-shipping">送料込み</span>
+            </div>
+            <div id="confirm-item-condition" class="co-item-condition"></div>
+          </div>
+        </div>
+        <!-- Gray area -->
+        <div class="co-confirm-gray-area">
+          <!-- 配送情報 -->
+          <div class="co-card">
+            <div class="co-confirm-row">
+              <span class="co-confirm-row-label">配送先</span>
+              <span class="co-confirm-row-value">東京都渋谷区恵比寿1-1-1</span>
+            </div>
+            <div class="co-confirm-row">
+              <span class="co-confirm-row-label">置き配</span>
+              <span class="co-confirm-row-value">玄関前に置く</span>
             </div>
           </div>
-        </div>
-        <!-- 配送・支払い情報 -->
-        <div class="co-card">
-          <div class="co-confirm-row">
-            <span class="co-confirm-row-label">配送先</span>
-            <span class="co-confirm-row-value">東京都渋谷区恵比寿1-1-1</span>
+          <!-- 請求 -->
+          <div class="co-billing">
+            <div class="co-billing-row">
+              <span class="co-billing-label">商品代金</span>
+              <span id="confirm-billing-price" class="co-billing-value"></span>
+            </div>
+            <div class="co-billing-row">
+              <span class="co-billing-label">クーポンの使用</span>
+              <span class="co-billing-value">-</span>
+            </div>
+            <div class="co-billing-sep"></div>
+            <div class="co-billing-total-row">
+              <span class="co-billing-total-label">支払い金額</span>
+              <span id="confirm-billing-total" class="co-billing-total-value"></span>
+            </div>
+            <div class="co-billing-row">
+              <span class="co-billing-label">還元予定ポイント</span>
+              <span id="confirm-billing-points" class="co-billing-value"></span>
+            </div>
+            <div class="co-billing-row">
+              <span class="co-billing-label">支払い方法</span>
+              <span class="co-billing-value">クレジットカード払い</span>
+            </div>
           </div>
-          <div class="co-confirm-row">
-            <span class="co-confirm-row-label">置き配</span>
-            <span class="co-confirm-row-value">玄関前に置く</span>
-          </div>
-          <div class="co-confirm-row">
-            <span class="co-confirm-row-label">支払い</span>
-            <span class="co-confirm-row-value">メルカード *1234（一括払い）</span>
-          </div>
-        </div>
-        <!-- 請求 -->
-        <div class="co-billing">
-          <div class="co-billing-row">
-            <span class="co-billing-label">商品代金</span>
-            <span id="confirm-billing-price" class="co-billing-value"></span>
-          </div>
-          <div class="co-billing-row">
-            <span class="co-billing-label">クーポン</span>
-            <span class="co-billing-value">-</span>
-          </div>
-          <div class="co-billing-row">
-            <span class="co-billing-label">支払い方法</span>
-            <span class="co-billing-value">メルカード</span>
-          </div>
-          <div class="co-billing-sep"></div>
-          <div class="co-billing-total-row">
-            <span class="co-billing-total-label">支払い金額</span>
-            <span id="confirm-billing-total" class="co-billing-total-value"></span>
-          </div>
-          <div style="text-align:right;">
-            <span id="confirm-billing-points" class="co-billing-points"></span>
-          </div>
+          <!-- 利用規約 -->
+          <p class="checkout-confirm-caption"><a href="#" onclick="return false;" style="color:var(--color-fg-accent);">利用規約</a>および<a href="#" onclick="return false;" style="color:var(--color-fg-accent);">プライバシーポリシー</a>に同意の上、ご購入ください。</p>
         </div>
       </div>
       <div class="checkout-confirm-footer">
-        <p class="checkout-confirm-caption">「購入する」ボタンを押すと、<a href="#" onclick="return false;" style="color:var(--color-fg-accent);">利用規約</a>に同意したことになります</p>
         <button class="checkout-buy-btn" onclick="openPurchaseComplete()">購入する</button>
       </div>
 
