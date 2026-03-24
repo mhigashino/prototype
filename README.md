@@ -14,43 +14,34 @@ https://mhigashino.github.io/prototype/
 
 パスワードは<a href="https://www.notion.so/Passwrod-2707fa9ffaef81b8a781cdcbfadd2a8f" target="_blank">こちら</a>
 
-### B. ローカルで動かす
+### B. Claude Code で開発する
 
-サーバーは不要です。リポジトリをクローンして `index.html` をブラウザで開くだけで動作します。
-
-```bash
-git clone https://github.com/mhigashino/prototype.git
-cd prototype
-open index.html
-```
-
-パスワードは<a href="https://www.notion.so/Passwrod-2707fa9ffaef81b8a781cdcbfadd2a8f" target="_blank">こちら</a>
-
-### C. Claude Code で開発する
-
-Claude Code をインストールし、リポジトリをクローンして開きます。
+リポジトリをクローンし、Claude Code で開発します。
 
 ```bash
 # Claude Code のインストール（未インストールの場合）
 npm install -g @anthropic-ai/claude-code
 
-# リポジトリをクローン
-git clone https://github.com/mhigashino/prototype.git
-cd prototype
+# リポジトリを任意のディレクトリにクローン
+git clone https://github.com/mhigashino/prototype.git ~/your-directory  # ← ここは自分の環境に合わせて変更
+
+cd ~/your-directory
 
 # Claude Code を起動
 claude
 ```
 
-クローン後はプロジェクトルートで `claude` を起動するだけで、`.claude/skills/ds-prototype/` のスキルが自動的に読み込まれます。
+プロジェクトルートで `claude` を起動するだけで、`.claude/skills/ds-prototype/` のスキルが自動的に読み込まれます。ブラウザで確認する場合はサーバー不要で `index.html` を直接開くだけで動作します。
 
 パスワードは<a href="https://www.notion.so/Passwrod-2707fa9ffaef81b8a781cdcbfadd2a8f" target="_blank">こちら</a>
 
 ### パスワード認証
 
-ページを開くとパスワード入力が求められます。パスワードはリポジトリ管理者に確認してください。
+ページを開くとパスワード入力が求められます。初期パスワードは `Mirai` です。
 
-- パスワードの変更は Claude Code に「パスワードを〇〇に変更して」と伝えることでも対応できます
+各自の環境では自分のパスワードに変更することを推奨します。
+
+- Claude Code に「パスワードを〇〇に変更して」と伝えるだけで変更できます
 - `index.html` 冒頭の `PASS` 変数を直接編集することもできます
 
 ```js
