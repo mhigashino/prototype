@@ -19,7 +19,7 @@ https://mhigashino.github.io/prototype/
 リポジトリをクローンし、Claude Code で開発します。
 
 ```bash
-git clone https://github.com/mhigashino/prototype.git ~/your-directory  # ← クローン先は自分の環境に合わせて変更
+git clone https://github.com/mhigashino/prototype.git /users/your-directory  # ← クローン先は自分の環境に合わせて変更
 ```
 
 プロジェクトルートで `claude` を起動するだけで、`.claude/skills/ds-prototype/` のスキルが自動的に読み込まれます。ブラウザで確認する場合はサーバー不要で `index.html` を直接開くだけで動作します。
