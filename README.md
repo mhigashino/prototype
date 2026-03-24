@@ -19,9 +19,6 @@ https://mhigashino.github.io/prototype/
 リポジトリをクローンし、Claude Code で開発します。
 
 ```bash
-# Claude Code のインストール（未インストールの場合）
-npm install -g @anthropic-ai/claude-code
-
 # リポジトリを任意のディレクトリにクローン
 git clone https://github.com/mhigashino/prototype.git ~/your-directory  # ← ここは自分の環境に合わせて変更
 
