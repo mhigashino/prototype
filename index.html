@@ -5047,12 +5047,19 @@
       }
 
       function snapBack() {
-        el.style.transition = 'transform var(--duration-300) var(--ease-middle-out)';
+        var dur = 'var(--duration-300) var(--ease-strong-out)';
+        el.style.transition = 'transform ' + dur;
         el.style.transform = '';
+        spinner.style.transition = 'opacity var(--duration-200) var(--ease-middle-out), top var(--duration-300) var(--ease-strong-out)';
         spinner.style.opacity = '0';
+        svg.style.transition = 'transform var(--duration-200) var(--ease-middle-out)';
         svg.style.transform = '';
         spinner.classList.remove('ptr-spinning');
-        setTimeout(function () { el.style.transition = ''; }, 300);
+        setTimeout(function () {
+          el.style.transition = '';
+          spinner.style.transition = '';
+          svg.style.transition = '';
+        }, 350);
       }
 
       el.addEventListener('touchstart', function (e) {
