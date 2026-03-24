@@ -2231,8 +2231,9 @@
     .co-row-chevron { color: var(--color-fg-primary); flex-shrink: 0; }
 
     /* 支払い方法 */
-    .co-payment-info { display: flex; flex-direction: column; align-items: flex-end; gap: var(--spacing-2); }
-    .co-payment-info-top { display: flex; align-items: center; gap: var(--spacing-6); color: var(--color-fg-primary); }
+    .co-payment-info { flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: var(--spacing-8); }
+    .co-payment-info-top { display: flex; align-items: center; gap: var(--spacing-6); }
+    .co-payment-info-text { display: flex; flex-direction: column; gap: var(--spacing-2); align-items: flex-start; }
     .co-payment-card-name { font-size: 14px; font-weight: 600; color: var(--color-fg-primary); }
     .co-payment-points { font-size: 11px; font-weight: 400; color: var(--color-fg-accent); }
 
@@ -5766,10 +5767,12 @@
           <div class="co-payment-info">
             <div class="co-payment-info-top">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M3.7 4.5h16.6A1.7 1.7 0 0 1 22 6.2v11.6a1.7 1.7 0 0 1-1.7 1.7H3.7A1.7 1.7 0 0 1 2 17.8V6.2a1.7 1.7 0 0 1 1.7-1.7m16.6 1.4H3.7a.31.31 0 0 0-.3.3v1.09h17.2V6.2a.31.31 0 0 0-.3-.3M3.7 18.1h16.6a.31.31 0 0 0 .3-.3V9.29H3.4v8.51a.31.31 0 0 0 .3.3m11.6-3.3h4v2h-4z" clip-rule="evenodd"/></svg>
-              <span class="co-payment-card-name">メルカード *1234</span>
-              <span class="co-row-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+              <div class="co-payment-info-text">
+                <span class="co-payment-card-name">メルカード *1234</span>
+                <span class="co-payment-points">P100還元予定</span>
+              </div>
             </div>
-            <span class="co-payment-points">P100還元予定</span>
+            <span class="co-row-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
           </div>
         </div>
       </div>
