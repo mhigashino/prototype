@@ -37,7 +37,7 @@ claude
 
 ### パスワード認証
 
-ページを開くとパスワード入力が求められます。初期パスワードは `Mirai` です。
+ページを開くとパスワード入力が求められます。初期パスワードは<a href="https://www.notion.so/Passwrod-2707fa9ffaef81b8a781cdcbfadd2a8f" target="_blank">こちら</a>です。
 
 各自の環境では自分のパスワードに変更することを推奨します。
 
@@ -45,7 +45,7 @@ claude
 - `index.html` 冒頭の `PASS` 変数を直接編集することもできます
 
 ```js
-var PASS = 'Mirai'; // ← ここを変更
+var PASS = 'Password'; // ← ここを変更
 ```
 
 ## バージョン管理
