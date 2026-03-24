@@ -132,6 +132,13 @@ CLAUDE.md                # Claude Code向け開発ルール
 現在使用中のアニメーション：
 - `assets/images/mike-THX.json` — 購入完了ダイアログ（`#purchase-lottie`）
 
+## 開発ルール
+
+- CSS・JSはすべて `index.html` 内にインラインで記述
+- デザインシステムは Mercari DS4 のトークン・コンポーネント仕様に準拠（`ds-prototype` スキル参照）
+- 追加・更新する画像は 1MB以下 にすること（超える場合は `sips -s format jpeg -s formatOptions 75 -Z 1200` で圧縮）
+- 変更後は必ず commit & push する
+
 ## 注意事項
 
 ### 商品画像について
@@ -148,10 +155,3 @@ CLAUDE.md                # Claude Code向け開発ルール
 - あくまでデザイン検討用のプロトタイプとして擬似的に構築されたサイトです
 - メルカリアプリ・メルカリWebのソースコードは使用していません
 - UIのインタラクション（画面遷移・アニメーション等）はすべて Claude Code で生成したものです
-
-## 開発ルール
-
-- CSS・JSはすべて `index.html` 内にインラインで記述
-- デザインシステムは Mercari DS4 のトークン・コンポーネント仕様に準拠（`ds-prototype` スキル参照）
-- 追加・更新する画像は 1MB以下 にすること（超える場合は `sips -s format jpeg -s formatOptions 75 -Z 1200` で圧縮）
-- 変更後は必ず commit & push する
