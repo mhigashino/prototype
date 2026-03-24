@@ -197,6 +197,7 @@
       height: 100dvh;
       background: var(--color-bg-primary);
       overflow: hidden;
+      overscroll-behavior: none;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
     }
 
@@ -206,6 +207,7 @@
       height: 100%;
       background: var(--color-bg-primary);
       overflow: hidden;
+      overscroll-behavior: none;
     }
 
     /* ── Screens ── */
@@ -1228,6 +1230,10 @@
     .home-icon-btns { display: flex; gap: 6px; flex-shrink: 0; }
     .home-icon-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--color-bg-secondary); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-fg-primary); }
     .home-icon-btn.liked { color: #FF333F; }
+    .home-icon-btn .hib-outline { display: block; }
+    .home-icon-btn .hib-fill { display: none; }
+    .home-icon-btn.liked .hib-outline { display: none; }
+    .home-icon-btn.liked .hib-fill { display: block; }
     /* 3×3 モザイクグリッド */
     .home-mosaic { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; width: 100%; margin-bottom: 16px; border-radius: 8px; overflow: hidden; }
     .home-tile { position: relative; overflow: hidden; aspect-ratio: 1; }
