@@ -4,22 +4,48 @@ iOSアプリのWebプロトタイプです。単一の `index.html` で全画面
 
 ## 起動方法
 
-サーバーは不要です。`index.html` をブラウザで開くだけで動作します
+### A. ブラウザで閲覧する（最も簡単）
+
+GitHub Pages の URL にアクセスするだけで動作します。インストール不要です。
+
+```
+https://mhigashino.github.io/prototype/
+```
+
+### B. ローカルで動かす
+
+サーバーは不要です。リポジトリをクローンして `index.html` をブラウザで開くだけで動作します。
 
 ```bash
 git clone https://github.com/mhigashino/prototype.git
+cd prototype
 open index.html
 ```
 
-または GitHub Pages のURL（ `https://mhigashino.github.io/prototype/` ）にアクセスしてください
+### C. Claude Code で開発する
+
+Claude Code をインストールし、リポジトリをクローンして開きます。
+
+```bash
+# Claude Code のインストール（未インストールの場合）
+npm install -g @anthropic-ai/claude-code
+
+# リポジトリをクローン
+git clone https://github.com/mhigashino/prototype.git
+cd prototype
+
+# Claude Code を起動
+claude
+```
+
+クローン後はプロジェクトルートで `claude` を起動するだけで、`.claude/skills/ds-prototype/` のスキルが自動的に読み込まれます。
 
 ### パスワード認証
 
-ページを開くとパスワード入力が求められます
+ページを開くとパスワード入力が求められます。パスワードはリポジトリ管理者に確認してください。
 
-- デフォルトパスワード: `Mirai`
-- セキュリティのため、`index.html` の冒頭にある `PASS` の値を変更することを推奨します
 - パスワードの変更は Claude Code に「パスワードを〇〇に変更して」と伝えることでも対応できます
+- `index.html` 冒頭の `PASS` 変数を直接編集することもできます
 
 ```js
 var PASS = 'Mirai'; // ← ここを変更
