@@ -26,6 +26,8 @@
   <script>
     // Hash-based deep link: #item/<itemId> — handled after main script loads
     window.addEventListener('hashchange', function() {
+      // 検索中はhashchangeを無視（exitSearch/goToSearchが状態を管理）
+      if (document.getElementById('screen-search') && document.getElementById('screen-search').classList.contains('active')) return;
       const m = location.hash.match(/^#item\/(.+)$/);
       if (m) {
         openItemDetail(m[1], true);
@@ -4910,11 +4912,17 @@
     if (idp.classList.contains('open')) {
       _searchFromIdp = true;
       _idpStackBeforeSearch = { stack: [..._navStack], currentItemId: _currentItemId, isAuction: _currentItemIsAuction };
+      // ベース画面の parallax クラスを即時解除（search中に画面が残らないように）
+      const baseEntry = _navStack.find(e => e.type === 'screen');
+      if (baseEntry && baseEntry.element) {
+        baseEntry.element.classList.remove('idp-prev', 'idp-nav');
+      }
       // IDPをアニメーションなしで即時閉じる
       idp.style.transition = 'none';
       idp.classList.remove('open');
       requestAnimationFrame(() => { idp.style.transition = ''; });
       document.body.classList.remove('idp-open');
+      if (location.hash.startsWith('#item/')) history.replaceState(null, '', location.pathname);
       _navStack = [];
       _currentItemId = null;
     } else {
@@ -4951,10 +4959,12 @@
       _currentItemIsAuction = _idpStackBeforeSearch.isAuction;
       _searchFromIdp = false;
       _idpStackBeforeSearch = null;
-      // ベース画面をアクティブに戻す（パララックスは保持されている）
+      // ベース画面をアクティブに戻す（parallaxクラスを再適用してIDPを重ねる）
       const baseEntry = _navStack.find(e => e.type === 'screen');
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      if (baseEntry && baseEntry.element) {
+      if (baseEntry && baseEntry.element && baseEntry.element.id !== 'screen-search') {
+        baseEntry.element.classList.add('active', 'idp-nav', 'idp-prev');
+      } else if (baseEntry && baseEntry.element) {
         baseEntry.element.classList.add('active');
       }
       // タブインジケーターを元のタブに戻す
@@ -5536,7 +5546,7 @@
       _purchaseLottie = lottie.loadAnimation({
         container: document.getElementById('purchase-lottie'),
         renderer: 'svg',
-        loop: false,
+        loop: true,
         autoplay: true,
         path: 'assets/images/mike-THX.json'
       });
