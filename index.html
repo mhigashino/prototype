@@ -11,8 +11,9 @@
       var VERSION = 'v1.0';
       var KEY = 'auth_05';
       var PASS = 'Mirai';
+      document.title = 'repo：prototype（' + VERSION + '）';
       if (sessionStorage.getItem(KEY) !== '1') {
-        var input = window.prompt('パスワードを入力してください (' + VERSION + ')');
+        var input = window.prompt('パスワードを入力してください');
         if (input !== PASS) {
           document.documentElement.innerHTML = '<body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#666;">認証に失敗しました</body>';
           throw new Error('Unauthorized');
