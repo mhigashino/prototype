@@ -213,6 +213,7 @@
       display: none;
       position: absolute;
       inset: 0;
+      overflow: hidden;
       background: var(--color-bg-primary);
     }
     .screen.active { display: block; }
@@ -913,6 +914,7 @@
     .list-scroll {
       position: absolute; inset: 0;
       overflow-y: auto; -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
       padding-top: calc(env(safe-area-inset-top) + 64px);
       padding-bottom: 100px;
     }
@@ -998,6 +1000,7 @@
     .auc-scroll {
       position: absolute; inset: 0;
       overflow-y: auto; -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
       padding-top: calc(env(safe-area-inset-top) + 64px);
       padding-bottom: 100px;
     }
@@ -1125,7 +1128,7 @@
 
     /* ── おさいふ画面 ── */
     #screen-wallet { background: var(--color-bg-secondary); overflow: hidden; }
-    .wal-scroll { position: absolute; inset: 0; overflow-y: auto; padding-top: calc(env(safe-area-inset-top) + 64px); padding-bottom: 100px; }
+    .wal-scroll { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior-y: contain; padding-top: calc(env(safe-area-inset-top) + 64px); padding-bottom: 100px; }
     /* Pay エリア */
     .wal-pay-area { background: var(--color-bg-secondary); padding: 4px 16px 0; }
     .wal-pay-card { background: var(--color-bg-primary); border-radius: 8px; padding: 0 16px 0; overflow: hidden; }
@@ -1209,7 +1212,7 @@
 
     /* ── ホーム画面 ── */
     #screen-home { background: var(--color-bg-primary); overflow: hidden; }
-    .home-scroll { position: absolute; inset: 0; overflow-y: auto; padding-top: calc(env(safe-area-inset-top) + 56px); padding-bottom: 100px; }
+    .home-scroll { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior-y: contain; padding-top: calc(env(safe-area-inset-top) + 56px); padding-bottom: 100px; }
     /* サブタブ */
     .home-subtab { display: flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--color-bg-primary); overflow-x: auto; }
     .home-subtab::-webkit-scrollbar { display: none; }
