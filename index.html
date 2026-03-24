@@ -136,6 +136,34 @@
       --spacing-80:  80px;
       --spacing-96:  96px;
       --spacing-128: 128px;
+
+      /* Brand */
+      --color-bg-brand:       #FF333F;  /* Background_Brand / Attention500 */
+      --color-bg-accent-light: #EFF7FF; /* Background_Accent_Light / Blue50 */
+      --color-fg-brand:       #FF333F;  /* Foreground_Brand */
+      --color-fg-attention-bold: #FFFFFF;
+
+      /* Motion: Duration */
+      --duration-0:    0ms;
+      --duration-50:   50ms;
+      --duration-150:  150ms;
+      --duration-200:  200ms;
+      --duration-250:  250ms;
+      --duration-300:  300ms;
+      --duration-500:  500ms;
+      --duration-750:  750ms;
+      --duration-1000: 1000ms;
+
+      /* Motion: Easing */
+      --ease-strong-out:   cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-strong-in:    cubic-bezier(0.84, 0, 0.78, 0);
+      --ease-strong-inout: cubic-bezier(0.83, 0, 0.17, 1);
+      --ease-middle-out:   cubic-bezier(0.33, 1, 0.68, 1);
+      --ease-middle-in:    cubic-bezier(0.32, 0, 0.67, 0);
+      --ease-middle-inout: cubic-bezier(0.65, 0, 0.35, 1);
+      --ease-weak-out:     cubic-bezier(0.61, 1, 0.88, 1);
+      --ease-weak-in:      cubic-bezier(0.12, 0, 0.39, 0);
+      --ease-weak-inout:   cubic-bezier(0.37, 0, 0.63, 1);
     }
 
     html, body {
@@ -2109,7 +2137,9 @@
     .checkout-overlay.open { opacity: 1; pointer-events: auto; }
 
     .checkout-sheet {
-      position: absolute; inset: 0;
+      position: absolute;
+      top: 60px; left: 0; right: 0; bottom: 0;
+      border-radius: var(--radius-large) var(--radius-large) 0 0;
       z-index: 301;
       background: var(--color-bg-secondary);
       box-shadow: var(--shadow-layer3);
@@ -2123,7 +2153,6 @@
     .checkout-sheet-header {
       display: flex; align-items: center; justify-content: center;
       padding: var(--spacing-16) var(--spacing-16) var(--spacing-12);
-      padding-top: calc(var(--spacing-16) + env(safe-area-inset-top, 0px));
       position: relative; flex-shrink: 0;
       border-bottom: var(--border-thin) solid var(--color-border-primary);
       background: var(--color-bg-primary);
