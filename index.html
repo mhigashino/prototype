@@ -2149,7 +2149,7 @@
     .checkout-sheet {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      max-height: calc(100% - 60px);
+      height: calc(100% - 60px);
       border-radius: var(--radius-large) var(--radius-large) 0 0;
       z-index: 301;
       background: var(--color-bg-secondary);
@@ -2163,7 +2163,7 @@
 
     .checkout-sheet-header {
       display: flex; align-items: center; justify-content: center;
-      padding: var(--spacing-16) var(--spacing-16) var(--spacing-12);
+      padding: var(--spacing-24) var(--spacing-16) var(--spacing-12);
       position: relative; flex-shrink: 0; z-index: 1;
     }
     .checkout-sheet-title { font-size: 17px; font-weight: 600; }
@@ -2173,8 +2173,10 @@
     }
 
     .checkout-sheet-body {
+      flex: 1; min-height: 0;
       overflow-y: auto; -webkit-overflow-scrolling: touch;
       padding: var(--spacing-8) var(--spacing-16);
+      padding-bottom: calc(var(--spacing-8) + 96px);
     }
     .checkout-sheet-body > * + * { margin-top: var(--spacing-8); }
     .checkout-sheet-body::-webkit-scrollbar { display: none; }
@@ -2301,12 +2303,13 @@
     }
     .co-billing-points { font-size: 12px; font-weight: 300; color: var(--color-fg-success); text-align: right; }
 
-    /* Footer */
+    /* Footer — floats over body */
     .checkout-sheet-footer {
+      position: absolute; bottom: 0; left: 0; right: 0;
       padding: var(--spacing-16);
       padding-bottom: calc(var(--spacing-16) + env(safe-area-inset-bottom, 0px));
-      display: flex; flex-direction: row; gap: var(--spacing-12); flex-shrink: 0;
-      background: transparent;
+      display: flex; flex-direction: row; gap: var(--spacing-12);
+      background: linear-gradient(to bottom, transparent 0%, var(--color-bg-secondary) 32%);
     }
     .co-apple-pay-btn {
       height: 48px; border-radius: var(--radius-full); border: none;
