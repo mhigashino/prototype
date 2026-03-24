@@ -2161,12 +2161,15 @@
     }
     .checkout-sheet.open { transform: translateY(0); }
 
-    .checkout-sheet-header {
+    .checkout-sheet-header,
+    .checkout-confirm-header {
       display: flex; align-items: center; justify-content: center;
       padding: var(--spacing-12) var(--spacing-16);
       position: relative; flex-shrink: 0; z-index: 1;
       background: linear-gradient(to top, transparent 0%, var(--color-bg-secondary) 32%);
     }
+    .checkout-sheet-header { padding-top: var(--spacing-8); }
+    .checkout-confirm-header { padding-top: var(--spacing-24); }
     .checkout-sheet-title { font-size: 17px; font-weight: 600; }
     .checkout-sheet-close {
       position: absolute; left: var(--spacing-12); top: 50%; transform: translateY(-50%);
@@ -2293,7 +2296,7 @@
     }
     .co-billing-label { font-size: 14px; font-weight: 400; color: var(--color-fg-secondary); }
     .co-billing-value { font-size: 14px; font-weight: 400; color: var(--color-fg-primary); }
-    .co-billing-sep { height: 1px; background: var(--color-border-primary); margin: var(--spacing-8) 0; }
+    .co-billing-sep { height: 1px; background: var(--color-border-secondary); margin: var(--spacing-8) var(--spacing-16); }
     .co-billing-total-row {
       display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-4) 0;
     }
@@ -2338,12 +2341,6 @@
     }
     .checkout-confirm.open { transform: translateX(0); }
 
-    .checkout-confirm-header {
-      display: flex; align-items: center; justify-content: center;
-      padding: var(--spacing-12) var(--spacing-16);
-      background: linear-gradient(to top, transparent 0%, var(--color-bg-secondary) 32%);
-      flex-shrink: 0; position: relative; z-index: 1;
-    }
     .checkout-confirm-back {
       position: absolute; left: var(--spacing-12); top: 50%; transform: translateY(-50%);
       color: var(--color-fg-primary);
