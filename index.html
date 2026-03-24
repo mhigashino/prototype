@@ -4784,11 +4784,13 @@
     document.getElementById('panel-' + name).classList.remove('open');
   }
 
-  function updateTabIndicator(el) {
+  function updateTabIndicator(el, instant) {
     const indicator = document.getElementById('tab-indicator');
     if (!indicator || !el) return;
+    if (instant) indicator.style.transition = 'none';
     indicator.style.left = (el.offsetLeft + 4) + 'px';
     indicator.style.width = (el.offsetWidth - 8) + 'px';
+    if (instant) requestAnimationFrame(() => { indicator.style.transition = ''; });
   }
 
   const tabScrollMap = { home: '.home-scroll', auction: '.auc-scroll', list: '.list-scroll', wallet: '.wal-scroll' };
@@ -4973,7 +4975,7 @@
         document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
         document.querySelectorAll('.search-btn').forEach(t => t.classList.remove('active'));
         prevItem.classList.add('active');
-        updateTabIndicator(prevItem);
+        updateTabIndicator(prevItem, true);
       }
       // IDPを再度開く（アニメーションなし）
       _populateIdp(_currentItemId);
@@ -4985,7 +4987,10 @@
       history.replaceState(null, '', '#item/' + _currentItemId);
     } else {
       const prevItem = document.querySelector(`.tab-item[onclick*="'${prevTab}'"]`);
-      if (prevItem) switchTab(prevTab, prevItem);
+      if (prevItem) {
+        updateTabIndicator(prevItem, true);
+        switchTab(prevTab, prevItem);
+      }
     }
   }
 
