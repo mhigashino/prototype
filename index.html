@@ -2090,200 +2090,181 @@
        CHECKOUT SHEET
     ════════════════════════════════════════ */
     .checkout-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 300;
+      position: absolute; inset: 0; z-index: 300;
       background: var(--color-overlay-dark-60);
-      opacity: 0;
-      pointer-events: none;
+      opacity: 0; pointer-events: none;
       transition: opacity var(--duration-250) var(--ease-middle-out);
     }
     .checkout-overlay.open { opacity: 1; pointer-events: auto; }
 
     .checkout-sheet {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
+      position: absolute; left: 0; right: 0; bottom: 0;
       z-index: 301;
-      background: var(--color-bg-primary);
+      background: var(--color-bg-secondary);
       border-radius: var(--radius-large) var(--radius-large) 0 0;
       box-shadow: var(--shadow-layer3);
       transform: translateY(100%);
       transition: transform var(--duration-300) var(--ease-strong-out);
-      max-height: 94%;
-      display: flex;
-      flex-direction: column;
+      max-height: 94%; display: flex; flex-direction: column;
     }
     .checkout-sheet.open { transform: translateY(0); }
 
     .checkout-sheet-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       padding: var(--spacing-16) var(--spacing-16) var(--spacing-12);
-      position: relative;
-      flex-shrink: 0;
+      position: relative; flex-shrink: 0;
       border-bottom: var(--border-thin) solid var(--color-border-primary);
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-large) var(--radius-large) 0 0;
     }
     .checkout-sheet-title { font-size: 17px; font-weight: 600; }
     .checkout-sheet-close {
-      position: absolute;
-      right: var(--spacing-12);
-      top: 50%;
-      transform: translateY(-50%);
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
+      position: absolute; right: var(--spacing-12); top: 50%; transform: translateY(-50%);
+      width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
       border: none; background: none; cursor: pointer;
-      color: var(--color-fg-primary);
-      border-radius: var(--radius-full);
+      color: var(--color-fg-primary); border-radius: var(--radius-full);
     }
 
     .checkout-sheet-body {
-      flex: 1;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+      flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: var(--spacing-8); display: flex; flex-direction: column; gap: var(--spacing-8);
     }
     .checkout-sheet-body::-webkit-scrollbar { display: none; }
 
-    .checkout-item-row {
-      display: flex;
-      gap: var(--spacing-12);
-      align-items: center;
+    /* White card groups */
+    .co-card {
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-medium);
+      overflow: hidden;
+    }
+
+    /* Item row */
+    .co-item-row {
+      display: flex; gap: var(--spacing-12); align-items: flex-start;
       padding: var(--spacing-12) var(--spacing-16);
-      border-bottom: var(--border-thin) solid var(--color-border-secondary);
     }
-    .checkout-item-img {
-      width: 56px; height: 56px;
-      object-fit: cover;
-      border-radius: var(--radius-small);
-      flex-shrink: 0;
+    .co-item-img {
+      width: 56px; height: 56px; object-fit: cover;
+      border-radius: var(--radius-small); flex-shrink: 0;
     }
-    .checkout-item-info { flex: 1; min-width: 0; }
-    .checkout-item-title {
+    .co-item-info { flex: 1; min-width: 0; }
+    .co-item-title {
       font-size: 14px; font-weight: 300; color: var(--color-fg-primary);
-      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.4;
     }
-    .checkout-item-price {
-      font-size: 15px; font-weight: 600; color: var(--color-fg-primary);
-      margin-top: var(--spacing-4);
+    .co-item-price-row {
+      display: flex; align-items: baseline; gap: var(--spacing-4); margin-top: var(--spacing-4);
     }
+    .co-item-price {
+      font-size: 14px; font-weight: 600; color: var(--color-fg-primary);
+      font-variant-numeric: tabular-nums;
+    }
+    .co-item-shipping { font-size: 12px; font-weight: 300; color: var(--color-fg-secondary); }
+    .co-item-condition { font-size: 11px; font-weight: 300; color: var(--color-fg-tertiary); margin-top: var(--spacing-2); }
 
-    .checkout-row {
-      display: flex;
-      align-items: center;
-      padding: var(--spacing-12) var(--spacing-16);
-      border-bottom: var(--border-thin) solid var(--color-border-secondary);
-      gap: var(--spacing-12);
-      min-height: 48px;
+    /* Rows inside cards */
+    .co-row {
+      display: flex; align-items: center;
+      padding: 12px var(--spacing-16); min-height: 48px; gap: var(--spacing-12);
+      border-top: var(--border-thin) solid var(--color-border-secondary);
     }
-    .checkout-row-label { font-size: 14px; color: var(--color-fg-secondary); flex-shrink: 0; width: 72px; }
-    .checkout-row-value { flex: 1; font-size: 14px; color: var(--color-fg-primary); font-weight: 300; }
-    .checkout-row-action { color: var(--color-fg-tertiary); flex-shrink: 0; }
+    .co-row:first-child { border-top: none; }
+    .co-row-label { font-size: 15px; font-weight: 600; color: var(--color-fg-primary); flex-shrink: 0; }
+    .co-row-value { flex: 1; font-size: 14px; color: var(--color-fg-secondary); font-weight: 300; text-align: right; }
+    .co-row-chevron { color: var(--color-fg-tertiary); flex-shrink: 0; }
 
-    .checkout-payment-section {
-      border-bottom: var(--border-thin) solid var(--color-border-secondary);
-      padding: var(--spacing-8) 0;
+    /* 支払い方法 */
+    .co-payment-title {
+      font-size: 12px; font-weight: 300; color: var(--color-fg-tertiary);
+      padding: var(--spacing-12) var(--spacing-16) var(--spacing-4);
     }
-    .checkout-payment-title { font-size: 12px; color: var(--color-fg-tertiary); padding: var(--spacing-8) var(--spacing-16) var(--spacing-4); }
-    .checkout-payment-card {
+    .co-payment-selected {
       display: flex; align-items: center; gap: var(--spacing-8);
       padding: var(--spacing-8) var(--spacing-16);
     }
-    .checkout-payment-card-name { flex: 1; font-size: 14px; font-weight: 600; color: var(--color-fg-primary); }
-
-    .checkout-radio-group { display: flex; flex-direction: column; }
-    .checkout-radio-row {
+    .co-payment-name { flex: 1; font-size: 15px; font-weight: 600; color: var(--color-fg-primary); }
+    .co-radio-group { display: flex; flex-direction: column; }
+    .co-radio-row {
       display: flex; align-items: center;
-      padding: var(--spacing-8) var(--spacing-16) var(--spacing-8) var(--spacing-20);
-      gap: var(--spacing-12);
-      cursor: pointer;
+      padding: var(--spacing-8) var(--spacing-16); gap: var(--spacing-12); cursor: pointer;
+      border-top: var(--border-thin) solid var(--color-border-secondary);
     }
-    .checkout-radio-row input[type="radio"] {
-      width: 18px; height: 18px; accent-color: var(--color-bg-accent); flex-shrink: 0;
-    }
-    .checkout-radio-label { font-size: 14px; color: var(--color-fg-primary); flex: 1; }
+    .co-radio-row input[type="radio"] { width: 18px; height: 18px; accent-color: var(--color-bg-accent); flex-shrink: 0; }
+    .co-radio-label { font-size: 14px; font-weight: 300; color: var(--color-fg-primary); flex: 1; }
 
-    .checkout-balance-row {
+    /* メルペイ残高 */
+    .co-balance-row {
       display: flex; align-items: center;
-      padding: var(--spacing-12) var(--spacing-16);
-      border-bottom: var(--border-thin) solid var(--color-border-secondary);
-      gap: var(--spacing-12);
+      padding: var(--spacing-12) var(--spacing-16); gap: var(--spacing-12);
     }
-    .checkout-balance-icon {
-      width: 32px; height: 32px;
-      border-radius: var(--radius-full);
+    .co-balance-icon {
+      width: 32px; height: 32px; border-radius: var(--radius-full);
       background: var(--color-bg-brand);
       display: flex; align-items: center; justify-content: center;
       color: var(--color-fg-bold); font-size: 12px; font-weight: 600; flex-shrink: 0;
     }
-    .checkout-balance-info { flex: 1; }
-    .checkout-balance-label { font-size: 14px; color: var(--color-fg-primary); font-weight: 600; }
-    .checkout-balance-amount { font-size: 12px; color: var(--color-fg-tertiary); }
-    .checkout-toggle {
-      width: 44px; height: 26px;
-      background: var(--color-bg-accent);
-      border-radius: var(--radius-full);
-      position: relative; cursor: pointer; flex-shrink: 0;
+    .co-balance-info { flex: 1; }
+    .co-balance-label { font-size: 15px; font-weight: 600; color: var(--color-fg-primary); }
+    .co-balance-amount { font-size: 12px; font-weight: 300; color: var(--color-fg-tertiary); }
+    .co-toggle {
+      width: 44px; height: 26px; background: var(--color-bg-accent);
+      border-radius: var(--radius-full); position: relative; cursor: pointer; flex-shrink: 0;
     }
-    .checkout-toggle::after {
-      content: '';
-      position: absolute;
-      left: 20px; top: 3px;
-      width: 20px; height: 20px;
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    .co-toggle::after {
+      content: ''; position: absolute; left: 20px; top: 3px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
 
-    .checkout-billing {
+    /* Billing (gray card) */
+    .co-billing {
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-medium);
       padding: var(--spacing-16);
-      border-bottom: var(--border-thin) solid var(--color-border-secondary);
+      display: flex; flex-direction: column; gap: var(--spacing-2);
     }
-    .checkout-billing-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: var(--spacing-4) 0;
+    .co-billing-row {
+      display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-4) 0;
     }
-    .checkout-billing-row.total {
-      padding-top: var(--spacing-8); margin-top: var(--spacing-4);
-      border-top: var(--border-thin) solid var(--color-border-primary);
+    .co-billing-label { font-size: 14px; font-weight: 300; color: var(--color-fg-secondary); }
+    .co-billing-value { font-size: 14px; font-weight: 300; color: var(--color-fg-primary); }
+    .co-billing-sep { height: 1px; background: var(--color-border-primary); margin: var(--spacing-8) 0; }
+    .co-billing-total-row {
+      display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-4) 0;
     }
-    .checkout-billing-label { font-size: 14px; color: var(--color-fg-secondary); }
-    .checkout-billing-value { font-size: 14px; color: var(--color-fg-primary); font-weight: 300; }
-    .checkout-billing-row.total .checkout-billing-label { font-size: 15px; font-weight: 600; color: var(--color-fg-primary); }
-    .checkout-billing-row.total .checkout-billing-value { font-size: 17px; font-weight: 600; }
-    .checkout-billing-points { font-size: 12px; color: var(--color-fg-success); }
+    .co-billing-total-label { font-size: 15px; font-weight: 600; color: var(--color-fg-primary); }
+    .co-billing-total-value {
+      font-size: 17px; font-weight: 600; color: var(--color-fg-primary);
+      font-variant-numeric: tabular-nums;
+    }
+    .co-billing-points { font-size: 12px; font-weight: 300; color: var(--color-fg-success); text-align: right; }
 
+    /* Footer */
     .checkout-sheet-footer {
-      padding: var(--spacing-16);
-      padding-bottom: calc(var(--spacing-16) + env(safe-area-inset-bottom, 0px));
-      display: flex; flex-direction: row; gap: var(--spacing-8);
-      flex-shrink: 0;
+      padding: var(--spacing-12) var(--spacing-16);
+      padding-bottom: calc(var(--spacing-12) + env(safe-area-inset-bottom, 0px));
+      display: flex; flex-direction: row; gap: var(--spacing-12); flex-shrink: 0;
       border-top: var(--border-thin) solid var(--color-border-primary);
       background: var(--color-bg-primary);
     }
-    .checkout-apple-pay-btn {
-      height: 48px; border-radius: var(--radius-full);
-      border: var(--border-thin) solid var(--color-border-primary);
-      background: var(--color-bg-primary);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; font-weight: 600; cursor: pointer;
-      color: var(--color-fg-primary); gap: var(--spacing-6);
-      flex: 1;
+    .co-apple-pay-btn {
+      height: 45px; border-radius: var(--radius-medium); border: none;
+      background: #000; color: #fff;
+      display: flex; align-items: center; justify-content: center; gap: var(--spacing-6);
+      font-size: 15px; font-weight: 600; cursor: pointer; flex: 1;
     }
-    .checkout-next-btn {
-      height: 48px; border-radius: var(--radius-full); border: none;
+    .co-next-btn {
+      height: 45px; border-radius: var(--radius-full); border: none;
       background: var(--color-bg-brand); color: var(--color-fg-bold);
       font-size: 15px; font-weight: 600; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      flex: 1;
+      display: flex; align-items: center; justify-content: center; flex: 1;
     }
 
     /* ════════════════════════════════════════
        CHECKOUT CONFIRM SCREEN (push)
     ════════════════════════════════════════ */
     .checkout-confirm {
-      position: absolute;
-      inset: 0;
-      z-index: 302;
+      position: absolute; inset: 0; z-index: 302;
       background: var(--color-bg-secondary);
       display: flex; flex-direction: column;
       transform: translateX(100%);
@@ -2294,19 +2275,15 @@
 
     .checkout-confirm-header {
       display: flex; align-items: center;
-      padding: 0 var(--spacing-4);
-      padding-top: env(safe-area-inset-top);
+      padding: 0 var(--spacing-4); padding-top: env(safe-area-inset-top);
       height: calc(env(safe-area-inset-top) + 52px);
       background: var(--color-bg-primary);
       border-bottom: var(--border-thin) solid var(--color-border-primary);
-      flex-shrink: 0;
-      position: relative;
+      flex-shrink: 0; position: relative;
     }
     .checkout-confirm-back {
-      width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center;
-      border: none; background: none; cursor: pointer;
-      color: var(--color-fg-primary);
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      border: none; background: none; cursor: pointer; color: var(--color-fg-primary);
     }
     .checkout-confirm-title-text {
       position: absolute; left: 50%; transform: translateX(-50%);
@@ -2314,26 +2291,26 @@
     }
     .checkout-confirm-scroll {
       flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: var(--spacing-8); display: flex; flex-direction: column; gap: var(--spacing-8);
+      padding-bottom: var(--spacing-40, 40px);
     }
     .checkout-confirm-scroll::-webkit-scrollbar { display: none; }
-    .checkout-confirm-section {
-      background: var(--color-bg-primary);
-      margin-bottom: var(--spacing-8);
-    }
-    .checkout-confirm-static-row {
+
+    .co-confirm-row {
       display: flex; align-items: flex-start;
       padding: var(--spacing-12) var(--spacing-16);
+      min-height: 44px; gap: var(--spacing-12);
       border-top: var(--border-thin) solid var(--color-border-secondary);
-      gap: var(--spacing-12); min-height: 44px;
     }
-    .checkout-confirm-row-label {
-      font-size: 14px; color: var(--color-fg-secondary);
-      width: 80px; flex-shrink: 0; padding-top: 1px;
+    .co-confirm-row:first-child { border-top: none; }
+    .co-confirm-row-label {
+      font-size: 15px; font-weight: 600; color: var(--color-fg-primary);
+      flex-shrink: 0; width: 72px;
     }
-    .checkout-confirm-row-value {
-      flex: 1; font-size: 14px; color: var(--color-fg-primary);
-      font-weight: 300; line-height: 1.4;
+    .co-confirm-row-value {
+      flex: 1; font-size: 14px; font-weight: 300; color: var(--color-fg-secondary); line-height: 1.4;
     }
+
     .checkout-confirm-footer {
       padding: var(--spacing-16);
       padding-bottom: calc(var(--spacing-16) + env(safe-area-inset-bottom, 0px));
@@ -2355,36 +2332,46 @@
        PURCHASE COMPLETE DIALOG
     ════════════════════════════════════════ */
     .purchase-dialog-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 400;
+      position: absolute; inset: 0; z-index: 400;
       background: var(--color-overlay-dark-60);
-      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      gap: var(--spacing-16);
       opacity: 0; pointer-events: none;
       transition: opacity var(--duration-200) var(--ease-middle-out);
     }
     .purchase-dialog-overlay.open { opacity: 1; pointer-events: auto; }
+    .purchase-dialog-x {
+      width: 40px; height: 40px; border-radius: var(--radius-full);
+      border: 2px solid rgba(255,255,255,0.6);
+      background: none; cursor: pointer; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+    }
     .purchase-dialog {
       background: var(--color-bg-primary);
-      border-radius: var(--radius-large);
-      width: 288px;
-      padding: var(--spacing-24);
-      display: flex; flex-direction: column; align-items: center; text-align: center;
+      border-radius: var(--radius-medium);
+      width: 288px; overflow: hidden;
+      display: flex; flex-direction: column;
       box-shadow: var(--shadow-layer4);
-      transform: scale(0.9);
-      transition: transform var(--duration-200) var(--ease-strong-out);
     }
-    .purchase-dialog-overlay.open .purchase-dialog { transform: scale(1); }
-    .purchase-dialog-image { font-size: 64px; margin-bottom: var(--spacing-16); line-height: 1; }
+    .purchase-dialog-img-area {
+      width: 288px; height: 200px; flex-shrink: 0;
+      background: var(--color-bg-accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 72px; line-height: 1;
+    }
+    .purchase-dialog-content {
+      padding: var(--spacing-20) var(--spacing-16) var(--spacing-16);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
     .purchase-dialog-title { font-size: 17px; font-weight: 600; color: var(--color-fg-primary); margin-bottom: var(--spacing-8); }
     .purchase-dialog-body {
       font-size: 14px; font-weight: 300; color: var(--color-fg-secondary);
-      line-height: 1.6; margin-bottom: var(--spacing-24);
+      line-height: 1.6; margin-bottom: var(--spacing-20);
     }
     .purchase-dialog-close-btn {
-      width: 100%; height: 48px; border-radius: var(--radius-full); border: none;
+      width: 100%; height: 48px; border-radius: var(--radius-small); border: none;
       background: var(--color-bg-brand); color: var(--color-fg-bold);
-      font-size: 17px; font-weight: 600; cursor: pointer;
+      font-size: 15px; font-weight: 600; cursor: pointer;
     }
   </style>
 </head>
@@ -5278,6 +5265,7 @@
     document.getElementById('checkout-item-img').src = data.images[0];
     document.getElementById('checkout-item-title').textContent = data.title;
     document.getElementById('checkout-item-price').textContent = data.price;
+    document.getElementById('checkout-item-condition').textContent = data.condition;
     document.getElementById('checkout-billing-price').textContent = data.price;
     document.getElementById('checkout-billing-total').textContent = data.price;
     document.getElementById('checkout-billing-points').textContent = '+' + pts.toLocaleString() + 'P 還元';
@@ -5298,6 +5286,7 @@
     document.getElementById('confirm-item-img').src = data.images[0];
     document.getElementById('confirm-item-title').textContent = data.title;
     document.getElementById('confirm-item-price').textContent = data.price;
+    document.getElementById('confirm-item-condition').textContent = data.condition;
     document.getElementById('confirm-billing-price').textContent = data.price;
     document.getElementById('confirm-billing-total').textContent = data.price;
     document.getElementById('confirm-billing-points').textContent = '+' + pts.toLocaleString() + 'P 還元';
@@ -5679,92 +5668,111 @@
       </button>
     </div>
     <div class="checkout-sheet-body">
-      <div class="checkout-item-row">
-        <img id="checkout-item-img" class="checkout-item-img" src="" alt="">
-        <div class="checkout-item-info">
-          <div id="checkout-item-title" class="checkout-item-title"></div>
-          <div id="checkout-item-price" class="checkout-item-price"></div>
+      <!-- 商品情報 -->
+      <div class="co-card">
+        <div class="co-item-row">
+          <img id="checkout-item-img" class="co-item-img" src="" alt="">
+          <div class="co-item-info">
+            <div id="checkout-item-title" class="co-item-title"></div>
+            <div class="co-item-price-row">
+              <span id="checkout-item-price" class="co-item-price"></span>
+              <span class="co-item-shipping">送料込み</span>
+            </div>
+            <div id="checkout-item-condition" class="co-item-condition"></div>
+          </div>
         </div>
       </div>
-      <div class="checkout-row">
-        <span class="checkout-row-label">配送先</span>
-        <span class="checkout-row-value">東京都渋谷区恵比寿1-1-1</span>
-        <span class="checkout-row-action"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      <!-- 配送情報 -->
+      <div class="co-card">
+        <div class="co-row">
+          <span class="co-row-label">配送先</span>
+          <span class="co-row-value">東京都渋谷区恵比寿1-1-1</span>
+          <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </div>
+        <div class="co-row">
+          <span class="co-row-label">置き配</span>
+          <span class="co-row-value">玄関前に置く</span>
+          <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </div>
       </div>
-      <div class="checkout-row">
-        <span class="checkout-row-label">置き配</span>
-        <span class="checkout-row-value">玄関前に置く</span>
-        <span class="checkout-row-action"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
-      </div>
-      <div class="checkout-payment-section">
-        <div class="checkout-payment-title">支払い方法</div>
-        <div class="checkout-payment-card">
+      <!-- 支払い方法 -->
+      <div class="co-card">
+        <div class="co-payment-title">支払い方法</div>
+        <div class="co-payment-selected">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-          <span class="checkout-payment-card-name">メルカード *1234</span>
+          <span class="co-payment-name">メルカード *1234</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </div>
-        <div class="checkout-radio-group">
-          <label class="checkout-radio-row">
+        <div class="co-radio-group">
+          <label class="co-radio-row">
             <input type="radio" name="payment-type" value="full" checked>
-            <span class="checkout-radio-label">一括払い</span>
+            <span class="co-radio-label">一括払い</span>
           </label>
-          <label class="checkout-radio-row">
+          <label class="co-radio-row">
             <input type="radio" name="payment-type" value="split">
-            <span class="checkout-radio-label">分割払い</span>
+            <span class="co-radio-label">分割払い</span>
           </label>
-          <label class="checkout-radio-row">
+          <label class="co-radio-row">
             <input type="radio" name="payment-type" value="fixed">
-            <span class="checkout-radio-label">定額払い（翌月から毎月）</span>
+            <span class="co-radio-label">定額払い（翌月から毎月）</span>
           </label>
         </div>
       </div>
-      <div class="checkout-balance-row">
-        <div class="checkout-balance-icon">メ</div>
-        <div class="checkout-balance-info">
-          <div class="checkout-balance-label">メルペイ残高</div>
-          <div class="checkout-balance-amount">残高 ¥1,050</div>
+      <!-- メルペイ残高 -->
+      <div class="co-card">
+        <div class="co-balance-row">
+          <div class="co-balance-icon">メ</div>
+          <div class="co-balance-info">
+            <div class="co-balance-label">メルペイ残高</div>
+            <div class="co-balance-amount">残高 ¥1,050</div>
+          </div>
+          <div class="co-toggle"></div>
         </div>
-        <div class="checkout-toggle"></div>
       </div>
-      <div class="checkout-row">
-        <span class="checkout-row-label">ポイント</span>
-        <span class="checkout-row-value">50P 利用しない</span>
-        <span class="checkout-row-action"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
-      </div>
-      <div class="checkout-row">
-        <span class="checkout-row-label">クーポン</span>
-        <span class="checkout-row-value">利用しない</span>
-        <span class="checkout-row-action"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
-      </div>
-      <div class="checkout-row">
-        <span class="checkout-row-value">あんしん鑑定</span>
-        <span style="font-size:14px;color:var(--color-fg-secondary);font-weight:300;flex-shrink:0;">利用しない</span>
-        <span class="checkout-row-action" style="margin-left:var(--spacing-8);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
-      </div>
-      <div class="checkout-billing">
-        <div class="checkout-billing-row">
-          <span class="checkout-billing-label">商品代金</span>
-          <span id="checkout-billing-price" class="checkout-billing-value"></span>
+      <!-- ポイント/クーポン/あんしん鑑定 -->
+      <div class="co-card">
+        <div class="co-row">
+          <span class="co-row-label">ポイント</span>
+          <span class="co-row-value">50P 利用しない</span>
+          <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
         </div>
-        <div class="checkout-billing-row">
-          <span class="checkout-billing-label">クーポン</span>
-          <span class="checkout-billing-value">-</span>
+        <div class="co-row">
+          <span class="co-row-label">クーポン</span>
+          <span class="co-row-value">利用しない</span>
+          <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
         </div>
-        <div class="checkout-billing-row total">
-          <span class="checkout-billing-label">支払い金額</span>
-          <span id="checkout-billing-total" class="checkout-billing-value"></span>
+        <div class="co-row">
+          <span class="co-row-label">あんしん鑑定</span>
+          <span class="co-row-value">利用しない</span>
+          <span class="co-row-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
         </div>
-        <div style="text-align:right;margin-top:var(--spacing-4);">
-          <span id="checkout-billing-points" class="checkout-billing-points"></span>
+      </div>
+      <!-- 請求 -->
+      <div class="co-billing">
+        <div class="co-billing-row">
+          <span class="co-billing-label">商品代金</span>
+          <span id="checkout-billing-price" class="co-billing-value"></span>
+        </div>
+        <div class="co-billing-row">
+          <span class="co-billing-label">クーポン</span>
+          <span class="co-billing-value">-</span>
+        </div>
+        <div class="co-billing-sep"></div>
+        <div class="co-billing-total-row">
+          <span class="co-billing-total-label">支払い金額</span>
+          <span id="checkout-billing-total" class="co-billing-total-value"></span>
+        </div>
+        <div style="text-align:right;">
+          <span id="checkout-billing-points" class="co-billing-points"></span>
         </div>
       </div>
     </div>
     <div class="checkout-sheet-footer">
-      <button class="checkout-apple-pay-btn">
+      <button class="co-apple-pay-btn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Apple Pay
       </button>
-      <button class="checkout-next-btn" onclick="openCheckoutConfirm()">購入確認へ</button>
+      <button class="co-next-btn" onclick="openCheckoutConfirm()">購入確認へ</button>
     </div>
   </div>
 
@@ -5777,46 +5785,56 @@
       <span class="checkout-confirm-title-text">購入の確認</span>
     </div>
     <div class="checkout-confirm-scroll">
-      <div class="checkout-confirm-section">
-        <div class="checkout-item-row" style="border-bottom:none;">
-          <img id="confirm-item-img" class="checkout-item-img" src="" alt="">
-          <div class="checkout-item-info">
-            <div id="confirm-item-title" class="checkout-item-title"></div>
-            <div id="confirm-item-price" class="checkout-item-price"></div>
+      <!-- 商品 -->
+      <div class="co-card">
+        <div class="co-item-row">
+          <img id="confirm-item-img" class="co-item-img" src="" alt="">
+          <div class="co-item-info">
+            <div id="confirm-item-title" class="co-item-title"></div>
+            <div class="co-item-price-row">
+              <span id="confirm-item-price" class="co-item-price"></span>
+              <span class="co-item-shipping">送料込み</span>
+            </div>
+            <div id="confirm-item-condition" class="co-item-condition"></div>
           </div>
         </div>
       </div>
-      <div class="checkout-confirm-section">
-        <div class="checkout-confirm-static-row" style="border-top:none;">
-          <span class="checkout-confirm-row-label">配送先</span>
-          <span class="checkout-confirm-row-value">東京都渋谷区恵比寿1-1-1</span>
+      <!-- 配送・支払い情報 -->
+      <div class="co-card">
+        <div class="co-confirm-row">
+          <span class="co-confirm-row-label">配送先</span>
+          <span class="co-confirm-row-value">東京都渋谷区恵比寿1-1-1</span>
         </div>
-        <div class="checkout-confirm-static-row">
-          <span class="checkout-confirm-row-label">置き配</span>
-          <span class="checkout-confirm-row-value">玄関前に置く</span>
+        <div class="co-confirm-row">
+          <span class="co-confirm-row-label">置き配</span>
+          <span class="co-confirm-row-value">玄関前に置く</span>
         </div>
-        <div class="checkout-confirm-static-row">
-          <span class="checkout-confirm-row-label">支払い</span>
-          <span class="checkout-confirm-row-value">メルカード *1234（一括払い）</span>
+        <div class="co-confirm-row">
+          <span class="co-confirm-row-label">支払い</span>
+          <span class="co-confirm-row-value">メルカード *1234（一括払い）</span>
         </div>
       </div>
-      <div class="checkout-confirm-section">
-        <div class="checkout-billing" style="border-bottom:none;">
-          <div class="checkout-billing-row">
-            <span class="checkout-billing-label">商品代金</span>
-            <span id="confirm-billing-price" class="checkout-billing-value"></span>
-          </div>
-          <div class="checkout-billing-row">
-            <span class="checkout-billing-label">クーポン</span>
-            <span class="checkout-billing-value">-</span>
-          </div>
-          <div class="checkout-billing-row total">
-            <span class="checkout-billing-label">支払い金額</span>
-            <span id="confirm-billing-total" class="checkout-billing-value"></span>
-          </div>
-          <div style="text-align:right;margin-top:var(--spacing-4);">
-            <span id="confirm-billing-points" class="checkout-billing-points"></span>
-          </div>
+      <!-- 請求 -->
+      <div class="co-billing">
+        <div class="co-billing-row">
+          <span class="co-billing-label">商品代金</span>
+          <span id="confirm-billing-price" class="co-billing-value"></span>
+        </div>
+        <div class="co-billing-row">
+          <span class="co-billing-label">クーポン</span>
+          <span class="co-billing-value">-</span>
+        </div>
+        <div class="co-billing-row">
+          <span class="co-billing-label">支払い方法</span>
+          <span class="co-billing-value">メルカード</span>
+        </div>
+        <div class="co-billing-sep"></div>
+        <div class="co-billing-total-row">
+          <span class="co-billing-total-label">支払い金額</span>
+          <span id="confirm-billing-total" class="co-billing-total-value"></span>
+        </div>
+        <div style="text-align:right;">
+          <span id="confirm-billing-points" class="co-billing-points"></span>
         </div>
       </div>
     </div>
@@ -5828,11 +5846,16 @@
 
   <!-- ════ PURCHASE COMPLETE DIALOG ════ -->
   <div id="purchase-dialog-overlay" class="purchase-dialog-overlay">
+    <button class="purchase-dialog-x" onclick="closePurchaseComplete()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
     <div class="purchase-dialog">
-      <div class="purchase-dialog-image">🎉</div>
-      <div class="purchase-dialog-title">購入が完了しました</div>
-      <div class="purchase-dialog-body">出品者から発送の準備が整い次第、<br>通知でお知らせします</div>
-      <button class="purchase-dialog-close-btn" onclick="closePurchaseComplete()">閉じる</button>
+      <div class="purchase-dialog-img-area">🎉</div>
+      <div class="purchase-dialog-content">
+        <div class="purchase-dialog-title">購入が完了しました</div>
+        <div class="purchase-dialog-body">出品者から発送の準備が整い次第、<br>通知でお知らせします</div>
+        <button class="purchase-dialog-close-btn" onclick="closePurchaseComplete()">閉じる</button>
+      </div>
     </div>
   </div>
 </body>
