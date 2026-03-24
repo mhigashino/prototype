@@ -24,6 +24,8 @@ cd prototype
 open index.html
 ```
 
+パスワードは<a href="https://www.notion.so/Passwrod-2707fa9ffaef81b8a781cdcbfadd2a8f" target="_blank">こちら</a>
+
 ### C. Claude Code で開発する
 
 Claude Code をインストールし、リポジトリをクローンして開きます。
@@ -41,6 +43,8 @@ claude
 ```
 
 クローン後はプロジェクトルートで `claude` を起動するだけで、`.claude/skills/ds-prototype/` のスキルが自動的に読み込まれます。
+
+パスワードは<a href="https://www.notion.so/Passwrod-2707fa9ffaef81b8a781cdcbfadd2a8f" target="_blank">こちら</a>
 
 ### パスワード認証
 
