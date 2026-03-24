@@ -155,4 +155,3 @@ CLAUDE.md                # Claude Code向け開発ルール
 - デザインシステムは Mercari DS4 のトークン・コンポーネント仕様に準拠（`ds-prototype` スキル参照）
 - 追加・更新する画像は 1MB以下 にすること（超える場合は `sips -s format jpeg -s formatOptions 75 -Z 1200` で圧縮）
 - 変更後は必ず commit & push する
-- 機能の区切りには `git tag` でバージョンを記録する
