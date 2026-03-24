@@ -2164,12 +2164,10 @@
     .checkout-sheet-header,
     .checkout-confirm-header {
       display: flex; align-items: center; justify-content: center;
-      padding: var(--spacing-12) var(--spacing-16);
+      padding: var(--spacing-24) var(--spacing-16) var(--spacing-12);
       position: relative; flex-shrink: 0; z-index: 1;
-      background: linear-gradient(to top, transparent 0%, var(--color-bg-secondary) 32%);
+      background: linear-gradient(to bottom, var(--color-bg-secondary) 32%, transparent 100%);
     }
-    .checkout-sheet-header { padding-top: var(--spacing-8); }
-    .checkout-confirm-header { padding-top: var(--spacing-24); }
     .checkout-sheet-title { font-size: 17px; font-weight: 600; }
     .checkout-sheet-close {
       position: absolute; left: var(--spacing-12); top: 50%; transform: translateY(-50%);
@@ -2285,6 +2283,11 @@
       padding: var(--spacing-8) var(--spacing-16) var(--spacing-16);
       display: flex; flex-direction: column; gap: var(--spacing-2);
     }
+    .co-billing--card {
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-medium);
+      padding: var(--spacing-16);
+    }
     .co-billing-row {
       display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-4) 0;
     }
@@ -2352,7 +2355,7 @@
     /* Item object row (white bg, top of scroll) */
     .co-confirm-item-obj {
       display: flex; gap: var(--spacing-12); align-items: flex-start;
-      padding: var(--spacing-16) var(--spacing-16) 0;
+      padding: var(--spacing-8) var(--spacing-16) 0;
       flex-shrink: 0;
     }
 
@@ -5891,7 +5894,7 @@
             </div>
           </div>
           <!-- 請求 -->
-          <div class="co-billing">
+          <div class="co-billing co-billing--card">
             <div class="co-billing-row">
               <span class="co-billing-label">商品代金</span>
               <span id="confirm-billing-price" class="co-billing-value"></span>
