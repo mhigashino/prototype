@@ -5357,13 +5357,9 @@
     overlay.style.transition = 'none';
     overlay.classList.remove('open');
     requestAnimationFrame(() => { overlay.style.transition = ''; });
-    // 2. 購入確認を右にスライドアウト
-    closeCheckoutConfirm();
-    // 3. 購入手続きモーダルを上にスライドアウト → IDP を閉じる
-    setTimeout(() => {
-      closeCheckout();
-      closeItemDetail();
-    }, 300);
+    // 2. モーダルを下にスライドアウト → IDP を閉じる
+    closeCheckout();
+    closeItemDetail();
   }
 
   // On load: open IDP if hash matches #item/<itemId>
