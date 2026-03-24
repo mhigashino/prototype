@@ -4742,7 +4742,8 @@
       startX = t.clientX; startY = t.clientY;
       startTime = Date.now();
       dragging = false; gestureDir = null;
-      if (!isOpen() && startX <= EDGE_WIDTH) dragging = true;
+      const searchActive = document.getElementById('screen-search').classList.contains('active');
+      if (!isOpen() && startX <= EDGE_WIDTH && !searchActive) dragging = true;
       else if (isOpen()) dragging = true;
     }, { passive: true });
 
@@ -5402,7 +5403,7 @@
       document.getElementById('idp-carousel-track').scrollLeft = 0;
       idp.classList.add('open');
       document.body.classList.add('idp-open');
-      if (prevScreen) {
+      if (prevScreen && prevScreen.id !== 'screen-search') {
         prevScreen.classList.add('idp-nav');
         requestAnimationFrame(() => prevScreen.classList.add('idp-prev'));
       }
