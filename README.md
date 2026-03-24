@@ -33,8 +33,6 @@ claude
 
 プロジェクトルートで `claude` を起動するだけで、`.claude/skills/ds-prototype/` のスキルが自動的に読み込まれます。ブラウザで確認する場合はサーバー不要で `index.html` を直接開くだけで動作します。
 
-パスワードは<a href="https://www.notion.so/Passwrod-2707fa9ffaef81b8a781cdcbfadd2a8f" target="_blank">こちら</a>
-
 ### パスワード認証
 
 ページを開くとパスワード入力が求められます。初期パスワードは<a href="https://www.notion.so/Passwrod-2707fa9ffaef81b8a781cdcbfadd2a8f" target="_blank">こちら</a>です。
