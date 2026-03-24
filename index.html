@@ -4872,6 +4872,30 @@
     }
   }
 
+  // 検索画面での横スワイプをブロック（キーボード表示中も含む）
+  // overscroll-behavior: none は visual viewport の独立パンには効かないため JS で制御する
+  (function () {
+    var searchScreen = document.getElementById('screen-search');
+    var _sx, _sy, _dir;
+    searchScreen.addEventListener('touchstart', function (e) {
+      _sx = e.touches[0].clientX;
+      _sy = e.touches[0].clientY;
+      _dir = null;
+    }, { passive: true });
+    searchScreen.addEventListener('touchmove', function (e) {
+      if (_dir === 'v') return;
+      var dx = e.touches[0].clientX - _sx;
+      var dy = e.touches[0].clientY - _sy;
+      if (!_dir && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) {
+        _dir = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+      }
+      // フィルターチップバー内の横スクロールは許可する
+      if (_dir === 'h' && !e.target.closest('.filter-chip-bar')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  })();
+
   // キーボード非表示時の画面高さを記録（window.innerHeight はキーボードで変わる場合があるため起動時に固定）
   const FULL_HEIGHT = window.innerHeight;
 
