@@ -724,7 +724,9 @@
       flex-shrink: 0;
       cursor: pointer;
       outline: none;
+      border: none;
       user-select: none;
+      -webkit-user-drag: none;
       overflow: hidden;
       isolation: isolate;
       /* Liquid Glass: frosted glass base */
@@ -775,6 +777,8 @@
       display: block;
       position: relative;
       z-index: 3;
+      -webkit-user-drag: none;
+      pointer-events: none;
     }
 
     .nav-icon-wrap {
@@ -2145,7 +2149,7 @@
       z-index: 301;
       background: var(--color-bg-secondary);
       box-shadow: var(--shadow-layer3);
-      transform: translateY(100%);
+      transform: translateY(-100%);
       transition: transform var(--duration-300) var(--ease-strong-out);
       display: flex; flex-direction: column;
       overflow: hidden;
@@ -2164,9 +2168,10 @@
     }
 
     .checkout-sheet-body {
-      flex: 0 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
-      padding: var(--spacing-8); display: flex; flex-direction: column; gap: var(--spacing-8);
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: var(--spacing-8);
     }
+    .checkout-sheet-body > * + * { margin-top: var(--spacing-8); }
     .checkout-sheet-body::-webkit-scrollbar { display: none; }
 
     /* White card groups */
@@ -2314,19 +2319,15 @@
     .checkout-confirm.open { transform: translateX(0); }
 
     .checkout-confirm-header {
-      display: flex; align-items: center;
-      padding: 0 var(--spacing-4);
-      height: 52px;
-      background: var(--color-bg-primary);
-      border-bottom: var(--border-thin) solid var(--color-border-primary);
-      flex-shrink: 0; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      padding: var(--spacing-16) var(--spacing-16) var(--spacing-12);
+      flex-shrink: 0; position: relative; z-index: 1;
     }
     .checkout-confirm-back {
-      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-      border: none; background: none; cursor: pointer; color: var(--color-fg-primary);
+      position: absolute; left: var(--spacing-12); top: 50%; transform: translateY(-50%);
+      color: var(--color-fg-primary);
     }
     .checkout-confirm-title-text {
-      position: absolute; left: 50%; transform: translateX(-50%);
       font-size: 17px; font-weight: 600;
     }
     .checkout-confirm-scroll {
@@ -2339,7 +2340,6 @@
     .co-confirm-item-obj {
       display: flex; gap: var(--spacing-12); align-items: flex-start;
       padding: var(--spacing-16);
-      background: var(--color-bg-primary);
       flex-shrink: 0;
     }
 
@@ -2375,8 +2375,7 @@
     .checkout-confirm-footer {
       padding: var(--spacing-16);
       padding-bottom: calc(var(--spacing-16) + env(safe-area-inset-bottom, 0px));
-      background: var(--color-bg-primary); flex-shrink: 0;
-      border-top: var(--border-thin) solid var(--color-border-primary);
+      background: transparent; flex-shrink: 0;
     }
     .checkout-buy-btn {
       width: 100%; height: 48px; border-radius: var(--radius-full); border: none;
@@ -2399,14 +2398,14 @@
     .purchase-dialog-overlay.open { opacity: 1; pointer-events: auto; }
     .purchase-dialog {
       background: var(--color-bg-primary);
-      border-radius: var(--radius-medium);
+      border-radius: var(--radius-large);
       width: 288px; overflow: hidden;
       display: flex; flex-direction: column;
       box-shadow: var(--shadow-layer4);
     }
     .purchase-dialog-img-area {
       width: 288px; height: 200px; flex-shrink: 0;
-      background: var(--color-bg-accent-light);
+      background: var(--color-bg-primary);
       display: flex; align-items: center; justify-content: center;
       font-size: 72px; line-height: 1;
     }
@@ -2420,7 +2419,7 @@
       line-height: 1.6; margin-bottom: var(--spacing-20);
     }
     .purchase-dialog-close-btn {
-      width: 100%; height: 48px; border-radius: var(--radius-small); border: none;
+      width: 100%; height: 48px; border-radius: var(--radius-full); border: none;
       background: var(--color-bg-brand); color: var(--color-fg-bold);
       font-size: 15px; font-weight: 600; cursor: pointer;
     }
@@ -5353,11 +5352,14 @@
   }
 
   function closePurchaseComplete() {
-    // 1. ダイアログをフェードアウト
-    document.getElementById('purchase-dialog-overlay').classList.remove('open');
+    // 1. ダイアログを即時非表示
+    const overlay = document.getElementById('purchase-dialog-overlay');
+    overlay.style.transition = 'none';
+    overlay.classList.remove('open');
+    requestAnimationFrame(() => { overlay.style.transition = ''; });
     // 2. 購入確認を右にスライドアウト
     closeCheckoutConfirm();
-    // 3. 購入手続きモーダルを下にスライドアウト → IDP を閉じる
+    // 3. 購入手続きモーダルを上にスライドアウト → IDP を閉じる
     setTimeout(() => {
       closeCheckout();
       closeItemDetail();
@@ -5834,7 +5836,7 @@
     <!-- ════ CHECKOUT CONFIRM (inside sheet, slides from right) ════ -->
     <div id="checkout-confirm" class="checkout-confirm">
       <div class="checkout-confirm-header">
-        <button class="checkout-confirm-back" onclick="closeCheckoutConfirm()">
+        <button class="checkout-confirm-back nav-icon-btn" onclick="closeCheckoutConfirm()">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
         <span class="checkout-confirm-title-text">購入の確認</span>
