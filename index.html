@@ -2166,7 +2166,7 @@
     }
 
     .checkout-sheet-body {
-      flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
       padding: var(--spacing-8); display: flex; flex-direction: column; gap: var(--spacing-8);
     }
     .checkout-sheet-body::-webkit-scrollbar { display: none; }
@@ -2288,7 +2288,7 @@
       background: var(--color-bg-primary);
     }
     .co-apple-pay-btn {
-      height: 45px; border-radius: var(--radius-medium); border: none;
+      height: 45px; border-radius: var(--radius-full); border: none;
       background: #000; color: #fff;
       display: flex; align-items: center; justify-content: center; gap: var(--spacing-6);
       font-size: 15px; font-weight: 600; cursor: pointer; flex: 1;
@@ -2330,9 +2330,9 @@
       font-size: 17px; font-weight: 600;
     }
     .checkout-confirm-scroll {
-      flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
       padding: var(--spacing-8); display: flex; flex-direction: column; gap: var(--spacing-8);
-      padding-bottom: var(--spacing-40, 40px);
+      padding-bottom: var(--spacing-40);
     }
     .checkout-confirm-scroll::-webkit-scrollbar { display: none; }
 
@@ -2358,7 +2358,7 @@
       border-top: var(--border-thin) solid var(--color-border-primary);
     }
     .checkout-confirm-caption {
-      font-size: 12px; color: var(--color-fg-tertiary);
+      font-size: 12px; font-weight: 300; color: var(--color-fg-tertiary);
       text-align: center; margin-bottom: var(--spacing-12); line-height: 1.6;
     }
     .checkout-buy-btn {
@@ -2380,12 +2380,6 @@
       transition: opacity var(--duration-200) var(--ease-middle-out);
     }
     .purchase-dialog-overlay.open { opacity: 1; pointer-events: auto; }
-    .purchase-dialog-x {
-      width: 40px; height: 40px; border-radius: var(--radius-full);
-      border: 2px solid rgba(255,255,255,0.6);
-      background: none; cursor: pointer; color: #fff;
-      display: flex; align-items: center; justify-content: center;
-    }
     .purchase-dialog {
       background: var(--color-bg-primary);
       border-radius: var(--radius-medium);
@@ -5815,7 +5809,7 @@
     <div class="checkout-sheet-footer">
       <button class="co-apple-pay-btn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Apple Pay
+        Pay
       </button>
       <button class="co-next-btn" onclick="openCheckoutConfirm()">購入確認へ</button>
     </div>
@@ -5889,11 +5883,10 @@
 
       <!-- ════ PURCHASE COMPLETE DIALOG (inside confirm) ════ -->
       <div id="purchase-dialog-overlay" class="purchase-dialog-overlay">
-        <button class="purchase-dialog-x" onclick="closePurchaseComplete()">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
         <div class="purchase-dialog">
-          <div class="purchase-dialog-img-area">🎉</div>
+          <div class="purchase-dialog-img-area">
+            <img src="assets/images/purchase-complete.png" alt="" style="width:100%;height:100%;object-fit:contain;">
+          </div>
           <div class="purchase-dialog-content">
             <div class="purchase-dialog-title">購入が完了しました</div>
             <div class="purchase-dialog-body">出品者から発送の準備が整い次第、<br>通知でお知らせします</div>
