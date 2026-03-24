@@ -45,7 +45,7 @@ claude
 - `index.html` 冒頭の `PASS` 変数を直接編集することもできます
 
 ```js
-var PASS = 'Password'; // ← ここを変更
+var PASS = 'PASS'; // ← ここを変更
 ```
 
 ## バージョン管理
