@@ -8,10 +8,11 @@
   <meta name="apple-mobile-web-app-title" content="Prototype">
   <script>
     (function() {
+      var VERSION = 'v1.0';
       var KEY = 'auth_05';
       var PASS = 'Mirai';
       if (sessionStorage.getItem(KEY) !== '1') {
-        var input = window.prompt('パスワードを入力してください');
+        var input = window.prompt('パスワードを入力してください (' + VERSION + ')');
         if (input !== PASS) {
           document.documentElement.innerHTML = '<body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#666;">認証に失敗しました</body>';
           throw new Error('Unauthorized');
@@ -4512,7 +4513,7 @@
         </div>
 
         <!-- バージョン -->
-        <div class="mp-version">バージョン 4.49.2 (79008)</div>
+        <div class="mp-version" id="proto-version"></div>
 
       </div>
     </div>
@@ -4612,6 +4613,9 @@
       el.appendChild(s);
     }
     document.addEventListener('DOMContentLoaded', function () {
+      var el = document.getElementById('proto-version');
+      if (el) el.textContent = 'Prototype ' + VERSION;
+
       // home-tile and auc-item-thumb share the same sticker logic
       var tiles = document.querySelectorAll('.home-tile, .auc-item-thumb, .auc-mini-thumb');
       tiles.forEach(function (tile, i) {
