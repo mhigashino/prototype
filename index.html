@@ -2098,24 +2098,24 @@
     .checkout-overlay.open { opacity: 1; pointer-events: auto; }
 
     .checkout-sheet {
-      position: absolute; left: 0; right: 0; bottom: 0;
+      position: absolute; inset: 0;
       z-index: 301;
       background: var(--color-bg-secondary);
-      border-radius: var(--radius-large) var(--radius-large) 0 0;
       box-shadow: var(--shadow-layer3);
       transform: translateY(100%);
       transition: transform var(--duration-300) var(--ease-strong-out);
-      max-height: 94%; display: flex; flex-direction: column;
+      display: flex; flex-direction: column;
+      overflow: hidden;
     }
     .checkout-sheet.open { transform: translateY(0); }
 
     .checkout-sheet-header {
       display: flex; align-items: center; justify-content: center;
       padding: var(--spacing-16) var(--spacing-16) var(--spacing-12);
+      padding-top: calc(var(--spacing-16) + env(safe-area-inset-top, 0px));
       position: relative; flex-shrink: 0;
       border-bottom: var(--border-thin) solid var(--color-border-primary);
       background: var(--color-bg-primary);
-      border-radius: var(--radius-large) var(--radius-large) 0 0;
     }
     .checkout-sheet-title { font-size: 17px; font-weight: 600; }
     .checkout-sheet-close {
@@ -2264,7 +2264,7 @@
        CHECKOUT CONFIRM SCREEN (push)
     ════════════════════════════════════════ */
     .checkout-confirm {
-      position: absolute; inset: 0; z-index: 302;
+      position: absolute; inset: 0; z-index: 1;
       background: var(--color-bg-secondary);
       display: flex; flex-direction: column;
       transform: translateX(100%);
@@ -2275,8 +2275,8 @@
 
     .checkout-confirm-header {
       display: flex; align-items: center;
-      padding: 0 var(--spacing-4); padding-top: env(safe-area-inset-top);
-      height: calc(env(safe-area-inset-top) + 52px);
+      padding: 0 var(--spacing-4);
+      height: 52px;
       background: var(--color-bg-primary);
       border-bottom: var(--border-thin) solid var(--color-border-primary);
       flex-shrink: 0; position: relative;
@@ -2332,7 +2332,7 @@
        PURCHASE COMPLETE DIALOG
     ════════════════════════════════════════ */
     .purchase-dialog-overlay {
-      position: absolute; inset: 0; z-index: 400;
+      position: absolute; inset: 0; z-index: 2;
       background: var(--color-overlay-mid-20);
       display: flex; align-items: center; justify-content: center; flex-direction: column;
       gap: var(--spacing-16);
@@ -5302,10 +5302,15 @@
   }
 
   function closePurchaseComplete() {
+    // 1. ダイアログをフェードアウト
     document.getElementById('purchase-dialog-overlay').classList.remove('open');
+    // 2. 購入確認を右にスライドアウト
     closeCheckoutConfirm();
-    closeCheckout();
-    closeItemDetail();
+    // 3. 購入手続きモーダルを下にスライドアウト → IDP を閉じる
+    setTimeout(() => {
+      closeCheckout();
+      closeItemDetail();
+    }, 300);
   }
 
   // On load: open IDP if hash matches #item/<itemId>
@@ -5774,87 +5779,87 @@
       </button>
       <button class="co-next-btn" onclick="openCheckoutConfirm()">購入確認へ</button>
     </div>
-  </div>
 
-  <!-- ════ CHECKOUT CONFIRM SCREEN ════ -->
-  <div id="checkout-confirm" class="checkout-confirm">
-    <div class="checkout-confirm-header">
-      <button class="checkout-confirm-back" onclick="closeCheckoutConfirm()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <span class="checkout-confirm-title-text">購入の確認</span>
-    </div>
-    <div class="checkout-confirm-scroll">
-      <!-- 商品 -->
-      <div class="co-card">
-        <div class="co-item-row">
-          <img id="confirm-item-img" class="co-item-img" src="" alt="">
-          <div class="co-item-info">
-            <div id="confirm-item-title" class="co-item-title"></div>
-            <div class="co-item-price-row">
-              <span id="confirm-item-price" class="co-item-price"></span>
-              <span class="co-item-shipping">送料込み</span>
+    <!-- ════ CHECKOUT CONFIRM (inside sheet, slides from right) ════ -->
+    <div id="checkout-confirm" class="checkout-confirm">
+      <div class="checkout-confirm-header">
+        <button class="checkout-confirm-back" onclick="closeCheckoutConfirm()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="checkout-confirm-title-text">購入の確認</span>
+      </div>
+      <div class="checkout-confirm-scroll">
+        <!-- 商品 -->
+        <div class="co-card">
+          <div class="co-item-row">
+            <img id="confirm-item-img" class="co-item-img" src="" alt="">
+            <div class="co-item-info">
+              <div id="confirm-item-title" class="co-item-title"></div>
+              <div class="co-item-price-row">
+                <span id="confirm-item-price" class="co-item-price"></span>
+                <span class="co-item-shipping">送料込み</span>
+              </div>
+              <div id="confirm-item-condition" class="co-item-condition"></div>
             </div>
-            <div id="confirm-item-condition" class="co-item-condition"></div>
+          </div>
+        </div>
+        <!-- 配送・支払い情報 -->
+        <div class="co-card">
+          <div class="co-confirm-row">
+            <span class="co-confirm-row-label">配送先</span>
+            <span class="co-confirm-row-value">東京都渋谷区恵比寿1-1-1</span>
+          </div>
+          <div class="co-confirm-row">
+            <span class="co-confirm-row-label">置き配</span>
+            <span class="co-confirm-row-value">玄関前に置く</span>
+          </div>
+          <div class="co-confirm-row">
+            <span class="co-confirm-row-label">支払い</span>
+            <span class="co-confirm-row-value">メルカード *1234（一括払い）</span>
+          </div>
+        </div>
+        <!-- 請求 -->
+        <div class="co-billing">
+          <div class="co-billing-row">
+            <span class="co-billing-label">商品代金</span>
+            <span id="confirm-billing-price" class="co-billing-value"></span>
+          </div>
+          <div class="co-billing-row">
+            <span class="co-billing-label">クーポン</span>
+            <span class="co-billing-value">-</span>
+          </div>
+          <div class="co-billing-row">
+            <span class="co-billing-label">支払い方法</span>
+            <span class="co-billing-value">メルカード</span>
+          </div>
+          <div class="co-billing-sep"></div>
+          <div class="co-billing-total-row">
+            <span class="co-billing-total-label">支払い金額</span>
+            <span id="confirm-billing-total" class="co-billing-total-value"></span>
+          </div>
+          <div style="text-align:right;">
+            <span id="confirm-billing-points" class="co-billing-points"></span>
           </div>
         </div>
       </div>
-      <!-- 配送・支払い情報 -->
-      <div class="co-card">
-        <div class="co-confirm-row">
-          <span class="co-confirm-row-label">配送先</span>
-          <span class="co-confirm-row-value">東京都渋谷区恵比寿1-1-1</span>
-        </div>
-        <div class="co-confirm-row">
-          <span class="co-confirm-row-label">置き配</span>
-          <span class="co-confirm-row-value">玄関前に置く</span>
-        </div>
-        <div class="co-confirm-row">
-          <span class="co-confirm-row-label">支払い</span>
-          <span class="co-confirm-row-value">メルカード *1234（一括払い）</span>
-        </div>
+      <div class="checkout-confirm-footer">
+        <p class="checkout-confirm-caption">「購入する」ボタンを押すと、<a href="#" onclick="return false;" style="color:var(--color-fg-accent);">利用規約</a>に同意したことになります</p>
+        <button class="checkout-buy-btn" onclick="openPurchaseComplete()">購入する</button>
       </div>
-      <!-- 請求 -->
-      <div class="co-billing">
-        <div class="co-billing-row">
-          <span class="co-billing-label">商品代金</span>
-          <span id="confirm-billing-price" class="co-billing-value"></span>
-        </div>
-        <div class="co-billing-row">
-          <span class="co-billing-label">クーポン</span>
-          <span class="co-billing-value">-</span>
-        </div>
-        <div class="co-billing-row">
-          <span class="co-billing-label">支払い方法</span>
-          <span class="co-billing-value">メルカード</span>
-        </div>
-        <div class="co-billing-sep"></div>
-        <div class="co-billing-total-row">
-          <span class="co-billing-total-label">支払い金額</span>
-          <span id="confirm-billing-total" class="co-billing-total-value"></span>
-        </div>
-        <div style="text-align:right;">
-          <span id="confirm-billing-points" class="co-billing-points"></span>
-        </div>
-      </div>
-    </div>
-    <div class="checkout-confirm-footer">
-      <p class="checkout-confirm-caption">「購入する」ボタンを押すと、<a href="#" onclick="return false;" style="color:var(--color-fg-accent);">利用規約</a>に同意したことになります</p>
-      <button class="checkout-buy-btn" onclick="openPurchaseComplete()">購入する</button>
-    </div>
-  </div>
 
-  <!-- ════ PURCHASE COMPLETE DIALOG ════ -->
-  <div id="purchase-dialog-overlay" class="purchase-dialog-overlay">
-    <button class="purchase-dialog-x" onclick="closePurchaseComplete()">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <div class="purchase-dialog">
-      <div class="purchase-dialog-img-area">🎉</div>
-      <div class="purchase-dialog-content">
-        <div class="purchase-dialog-title">購入が完了しました</div>
-        <div class="purchase-dialog-body">出品者から発送の準備が整い次第、<br>通知でお知らせします</div>
-        <button class="purchase-dialog-close-btn" onclick="closePurchaseComplete()">閉じる</button>
+      <!-- ════ PURCHASE COMPLETE DIALOG (inside confirm) ════ -->
+      <div id="purchase-dialog-overlay" class="purchase-dialog-overlay">
+        <button class="purchase-dialog-x" onclick="closePurchaseComplete()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="purchase-dialog">
+          <div class="purchase-dialog-img-area">🎉</div>
+          <div class="purchase-dialog-content">
+            <div class="purchase-dialog-title">購入が完了しました</div>
+            <div class="purchase-dialog-body">出品者から発送の準備が整い次第、<br>通知でお知らせします</div>
+            <button class="purchase-dialog-close-btn" onclick="closePurchaseComplete()">閉じる</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
