@@ -56,25 +56,39 @@
       --color-fg-disabled:   #C7C7C7;  /* Foreground_Disabled  / Mono300 */
       --color-fg-accent:     #006ED1;  /* Foreground_Accent    / Blue500 */
       --color-fg-attention:  #FF333F;  /* Foreground_Attention / Attention500 */
-      --color-fg-bold:       #FFFFFF;  /* Foreground_Bold      / Mono50 */
-      --color-fg-success:    #1F6C27;  /* Foreground_Success   / Green600 */
+      --color-fg-bold:            #FFFFFF;  /* Foreground_Bold            / Mono50 */
+      --color-fg-attention-bold:  #FFFFFF;  /* Foreground_AttentionBold   */
+      --color-fg-success:         #1F6C27;  /* Foreground_Success         / Green600 */
+      --color-fg-notice:          #805A00;  /* Foreground_Notice          */
+      --color-fg-expectation:     #A34100;  /* Foreground_Expectation     */
+      --color-fg-brand:           #FF333F;  /* Foreground_Brand           */
 
       /* Background */
-      --color-bg-primary:    #FFFFFF;  /* Background_Primary   / Mono50 */
-      --color-bg-secondary:  #F0F0F0;  /* Background_Secondary / Mono100 */
-      --color-bg-tertiary:   #E0E0E0;  /* Background_Tertiary  / Mono200 */
-      --color-bg-accent:     #006ED1;  /* Background_Accent_Default / Blue500 */
-      --color-bg-bold:       #222222;  /* Background_Bold_Default / Mono900 */
-      --color-bg-attention:  #FF333F;  /* Background_Attention_Default / Attention500 */
-      --color-bg-attention-light: #FEF5F7; /* Background_Attention_Light / Attention50 */
-      --color-bg-success:    #3BAF2D;  /* Background_Success_Default / Green500 */
-      --color-bg-notice:     #FFB818;  /* Background_Notice_Default / Yellow500 */
+      --color-bg-primary:          #FFFFFF;  /* Background_Primary */
+      --color-bg-secondary:        #F0F0F0;  /* Background_Secondary */
+      --color-bg-tertiary:         #E0E0E0;  /* Background_Tertiary */
+      --color-bg-disabled:         #E0E0E0;  /* Background_Disabled */
+      --color-bg-accent:           #006ED1;  /* Background_Accent_Default */
+      --color-bg-accent-light:     #EFF7FF;  /* Background_Accent_Light */
+      --color-bg-bold:             #222222;  /* Background_Bold_Default */
+      --color-bg-bold-light:       #F0F0F0;  /* Background_Bold_Light */
+      --color-bg-attention:        #FF333F;  /* Background_Attention_Default */
+      --color-bg-attention-light:  #FEF5F7;  /* Background_Attention_Light */
+      --color-bg-success:          #3BAF2D;  /* Background_Success_Default */
+      --color-bg-success-light:    #E3FFEA;  /* Background_Success_Light */
+      --color-bg-notice:           #FFB818;  /* Background_Notice_Default */
+      --color-bg-notice-light:     #FFF5D0;  /* Background_Notice_Light */
+      --color-bg-expectation:      #FC6500;  /* Background_Expectation_Default */
+      --color-bg-expectation-light: #FFF2E9; /* Background_Expectation_Light */
+      --color-bg-brand:            #FF333F;  /* Background_Brand_Default */
+      --color-bg-brand-light:      #FEF5F7;  /* Background_Brand_Light */
 
       /* Border */
       --color-border-primary:   #E0E0E0;  /* Border_Primary   / Mono200 */
       --color-border-secondary: #F0F0F0;  /* Border_Secondary / Mono100 */
       --color-border-accent:    #006ED1;  /* Border_Accent    / Blue500 */
       --color-border-attention: #FF333F;  /* Border_Attention / Attention500 */
+      --color-border-success:   #3BAF2D;  /* Border_Success   / Green400 */
 
       /* Mono Scale */
       --mono-900: #222222;
@@ -98,6 +112,7 @@
       --radius-large:  16px;    /* Rounding_Large */
       --radius-medium: 8px;     /* Rounding_Medium */
       --radius-small:  4px;     /* Rounding_Small */
+      --radius-none:   0px;     /* Rounding_None */
 
       /* Overlay */
       --color-overlay-dark-80:  rgba(34, 34, 34, 0.80);
@@ -114,6 +129,7 @@
       --shadow-layer2: 0 2px 4px rgba(0,0,0,0.2);   /* SecondFloor */
       --shadow-layer3: 0 4px 8px rgba(0,0,0,0.2);   /* MiddleFloor */
       --shadow-layer4: 0 8px 10px rgba(0,0,0,0.2);  /* TopFloor */
+      --shadow-bottom: 0 0 16px rgba(0,0,0,0.2);    /* FloatingButton */
 
       /* Spacing */
       --spacing-0:   0px;
@@ -137,11 +153,16 @@
       --spacing-96:  96px;
       --spacing-128: 128px;
 
-      /* Brand */
-      --color-bg-brand:       #FF333F;  /* Background_Brand / Attention500 */
-      --color-bg-accent-light: #EFF7FF; /* Background_Accent_Light / Blue50 */
-      --color-fg-brand:       #FF333F;  /* Foreground_Brand */
-      --color-fg-attention-bold: #FFFFFF;
+      /* Opacity */
+      --opacity-100: 1.0;
+      --opacity-80:  0.8;
+      --opacity-60:  0.6;
+      --opacity-40:  0.4;
+      --opacity-30:  0.3;
+      --opacity-20:  0.2;
+      --opacity-10:  0.1;
+      --opacity-5:   0.05;
+      --opacity-0:   0;
 
       /* Motion: Duration */
       --duration-0:    0ms;
