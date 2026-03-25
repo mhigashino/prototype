@@ -495,6 +495,23 @@
     .search-input-field::placeholder {
       color: rgba(0,0,0,0.30);
     }
+    /* WebKit のデフォルトクリアボタンを非表示 */
+    .search-input-field::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+    .search-input-clear {
+      display: none;
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: var(--color-fg-tertiary);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .search-input-clear:active { opacity: 0.5; }
+    .search-input-clear.visible { display: flex; }
 
     /* × 閉じるボタン（glass-pill内に配置するため、search-btnスタイルを継承） */
     .search-close-btn {
@@ -3782,6 +3799,7 @@
           autocorrect="off"
           spellcheck="false"
         />
+        <button class="search-input-clear" id="search-input-clear" onclick="clearSearchInput()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.072 4.93a10 10 0 1 0 0 14.14c3.904-3.905 3.904-10.235 0-14.14m-2.68 10.47a.69.69 0 0 1 0 1 .67.67 0 0 1-.49.21.7.7 0 0 1-.5-.21l-3.4-3.4-3.5 3.5a.7.7 0 0 1-.49.2.74.74 0 0 1-.5-.2.71.71 0 0 1 0-1l3.49-3.5-3.49-3.5a.707.707 0 1 1 1-1l3.49 3.5 3.4-3.4a.707.707 0 0 1 1 1l-3.4 3.4z" clip-rule="evenodd"/></svg></button>
       </div>
       <div class="glass-pill search-pill">
         <button class="search-btn search-close-btn" onclick="exitSearch()">
@@ -5024,6 +5042,7 @@
     const input = document.getElementById('search-input');
     input.blur();
     input.value = '';
+    document.getElementById('search-input-clear').classList.remove('visible');
     document.getElementById('search-float-bar').style.bottom = '0px';
     if (location.hash) history.replaceState(null, '', location.pathname);
     if (_searchFromIdp && _idpStackBeforeSearch) {
@@ -5113,6 +5132,17 @@
     e.preventDefault();
     this.focus({ preventScroll: true });
   });
+
+  // 検索入力のクリアボタン表示制御
+  document.getElementById('search-input').addEventListener('input', function () {
+    document.getElementById('search-input-clear').classList.toggle('visible', this.value.length > 0);
+  });
+  function clearSearchInput() {
+    var input = document.getElementById('search-input');
+    input.value = '';
+    input.focus({ preventScroll: true });
+    document.getElementById('search-input-clear').classList.remove('visible');
+  }
 
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', updateFloatBar);
