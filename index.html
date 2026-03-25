@@ -537,6 +537,68 @@
       overscroll-behavior-x: none;
     }
 
+    /* 検索結果グリッド */
+    .search-results-scroll {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      overscroll-behavior-y: contain;
+      overscroll-behavior-x: none;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 80px;
+      display: none;
+    }
+    .search-results-scroll.active { display: block; }
+
+    .search-results-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+    }
+    .search-results-back {
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      color: var(--color-fg-primary);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .search-results-back:active { opacity: 0.5; }
+    .search-results-keyword {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-fg-primary);
+    }
+
+    .search-results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      padding: 0 2px;
+    }
+    .search-results-tile {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+    .search-results-tile img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .search-results-tile .home-tile-heart {
+      position: absolute; bottom: 4px; right: 4px;
+    }
+    .search-results-price {
+      position: absolute; bottom: 6px; left: 6px;
+      background: rgba(34,34,34,0.52);
+      border-radius: 9999px;
+      padding: 3px 8px;
+      font-size: 11px; font-weight: 600;
+      color: #fff; line-height: 1.3;
+    }
+
     /* 検索画面ではタブバーを非表示 */
     #screen-search.active ~ .tab-bar-wrapper {
       display: none;
@@ -3784,6 +3846,15 @@
       </div>
     </div>
 
+    <!-- 検索結果ビュー（履歴と切り替え表示） -->
+    <div class="search-results-scroll">
+      <div class="search-results-header">
+        <button class="search-results-back" onclick="hideSearchResults()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16.08 19.707a.95.95 0 0 1-1.372 0l-6.788-7a1.02 1.02 0 0 1 0-1.414l6.788-7a.95.95 0 0 1 1.372 0c.378.39.378 1.024 0 1.414L9.947 12l6.133 6.293c.378.39.378 1.024 0 1.414"/></svg></button>
+        <span class="search-results-keyword"></span>
+      </div>
+      <div class="search-results-grid"></div>
+    </div>
+
     <!-- 浮いている検索フォーム（スクロールされない） -->
     <div class="search-float-bar" id="search-float-bar">
       <div class="search-input-wrap">
@@ -4983,7 +5054,9 @@
 
   // コンテンツエリアの高さをキーボードに関係なく常に全画面に固定
   function fixSearchContentHeight() {
-    document.querySelector('.search-content-scroll').style.height = FULL_HEIGHT + 'px';
+    var h = FULL_HEIGHT + 'px';
+    document.querySelector('.search-content-scroll').style.height = h;
+    document.querySelector('.search-results-scroll').style.height = h;
   }
 
   // 前回のキーボード高さを記憶（次回 goToSearch 時に即座に適用してラグを防ぐ）
@@ -5043,6 +5116,8 @@
     input.blur();
     input.value = '';
     document.getElementById('search-input-clear').classList.remove('visible');
+    document.querySelector('.search-results-scroll').classList.remove('active');
+    document.querySelector('.search-content-scroll').style.display = '';
     document.getElementById('search-float-bar').style.bottom = '0px';
     if (location.hash) history.replaceState(null, '', location.pathname);
     if (_searchFromIdp && _idpStackBeforeSearch) {
@@ -5148,6 +5223,54 @@
     input.focus({ preventScroll: true });
     document.getElementById('search-input-clear').classList.remove('visible');
   }
+
+  // ── 検索結果ビュー ──
+  function showSearchResults(keyword) {
+    document.getElementById('search-input').blur();
+    document.getElementById('search-input').value = keyword;
+    document.getElementById('search-input-clear').classList.add('visible');
+    document.querySelector('.search-content-scroll').style.display = 'none';
+    var rs = document.querySelector('.search-results-scroll');
+    rs.classList.add('active');
+    rs.scrollTop = 0;
+    document.querySelector('.search-results-keyword').textContent = '「' + keyword + '」の検索結果';
+    document.getElementById('search-float-bar').style.bottom = '0px';
+    // ITEM_DATA からシャッフルしてグリッドに表示
+    var grid = document.querySelector('.search-results-grid');
+    grid.innerHTML = '';
+    var ids = Object.keys(ITEM_DATA);
+    // キーワードをシードにした疑似シャッフル（再現性あり）
+    var seed = 0;
+    for (var i = 0; i < keyword.length; i++) seed += keyword.charCodeAt(i);
+    ids.sort(function (a, b) { return ((a.charCodeAt(2) * 2654435761 + seed) >>> 0) - ((b.charCodeAt(2) * 2654435761 + seed) >>> 0); });
+    var count = Math.min(24, ids.length);
+    for (var i = 0; i < count; i++) {
+      var id = ids[i], item = ITEM_DATA[id];
+      var tile = document.createElement('div');
+      tile.className = 'search-results-tile';
+      tile.setAttribute('onclick', "openItemDetail('" + id + "')");
+      tile.innerHTML = '<img src="' + item.images[0] + '" alt=""><div class="search-results-price">' + item.price + '</div>'
+        + '<div class="home-tile-heart" onclick="toggleHeart(this,event)"><svg width="18" height="18"><use href="#icon-heart-fill"/></svg></div>';
+      grid.appendChild(tile);
+    }
+  }
+
+  function hideSearchResults() {
+    document.querySelector('.search-results-scroll').classList.remove('active');
+    document.querySelector('.search-content-scroll').style.display = '';
+    document.getElementById('search-input').value = '';
+    document.getElementById('search-input-clear').classList.remove('visible');
+    document.getElementById('search-input').focus({ preventScroll: true });
+  }
+
+  // 履歴カードタップ → 検索結果を表示（イベントデリゲーション）
+  document.querySelector('.history-cards').addEventListener('click', function (e) {
+    if (e.target.closest('.history-heart')) return;
+    var card = e.target.closest('.history-card');
+    if (!card) return;
+    var title = card.querySelector('.history-title');
+    if (title) showSearchResults(title.textContent);
+  });
 
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', updateFloatBar);
