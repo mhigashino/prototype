@@ -631,6 +631,7 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       padding-left: 8px;
+      padding-right: 16px;
     }
     .filter-categories::-webkit-scrollbar { display: none; }
 
@@ -5130,7 +5131,7 @@
         _dir = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
       }
       // フィルターチップバー内の横スクロールは許可する
-      if (_dir === 'h' && !e.target.closest('.filter-chip-bar')) {
+      if (_dir === 'h' && !e.target.closest('.filter-chip-bar') && !e.target.closest('.filter-categories')) {
         e.preventDefault();
       }
     }, { passive: false });
@@ -5333,7 +5334,16 @@
 
   // キーワードタブタップ → 新しい検索結果画面へスライドイン遷移
   function switchSearchKeyword(keyword, btn) {
-    showSearchResults(keyword);
+    var rv = document.querySelector('.search-results-view');
+    if (rv.classList.contains('active')) {
+      // 既に開いている → 一度スライドアウトしてから再度スライドイン
+      rv.classList.remove('active');
+      setTimeout(function () {
+        showSearchResults(keyword);
+      }, 350); // transitionの0.35sに合わせる
+    } else {
+      showSearchResults(keyword);
+    }
   }
 
   // 販売中のみ ON/OFF トグル
