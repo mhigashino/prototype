@@ -2309,10 +2309,10 @@
     .checkout-overlay {
       position: absolute; inset: 0; z-index: 300;
       background: var(--color-overlay-mid-20);
-      opacity: 0; pointer-events: none;
-      transition: opacity var(--duration-250) var(--ease-middle-out);
+      opacity: 0; pointer-events: none; visibility: hidden;
+      transition: opacity var(--duration-250) var(--ease-middle-out), visibility 0s linear var(--duration-250);
     }
-    .checkout-overlay.open { opacity: 1; pointer-events: auto; }
+    .checkout-overlay.open { opacity: 1; pointer-events: auto; visibility: visible; transition: opacity var(--duration-250) var(--ease-middle-out), visibility 0s linear 0s; }
 
     .checkout-sheet {
       position: absolute;
@@ -2323,12 +2323,12 @@
       background: var(--color-bg-secondary);
       box-shadow: var(--shadow-layer3);
       transform: translateY(100%);
-      transition: transform var(--duration-300) var(--ease-strong-out);
+      transition: transform var(--duration-300) var(--ease-strong-out), visibility 0s linear var(--duration-300);
       display: flex; flex-direction: column;
       overflow: hidden;
-      pointer-events: none;
+      pointer-events: none; visibility: hidden;
     }
-    .checkout-sheet.open { transform: translateY(0); pointer-events: auto; }
+    .checkout-sheet.open { transform: translateY(0); pointer-events: auto; visibility: visible; transition: transform var(--duration-300) var(--ease-strong-out), visibility 0s linear 0s; }
 
     .checkout-sheet-header,
     .checkout-confirm-header {
@@ -2579,10 +2579,10 @@
       background: var(--color-overlay-mid-20);
       display: flex; align-items: center; justify-content: center; flex-direction: column;
       gap: var(--spacing-16);
-      opacity: 0; pointer-events: none;
-      transition: opacity var(--duration-200) var(--ease-middle-out);
+      opacity: 0; pointer-events: none; visibility: hidden;
+      transition: opacity var(--duration-200) var(--ease-middle-out), visibility 0s linear var(--duration-200);
     }
-    .purchase-dialog-overlay.open { opacity: 1; pointer-events: auto; }
+    .purchase-dialog-overlay.open { opacity: 1; pointer-events: auto; visibility: visible; transition: opacity var(--duration-200) var(--ease-middle-out), visibility 0s linear 0s; }
     .purchase-dialog {
       background: var(--color-bg-primary);
       border-radius: var(--radius-large);
@@ -5811,7 +5811,7 @@
     const m = location.hash.match(/^#item\/(.+)$/);
     if (m) openItemDetail(m[1], true);
     else if (location.hash === '#search') {
-      const btn = document.querySelector('.search-btn');
+      const btn = document.querySelector('.tab-bar-wrapper .search-btn');
       if (btn) goToSearch(btn);
     }
   })();
