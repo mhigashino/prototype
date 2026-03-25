@@ -576,10 +576,7 @@
       align-items: center;
       gap: 6px;
       padding: 68px 16px 8px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
     }
-    .search-results-filters::-webkit-scrollbar { display: none; }
 
     .filter-chip {
       flex-shrink: 0;
@@ -605,13 +602,32 @@
     }
     .filter-chip svg { width: 16px; height: 16px; flex-shrink: 0; }
 
-    .filter-divider {
-      flex-shrink: 0;
-      width: 1px;
-      height: 35px;
-      background: var(--color-border-primary);
-      margin: 0 2px;
+    /* カテゴリチップ横スクロール領域 */
+    .filter-categories-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
     }
+    /* 左端のグラデーションマスク（販売中のみボタン側にフェードアウト） */
+    .filter-categories-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 24px;
+      background: linear-gradient(to right, var(--color-bg-primary), transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .filter-categories {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-left: 8px;
+    }
+    .filter-categories::-webkit-scrollbar { display: none; }
 
     .search-results-grid {
       display: grid;
@@ -3893,21 +3909,25 @@
       <div class="search-results-header">
         <button class="idp-overlay-btn" onclick="hideSearchResults()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12.443 19.707a.95.95 0 0 1-1.371 0l-6.788-7a1.02 1.02 0 0 1 0-1.414l6.788-7a.95.95 0 0 1 1.371 0c.379.39.379 1.024 0 1.414L7.311 11h11.72c.535 0 .969.448.969 1s-.434 1-.97 1H7.31l5.133 5.293c.379.39.379 1.024 0 1.414" clip-rule="evenodd"/></svg></button>
         <div class="spacer"></div>
+        <button class="idp-overlay-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M3.5 8.7a.7.7 0 0 1-.7-.701v-3.1c0-1.157.941-2.1 2.1-2.1H8a.7.7 0 1 1 0 1.4H4.9a.7.7 0 0 0-.7.7v3.1a.7.7 0 0 1-.7.7m17 0a.7.7 0 0 1-.7-.701v-3.1a.7.7 0 0 0-.699-.7h-3.1a.7.7 0 1 1 0-1.4h3.1c1.158 0 2.1.941 2.1 2.1v3.1a.7.7 0 0 1-.7.7M16 21.2h3.1V21.2c1.158 0 2.1-.942 2.1-2.1v-3.1a.7.7 0 1 0-1.401 0v3.1c0 .385-.314.7-.7.7H16a.7.7 0 1 0 0 1.401m-8 0H4.9c-1.159 0-2.1-.942-2.1-2.1v-3.099a.7.7 0 1 1 1.4 0v3.1c0 .385.314.7.7.7H8a.7.7 0 1 1 0 1.4m7.11-7.051 2.385 2.385v.001a.7.7 0 0 1-.99.99l-2.388-2.388A5.15 5.15 0 0 1 11 16.201 5.206 5.206 0 0 1 5.8 11C5.8 8.131 8.131 5.8 11 5.8s5.2 2.334 5.2 5.2a5.15 5.15 0 0 1-1.09 3.149M11 7.2A3.803 3.803 0 0 0 7.2 11c0 2.095 1.704 3.799 3.8 3.799s3.8-1.704 3.8-3.8-1.705-3.8-3.8-3.8" clip-rule="evenodd"/></svg></button>
         <button class="idp-overlay-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M7.017 5c.283.018.55.139.75.34l2.85 2.76a.71.71 0 0 1-.771 1.155.7.7 0 0 1-.23-.155l-2-1.94V18.3a.7.7 0 1 1-1.4 0V7.14l-2 2a.67.67 0 0 1-.49.2.7.7 0 0 1-.5-.21.7.7 0 0 1 0-1l2.85-2.81a1.24 1.24 0 0 1 .74-.32h.2m13.57 9.725a.7.7 0 0 1 .23.155.7.7 0 0 1-.03.94l-2.85 2.79a1.2 1.2 0 0 1-.61.29.6.6 0 0 1-.24.05.9.9 0 0 1-.22 0 1.3 1.3 0 0 1-.62-.3l-2.83-2.76a.707.707 0 0 1 1-1l2 1.95V5.7a.7.7 0 1 1 1.4 0v11.18l2-2a.7.7 0 0 1 .77-.155" clip-rule="evenodd"/></svg></button>
         <button class="idp-overlay-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.156 19.424a.956.956 0 0 1-.956-.953.956.956 0 0 1 1.913 0 .955.955 0 0 1-.957.953m9.056-1.74H13.55a2.53 2.53 0 0 0-2.393-1.74 2.53 2.53 0 0 0-2.393 1.74H3.788a.787.787 0 1 0 0 1.576h4.975A2.53 2.53 0 0 0 11.156 21a2.53 2.53 0 0 0 2.393-1.74h6.663a.787.787 0 1 0 0-1.575zm-5.118-4.76a.955.955 0 0 1-.957-.953.955.955 0 0 1 1.913 0 .955.955 0 0 1-.956.953m5.118-1.74h-2.725a2.53 2.53 0 0 0-2.393-1.74 2.53 2.53 0 0 0-2.393 1.74H3.788a.788.788 0 0 0 0 1.576H12.7a2.53 2.53 0 0 0 2.393 1.74 2.53 2.53 0 0 0 2.393-1.74h2.726a.788.788 0 0 0 0-1.575zM8.907 4.575c.528 0 .957.428.957.953a.955.955 0 0 1-1.913 0c0-.525.429-.953.956-.953M3.788 6.316h2.726a2.53 2.53 0 0 0 2.392 1.742A2.53 2.53 0 0 0 11.3 6.316h8.914a.787.787 0 1 0 0-1.574h-8.914A2.53 2.53 0 0 0 8.906 3a2.53 2.53 0 0 0-2.392 1.742H3.788a.787.787 0 1 0 0 1.574"/></svg></button>
       </div>
       <div class="search-results-scroll">
         <div class="search-results-filters">
           <button class="filter-chip" onclick="toggleFilterChip(this)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9.3 18.8a1.3 1.3 0 0 1-.94-.4L2.7 12.62l1.88-1.92 4.72 4.82L19.42 5.2l1.88 1.92L10.24 18.4a1.3 1.3 0 0 1-.94.4"/></svg>販売中のみ</button>
-          <div class="filter-divider"></div>
-          <button class="filter-chip" onclick="switchSearchKeyword('新品、未使用', this)">新品、未使用</button>
-          <button class="filter-chip" onclick="switchSearchKeyword('未使用に近い', this)">未使用に近い</button>
-          <button class="filter-chip" onclick="switchSearchKeyword('レディース', this)">レディース</button>
-          <button class="filter-chip" onclick="switchSearchKeyword('メンズ', this)">メンズ</button>
-          <button class="filter-chip" onclick="switchSearchKeyword('家電', this)">家電</button>
-          <button class="filter-chip" onclick="switchSearchKeyword('アウトドア', this)">アウトドア</button>
-          <button class="filter-chip" onclick="switchSearchKeyword('コスメ', this)">コスメ</button>
-          <button class="filter-chip" onclick="switchSearchKeyword('トレカ', this)">トレカ</button>
+          <div class="filter-categories-wrap">
+            <div class="filter-categories">
+              <button class="filter-chip" onclick="switchSearchKeyword('新品、未使用', this)">新品、未使用</button>
+              <button class="filter-chip" onclick="switchSearchKeyword('未使用に近い', this)">未使用に近い</button>
+              <button class="filter-chip" onclick="switchSearchKeyword('レディース', this)">レディース</button>
+              <button class="filter-chip" onclick="switchSearchKeyword('メンズ', this)">メンズ</button>
+              <button class="filter-chip" onclick="switchSearchKeyword('家電', this)">家電</button>
+              <button class="filter-chip" onclick="switchSearchKeyword('アウトドア', this)">アウトドア</button>
+              <button class="filter-chip" onclick="switchSearchKeyword('コスメ', this)">コスメ</button>
+              <button class="filter-chip" onclick="switchSearchKeyword('トレカ', this)">トレカ</button>
+            </div>
+          </div>
         </div>
         <div class="search-results-grid"></div>
       </div>
