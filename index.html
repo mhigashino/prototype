@@ -195,7 +195,7 @@
 
     html, body {
       width: 100%;
-      height: 100%;
+      height: 100dvh;
       background: var(--color-bg-primary);
       overflow: hidden;
       overscroll-behavior: none;
@@ -203,8 +203,9 @@
     }
 
     .device {
-      position: fixed;
-      inset: 0;
+      position: relative;
+      width: 100%;
+      height: 100%;
       background: var(--color-bg-primary);
       overflow: hidden;
       overscroll-behavior: none;
@@ -514,7 +515,7 @@
        SEARCH HOME SCREEN
     ════════════════════════════════════════ */
     #screen-search {
-      height: 100%;
+      height: 100svh;
       bottom: auto;
       overscroll-behavior-x: none;
     }
@@ -2625,6 +2626,9 @@
     <symbol id="icon-heart-outline" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></symbol>
   </defs>
 </svg>
+
+<!-- iOS visual viewport パン時に画面下部に露出する空白をカバーする背景 -->
+<div style="position:fixed;inset:0;background:var(--color-bg-primary);z-index:-1;pointer-events:none;"></div>
 
 <div class="device">
 
@@ -5119,15 +5123,12 @@
     }, { passive: false });
   })();
 
-  // .device は position:fixed なので offsetHeight はキーボードに関係なく常に画面高さ
-  function getDeviceHeight() {
-    return document.querySelector('.device').offsetHeight;
-  }
-  const FULL_HEIGHT = getDeviceHeight();
+  // キーボード非表示時の画面高さを記録（window.innerHeight はキーボードで変わる場合があるため起動時に固定）
+  const FULL_HEIGHT = window.innerHeight;
 
   // コンテンツエリアの高さをキーボードに関係なく常に全画面に固定
   function fixSearchContentHeight() {
-    document.querySelector('.search-content-scroll').style.height = getDeviceHeight() + 'px';
+    document.querySelector('.search-content-scroll').style.height = FULL_HEIGHT + 'px';
   }
 
   // 前回のキーボード高さを記憶（次回 goToSearch 時に即座に適用してラグを防ぐ）
@@ -5236,7 +5237,7 @@
     if (!screen.classList.contains('active')) return;
     const vv = window.visualViewport;
     if (!vv) return;
-    const keyboardH = Math.max(0, getDeviceHeight() - vv.height);
+    const keyboardH = Math.max(0, FULL_HEIGHT - vv.height);
     lastKeyboardH = keyboardH;
     const floatBar = document.getElementById('search-float-bar');
     // open直後の最初のキーボード表示はアニメーションなしで即座に移動
@@ -5270,11 +5271,12 @@
 
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', updateFloatBar);
-    // キーボード表示時に iOS が visual viewport をパンさせるのを防ぐ
+    // キーボード表示時に iOS が window をスクロールさせるのを防ぐ
     window.visualViewport.addEventListener('scroll', () => {
-      window.scrollTo(0, 0);
       const screen = document.getElementById('screen-search');
-      if (screen.classList.contains('active')) updateFloatBar();
+      if (!screen.classList.contains('active')) return;
+      window.scrollTo(0, 0);
+      updateFloatBar();
     });
   }
 
