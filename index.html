@@ -571,14 +571,47 @@
       padding-bottom: 80px;
     }
 
-    .search-results-keywords {
+    .search-results-filters {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       padding: 68px 16px 8px;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
-    .search-results-keywords::-webkit-scrollbar { display: none; }
+    .search-results-filters::-webkit-scrollbar { display: none; }
+
+    .filter-chip {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      height: 36px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid var(--color-border-primary);
+      background: var(--color-bg-primary);
+      font-size: 12px;
+      color: var(--color-fg-primary);
+      white-space: nowrap;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .filter-chip:active { opacity: 0.5; }
+    .filter-chip.selected {
+      background: var(--color-bg-bold);
+      color: var(--color-fg-bold);
+      border-color: var(--color-bg-bold);
+    }
+    .filter-chip svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .filter-divider {
+      flex-shrink: 0;
+      width: 1px;
+      height: 35px;
+      background: var(--color-border-primary);
+      margin: 0 2px;
+    }
 
     .search-results-grid {
       display: grid;
@@ -3864,17 +3897,22 @@
         <button class="idp-overlay-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.156 19.424a.956.956 0 0 1-.956-.953.956.956 0 0 1 1.913 0 .955.955 0 0 1-.957.953m9.056-1.74H13.55a2.53 2.53 0 0 0-2.393-1.74 2.53 2.53 0 0 0-2.393 1.74H3.788a.787.787 0 1 0 0 1.576h4.975A2.53 2.53 0 0 0 11.156 21a2.53 2.53 0 0 0 2.393-1.74h6.663a.787.787 0 1 0 0-1.575zm-5.118-4.76a.955.955 0 0 1-.957-.953.955.955 0 0 1 1.913 0 .955.955 0 0 1-.956.953m5.118-1.74h-2.725a2.53 2.53 0 0 0-2.393-1.74 2.53 2.53 0 0 0-2.393 1.74H3.788a.788.788 0 0 0 0 1.576H12.7a2.53 2.53 0 0 0 2.393 1.74 2.53 2.53 0 0 0 2.393-1.74h2.726a.788.788 0 0 0 0-1.575zM8.907 4.575c.528 0 .957.428.957.953a.955.955 0 0 1-1.913 0c0-.525.429-.953.956-.953M3.788 6.316h2.726a2.53 2.53 0 0 0 2.392 1.742A2.53 2.53 0 0 0 11.3 6.316h8.914a.787.787 0 1 0 0-1.574h-8.914A2.53 2.53 0 0 0 8.906 3a2.53 2.53 0 0 0-2.392 1.742H3.788a.787.787 0 1 0 0 1.574"/></svg></button>
       </div>
       <div class="search-results-scroll">
-        <div class="search-results-keywords">
-          <button class="home-tab inactive" onclick="switchSearchKeyword('レディース', this)">レディース</button>
-          <button class="home-tab inactive" onclick="switchSearchKeyword('メンズ', this)">メンズ</button>
-          <button class="home-tab inactive" onclick="switchSearchKeyword('家電', this)">家電</button>
-          <button class="home-tab inactive" onclick="switchSearchKeyword('アウトドア', this)">アウトドア</button>
-          <button class="home-tab inactive" onclick="switchSearchKeyword('ブランド', this)">ブランド</button>
-          <button class="home-tab inactive" onclick="switchSearchKeyword('コスメ', this)">コスメ</button>
-          <button class="home-tab inactive" onclick="switchSearchKeyword('トレカ', this)">トレカ</button>
-          <button class="home-tab inactive" onclick="switchSearchKeyword('キッズ', this)">キッズ</button>
+        <div class="search-results-filters">
+          <button class="filter-chip" onclick="toggleFilterChip(this)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9.3 18.8a1.3 1.3 0 0 1-.94-.4L2.7 12.62l1.88-1.92 4.72 4.82L19.42 5.2l1.88 1.92L10.24 18.4a1.3 1.3 0 0 1-.94.4"/></svg>販売中のみ</button>
+          <div class="filter-divider"></div>
+          <button class="filter-chip" onclick="switchSearchKeyword('新品、未使用', this)">新品、未使用</button>
+          <button class="filter-chip" onclick="switchSearchKeyword('未使用に近い', this)">未使用に近い</button>
+          <button class="filter-chip" onclick="switchSearchKeyword('レディース', this)">レディース</button>
+          <button class="filter-chip" onclick="switchSearchKeyword('メンズ', this)">メンズ</button>
+          <button class="filter-chip" onclick="switchSearchKeyword('家電', this)">家電</button>
+          <button class="filter-chip" onclick="switchSearchKeyword('アウトドア', this)">アウトドア</button>
+          <button class="filter-chip" onclick="switchSearchKeyword('コスメ', this)">コスメ</button>
+          <button class="filter-chip" onclick="switchSearchKeyword('トレカ', this)">トレカ</button>
         </div>
         <div class="search-results-grid"></div>
+      </div>
+      <div class="idp-bottom-bar">
+        <button class="idp-btn-buy">この検索条件を保存する</button>
       </div>
     </div>
 
@@ -5254,8 +5292,9 @@
     document.querySelector('.search-results-scroll').scrollTop = 0;
     document.getElementById('search-float-bar').style.bottom = '0px';
     // キーワードタブを全て未選択にリセット
-    document.querySelectorAll('.search-results-keywords .home-tab').forEach(function (t) {
-      t.classList.remove('active'); t.classList.add('inactive');
+    // 販売中のみボタンのリセット（新しい結果画面では未選択に）
+    document.querySelectorAll('.search-results-filters .filter-chip').forEach(function (c) {
+      c.classList.remove('selected');
     });
     _populateSearchGrid(keyword);
   }
@@ -5271,6 +5310,11 @@
     showSearchResults(keyword);
   }
 
+  // 販売中のみ ON/OFF トグル
+  function toggleFilterChip(btn) {
+    btn.classList.toggle('selected');
+  }
+
   function _populateSearchGrid(keyword) {
     var grid = document.querySelector('.search-results-grid');
     grid.innerHTML = '';
@@ -5284,8 +5328,11 @@
       var tile = document.createElement('div');
       tile.className = 'search-results-tile';
       tile.setAttribute('onclick', "openItemDetail('" + id + "')");
+      var badge = '';
+      var v = ((i + seed) * 2654435761) >>> 0;
+      if (v % 6 === 0) { var label = (v >> 4) % 2 === 0 ? 'sold' : 'new'; badge = '<div class="corner-sticker ' + label + '"><span>' + (label === 'sold' ? 'SOLD' : 'NEW') + '</span></div>'; }
       tile.innerHTML = '<img src="' + item.images[0] + '" alt=""><div class="search-results-price">' + item.price + '</div>'
-        + '<div class="home-tile-heart" onclick="toggleHeart(this,event)"><svg width="18" height="18"><use href="#icon-heart-fill"/></svg></div>';
+        + '<div class="home-tile-heart" onclick="toggleHeart(this,event)"><svg width="18" height="18"><use href="#icon-heart-fill"/></svg></div>' + badge;
       grid.appendChild(tile);
     }
   }
