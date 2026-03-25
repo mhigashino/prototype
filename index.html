@@ -5387,7 +5387,7 @@
     if (!grid) grid = document.querySelector('.search-results-grid');
     grid.innerHTML = '';
     var ids = Object.keys(ITEM_DATA);
-    var seed = 0;
+    var seed = Date.now();
     for (var i = 0; i < keyword.length; i++) seed += keyword.charCodeAt(i);
     ids.sort(function (a, b) { return ((a.charCodeAt(2) * 2654435761 + seed) >>> 0) - ((b.charCodeAt(2) * 2654435761 + seed) >>> 0); });
     var count = Math.min(60, ids.length);
