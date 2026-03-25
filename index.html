@@ -5296,6 +5296,18 @@
     }, { passive: false });
   })();
 
+  // 検索入力欄のタップ時に iOS Safari が visual viewport をパンするのを防ぐ
+  // ブラウザのデフォルト focus+scroll-into-view を阻止し、preventScroll 付きで手動 focus する
+  (function () {
+    var input = document.getElementById('search-input');
+    var wrap = input.closest('.search-input-wrap');
+    wrap.addEventListener('touchend', function (e) {
+      if (document.activeElement === input) return; // 既にフォーカス中ならブラウザに任せる
+      e.preventDefault();
+      input.focus({ preventScroll: true });
+    });
+  })();
+
   // キーボード非表示時の画面高さを記録（window.innerHeight はキーボードで変わる場合があるため起動時に固定）
   const FULL_HEIGHT = window.innerHeight;
 
