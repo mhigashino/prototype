@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-visual" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="apple-touch-icon" href="assets/images/icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Prototype">
@@ -195,8 +195,7 @@
 
     html, body {
       width: 100%;
-      height: 100vh;
-      height: 100svh;          /* iOS: キーボードに連動しない固定高（dvhだとキーボードで縮み空白が出る） */
+      height: 100%;
       background: var(--color-bg-primary);
       overflow: hidden;
       overscroll-behavior: none;
@@ -204,9 +203,8 @@
     }
 
     .device {
-      position: relative;
-      width: 100%;
-      height: 100%;
+      position: fixed;
+      inset: 0;
       background: var(--color-bg-primary);
       overflow: hidden;
       overscroll-behavior: none;
@@ -516,7 +514,7 @@
        SEARCH HOME SCREEN
     ════════════════════════════════════════ */
     #screen-search {
-      height: 100svh;
+      height: 100%;
       bottom: auto;
       overscroll-behavior-x: none;
     }
@@ -5121,12 +5119,15 @@
     }, { passive: false });
   })();
 
-  // キーボード非表示時の画面高さを記録（window.innerHeight はキーボードで変わる場合があるため起動時に固定）
-  const FULL_HEIGHT = window.innerHeight;
+  // .device は position:fixed なので offsetHeight はキーボードに関係なく常に画面高さ
+  function getDeviceHeight() {
+    return document.querySelector('.device').offsetHeight;
+  }
+  const FULL_HEIGHT = getDeviceHeight();
 
   // コンテンツエリアの高さをキーボードに関係なく常に全画面に固定
   function fixSearchContentHeight() {
-    document.querySelector('.search-content-scroll').style.height = FULL_HEIGHT + 'px';
+    document.querySelector('.search-content-scroll').style.height = getDeviceHeight() + 'px';
   }
 
   // 前回のキーボード高さを記憶（次回 goToSearch 時に即座に適用してラグを防ぐ）
@@ -5235,7 +5236,7 @@
     if (!screen.classList.contains('active')) return;
     const vv = window.visualViewport;
     if (!vv) return;
-    const keyboardH = Math.max(0, FULL_HEIGHT - vv.height);
+    const keyboardH = Math.max(0, getDeviceHeight() - vv.height);
     lastKeyboardH = keyboardH;
     const floatBar = document.getElementById('search-float-bar');
     // open直後の最初のキーボード表示はアニメーションなしで即座に移動
