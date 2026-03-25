@@ -32,6 +32,7 @@
       if (m) {
         openItemDetail(m[1], true);
       } else {
+        closeCheckout();
         document.getElementById('screen-idp').classList.remove('open');
         document.body.classList.remove('idp-open');
         _navStack = [];
@@ -2325,8 +2326,9 @@
       transition: transform var(--duration-300) var(--ease-strong-out);
       display: flex; flex-direction: column;
       overflow: hidden;
+      pointer-events: none;
     }
-    .checkout-sheet.open { transform: translateY(0); }
+    .checkout-sheet.open { transform: translateY(0); pointer-events: auto; }
 
     .checkout-sheet-header,
     .checkout-confirm-header {
@@ -5038,6 +5040,7 @@
       const idp = document.getElementById('screen-idp');
       // ダブルタップ + IDPが開いている → そのタブのルートに戻る（保存状態もクリア）
       if ((tabName === 'home' || tabName === 'auction' || tabName === 'list') && idp.classList.contains('open')) {
+        closeCheckout();
         idp.style.transition = 'none';
         idp.classList.remove('open');
         requestAnimationFrame(() => { idp.style.transition = ''; });
@@ -5066,6 +5069,7 @@
     // IDPが開いていてsearch以外のタブに切り替え → IDPをクリア（状態は保存済み）
     const idp = document.getElementById('screen-idp');
     if (idp.classList.contains('open') && tabName !== 'search') {
+      closeCheckout();
       idp.style.transition = 'none';
       idp.classList.remove('open');
       requestAnimationFrame(() => { idp.style.transition = ''; });
@@ -5673,6 +5677,7 @@
       requestAnimationFrame(() => scroll.classList.add('idp-anim-pop'));
     } else {
       // IDP → base screen: close IDP with parallax restore
+      closeCheckout();
       _currentItemId = null;
       _currentItemIsAuction = false;
       _currentItemIsListing = false;
