@@ -667,6 +667,9 @@
     #screen-search.active ~ .tab-bar-wrapper {
       display: none;
     }
+    #screen-search.active.search-results-open ~ .tab-bar-wrapper {
+      display: flex;
+    }
 
     /* スクロール可能なコンテンツエリア */
     .search-content-scroll {
@@ -5202,7 +5205,7 @@
     input.blur();
     input.value = '';
     document.getElementById('search-input-clear').classList.remove('visible');
-    document.querySelector('.search-results-view').classList.remove('active');
+    hideAllSearchResults();
     document.getElementById('search-float-bar').style.bottom = '0px';
     if (location.hash) history.replaceState(null, '', location.pathname);
     if (_searchFromIdp && _idpStackBeforeSearch) {
@@ -5309,41 +5312,70 @@
     document.getElementById('search-input-clear').classList.remove('visible');
   }
 
-  // ── 検索結果ビュー ──
+  // ── 検索結果ビュー（スタック方式） ──
+  var _searchResultsStack = []; // スタック: 各要素は { element, keyword }
+
   function showSearchResults(keyword) {
     document.getElementById('search-input').blur();
     document.getElementById('search-input').value = keyword;
     document.getElementById('search-input-clear').classList.add('visible');
-    var rv = document.querySelector('.search-results-view');
-    rv.classList.add('active');
-    document.querySelector('.search-results-scroll').scrollTop = 0;
     document.getElementById('search-float-bar').style.bottom = '0px';
-    // キーワードタブを全て未選択にリセット
-    // 販売中のみボタンのリセット（新しい結果画面では未選択に）
-    document.querySelectorAll('.search-results-filters .filter-chip').forEach(function (c) {
-      c.classList.remove('selected');
+    document.getElementById('screen-search').classList.add('search-results-open');
+
+    // テンプレートからクローン
+    var template = document.querySelector('.search-results-view');
+    var rv = template.cloneNode(true);
+    rv.style.zIndex = 5 + _searchResultsStack.length;
+    // グリッドを生成
+    _populateSearchGrid(keyword, rv.querySelector('.search-results-grid'));
+    // フィルターをリセット
+    rv.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('selected'); });
+    rv.querySelector('.search-results-scroll').scrollTop = 0;
+    // 戻るボタンのイベント設定
+    rv.querySelector('.search-results-header .idp-overlay-btn').onclick = function () { popSearchResults(); };
+
+    // DOM に追加（テンプレートの後に）
+    template.parentNode.insertBefore(rv, template.nextSibling);
+    _searchResultsStack.push({ element: rv, keyword: keyword });
+
+    // 次フレームで active を付けてスライドイン
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        rv.classList.add('active');
+      });
     });
-    _populateSearchGrid(keyword);
   }
 
-  function hideSearchResults() {
-    document.querySelector('.search-results-view').classList.remove('active');
-    document.getElementById('search-input').value = '';
-    document.getElementById('search-input-clear').classList.remove('visible');
-  }
-
-  // キーワードタブタップ → 新しい検索結果画面へスライドイン遷移
-  function switchSearchKeyword(keyword, btn) {
-    var rv = document.querySelector('.search-results-view');
-    if (rv.classList.contains('active')) {
-      // 既に開いている → 一度スライドアウトしてから再度スライドイン
-      rv.classList.remove('active');
-      setTimeout(function () {
-        showSearchResults(keyword);
-      }, 350); // transitionの0.35sに合わせる
+  function popSearchResults() {
+    if (_searchResultsStack.length === 0) return;
+    var top = _searchResultsStack.pop();
+    top.element.classList.remove('active');
+    // スライドアウト完了後に DOM から削除
+    setTimeout(function () {
+      top.element.remove();
+    }, 350);
+    // 検索フォームのキーワードを前のスタックに合わせる
+    if (_searchResultsStack.length > 0) {
+      var prev = _searchResultsStack[_searchResultsStack.length - 1];
+      document.getElementById('search-input').value = prev.keyword;
     } else {
-      showSearchResults(keyword);
+      document.getElementById('search-input').value = '';
+      document.getElementById('search-input-clear').classList.remove('visible');
+      document.getElementById('screen-search').classList.remove('search-results-open');
     }
+  }
+
+  function hideAllSearchResults() {
+    _searchResultsStack.forEach(function (item) { item.element.remove(); });
+    _searchResultsStack = [];
+    document.getElementById('screen-search').classList.remove('search-results-open');
+  }
+
+  // キーワードタブタップ → 現在のキーワードに追加して新しい結果をスライドイン
+  function switchSearchKeyword(keyword, btn) {
+    var currentKeyword = document.getElementById('search-input').value || '';
+    var newKeyword = currentKeyword ? currentKeyword + ' ' + keyword : keyword;
+    showSearchResults(newKeyword);
   }
 
   // 販売中のみ ON/OFF トグル
@@ -5351,8 +5383,8 @@
     btn.classList.toggle('selected');
   }
 
-  function _populateSearchGrid(keyword) {
-    var grid = document.querySelector('.search-results-grid');
+  function _populateSearchGrid(keyword, grid) {
+    if (!grid) grid = document.querySelector('.search-results-grid');
     grid.innerHTML = '';
     var ids = Object.keys(ITEM_DATA);
     var seed = 0;
