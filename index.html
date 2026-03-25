@@ -1377,7 +1377,8 @@
   }
   #panel-notification .panel-header,
   #panel-cart .panel-header,
-  #panel-todo .panel-header {
+  #panel-todo .panel-header,
+  #panel-browsing-history .panel-header {
     box-shadow: none;
   }
   .panel-back-btn {
@@ -1643,6 +1644,73 @@
     margin-top: 2px;
   }
   .info-chevron { color: var(--color-fg-primary); flex-shrink: 0; width: 20px; height: 20px; }
+
+  /* ── 閲覧履歴 ── */
+  .bh-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-12);
+    padding: var(--spacing-12) var(--spacing-16);
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .bh-row:active { background: var(--color-bg-secondary); }
+  .bh-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-small);
+    object-fit: cover;
+    background: var(--color-bg-secondary);
+    flex-shrink: 0;
+  }
+  .bh-icon-wrap {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-fg-tertiary);
+  }
+  .bh-body { flex: 1; min-width: 0; }
+  .bh-title {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-fg-primary);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .bh-sub {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--color-fg-tertiary);
+    margin-top: var(--spacing-2);
+  }
+  .bh-sub.accent { color: var(--color-fg-accent); }
+  .bh-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-0);
+    flex-shrink: 0;
+  }
+  .bh-action-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-medium);
+    color: var(--color-fg-tertiary);
+    padding: 0;
+  }
+  .bh-action-btn:active { opacity: 0.5; }
+  .bh-action-btn.liked { color: var(--color-fg-attention); }
 
   /* ── カート ── */
   #panel-cart .panel-scroll { background: #fff; }
@@ -4334,6 +4402,188 @@
     </div>
   </div>
 
+  <!-- 閲覧履歴パネル -->
+  <div id="panel-browsing-history" class="panel-overlay">
+    <div class="panel-header">
+      <button class="panel-back-btn" onclick="closePanel('browsing-history')" aria-label="戻る">
+        <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+          <path d="M9 1L1.5 8.5L9 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="panel-title">閲覧履歴</span>
+    </div>
+    <div class="panel-scroll">
+      <!-- row 1: 商品画像 + カテゴリ -->
+      <div class="bh-row" onclick="openItemDetail(60008546147)">
+        <img class="bh-thumb" src="assets/items/m60008546147_1.jpg" alt="">
+        <div class="bh-body">
+          <div class="bh-title">スリコ ハンモック キャンプ</div>
+          <div class="bh-sub">超メルカリ市</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 2: 検索キーワード + カテゴリ -->
+      <div class="bh-row">
+        <div class="bh-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
+        </div>
+        <div class="bh-body">
+          <div class="bh-title">ジルサンダー Tシャツ</div>
+          <div class="bh-sub">シャツ / M</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 3: 画像に似ている商品 -->
+      <div class="bh-row" onclick="openItemDetail(64124079245)">
+        <img class="bh-thumb" src="assets/items/m64124079245_1.jpg" alt="">
+        <div class="bh-body">
+          <div class="bh-title">画像に似ている商品</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 4: 商品 + カテゴリ -->
+      <div class="bh-row" onclick="openItemDetail(11010345173)">
+        <img class="bh-thumb" src="assets/items/m11010345173_1.jpeg" alt="">
+        <div class="bh-body">
+          <div class="bh-title">PS5 コントローラー</div>
+          <div class="bh-sub">ゲーム</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 5: 画像に似ている商品（検索アイコン付き） -->
+      <div class="bh-row">
+        <div class="bh-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M3.5 8.7a.7.7 0 0 1-.7-.701v-3.1c0-1.157.941-2.1 2.1-2.1H8a.7.7 0 1 1 0 1.4H4.9a.7.7 0 0 0-.7.7v3.1a.7.7 0 0 1-.7.7m17 0a.7.7 0 0 1-.7-.701v-3.1a.7.7 0 0 0-.699-.7h-3.1a.7.7 0 1 1 0-1.4h3.1c1.158 0 2.1.941 2.1 2.1v3.1a.7.7 0 0 1-.7.7M16 21.2h3.1V21.2c1.158 0 2.1-.942 2.1-2.1v-3.1a.7.7 0 1 0-1.401 0v3.1c0 .385-.314.7-.7.7H16a.7.7 0 1 0 0 1.401m-8 0H4.9c-1.159 0-2.1-.942-2.1-2.1v-3.099a.7.7 0 1 1 1.4 0v3.1c0 .385.314.7.7.7H8a.7.7 0 1 1 0 1.4m7.11-7.051 2.385 2.385v.001a.7.7 0 0 1-.99.99l-2.388-2.388A5.15 5.15 0 0 1 11 16.201 5.206 5.206 0 0 1 5.8 11C5.8 8.131 8.131 5.8 11 5.8s5.2 2.334 5.2 5.2a5.15 5.15 0 0 1-1.09 3.149M11 7.2A3.803 3.803 0 0 0 7.2 11c0 2.095 1.704 3.799 3.8 3.799s3.8-1.704 3.8-3.8-1.705-3.8-3.8-3.8" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="bh-body">
+          <div class="bh-title">先日購入したジャケットに似ている商品</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 6: 商品 + カテゴリ + いいね済み -->
+      <div class="bh-row" onclick="openItemDetail(23776204371)">
+        <img class="bh-thumb" src="assets/items/m23776204371_1.jpg" alt="">
+        <div class="bh-body">
+          <div class="bh-title">冬用ワンピース</div>
+          <div class="bh-sub">レディース / ¥5,000~</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn liked" aria-label="いいね済み"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 7: 検索キーワード -->
+      <div class="bh-row">
+        <div class="bh-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
+        </div>
+        <div class="bh-body">
+          <div class="bh-title">アウトドア用品 コンパクト</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 8: 検索キーワード -->
+      <div class="bh-row">
+        <div class="bh-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
+        </div>
+        <div class="bh-body">
+          <div class="bh-title">ワンピース 冬</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 9: サービス -->
+      <div class="bh-row">
+        <div class="bh-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
+        </div>
+        <div class="bh-body">
+          <div class="bh-title">[メルカリモバイル] 1GB</div>
+          <div class="bh-sub accent">キャンペーン中</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 10: 画像に似ている商品 -->
+      <div class="bh-row" onclick="openItemDetail(12243314380)">
+        <img class="bh-thumb" src="assets/items/m12243314380_1.jpg" alt="">
+        <div class="bh-body">
+          <div class="bh-title">画像に似ている商品</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 11: 画像に似ている商品 -->
+      <div class="bh-row" onclick="openItemDetail(13123262312)">
+        <img class="bh-thumb" src="assets/items/m13123262312_1.jpg" alt="">
+        <div class="bh-body">
+          <div class="bh-title">画像に似ている商品</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 12: 検索キーワード + カテゴリ -->
+      <div class="bh-row">
+        <div class="bh-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
+        </div>
+        <div class="bh-body">
+          <div class="bh-title">ジルサンダー Tシャツ</div>
+          <div class="bh-sub">シャツ / M</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- row 13: NFT -->
+      <div class="bh-row">
+        <div class="bh-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
+        </div>
+        <div class="bh-body">
+          <div class="bh-title">[メルカリNFT] ~¥1,000</div>
+        </div>
+        <div class="bh-actions">
+          <button class="bh-action-btn" aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- マイページバックドロップ -->
   <div id="mypage-backdrop" class="mypage-backdrop" onclick="closeMyPage()"></div>
 
@@ -4366,7 +4616,7 @@
           </div>
           <!-- 履歴メニュー -->
           <div class="mp-menu-rows">
-            <div class="mp-menu-row">
+            <div class="mp-menu-row" onclick="closeMyPage(); setTimeout(function(){ openPanel('browsing-history'); }, 320);">
               <div class="mp-menu-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7.037 3.51a10.3 10.3 0 0 1 5.297-1.48l.042-.03c1.856.004 3.675.509 5.26 1.46a10.06 10.06 0 0 1 3.727 3.94 9.88 9.88 0 0 1-.709 10.352 10.1 10.1 0 0 1-4.23 3.409c-1.7.733-3.572.993-5.411.75a10.2 10.2 0 0 1-5.021-2.124 10 10 0 0 1-3.174-4.385.72.72 0 0 1 .024-.553.73.73 0 0 1 .415-.375.74.74 0 0 1 .562.025.73.73 0 0 1 .38.408 8.56 8.56 0 0 0 3.668 4.442 8.76 8.76 0 0 0 5.691 1.155 8.7 8.7 0 0 0 5.15-2.651A8.48 8.48 0 0 0 21 12.588a8.45 8.45 0 0 0-1.601-5.506 8.66 8.66 0 0 0-4.772-3.27 8.77 8.77 0 0 0-5.793.442 8.6 8.6 0 0 0-4.206 3.952l1.192-.422a.73.73 0 0 1 .795.188.7.7 0 0 1 .146.244.71.71 0 0 1-.229.773.7.7 0 0 1-.252.135l-2.489.886a1 1 0 0 1-.355.062 1.046 1.046 0 0 1-1.004-.69l-.889-2.423a.72.72 0 0 1 .028-.552.74.74 0 0 1 .973-.353.73.73 0 0 1 .38.41l.376 1.03A10.1 10.1 0 0 1 7.037 3.51"/><path d="m13.034 12.33-4.622 4.587.02-.03a.75.75 0 0 1-1.045 0 .727.727 0 0 1 0-1.032l4.183-4.123V5.845c0-.191.077-.375.215-.51a.737.737 0 0 1 1.035 0 .72.72 0 0 1 .214.51z"/></svg>
               </div>
