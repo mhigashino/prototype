@@ -667,9 +667,6 @@
     #screen-search.active ~ .tab-bar-wrapper {
       display: none;
     }
-    #screen-search.active.search-results-open ~ .tab-bar-wrapper {
-      display: flex;
-    }
 
     /* スクロール可能なコンテンツエリア */
     .search-content-scroll {
@@ -5320,7 +5317,6 @@
     document.getElementById('search-input').value = keyword;
     document.getElementById('search-input-clear').classList.add('visible');
     document.getElementById('search-float-bar').style.bottom = '0px';
-    document.getElementById('screen-search').classList.add('search-results-open');
 
     // テンプレートからクローン
     var template = document.querySelector('.search-results-view');
@@ -5361,14 +5357,12 @@
     } else {
       document.getElementById('search-input').value = '';
       document.getElementById('search-input-clear').classList.remove('visible');
-      document.getElementById('screen-search').classList.remove('search-results-open');
     }
   }
 
   function hideAllSearchResults() {
     _searchResultsStack.forEach(function (item) { item.element.remove(); });
     _searchResultsStack = [];
-    document.getElementById('screen-search').classList.remove('search-results-open');
   }
 
   // キーワードタブタップ → 現在のキーワードに追加して新しい結果をスライドイン
