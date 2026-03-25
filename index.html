@@ -498,8 +498,8 @@
     /* WebKit のデフォルトクリアボタンを非表示 */
     .search-input-field::-webkit-search-cancel-button { -webkit-appearance: none; }
 
+    .search-input-mic,
     .search-input-clear {
-      display: none;
       flex-shrink: 0;
       width: 20px;
       height: 20px;
@@ -509,9 +509,13 @@
       cursor: pointer;
       color: var(--color-fg-tertiary);
       -webkit-tap-highlight-color: transparent;
+      display: flex;
     }
+    .search-input-mic:active,
     .search-input-clear:active { opacity: 0.5; }
+    .search-input-clear { display: none; }
     .search-input-clear.visible { display: flex; }
+    .search-input-clear.visible ~ .search-input-mic { display: none; }
 
     /* × 閉じるボタン（glass-pill内に配置するため、search-btnスタイルを継承） */
     .search-close-btn {
@@ -3952,6 +3956,7 @@
           spellcheck="false"
         />
         <button class="search-input-clear" id="search-input-clear" onclick="clearSearchInput()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.072 4.93a10 10 0 1 0 0 14.14c3.904-3.905 3.904-10.235 0-14.14m-2.68 10.47a.69.69 0 0 1 0 1 .67.67 0 0 1-.49.21.7.7 0 0 1-.5-.21l-3.4-3.4-3.5 3.5a.7.7 0 0 1-.49.2.74.74 0 0 1-.5-.2.71.71 0 0 1 0-1l3.49-3.5-3.49-3.5a.707.707 0 1 1 1-1l3.49 3.5 3.4-3.4a.707.707 0 0 1 1 1l-3.4 3.4z" clip-rule="evenodd"/></svg></button>
+        <button class="search-input-mic"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M16.7 12c0 2.59-2.11 4.7-4.7 4.7S7.3 14.59 7.3 12V6.7C7.3 4.11 9.41 2 12 2s4.7 2.11 4.7 4.7zM12 3.4c-1.82 0-3.3 1.48-3.3 3.3V12c0 1.82 1.48 3.3 3.3 3.3s3.3-1.48 3.3-3.3V6.7c0-1.82-1.48-3.3-3.3-3.3m6.8 7.9c.39 0 .7.31.7.7 0 3.89-2.99 7.11-6.8 7.46v1.14h3.6c.39 0 .7.31.7.7s-.31.7-.7.7H7.7c-.39 0-.7-.31-.7-.7s.31-.7.7-.7h3.6v-1.14C7.49 19.11 4.5 15.9 4.5 12c0-.39.31-.7.7-.7s.7.31.7.7c0 3.36 2.74 6.1 6.1 6.1s6.1-2.74 6.1-6.1c0-.39.31-.7.7-.7" clip-rule="evenodd"/></svg></button>
       </div>
       <div class="glass-pill search-pill">
         <button class="search-btn search-close-btn" onclick="exitSearch()">
