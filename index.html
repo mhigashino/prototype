@@ -534,7 +534,7 @@
       overscroll-behavior-y: contain;
       overscroll-behavior-x: none;
       -webkit-overflow-scrolling: touch;
-      padding-bottom: 160px;
+      padding-bottom: 80px;
     }
 
     /* 浮いている検索フォーム（スクロールされない） */
@@ -607,23 +607,6 @@
       align-items: center;
       padding: var(--spacing-12) 0;
       gap: var(--spacing-12);
-    }
-
-    .history-card-icon {
-      flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-fg-tertiary);
-      background: var(--color-bg-secondary);
-      border-radius: var(--radius-full);
-    }
-
-    .history-card-icon svg {
-      width: 22px;
-      height: 22px;
     }
 
     .history-card-thumb {
@@ -717,44 +700,6 @@
       color: var(--mono-500);
     }
 
-    .history-icons {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-0);
-      flex-shrink: 0;
-    }
-    .history-icons button {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: none;
-      border: none;
-      cursor: pointer;
-      border-radius: var(--radius-medium);
-      color: var(--color-fg-tertiary);
-      padding: 0;
-    }
-    .history-icons button:active { opacity: 0.5; }
-    .history-icons button.liked { color: var(--color-fg-attention); }
-
-    .history-icons svg {
-      fill: currentColor;
-      transition: fill 0.15s ease;
-    }
-    .history-icons .heart-icon {
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      transition: fill 0.15s ease, stroke 0.15s ease;
-    }
-    .history-icons .heart-icon.liked {
-      fill: var(--color-fg-attention);
-      stroke: var(--color-fg-attention);
-    }
 
     .history-pin-sep { height: 8px; flex-shrink: 0; }
 
@@ -3762,348 +3707,46 @@
 
       <!-- 履歴カード -->
       <div class="history-cards">
-
-        <!-- row 1: 商品画像 + カテゴリ -->
-        <div class="history-card" onclick="openItemDetail(60008546147)">
-          <img class="history-card-thumb" src="assets/images/search-event.png" alt="">
-          <div class="history-text">
-            <span class="history-title">スリコ ハンモック キャンプ</span>
-            <span class="history-subtitle">超メルカリ市</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 2: 検索キーワード + カテゴリ -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">ジルサンダー Tシャツ</span>
-            <span class="history-subtitle">シャツ / M</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 3: 画像に似ている商品 -->
-        <div class="history-card" onclick="openItemDetail(64124079245)">
-          <img class="history-card-thumb" src="assets/items/m64124079245_1.jpg" alt="">
-          <div class="history-text">
-            <span class="history-title">画像に似ている商品</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 4: 商品 + カテゴリ -->
-        <div class="history-card" onclick="openItemDetail(11010345173)">
-          <img class="history-card-thumb" src="assets/items/m11010345173_1.jpeg" alt="">
-          <div class="history-text">
-            <span class="history-title">PS5 コントローラー</span>
-            <span class="history-subtitle">ゲーム</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 5: 画像に似ている商品（検索アイコン付き） -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M3.5 8.7a.7.7 0 0 1-.7-.701v-3.1c0-1.157.941-2.1 2.1-2.1H8a.7.7 0 1 1 0 1.4H4.9a.7.7 0 0 0-.7.7v3.1a.7.7 0 0 1-.7.7m17 0a.7.7 0 0 1-.7-.701v-3.1a.7.7 0 0 0-.699-.7h-3.1a.7.7 0 1 1 0-1.4h3.1c1.158 0 2.1.941 2.1 2.1v3.1a.7.7 0 0 1-.7.7M16 21.2h3.1V21.2c1.158 0 2.1-.942 2.1-2.1v-3.1a.7.7 0 1 0-1.401 0v3.1c0 .385-.314.7-.7.7H16a.7.7 0 1 0 0 1.401m-8 0H4.9c-1.159 0-2.1-.942-2.1-2.1v-3.099a.7.7 0 1 1 1.4 0v3.1c0 .385.314.7.7.7H8a.7.7 0 1 1 0 1.4m7.11-7.051 2.385 2.385v.001a.7.7 0 0 1-.99.99l-2.388-2.388A5.15 5.15 0 0 1 11 16.201 5.206 5.206 0 0 1 5.8 11C5.8 8.131 8.131 5.8 11 5.8s5.2 2.334 5.2 5.2a5.15 5.15 0 0 1-1.09 3.149M11 7.2A3.803 3.803 0 0 0 7.2 11c0 2.095 1.704 3.799 3.8 3.799s3.8-1.704 3.8-3.8-1.705-3.8-3.8-3.8" clip-rule="evenodd"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">先日購入したジャケットに似ている商品</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 6: 商品 + カテゴリ + いいね済み -->
-        <div class="history-card" onclick="openItemDetail(23776204371)">
-          <img class="history-card-thumb" src="assets/items/m23776204371_1.jpg" alt="">
-          <div class="history-text">
-            <span class="history-title">冬用ワンピース</span>
-            <span class="history-subtitle">レディース / ¥5,000~</span>
-          </div>
-          <div class="history-icons">
-            <button class="liked" aria-label="いいね済み"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 7: 検索キーワード -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">アウトドア用品 コンパクト</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 8: 検索キーワード -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">ワンピース 冬</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 9: サービス -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">[メルカリモバイル] 1GB</span>
-            <span class="history-subtitle accent">キャンペーン中</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 10: 画像に似ている商品 -->
-        <div class="history-card" onclick="openItemDetail(12243314380)">
-          <img class="history-card-thumb" src="assets/items/m12243314380_1.jpg" alt="">
-          <div class="history-text">
-            <span class="history-title">画像に似ている商品</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 11: 画像に似ている商品 -->
-        <div class="history-card" onclick="openItemDetail(13123262312)">
-          <img class="history-card-thumb" src="assets/items/m13123262312_1.jpg" alt="">
-          <div class="history-text">
-            <span class="history-title">画像に似ている商品</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 12: 検索キーワード + カテゴリ -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">ジルサンダー Tシャツ</span>
-            <span class="history-subtitle">シャツ / M</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 13: NFT -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">[メルカリNFT] ~¥1,000</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 14: 検索キーワード -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">ノースフェイス ダウン</span>
-            <span class="history-subtitle">ジャケット / M</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 15: 商品画像 -->
-        <div class="history-card" onclick="openItemDetail(22996847422)">
-          <img class="history-card-thumb" src="assets/items/m22996847422_1.jpg" alt="">
-          <div class="history-text">
-            <span class="history-title">Ralph Lauren ポロベア コットンニット</span>
-            <span class="history-subtitle">トップス / M</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 16: 検索キーワード -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">キャンプ テーブル 折りたたみ</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 17: 商品画像 + いいね済み -->
-        <div class="history-card" onclick="openItemDetail(82183370830)">
-          <img class="history-card-thumb" src="assets/items/m82183370830_1.jpg" alt="">
-          <div class="history-text">
-            <span class="history-title">NIKE エアマックス 90</span>
-            <span class="history-subtitle">スニーカー / 27cm</span>
-          </div>
-          <div class="history-icons">
-            <button class="liked" aria-label="いいね済み"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 18: 検索キーワード + カテゴリ -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">マリメッコ トートバッグ</span>
-            <span class="history-subtitle">バッグ</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 19: 画像に似ている商品 -->
-        <div class="history-card" onclick="openItemDetail(33094526858)">
-          <img class="history-card-thumb" src="assets/items/m33094526858_1.jpg" alt="">
-          <div class="history-text">
-            <span class="history-title">画像に似ている商品</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 20: 検索キーワード -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">iPad Air ケース</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 21: 商品画像 -->
-        <div class="history-card" onclick="openItemDetail(70161889543)">
-          <img class="history-card-thumb" src="assets/items/m70161889543_1.jpg" alt="">
-          <div class="history-text">
-            <span class="history-title">Rirandture フォーマルワンピース</span>
-            <span class="history-subtitle">レディース / 38</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 22: サービス -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">[メルカリShops] ハンドメイド</span>
-            <span class="history-subtitle accent">新着あり</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 23: 検索キーワード -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">スノーピーク チタンマグ</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 24: 画像に似ている商品 -->
-        <div class="history-card" onclick="openItemDetail(26234152555)">
-          <img class="history-card-thumb" src="assets/items/m26234152555_1.jpg" alt="">
-          <div class="history-text">
-            <span class="history-title">画像に似ている商品</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 25: 検索キーワード -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">ダイソン ドライヤー</span>
-            <span class="history-subtitle">家電</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
-        <!-- row 26: 検索キーワード -->
-        <div class="history-card">
-          <div class="history-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>
-          </div>
-          <div class="history-text">
-            <span class="history-title">無印良品 収納ケース</span>
-          </div>
-          <div class="history-icons">
-            <button aria-label="いいね"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.89 2.965C8.537 3 10.3 3.682 12 5.208c1.699-1.523 3.462-2.206 5.107-2.242a6.14 6.14 0 0 1 4.486 1.8 6.14 6.14 0 0 1 1.802 4.485c-.04 1.799-.85 3.742-2.692 5.584-.352.352-.7.663-1.049.953q-.019.022-.04.042l-4.904 4.32c-1.5 1.324-3.921 1.324-5.422 0l-4.904-4.32q-.026-.023-.048-.049c-.25-.21-.504-.43-.76-.673l-.281-.273c-1.84-1.842-2.65-3.784-2.69-5.583a6.14 6.14 0 0 1 1.8-4.486 6.14 6.14 0 0 1 4.486-1.801m-.029 1.343a4.8 4.8 0 0 0-3.506 1.408 4.8 4.8 0 0 0-1.407 3.506c.031 1.394.656 3.02 2.296 4.663.338.338.68.64 1.023.925a1 1 0 0 1 .07.068l4.839 4.264c.994.876 2.653.877 3.646 0l4.838-4.264a1 1 0 0 1 .074-.07c.343-.282.68-.583 1.019-.923 1.642-1.643 2.268-3.268 2.299-4.662a4.8 4.8 0 0 0-1.408-3.507 4.8 4.8 0 0 0-3.507-1.406c-1.394.03-3.02.656-4.663 2.296a.67.67 0 0 1-.95 0C9.882 4.964 8.255 4.338 6.861 4.308"/></svg></button>
-            <button aria-label="メニュー"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2" clip-rule="evenodd"/></svg></button>
-          </div>
-        </div>
-
+        <div class="history-card"><img class="history-card-thumb" src="assets/images/search-event.png" alt=""><div class="history-text"><span class="history-title">スリコ ハンモック キャンプ</span><span class="history-subtitle">超メルカリ市</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m13177285590_1.jpg" alt=""><div class="history-text"><span class="history-title">ジルサンダー Tシャツ</span><span class="history-subtitle">シャツ / M</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m64124079245_1.jpg" alt=""><div class="history-text"><span class="history-title">画像に似ている商品</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m11010345173_1.jpeg" alt=""><div class="history-text"><span class="history-title">PS5 コントローラー</span><span class="history-subtitle">ゲーム</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m75142440215_1.jpeg" alt=""><div class="history-text"><span class="history-title">先日購入したジャケットに似ている商品</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m23776204371_1.jpg" alt=""><div class="history-text"><span class="history-title">冬用ワンピース</span><span class="history-subtitle">レディース / ¥5,000~</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m10177377087_1.jpg" alt=""><div class="history-text"><span class="history-title">アウトドア用品 コンパクト</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m88081908434_1.jpg" alt=""><div class="history-text"><span class="history-title">ワンピース 冬</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/images/mercari-mobile-4gb.svg" alt=""><div class="history-text"><span class="history-title">[メルカリモバイル] 4GB</span><span class="history-subtitle accent">キャンペーン中</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m12243314380_1.jpg" alt=""><div class="history-text"><span class="history-title">画像に似ている商品</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m13123262312_1.jpg" alt=""><div class="history-text"><span class="history-title">画像に似ている商品</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m62700736671_1.jpeg" alt=""><div class="history-text"><span class="history-title">ジルサンダー Tシャツ</span><span class="history-subtitle">シャツ / M</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m19029148732_1.jpg" alt=""><div class="history-text"><span class="history-title">[メルカリNFT] ~¥1,000</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m49462238575_1.jpg" alt=""><div class="history-text"><span class="history-title">ノースフェイス ダウン</span><span class="history-subtitle">ジャケット / M</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m22996847422_1.jpg" alt=""><div class="history-text"><span class="history-title">Ralph Lauren ポロベア コットンニット</span><span class="history-subtitle">トップス / M</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m58813290190_1.jpeg" alt=""><div class="history-text"><span class="history-title">キャンプ テーブル 折りたたみ</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m88218719937_1.jpg" alt=""><div class="history-text"><span class="history-title">NIKE エアマックス 90</span><span class="history-subtitle">スニーカー / 27cm</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m93571144050_1.jpg" alt=""><div class="history-text"><span class="history-title">マリメッコ トートバッグ</span><span class="history-subtitle">バッグ</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m17789379334_1.jpg" alt=""><div class="history-text"><span class="history-title">画像に似ている商品</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m42890669945_1.jpg" alt=""><div class="history-text"><span class="history-title">iPad Air ケース</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m51965062649_1.jpg" alt=""><div class="history-text"><span class="history-title">Rirandture フォーマルワンピース</span><span class="history-subtitle">レディース / 38</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m29286516875_1.jpeg" alt=""><div class="history-text"><span class="history-title">[メルカリShops] ハンドメイド</span><span class="history-subtitle accent">新着あり</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m64572438941_1.jpg" alt=""><div class="history-text"><span class="history-title">スノーピーク チタンマグ</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m69488322866_1.jpg" alt=""><div class="history-text"><span class="history-title">画像に似ている商品</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m59640776900_1.jpg" alt=""><div class="history-text"><span class="history-title">ダイソン ドライヤー</span><span class="history-subtitle">家電</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m17665382262_1.jpg" alt=""><div class="history-text"><span class="history-title">無印良品 収納ケース</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m92134849750_1.jpg" alt=""><div class="history-text"><span class="history-title">バルミューダ トースター</span><span class="history-subtitle">キッチン家電</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m80544561805_1.jpg" alt=""><div class="history-text"><span class="history-title">アディダス スタンスミス</span><span class="history-subtitle">スニーカー / 26cm</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m69323995784_1.jpg" alt=""><div class="history-text"><span class="history-title">ル・クルーゼ 鍋</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m54524884247_1.jpeg" alt=""><div class="history-text"><span class="history-title">ZARA ニットワンピース</span><span class="history-subtitle">レディース / S</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m41781884918_1.jpeg" alt=""><div class="history-text"><span class="history-title">Coleman テント 4人用</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m92340702792_1.jpg" alt=""><div class="history-text"><span class="history-title">Apple Watch SE</span><span class="history-subtitle">スマートウォッチ</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m47473230289_1.jpg" alt=""><div class="history-text"><span class="history-title">ユニクロ カシミヤセーター</span><span class="history-subtitle">トップス / L</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m11907952254_1.jpg" alt=""><div class="history-text"><span class="history-title">画像に似ている商品</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m29372932899_1.jpg" alt=""><div class="history-text"><span class="history-title">ティファール フライパンセット</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m46283128982_1.jpg" alt=""><div class="history-text"><span class="history-title">Sony WH-1000XM5</span><span class="history-subtitle">ヘッドホン</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m83425619402_1.jpg" alt=""><div class="history-text"><span class="history-title">GU デニムジャケット</span><span class="history-subtitle">アウター / M</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m54360410600_1.jpeg" alt=""><div class="history-text"><span class="history-title">LEGO スターウォーズ</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m52227274033_1.jpeg" alt=""><div class="history-text"><span class="history-title">ポケモンカード SAR</span><span class="history-subtitle">トレカ</span></div></div>
+        <div class="history-card"><img class="history-card-thumb" src="assets/items/m33675733619_1.jpg" alt=""><div class="history-text"><span class="history-title">象印 水筒 1L</span></div></div>
       </div>
     </div>
 
