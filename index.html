@@ -5144,6 +5144,8 @@
       if (baseEntry && baseEntry.element) {
         baseEntry.element.classList.remove('idp-prev', 'idp-nav');
       }
+      // チェックアウトが開いていれば閉じる
+      closeCheckout();
       // IDPをアニメーションなしで即時閉じる
       idp.style.transition = 'none';
       idp.classList.remove('open');
