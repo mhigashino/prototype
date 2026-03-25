@@ -5296,18 +5296,6 @@
     }, { passive: false });
   })();
 
-  // 検索入力欄のタップ時に iOS Safari が visual viewport をパンするのを防ぐ
-  // ブラウザのデフォルト focus+scroll-into-view を阻止し、preventScroll 付きで手動 focus する
-  (function () {
-    var input = document.getElementById('search-input');
-    var wrap = input.closest('.search-input-wrap');
-    wrap.addEventListener('touchend', function (e) {
-      if (document.activeElement === input) return; // 既にフォーカス中ならブラウザに任せる
-      e.preventDefault();
-      input.focus({ preventScroll: true });
-    });
-  })();
-
   // キーボード非表示時の画面高さを記録（window.innerHeight はキーボードで変わる場合があるため起動時に固定）
   const FULL_HEIGHT = window.innerHeight;
 
@@ -5373,6 +5361,7 @@
     input.blur();
     input.value = '';
     document.getElementById('search-float-bar').style.bottom = '0px';
+    document.getElementById('screen-search').style.transform = '';
     if (location.hash) history.replaceState(null, '', location.pathname);
     if (_searchFromIdp && _idpStackBeforeSearch) {
       // IDPから検索を開いた場合 → IDPを復元して戻る
@@ -5454,12 +5443,28 @@
   });
 
   if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', updateFloatBar);
-    // キーボード表示時に iOS が window をスクロールさせるのを防ぐ
+    window.visualViewport.addEventListener('resize', () => {
+      const screen = document.getElementById('screen-search');
+      // resize 完了時に transform 相殺をリセット
+      if (screen.classList.contains('active')) {
+        screen.style.transform = '';
+      }
+      updateFloatBar();
+    });
+    // iOS Safari がキーボード表示時に visual viewport をパン（上方向スクロール）するのを
+    // CSS transform で逆方向にずらして相殺する
     window.visualViewport.addEventListener('scroll', () => {
       const screen = document.getElementById('screen-search');
       if (!screen.classList.contains('active')) return;
       window.scrollTo(0, 0);
+      // visualViewport.offsetTop = iOS がページを上にずらした量
+      // → 同じ量だけ画面を下にずらして見た目を元に戻す
+      const offset = window.visualViewport.offsetTop;
+      if (offset > 0) {
+        screen.style.transform = 'translateY(' + offset + 'px)';
+      } else {
+        screen.style.transform = '';
+      }
       updateFloatBar();
     });
   }
