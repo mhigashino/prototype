@@ -5105,6 +5105,15 @@
       _currentItemIsAuction = false;
       _currentItemIsListing = false;
     }
+    // 検索画面から別タブに切り替える場合、検索状態をリセット
+    if (_activeTab === 'search' || document.getElementById('screen-search').classList.contains('active')) {
+      hideAllSearchResults();
+      var searchInput = document.getElementById('search-input');
+      searchInput.blur();
+      searchInput.value = '';
+      document.getElementById('search-input-clear').classList.remove('visible');
+      document.getElementById('search-float-bar').style.bottom = '0px';
+    }
     document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.search-btn').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
