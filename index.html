@@ -5374,7 +5374,13 @@
 
   // 販売中のみ ON/OFF トグル
   function toggleFilterChip(btn) {
-    btn.classList.toggle('selected');
+    var on = btn.classList.toggle('selected');
+    // 現在の結果ビュー内のSOLDタイルを表示/非表示
+    var view = btn.closest('.search-results-view');
+    if (!view) return;
+    view.querySelectorAll('.search-results-tile.is-sold').forEach(function (tile) {
+      tile.style.display = on ? 'none' : '';
+    });
   }
 
   function _populateSearchGrid(keyword, grid) {
@@ -5392,7 +5398,10 @@
       tile.setAttribute('onclick', "openItemDetail('" + id + "')");
       var badge = '';
       var v = ((i + seed) * 2654435761) >>> 0;
-      if (v % 6 === 0) { var label = (v >> 4) % 2 === 0 ? 'sold' : 'new'; badge = '<div class="corner-sticker ' + label + '"><span>' + (label === 'sold' ? 'SOLD' : 'NEW') + '</span></div>'; }
+      var isSold = v % 3 === 0;
+      var isNew = !isSold && v % 7 === 0;
+      if (isSold) { badge = '<div class="corner-sticker sold"><span>SOLD</span></div>'; tile.classList.add('is-sold'); }
+      else if (isNew) { badge = '<div class="corner-sticker new"><span>NEW</span></div>'; }
       tile.innerHTML = '<img src="' + item.images[0] + '" alt=""><div class="search-results-price">' + item.price + '</div>'
         + '<div class="home-tile-heart" onclick="toggleHeart(this,event)"><svg width="18" height="18"><use href="#icon-heart-fill"/></svg></div>' + badge;
       grid.appendChild(tile);
