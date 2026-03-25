@@ -5130,8 +5130,9 @@
   (function () {
     var input = document.getElementById('search-input');
     var wrap = input.closest('.search-input-wrap');
+    // キーボードが非表示の場合は常に preventDefault して手動 focus する
+    // iOS Safari では「完了」でキーボードを閉じても activeElement が input のまま残ることがある
     wrap.addEventListener('mousedown', function (e) {
-      if (document.activeElement === input) return;
       e.preventDefault();
       input.focus({ preventScroll: true });
     });
