@@ -667,6 +667,10 @@
     #screen-search.active ~ .tab-bar-wrapper {
       display: none;
     }
+    /* 検索結果からIDP（商品詳細）を開いた時はタブバーを再表示 */
+    body.idp-open #screen-search.active ~ .tab-bar-wrapper {
+      display: flex;
+    }
 
     /* スクロール可能なコンテンツエリア */
     .search-content-scroll {
