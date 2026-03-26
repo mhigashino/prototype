@@ -684,18 +684,18 @@
       padding-bottom: 80px;
     }
 
-    /* 検索サジェスト（全画面ビュー） */
+    /* 検索サジェスト（フロートバーの上に表示、フロートバーは固定で前面） */
     .search-suggest {
       display: none;
       position: absolute;
-      inset: 0;
+      top: 0; left: 0; right: 0; bottom: 76px;
       background: var(--color-bg-primary);
       z-index: 12;
       overflow-y: auto;
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
       overscroll-behavior-y: contain;
-      padding-bottom: 80px;
+      padding-bottom: 16px;
     }
     .search-suggest.visible { display: block; }
     .search-suggest-item {
