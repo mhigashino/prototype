@@ -4013,7 +4013,7 @@
         <div class="search-results-grid"></div>
       </div>
       <div class="idp-bottom-bar">
-        <button class="idp-btn-buy" onclick="saveSearchCondition(this)">この検索条件を保存する</button>
+        <button class="idp-btn-buy">この検索条件を保存する</button>
       </div>
     </div>
 
@@ -5611,14 +5611,6 @@
 
 
   // 販売中のみ ON/OFF トグル
-  // 検索条件を保存する
-  function saveSearchCondition(btn) {
-    btn.textContent = '保存しました';
-    btn.classList.add('secondary');
-    btn.disabled = true;
-    btn.style.opacity = '0.6';
-  }
-
   function toggleFilterChip(btn) {
     btn.classList.toggle('selected');
     var view = btn.closest('.search-results-view');
