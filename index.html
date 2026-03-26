@@ -5386,8 +5386,8 @@
     wrap.addEventListener('mousedown', function (e) {
       e.preventDefault();
       input.focus({ preventScroll: true });
-      // フォーカス時にサジェストを表示（入力値があればその候補、なければ全候補）
-      _updateSuggest(input.value || '');
+      // 入力値がある場合のみサジェストを表示（空タップでは表示しない）
+      if (input.value) _updateSuggest(input.value);
     });
   })();
 
@@ -5414,8 +5414,8 @@
     var suggest = document.getElementById('search-suggest');
     var matches;
     if (!query) {
-      // 空入力時はおすすめキーワードを表示
-      matches = _suggestKeywords.slice(0, 8);
+      suggest.classList.remove('visible');
+      return;
     } else {
       var q = query.toLowerCase();
       matches = _suggestKeywords.filter(function (k) { return k.toLowerCase().indexOf(q) !== -1; }).slice(0, 7);
