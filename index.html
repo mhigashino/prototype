@@ -5251,8 +5251,14 @@
     // IDPが開いている場合はスタックを保存してIDPを閉じる（検索を重ねる）
     const idp = document.getElementById('screen-idp');
     if (idp.classList.contains('open')) {
-      _searchFromIdp = true;
-      _idpStackBeforeSearch = { stack: [..._navStack], currentItemId: _currentItemId, isAuction: _currentItemIsAuction };
+      // 検索結果からのIDPの場合は既存の保存状態を維持、それ以外は新規保存
+      var newBase = _navStack.find(function (e) { return e.type === 'screen'; });
+      var isFromSearch = newBase && newBase.element && newBase.element.id === 'screen-search';
+      if (!isFromSearch) {
+        _searchFromIdp = true;
+        _idpStackBeforeSearch = { stack: [..._navStack], currentItemId: _currentItemId, isAuction: _currentItemIsAuction };
+      }
+      // isFromSearch の場合: 既存の _searchFromIdp/_idpStackBeforeSearch を維持
       // ベース画面の parallax クラスを即時解除（search中に画面が残らないように）
       const baseEntry = _navStack.find(e => e.type === 'screen');
       if (baseEntry && baseEntry.element) {
@@ -5274,14 +5280,6 @@
     }
     // 検索結果スタックをクリアして検索履歴画面に戻す
     hideAllSearchResults();
-    // 検索結果→IDP→検索ボタンの場合のみリセット（他タブのIDPからの場合は復元用に保持）
-    if (_idpStackBeforeSearch) {
-      var baseScreen = _idpStackBeforeSearch.stack.find(function (e) { return e.type === 'screen'; });
-      if (baseScreen && baseScreen.element && baseScreen.element.id === 'screen-search') {
-        _searchFromIdp = false;
-        _idpStackBeforeSearch = null;
-      }
-    }
     // 検索フォームを空にする
     document.getElementById('search-input').value = '';
     document.getElementById('search-input-clear').classList.remove('visible');
