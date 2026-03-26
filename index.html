@@ -5274,6 +5274,9 @@
     }
     // 検索結果スタックをクリアして検索履歴画面に戻す
     hideAllSearchResults();
+    // 検索結果→IDP→検索ボタンの場合、Xで検索終了にする（IDP復元しない）
+    _searchFromIdp = false;
+    _idpStackBeforeSearch = null;
     switchTab('search', btn);
     fixSearchContentHeight();
     document.querySelector('.search-content-scroll').scrollTop = 0;
