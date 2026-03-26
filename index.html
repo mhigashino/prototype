@@ -5272,6 +5272,8 @@
       _searchFromIdp = false;
       _idpStackBeforeSearch = null;
     }
+    // 検索結果スタックをクリアして検索履歴画面に戻す
+    hideAllSearchResults();
     switchTab('search', btn);
     fixSearchContentHeight();
     document.querySelector('.search-content-scroll').scrollTop = 0;
