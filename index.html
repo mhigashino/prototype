@@ -684,6 +684,45 @@
       padding-bottom: 80px;
     }
 
+    /* 検索サジェスト */
+    .search-suggest {
+      display: none;
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      background: var(--color-bg-primary);
+      z-index: 8;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .search-suggest.visible { display: block; }
+    .search-suggest-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .search-suggest-item:active { background: var(--color-bg-secondary); }
+    .search-suggest-icon {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      color: var(--color-fg-tertiary);
+    }
+    .search-suggest-text {
+      flex: 1;
+      font-size: 15px;
+      color: var(--color-fg-primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .search-suggest-arrow {
+      flex-shrink: 0;
+      width: 16px; height: 16px;
+      color: var(--color-fg-tertiary);
+    }
+
     /* 浮いている検索フォーム（スクロールされない） */
     .search-float-bar {
       position: absolute;
@@ -3946,6 +3985,9 @@
       </div>
     </div>
 
+    <!-- 検索サジェスト（入力中に表示） -->
+    <div class="search-suggest" id="search-suggest"></div>
+
     <!-- 浮いている検索フォーム（スクロールされない） -->
     <div class="search-float-bar" id="search-float-bar">
       <div class="search-input-wrap">
@@ -5215,6 +5257,7 @@
     input.blur();
     input.value = '';
     document.getElementById('search-input-clear').classList.remove('visible');
+    document.getElementById('search-suggest').classList.remove('visible');
     hideAllSearchResults();
     document.getElementById('search-float-bar').style.bottom = '0px';
     if (location.hash) history.replaceState(null, '', location.pathname);
@@ -5276,6 +5319,11 @@
       floatBar.style.transition = '';
     }
     floatBar.style.bottom = keyboardH + 'px';
+    // サジェストリストをフロートバーのすぐ上〜画面上端に配置
+    var suggest = document.getElementById('search-suggest');
+    var barH = floatBar.offsetHeight || 76;
+    suggest.style.bottom = (keyboardH + barH) + 'px';
+    suggest.style.top = '0';
     fixSearchContentHeight();
   }
 
@@ -5311,15 +5359,55 @@
     });
   })();
 
-  // 検索入力のクリアボタン表示制御
+  // 検索サジェスト候補
+  var _suggestKeywords = [
+    'ジルサンダー Tシャツ','ジルサンダー バッグ','ジルサンダー 財布',
+    'ノースフェイス ダウン','ノースフェイス マウンテンパーカー','ノースフェイス リュック',
+    'Nike エアマックス','Nike ダンク','Nike エアフォース',
+    'PS5 コントローラー','PS5 本体','PS5 ソフト',
+    'iPhone 15 ケース','iPhone 充電器','iPad Air',
+    'ワンピース 冬','ワンピース フォーマル','ワンピース 夏',
+    'レザージャケット','デニムジャケット','ダウンジャケット',
+    'スノーピーク テント','スノーピーク チタンマグ','Coleman テント',
+    'ダイソン ドライヤー','ダイソン 掃除機','バルミューダ トースター',
+    'ポケモンカード','遊戯王カード','ワンピースカード',
+    'COACH バッグ','FURLA バッグ','マリメッコ トートバッグ',
+    'ユニクロ カシミヤ','GU デニム','ZARA ワンピース',
+    'Apple Watch','AirPods Pro','Sony WH-1000XM5',
+    '無印良品 収納','ル・クルーゼ','ティファール フライパン',
+    'アウトドア テーブル','キャンプ 椅子','焚き火台',
+  ];
+
+  function _updateSuggest(query) {
+    var suggest = document.getElementById('search-suggest');
+    if (!query) { suggest.classList.remove('visible'); return; }
+    var q = query.toLowerCase();
+    var matches = _suggestKeywords.filter(function (k) { return k.toLowerCase().indexOf(q) !== -1; }).slice(0, 8);
+    if (matches.length === 0) { suggest.classList.remove('visible'); return; }
+    var searchSvg = '<svg class="search-suggest-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>';
+    var arrowSvg = '<svg class="search-suggest-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.92 4.293a.95.95 0 0 1 1.372 0l6.788 7c.378.39.378 1.024 0 1.414l-6.788 7a.95.95 0 0 1-1.372 0 1.02 1.02 0 0 1 0-1.414L14.053 12 7.92 5.707a1.02 1.02 0 0 1 0-1.414"/></svg>';
+    suggest.innerHTML = matches.map(function (k) {
+      return '<div class="search-suggest-item" onclick="selectSuggest(\'' + k.replace(/'/g, "\\'") + '\')">' + searchSvg + '<span class="search-suggest-text">' + k + '</span>' + arrowSvg + '</div>';
+    }).join('');
+    suggest.classList.add('visible');
+  }
+
+  function selectSuggest(keyword) {
+    document.getElementById('search-suggest').classList.remove('visible');
+    showSearchResults(keyword);
+  }
+
+  // 検索入力のクリアボタン + サジェスト表示制御
   document.getElementById('search-input').addEventListener('input', function () {
     document.getElementById('search-input-clear').classList.toggle('visible', this.value.length > 0);
+    _updateSuggest(this.value);
   });
   function clearSearchInput() {
     var input = document.getElementById('search-input');
     input.value = '';
     input.focus({ preventScroll: true });
     document.getElementById('search-input-clear').classList.remove('visible');
+    document.getElementById('search-suggest').classList.remove('visible');
   }
 
   // ── 検索結果ビュー（スタック方式） ──
