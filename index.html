@@ -663,6 +663,12 @@
       color: #fff; line-height: 1.3;
     }
 
+    /* 検索結果画面内のCTAボタンはフロートバーの上に配置 */
+    .search-results-view .idp-bottom-bar {
+      bottom: 16px;
+      z-index: 20;
+    }
+
     /* 検索画面ではタブバーを非表示 */
     #screen-search.active ~ .tab-bar-wrapper {
       display: none;
