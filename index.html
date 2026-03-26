@@ -4039,7 +4039,7 @@
         <button class="search-input-mic"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M16.7 12c0 2.59-2.11 4.7-4.7 4.7S7.3 14.59 7.3 12V6.7C7.3 4.11 9.41 2 12 2s4.7 2.11 4.7 4.7zM12 3.4c-1.82 0-3.3 1.48-3.3 3.3V12c0 1.82 1.48 3.3 3.3 3.3s3.3-1.48 3.3-3.3V6.7c0-1.82-1.48-3.3-3.3-3.3m6.8 7.9c.39 0 .7.31.7.7 0 3.89-2.99 7.11-6.8 7.46v1.14h3.6c.39 0 .7.31.7.7s-.31.7-.7.7H7.7c-.39 0-.7-.31-.7-.7s.31-.7.7-.7h3.6v-1.14C7.49 19.11 4.5 15.9 4.5 12c0-.39.31-.7.7-.7s.7.31.7.7c0 3.36 2.74 6.1 6.1 6.1s6.1-2.74 6.1-6.1c0-.39.31-.7.7-.7" clip-rule="evenodd"/></svg></button>
       </div>
       <div class="glass-pill search-pill">
-        <button class="search-btn search-close-btn" onclick="exitSearch()">
+        <button class="search-btn search-close-btn" onclick="onSearchClose()">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M7.538 6.264 12 10.726l4.462-4.46a.9.9 0 1 1 1.274 1.275L13.274 12l4.462 4.46a.9.9 0 1 1-1.274 1.275L12 13.274l-4.462 4.462a.9.9 0 1 1-1.274-1.274L10.725 12 6.264 7.538a.901.901 0 0 1 1.274-1.274" clip-rule="evenodd"/></svg>
         </button>
       </div>
@@ -5284,6 +5284,26 @@
   }
 
   // × ボタン → キーボードを閉じて前の画面に戻る
+  function onSearchClose() {
+    var suggest = document.getElementById('search-suggest');
+    if (suggest.classList.contains('visible')) {
+      // サジェスト表示中 → サジェストを閉じて直前の画面に戻る
+      suggest.classList.remove('visible'); _blockBehindSuggest(false);
+      var input = document.getElementById('search-input');
+      input.blur();
+      // 検索結果スタックがあればそのキーワードを復元、なければ空に
+      if (_searchResultsStack.length > 0) {
+        input.value = _searchResultsStack[_searchResultsStack.length - 1].keyword;
+        document.getElementById('search-input-clear').classList.add('visible');
+      } else {
+        input.value = '';
+        document.getElementById('search-input-clear').classList.remove('visible');
+      }
+      return;
+    }
+    exitSearch();
+  }
+
   function exitSearch() {
     const input = document.getElementById('search-input');
     input.blur();
