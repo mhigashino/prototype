@@ -5277,6 +5277,9 @@
     // 検索結果→IDP→検索ボタンの場合、Xで検索終了にする（IDP復元しない）
     _searchFromIdp = false;
     _idpStackBeforeSearch = null;
+    // 検索フォームを空にする
+    document.getElementById('search-input').value = '';
+    document.getElementById('search-input-clear').classList.remove('visible');
     switchTab('search', btn);
     fixSearchContentHeight();
     document.querySelector('.search-content-scroll').scrollTop = 0;
