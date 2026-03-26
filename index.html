@@ -5459,6 +5459,11 @@
     e.stopPropagation();
   }, { passive: true });
 
+  // フロートバーのドラッグで背面がスクロールしないようにする
+  document.getElementById('search-float-bar').addEventListener('touchmove', function (e) {
+    e.preventDefault();
+  }, { passive: false });
+
   // Enter キーで検索実行
   document.getElementById('search-input').addEventListener('keydown', function (e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
