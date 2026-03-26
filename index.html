@@ -5523,9 +5523,19 @@
     }
   });
 
+  // サジェスト内タップで blur しても閉じないようにする
+  var _suggestTouched = false;
+  document.getElementById('search-suggest').addEventListener('touchstart', function () {
+    _suggestTouched = true;
+  }, { passive: true });
+
   document.getElementById('search-input').addEventListener('blur', function () {
-    // setTimeout で selectSuggest のクリックイベントが先に処理されるのを待つ
     setTimeout(function () {
+      if (_suggestTouched) {
+        // サジェスト内をタップした場合は閉じない（selectSuggest が処理する）
+        _suggestTouched = false;
+        return;
+      }
       document.getElementById('search-suggest').classList.remove('visible'); _blockBehindSuggest(false);
     }, 150);
   });
