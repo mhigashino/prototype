@@ -707,6 +707,8 @@
       -webkit-tap-highlight-color: transparent;
     }
     .search-suggest-item:active { background: var(--color-bg-secondary); }
+    .search-suggest-ad .search-suggest-icon { color: var(--color-fg-accent); }
+    .search-suggest-ad .search-suggest-text { color: var(--color-fg-accent); }
     .search-suggest-icon {
       flex-shrink: 0;
       width: 20px; height: 20px;
@@ -5418,9 +5420,26 @@
     }
     var searchSvg = '<svg class="search-suggest-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>';
     var arrowSvg = '<svg class="search-suggest-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.92 4.293a.95.95 0 0 1 1.372 0l6.788 7c.378.39.378 1.024 0 1.414l-6.788 7a.95.95 0 0 1-1.372 0 1.02 1.02 0 0 1 0-1.414L14.053 12 7.92 5.707a1.02 1.02 0 0 1 0-1.414"/></svg>';
-    suggest.innerHTML = matches.map(function (k) {
-      return '<div class="search-suggest-item" onclick="selectSuggest(\'' + k.replace(/'/g, "\\'") + '\')">' + searchSvg + '<span class="search-suggest-text">' + k + '</span>' + arrowSvg + '</div>';
-    }).join('');
+    // 広告データ
+    var _suggestAds = [
+      { icon: '<svg class="search-suggest-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M8.13 2h7.74a2.7 2.7 0 0 1 2.7 2.7v14.59a2.71 2.71 0 0 1-2.7 2.71H8.13a2.71 2.71 0 0 1-2.7-2.71V4.7A2.7 2.7 0 0 1 8.13 2m7.74 1.4H8.13a1.3 1.3 0 0 0-1.3 1.3v.23h10.34V4.7a1.3 1.3 0 0 0-1.3-1.3m1.26 13.28V6.33H6.83v10.35zm-9 3.91h7.74a1.3 1.3 0 0 0 1.3-1.3v-1.21H6.83v1.21a1.3 1.3 0 0 0 1.3 1.3m4.75-1.25a.88.88 0 1 1-1.76 0 .88.88 0 0 1 1.76 0" clip-rule="evenodd"/></svg>', text: '[メルカリモバイル] 4GBプレゼント中' },
+      { icon: '<svg class="search-suggest-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M6.444 3.685a10 10 0 1 1 11.112 16.63A10 10 0 0 1 6.444 3.685m.778 15.466A8.6 8.6 0 0 0 12 20.6a8.61 8.61 0 0 0 8.6-8.6 8.6 8.6 0 1 0-13.378 7.15m9.252-6.964a.68.68 0 0 1-.474.203h-3.33v1.36H16a.68.68 0 0 1 0 1.35h-3.33v2.41a.67.67 0 1 1-1.34 0V15.1H8a.695.695 0 1 1 0-1.39h3.33v-1.36H8a.68.68 0 0 1-.67-.68A.67.67 0 0 1 8 11h2.74L8 6.86a.66.66 0 0 1 .13-.93.68.68 0 0 1 .94.18L12 10.5l2.93-4.43a.68.68 0 0 1 1.227.247.66.66 0 0 1-.107.503L13.26 11H16a.67.67 0 0 1 .67.71.68.68 0 0 1-.196.477" clip-rule="evenodd"/></svg>', text: 'メルカリポイント 最大5,000Pもらえる' },
+      { icon: '<svg class="search-suggest-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 18v-4a2 2 0 0 0 2-2c0-1.1-.89-2-1.99-2V6c0-1.1.89-2 1.99-2h16.19l.185.01C21.288 4.115 22 4.97 22 6l-.01 4c-1.1 0-1.99.9-1.99 2a2 2 0 0 0 2 2v4c0 1.1-.9 2-2 2v-1.4c.327 0 .6-.273.6-.6v-2.901a3.402 3.402 0 0 1-.008-6.197L20.6 6a.7.7 0 0 0-.168-.474c-.09-.1-.178-.125-.242-.126H4a.597.597 0 0 0-.59.6v2.903a3.402 3.402 0 0 1-.01 6.195V18c0 .327.273.6.6.6V20c-1.1 0-2-.9-2-2m18 .6V20H4v-1.4zM10.993 7.373c.498-.779 1.706-.723 2.103.166l.76 1.705 1.857.196c1.033.11 1.449 1.39.678 2.085l-1.388 1.25.388 1.827c.215 1.016-.874 1.808-1.774 1.289L12 14.957l-1.617.934c-.9.519-1.989-.273-1.774-1.289l.387-1.827-1.387-1.25c-.771-.695-.355-1.976.678-2.085l1.857-.196.76-1.705zm.382 2.547a1.2 1.2 0 0 1-.97.705l-1.525.16 1.14 1.027a1.2 1.2 0 0 1 .37 1.141l-.319 1.5 1.33-.765a1.2 1.2 0 0 1 1.056-.07l.143.07 1.328.765-.318-1.5a1.2 1.2 0 0 1 .37-1.14l1.14-1.028-1.525-.16a1.2 1.2 0 0 1-.97-.705L12 8.519z"/></svg>', text: '初めての出品で500円クーポン' },
+      { icon: '<svg class="search-suggest-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M20.89 2.4H3.1c-.39 0-.7.307-.7.693v6.44c0 .743.38 1.397.95 1.793v9.58c0 .387.31.694.7.694H20.05c.39 0 .7-.307.7-.694v-9.669c.51-.396.849-1.01.849-1.704v-6.44a.707.707 0 0 0-.71-.693m-6.696 2.25v-.863h2.998V8.84a1.49 1.49 0 0 1-1.499 1.486c-.83 0-1.499-.664-1.499-1.486V4.649m-7.396 0v-.863h2.998V8.84a1.49 1.49 0 0 1-1.499 1.486c-.83 0-1.499-.664-1.499-1.486V4.649m4.558 15.563H8.227v-5.548h3.129zm4.407 0h-3.018v-5.548h3.018zm3.578 0h-2.179v-6.241a.69.69 0 0 0-.7-.694H7.517c-.39 0-.7.307-.7.694v6.241H4.74v-8.52c.62-.04 1.169-.337 1.539-.792.52.495 1.23.802 2.009.802.78 0 1.479-.307 2.009-.802.4.485 1.01.802 1.689.802.68 0 1.29-.317 1.689-.802.52.495 1.23.802 2.009.802.78 0 1.479-.307 2.009-.802.39.475.98.782 1.639.802v8.51z" clip-rule="evenodd"/></svg>', text: '[メルカリShops] 送料無料キャンペーン' },
+      { icon: '<svg class="search-suggest-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M3.7 4.5h16.6A1.7 1.7 0 0 1 22 6.2v11.6a1.7 1.7 0 0 1-1.7 1.7H3.7A1.7 1.7 0 0 1 2 17.8V6.2a1.7 1.7 0 0 1 1.7-1.7m16.6 1.4H3.7a.31.31 0 0 0-.3.3v1.09h17.2V6.2a.31.31 0 0 0-.3-.3M3.7 18.1h16.6a.31.31 0 0 0 .3-.3V9.29H3.4v8.51a.31.31 0 0 0 .3.3m11.6-3.3h4v2h-4z" clip-rule="evenodd"/></svg>', text: 'メルカード 入会で2,000P還元' },
+    ];
+    // 3件に1件の割合で広告を挿入
+    var html = [];
+    var adIdx = 0;
+    for (var i = 0; i < matches.length; i++) {
+      var k = matches[i];
+      html.push('<div class="search-suggest-item" onclick="selectSuggest(\'' + k.replace(/'/g, "\\'") + '\')">' + searchSvg + '<span class="search-suggest-text">' + k + '</span>' + arrowSvg + '</div>');
+      if ((i + 1) % 3 === 0 && adIdx < _suggestAds.length) {
+        var ad = _suggestAds[adIdx++];
+        html.push('<div class="search-suggest-item search-suggest-ad">' + ad.icon + '<span class="search-suggest-text">' + ad.text + '</span>' + arrowSvg + '</div>');
+      }
+    }
+    suggest.innerHTML = html.join('');
     suggest.classList.add('visible');
   }
 
