@@ -5382,8 +5382,9 @@
     var suggest = document.getElementById('search-suggest');
     if (!query) { suggest.classList.remove('visible'); return; }
     var q = query.toLowerCase();
-    var matches = _suggestKeywords.filter(function (k) { return k.toLowerCase().indexOf(q) !== -1; }).slice(0, 8);
-    if (matches.length === 0) { suggest.classList.remove('visible'); return; }
+    var matches = _suggestKeywords.filter(function (k) { return k.toLowerCase().indexOf(q) !== -1; }).slice(0, 7);
+    // 入力テキスト自体を先頭候補として常に表示
+    matches.unshift(query);
     var searchSvg = '<svg class="search-suggest-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="m20.813 19.813-3.94-3.94a7.86 7.86 0 1 0-1 1l3.94 3.94a.7.7 0 0 0 .767.155.7.7 0 0 0 .223-.155.69.69 0 0 0 .01-1m-14.51-4.41a6.44 6.44 0 1 1 9.11 0 6.43 6.43 0 0 1-9.11 0"/></svg>';
     var arrowSvg = '<svg class="search-suggest-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.92 4.293a.95.95 0 0 1 1.372 0l6.788 7c.378.39.378 1.024 0 1.414l-6.788 7a.95.95 0 0 1-1.372 0 1.02 1.02 0 0 1 0-1.414L14.053 12 7.92 5.707a1.02 1.02 0 0 1 0-1.414"/></svg>';
     suggest.innerHTML = matches.map(function (k) {
