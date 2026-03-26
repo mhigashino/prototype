@@ -5456,9 +5456,18 @@
 
   // キーボードが閉じたらサジェストを閉じる
   // サジェストビューのタッチが背面に貫通しないようにする
-  document.getElementById('search-suggest').addEventListener('touchmove', function (e) {
-    e.stopPropagation();
-  }, { passive: true });
+  // スクロール境界（上端/下端）を超えた場合は preventDefault でページ全体の動きを止める
+  (function () {
+    var suggest = document.getElementById('search-suggest');
+    suggest.addEventListener('touchmove', function (e) {
+      e.stopPropagation();
+      var top = suggest.scrollTop;
+      var max = suggest.scrollHeight - suggest.clientHeight;
+      if (top <= 0 || top >= max) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  })();
 
   // フロートバーのドラッグで背面がスクロールしないようにする
   document.getElementById('search-float-bar').addEventListener('touchmove', function (e) {
