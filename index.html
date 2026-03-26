@@ -5289,15 +5289,15 @@
     });
   }
 
-  // × ボタン → キーボードを閉じて前の画面に戻る
+  // × ボタン → 検索ボタンを押す前の状態に戻る
   function onSearchClose() {
     var suggest = document.getElementById('search-suggest');
+    var input = document.getElementById('search-input');
+
+    // 1. サジェスト表示中 → サジェストを閉じて直前の画面に戻る
     if (suggest.classList.contains('visible')) {
-      // サジェスト表示中 → サジェストを閉じて直前の画面に戻る
       suggest.classList.remove('visible'); _blockBehindSuggest(false);
-      var input = document.getElementById('search-input');
       input.blur();
-      // 検索結果スタックがあればそのキーワードを復元、なければ空に
       if (_searchResultsStack.length > 0) {
         input.value = _searchResultsStack[_searchResultsStack.length - 1].keyword;
         document.getElementById('search-input-clear').classList.add('visible');
@@ -5307,6 +5307,18 @@
       }
       return;
     }
+
+    // 2. 検索結果画面が表示されている → 全結果を閉じて検索履歴画面に戻る
+    if (_searchResultsStack.length > 0) {
+      hideAllSearchResults();
+      input.blur();
+      input.value = '';
+      document.getElementById('search-input-clear').classList.remove('visible');
+      document.getElementById('search-float-bar').style.bottom = '0px';
+      return;
+    }
+
+    // 3. 検索履歴画面 → 検索ボタンを押す前の状態に戻る（exitSearch）
     exitSearch();
   }
 
