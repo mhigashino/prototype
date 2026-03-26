@@ -5423,7 +5423,7 @@
     var seed = Date.now();
     for (var i = 0; i < keyword.length; i++) seed += keyword.charCodeAt(i);
     ids.sort(function (a, b) { return ((a.charCodeAt(2) * 2654435761 + seed) >>> 0) - ((b.charCodeAt(2) * 2654435761 + seed) >>> 0); });
-    var count = Math.min(60, ids.length);
+    var count = Math.min(90, ids.length);
     for (var i = 0; i < count; i++) {
       var id = ids[i], item = ITEM_DATA[id];
       var tile = document.createElement('div');
