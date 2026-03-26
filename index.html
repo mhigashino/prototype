@@ -796,6 +796,18 @@
       align-items: center;
       padding: var(--spacing-12) 0;
       gap: var(--spacing-12);
+      position: relative;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .history-card.swiping { transition: none; }
+    .history-card.removing {
+      transform: translateX(-100%) !important;
+      opacity: 0;
+      height: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      overflow: hidden;
+      transition: transform 0.25s ease, opacity 0.25s ease, height 0.25s ease, padding 0.25s ease;
     }
 
     .history-card-thumb {
@@ -5545,13 +5557,68 @@
   }
 
   // 履歴カードタップ → 検索結果を表示（イベントデリゲーション）
+  // スワイプ中はタップを無効化するフラグ
+  var _historySwiped = false;
   document.querySelector('.history-cards').addEventListener('click', function (e) {
+    if (_historySwiped) { _historySwiped = false; return; }
     if (e.target.closest('.history-heart')) return;
     var card = e.target.closest('.history-card');
     if (!card) return;
     var title = card.querySelector('.history-title');
     if (title) showSearchResults(title.textContent);
   });
+
+  // 履歴カード横スワイプ削除
+  (function () {
+    var cards = document.querySelector('.history-cards');
+    var startX, startY, currentCard, dir, startTime;
+    var THRESHOLD = 80;
+
+    cards.addEventListener('touchstart', function (e) {
+      var card = e.target.closest('.history-card');
+      if (!card || e.target.closest('.history-heart')) return;
+      currentCard = card;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      startTime = Date.now();
+      dir = null;
+      card.classList.add('swiping');
+    }, { passive: true });
+
+    cards.addEventListener('touchmove', function (e) {
+      if (!currentCard) return;
+      var dx = e.touches[0].clientX - startX;
+      var dy = e.touches[0].clientY - startY;
+      if (!dir && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) {
+        dir = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+      }
+      if (dir !== 'h') return;
+      // 左方向のみ許可
+      if (dx > 0) dx = 0;
+      currentCard.style.transform = 'translateX(' + dx + 'px)';
+      currentCard.style.opacity = Math.max(0, 1 - Math.abs(dx) / 300);
+    }, { passive: true });
+
+    cards.addEventListener('touchend', function (e) {
+      if (!currentCard) return;
+      currentCard.classList.remove('swiping');
+      if (dir !== 'h') { currentCard = null; return; }
+      var dx = e.changedTouches[0].clientX - startX;
+      var vel = Math.abs(dx) / Math.max(1, Date.now() - startTime);
+      _historySwiped = true;
+      if (dx < -THRESHOLD || vel > 0.5) {
+        // 削除
+        currentCard.classList.add('removing');
+        var card = currentCard;
+        setTimeout(function () { card.remove(); }, 300);
+      } else {
+        // 元に戻す
+        currentCard.style.transform = '';
+        currentCard.style.opacity = '';
+      }
+      currentCard = null;
+    }, { passive: true });
+  })();
 
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', updateFloatBar);
