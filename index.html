@@ -5289,7 +5289,7 @@
     input.blur();
     input.value = '';
     document.getElementById('search-input-clear').classList.remove('visible');
-    document.getElementById('search-suggest').classList.remove('visible');
+    document.getElementById('search-suggest').classList.remove('visible'); _blockBehindSuggest(false);
     hideAllSearchResults();
     document.getElementById('search-float-bar').style.bottom = '0px';
     if (location.hash) history.replaceState(null, '', location.pathname);
@@ -5414,7 +5414,7 @@
     var suggest = document.getElementById('search-suggest');
     var matches;
     if (!query) {
-      suggest.classList.remove('visible');
+      suggest.classList.remove('visible'); _blockBehindSuggest(false);
       return;
     } else {
       var q = query.toLowerCase();
@@ -5445,10 +5445,11 @@
     }
     suggest.innerHTML = html.join('');
     suggest.classList.add('visible');
+    _blockBehindSuggest(true);
   }
 
   function selectSuggest(keyword) {
-    document.getElementById('search-suggest').classList.remove('visible');
+    document.getElementById('search-suggest').classList.remove('visible'); _blockBehindSuggest(false);
     document.getElementById('search-input').blur();
     showSearchResults(keyword);
   }
@@ -5464,13 +5465,30 @@
     e.preventDefault();
   }, { passive: false });
 
+  // サジェスト表示中は背面のスクロールをブロック
+  var _suggestBlocker = null;
+  function _blockBehindSuggest(on) {
+    var screen = document.getElementById('screen-search');
+    if (on && !_suggestBlocker) {
+      _suggestBlocker = function (e) {
+        // サジェスト内・フロートバー内のタッチは許可
+        if (e.target.closest('.search-suggest') || e.target.closest('.search-float-bar')) return;
+        e.preventDefault();
+      };
+      screen.addEventListener('touchmove', _suggestBlocker, { passive: false });
+    } else if (!on && _suggestBlocker) {
+      screen.removeEventListener('touchmove', _suggestBlocker);
+      _suggestBlocker = null;
+    }
+  }
+
   // Enter キーで検索実行
   document.getElementById('search-input').addEventListener('keydown', function (e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
       e.preventDefault();
       var keyword = this.value.trim();
       if (!keyword) return;
-      document.getElementById('search-suggest').classList.remove('visible');
+      document.getElementById('search-suggest').classList.remove('visible'); _blockBehindSuggest(false);
       this.blur();
       showSearchResults(keyword);
     }
@@ -5479,7 +5497,7 @@
   document.getElementById('search-input').addEventListener('blur', function () {
     // setTimeout で selectSuggest のクリックイベントが先に処理されるのを待つ
     setTimeout(function () {
-      document.getElementById('search-suggest').classList.remove('visible');
+      document.getElementById('search-suggest').classList.remove('visible'); _blockBehindSuggest(false);
     }, 150);
   });
 
@@ -5493,7 +5511,7 @@
     input.value = '';
     input.focus({ preventScroll: true });
     document.getElementById('search-input-clear').classList.remove('visible');
-    document.getElementById('search-suggest').classList.remove('visible');
+    document.getElementById('search-suggest').classList.remove('visible'); _blockBehindSuggest(false);
   }
 
   // ── 検索結果ビュー（スタック方式） ──
