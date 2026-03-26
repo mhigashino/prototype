@@ -5431,6 +5431,18 @@
   }
 
   // キーボードが閉じたらサジェストを閉じる
+  // Enter キーで検索実行
+  document.getElementById('search-input').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+      e.preventDefault();
+      var keyword = this.value.trim();
+      if (!keyword) return;
+      document.getElementById('search-suggest').classList.remove('visible');
+      this.blur();
+      showSearchResults(keyword);
+    }
+  });
+
   document.getElementById('search-input').addEventListener('blur', function () {
     // setTimeout で selectSuggest のクリックイベントが先に処理されるのを待つ
     setTimeout(function () {
