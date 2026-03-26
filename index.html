@@ -688,7 +688,8 @@
     .search-suggest {
       display: none;
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 76px;
+      top: 0; left: 0; right: 0;
+      bottom: 76px; /* JS の updateFloatBar で動的に更新 */
       background: var(--color-bg-primary);
       z-index: 12;
       overflow-y: auto;
@@ -5350,6 +5351,9 @@
       floatBar.style.transition = '';
     }
     floatBar.style.bottom = keyboardH + 'px';
+    // サジェストの下端をフロートバーの上に合わせる
+    var barH = floatBar.offsetHeight || 76;
+    document.getElementById('search-suggest').style.bottom = (keyboardH + barH) + 'px';
     fixSearchContentHeight();
   }
 
@@ -5450,6 +5454,11 @@
   }
 
   // キーボードが閉じたらサジェストを閉じる
+  // サジェストビューのタッチが背面に貫通しないようにする
+  document.getElementById('search-suggest').addEventListener('touchmove', function (e) {
+    e.stopPropagation();
+  }, { passive: true });
+
   // Enter キーで検索実行
   document.getElementById('search-input').addEventListener('keydown', function (e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
